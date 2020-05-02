@@ -1,6 +1,7 @@
 package source;
+import source.Action;
 
-public class Item {
+public class Item implements Action{
 	private String name;
 
 	public Item(String name) {
@@ -14,6 +15,11 @@ public class Item {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String usar() {
+		return "Resultado";
 	}
 	
 	

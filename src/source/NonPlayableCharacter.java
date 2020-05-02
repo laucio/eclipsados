@@ -1,10 +1,13 @@
 package source;
 
-public class NonPlayableCharacter {
+import java.util.ArrayList;
+
+public class NonPlayableCharacter implements Action{
 	private String name;
 	private String gender;
 	private String description;
 	private String message;
+	private ArrayList<Trigger> List;
 	
 	public NonPlayableCharacter(String name, String gender, String description, String message) {
 		super();
@@ -53,6 +56,11 @@ public class NonPlayableCharacter {
 	
 	public String toString() {
 		return this.message;
+	}
+
+	@Override
+	public String usar() {
+		return "Resultado";
 	}
 	
 }
