@@ -1,3 +1,3 @@
 # Eclipsados
 
-Proyecto juego estilo Zork.
+- Proyecto juego estilo Zork.
