@@ -8,6 +8,7 @@ public class Location {
 	private String number;
 	private String description;
 	private Set<Place> places;
+	private Set<Connection> connections;
 	
 	public Location(String name, String gender, String number, String description) {
 		super();
@@ -49,7 +50,4 @@ public class Location {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
 }
