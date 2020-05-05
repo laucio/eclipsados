@@ -1,11 +1,10 @@
 package source;
 
-public class Settings {
+public class Setting {
 	private String welcome;
 	private String character;
 
-	public Settings(String welcome, String character) {
-		super();
+	public Setting(String welcome, String character) {
 		this.welcome = welcome;
 		this.character = character;
 	}

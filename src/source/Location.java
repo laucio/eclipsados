@@ -1,5 +1,6 @@
 package source;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class Location {
@@ -7,8 +8,9 @@ public class Location {
 	private String gender;
 	private String number;
 	private String description;
-	private Set<Place> places;
-	private Set<Connection> connections;
+	private ArrayList<Place> places;
+	private ArrayList<String> NPCS;
+	private ArrayList<Connection> connections;
 	
 	public Location(String name, String gender, String number, String description) {
 		super();
@@ -16,7 +18,7 @@ public class Location {
 		this.gender = gender;
 		this.number = number;
 		this.description = description;
-		this.places = null;
+		this.setPlaces(null);
 	}
 
 	public String getName() {
@@ -49,5 +51,29 @@ public class Location {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public ArrayList<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(ArrayList<Place> places) {
+		this.places = places;
+	}
+
+	public ArrayList<Connection> getConnections() {
+		return connections;
+	}
+
+	public void setConnections(ArrayList<Connection> connections) {
+		this.connections = connections;
+	}
+
+	public ArrayList<String> getNPCS() {
+		return NPCS;
+	}
+
+	public void setNPCS(ArrayList<String> nPCS) {
+		NPCS = nPCS;
 	}
 }

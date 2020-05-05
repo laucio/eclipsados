@@ -3,7 +3,8 @@ package source;
 public class Connection {
 	
 	private String direction;
-	private Location location;
+	private String location;
+	private String obstacles = null;
 
 	public String getDirection() {
 		return direction;
@@ -11,11 +12,17 @@ public class Connection {
 	public void setDirection(String direction) {
 		this.direction = direction;
 	}
-	public Location getLocation() {
+	public String getLocation() {
 		return location;
 	}
-	public void setLocation(Location location) {
+	public void setLocation(String location) {
 		this.location = location;
+	}
+	public String getObstacles() {
+		return obstacles;
+	}
+	public void setObstacles(String obstacles) {
+		this.obstacles = obstacles;
 	}
 	
 	

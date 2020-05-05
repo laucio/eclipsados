@@ -5,16 +5,17 @@ import java.util.ArrayList;
 public class NonPlayableCharacter implements Action{
 	private String name;
 	private String gender;
+	private String number;
 	private String description;
-	private String message;
-	private ArrayList<Trigger> List;
+	private String talk;
+	private ArrayList<Trigger> triggers = null;
 	
 	public NonPlayableCharacter(String name, String gender, String description, String message) {
 		super();
 		this.name = name;
 		this.gender = gender;
 		this.description = description;
-		this.message = message;
+		this.talk = message;
 	}
 
 	public String getName() {
@@ -41,26 +42,39 @@ public class NonPlayableCharacter implements Action{
 		this.description = description;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
 	
-	public String hablar() {
-		this.setMessage("hola");
-		return this.toString();
-	}
 	
 	public String toString() {
-		return this.message;
+		return this.talk;
 	}
 
 	@Override
 	public String usar() {
 		return "Resultado";
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getTalk() {
+		return talk;
+	}
+
+	public void setTalk(String talk) {
+		this.talk = talk;
+	}
+
+	public ArrayList<Trigger> getTriggers() {
+		return triggers;
+	}
+
+	public void setTriggers(ArrayList<Trigger> triggers) {
+		this.triggers = triggers;
 	}
 	
 }
