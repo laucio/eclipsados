@@ -1,6 +1,10 @@
 package source;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
 
 public class Zork {
 	private Setting settings;
@@ -9,6 +13,13 @@ public class Zork {
 	private ArrayList<Item> items = null;
 	private ArrayList<String> inventory =null;
 	private ArrayList<Endgame> endgames = null;
+	
+	public Zork() {
+	
+		
+	}
+		
+	
 	public Setting getSettings() {
 		return settings;
 	}
