@@ -8,9 +8,12 @@ public class Item {// implements Action{
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
 
-	public Item(String name) {
-		super();
+	public Item(String name,String gender, String number,ArrayList<String> actions, ArrayList<String> effects_over ) {
 		this.name = name;
+		this.gender = gender;
+		this.number =number;
+		this.actions = actions;
+		this.effects_over = effects_over;
 	}
 
 	public String getName() {
@@ -57,7 +60,28 @@ public class Item {// implements Action{
 	public void setActions(ArrayList<String> actions) {
 		this.actions = actions;
 	}
+
+	@Override
+	public String toString() {
+		String cadena ="unas ";
+		if(this.gender.equals("male") && this.number.equals("singular")) {
+						cadena="un ";
+		}
+
+		if(this.gender.equals("male") && this.number.equals("plural")) {
+				cadena="unos ";
+		}
+		
+		if(this.gender.equals("female") && this.number.equals("singular")) {
+		cadena = "una ";
+		}
+		
+		return cadena + this.getName();
+			
+	}
 	
-	
+	public String toString(String item) {
+		return "Hola";
+	}
 	
 }

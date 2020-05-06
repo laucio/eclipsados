@@ -50,5 +50,24 @@ public class Place {
 	}
 	
 	
+	@Override
+	public String toString() {
+		String cadena ="las ";
+		if(this.gender.equals("male") && this.number.equals("singular")) {
+						cadena="el ";
+		}
+
+		if(this.gender.equals("male") && this.number.equals("plural")) {
+				cadena="los ";
+		}
+		
+		if(this.gender.equals("female") && this.number.equals("singular")) {
+		cadena = "la ";
+		}
+		
+		return cadena + this.getName();
+			
+	}
+	
 	
 }

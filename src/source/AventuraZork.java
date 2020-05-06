@@ -56,4 +56,56 @@ public class AventuraZork {
 	public void setEndgames(ArrayList<Endgame> endgames) {
 		this.endgames = endgames;
 	}
+	
+	public String verAlrededor(String currentLocation) {
+		String cadena;
+		int indiceLocation = getLocationIndex(currentLocation);
+		Location currentLocationObj = this.locations.get(indiceLocation);
+		//Como primera parte de donde estoy, es la descripcion de la location (ej: Estas en un muelle)
+		cadena = currentLocationObj.getDescription();
+		
+		if(currentLocationObj.getPlaces()!= null) {
+		for(int i = 0; i<currentLocationObj.getPlaces().size();i++) {
+		//Despues mencionamos el place (ej: el piso)
+			cadena += ". En ";
+			Place place = currentLocationObj.getPlaces().get(i);
+			cadena += place.toString() + " hay: ";
+			for(int j= 0; j<place.getItems().size();j++) {
+		//Comenzamos a agregar los items que hay en cada place de la location
+				String item=place.getItems().get(j);
+				int itemIndex = getItemIndex(item);
+				cadena += ((j>0)?((j==place.getItems().size()-1)?" y ":" , "):"") + this.getItems().get(itemIndex).toString() ;
+
+			}
+		}
+		}
+		if(currentLocationObj.getNPCS()!=null) {
+			
+		}
+		
+		System.out.println(cadena);
+		return cadena;
+	}
+	
+	public int getItemIndex(String itemName) {
+		int i=0;
+		while(i<items.size()) {
+			if(items.get(i).getName().equals(itemName)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
+	public int getLocationIndex(String locationName) {
+		int i=0;
+		while(i<locations.size()) {
+			if(locations.get(i).getName().equals(locationName)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
 }

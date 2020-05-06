@@ -1,5 +1,6 @@
 package juegotest;
 
+import source.Partida;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
@@ -9,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import source.CargaAventura;
+import source.Item;
 import source.Location;
 import source.AventuraZork;
 
@@ -70,6 +73,23 @@ public class ZorkTest {
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
+		Item item = juego.getItems().get(2);
+		//System.out.println(item);
+		//System.out.println(juego.getLocations().get(0));
+		juego.verAlrededor("taberna");
+		//System.out.println(juego.getItems().get(0).getNumber());
 		assertEquals("¡No hay nada que me digas que me haga cambiar de opinión!",juego.getNpcs().get(0).getTalk());
+	}
+	
+	@Test
+	public void getNPCSTalk1() throws IOException {
+
+		
+		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		Partida partida = new Partida(path);
+		//System.out.println(partida.getCurrentLocation());
+		//System.out.println(partida.);
+		
+		//Assert.assertEquals("¡No hay nada que me digas que me haga cambiar de opinión!",juego.getNpcs().get(0).getTalk());
 	}
 }

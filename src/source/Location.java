@@ -76,4 +76,8 @@ public class Location {
 	public void setNPCS(ArrayList<String> nPCS) {
 		NPCS = nPCS;
 	}
+
+
+	
+	
 }
