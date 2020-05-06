@@ -9,7 +9,7 @@ public class Location {
 	private String number;
 	private String description;
 	private ArrayList<Place> places;
-	private ArrayList<String> NPCS;
+	private ArrayList<String> npcs;
 	private ArrayList<Connection> connections;
 	
 	public Location(String name, String gender, String number, String description) {
@@ -70,11 +70,11 @@ public class Location {
 	}
 
 	public ArrayList<String> getNPCS() {
-		return NPCS;
+		return npcs;
 	}
 
 	public void setNPCS(ArrayList<String> nPCS) {
-		NPCS = nPCS;
+		npcs = nPCS;
 	}
 
 

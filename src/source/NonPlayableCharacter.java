@@ -43,10 +43,6 @@ public class NonPlayableCharacter implements Action{
 	}
 
 	
-	
-	public String toString() {
-		return this.talk;
-	}
 
 	@Override
 	public String usar() {
@@ -75,6 +71,25 @@ public class NonPlayableCharacter implements Action{
 
 	public void setTriggers(ArrayList<Trigger> triggers) {
 		this.triggers = triggers;
+	}
+	
+	@Override
+	public String toString() {
+		String cadena ="unas ";
+		if(this.gender.equals("male") && this.number.equals("singular")) {
+						cadena="un ";
+		}
+
+		if(this.gender.equals("male") && this.number.equals("plural")) {
+				cadena="unos ";
+		}
+		
+		if(this.gender.equals("female") && this.number.equals("singular")) {
+		cadena = "una ";
+		}
+		
+		return cadena + this.getName();
+			
 	}
 	
 }

@@ -79,9 +79,19 @@ public class AventuraZork {
 			}
 		}
 		}
-		if(currentLocationObj.getNPCS()!=null) {
-			
+		
+		//Agregamos 
+		ArrayList<String> curNpcs = currentLocationObj.getNPCS();
+		if(curNpcs!=null) {
+			cadena += ". Hay ";
+			for(int i = 0; i<curNpcs.size();i++) {
+				int npcsIndex = getNPCSIndex(curNpcs.get(i));
+				cadena +=((i>0)?((i==curNpcs.size()-1)?" y ":" , "):"") + this.getNpcs().get(npcsIndex).toString();			
+				
+			}
 		}
+		cadena += ".";
+		//System.out.println(currentLocationObj.getNPCS().get(0));
 		
 		System.out.println(cadena);
 		return cadena;
@@ -108,4 +118,16 @@ public class AventuraZork {
 		}
 		return -1;
 	}
+	
+	public int getNPCSIndex(String nPCSName) {
+		int i=0;
+		while(i<npcs.size()) {
+			if(npcs.get(i).getName().equals(nPCSName)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
 }
