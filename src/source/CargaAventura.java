@@ -9,14 +9,14 @@ import com.google.gson.Gson;
 
 public class CargaAventura {
 
-	public static Zork cargarArchivo(String pathAventura) throws IOException {
+	public static AventuraZork cargarArchivo(String pathAventura) throws IOException {
 		BufferedReader br = null;
-		Zork juego = null;
+		AventuraZork juego = null;
 		final Gson gson = new Gson();
 		try {
 
 			br = new BufferedReader(new FileReader(pathAventura));
-			juego = gson.fromJson(br, Zork.class);
+			juego = gson.fromJson(br, AventuraZork.class);
 			br.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

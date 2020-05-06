@@ -17,7 +17,7 @@ import com.google.gson.GsonBuilder;
 
 import source.CargaAventura;
 import source.Location;
-import source.Zork;
+import source.AventuraZork;
 
 public class ZorkTest {
 
@@ -33,7 +33,7 @@ public class ZorkTest {
 		Zork juego = CargaAventura.cargarArchivo(path); */
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path);
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		 
 		assertEquals("Guybrush Threepwood", juego.getSettings().getCharacter());
 
@@ -44,7 +44,7 @@ public class ZorkTest {
 	public void getWelcome() throws IOException {
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path);
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.",juego.getSettings().getWelcome() );
 	}
 	
@@ -52,7 +52,7 @@ public class ZorkTest {
 	public void getLocationDescription() throws IOException {
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path);
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Estás en un muelle",juego.getLocations().get(0).getDescription());
 	}
 	
@@ -60,7 +60,7 @@ public class ZorkTest {
 	public void getLocationDescriptionNext() throws IOException {
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path);
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Estás en una sucia taberna",juego.getLocations().get(1).getDescription());
 	}
 	
@@ -69,7 +69,7 @@ public class ZorkTest {
 
 		
 		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path);
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("¡No hay nada que me digas que me haga cambiar de opinión!",juego.getNpcs().get(0).getTalk());
 	}
 }

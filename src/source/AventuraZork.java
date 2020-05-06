@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-public class Zork {
+public class AventuraZork {
 	private Setting settings;
 	private ArrayList<Location> locations = null;
 	private ArrayList<NonPlayableCharacter> npcs = null;
@@ -14,7 +14,7 @@ public class Zork {
 	private ArrayList<String> inventory =null;
 	private ArrayList<Endgame> endgames = null;
 	
-	public Zork() {
+	public AventuraZork() {
 	
 		
 	}
