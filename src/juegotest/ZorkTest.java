@@ -35,7 +35,7 @@ public class ZorkTest {
 	/*	String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
 		Zork juego = CargaAventura.cargarArchivo(path); */
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		 
 		assertEquals("Guybrush Threepwood", juego.getSettings().getCharacter());
@@ -46,7 +46,7 @@ public class ZorkTest {
 	@Test
 	public void getWelcome() throws IOException {
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.",juego.getSettings().getWelcome() );
 	}
@@ -54,7 +54,7 @@ public class ZorkTest {
 	@Test
 	public void getLocationDescription() throws IOException {
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Estás en un muelle",juego.getLocations().get(0).getDescription());
 	}
@@ -62,7 +62,7 @@ public class ZorkTest {
 	@Test
 	public void getLocationDescriptionNext() throws IOException {
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		assertEquals("Estás en una sucia taberna",juego.getLocations().get(1).getDescription());
 	}
@@ -71,7 +71,7 @@ public class ZorkTest {
 	public void getNPCSTalk() throws IOException {
 
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		Item item = juego.getItems().get(2);
 		//System.out.println(item);
@@ -85,7 +85,7 @@ public class ZorkTest {
 	public void getNPCSTalk1() throws IOException {
 
 		
-		String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
+		String path = "Juego.json";
 		Partida partida = new Partida(path);
 		//System.out.println(partida.getCurrentLocation());
 		//System.out.println(partida.);

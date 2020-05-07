@@ -94,7 +94,6 @@ public class AventuraZork {
 		
 
 		ArrayList<Connection> currentConnetions = currentLocationObj.getConnections();
-		currentConnetions.add(currentConnetions.get(0));
 		for(int i=0;i<currentConnetions.size();i++) {
 			String locationConnection = currentConnetions.get(i).getLocation();
 			int locationIndex = getLocationIndex(locationConnection);
