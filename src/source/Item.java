@@ -80,8 +80,5 @@ public class Item {// implements Action{
 			
 	}
 	
-	public String toString(String item) {
-		return "Hola";
-	}
 	
 }

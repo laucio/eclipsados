@@ -27,13 +27,6 @@ public class ZorkTest {
 
 	@Test
 	public void getCharacterName() throws IOException {
-
-		/*final Gson gson = new Gson();
-		final BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json"));
-		final Zork juego = gson.fromJson(br, Zork.class); */
-		
-	/*	String path = "C:\\Users\\christian.d.riveros\\eclipse-workspace\\TP Progra\\eclipsados\\Juego.json";
-		Zork juego = CargaAventura.cargarArchivo(path); */
 		
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
@@ -68,17 +61,13 @@ public class ZorkTest {
 	}
 	
 	@Test
-	public void getNPCSTalk() throws IOException {
+	public void mirarAlrededor() throws IOException {
 
 		
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		Item item = juego.getItems().get(2);
-		//System.out.println(item);
-		//System.out.println(juego.getLocations().get(0));
 		System.out.println(juego.verAlrededor("muelle"));
-		//System.out.println(juego.getItems().get(0).getNumber());
-		//assertEquals("¡No hay nada que me digas que me haga cambiar de opinión!",juego.getNpcs().get(0).getTalk());
+
 	}
 	
 	@Test
@@ -87,9 +76,6 @@ public class ZorkTest {
 		
 		String path = "Juego.json";
 		Partida partida = new Partida(path);
-		//System.out.println(partida.getCurrentLocation());
-		//System.out.println(partida.);
 		
-		//Assert.assertEquals("¡No hay nada que me digas que me haga cambiar de opinión!",juego.getNpcs().get(0).getTalk());
 	}
 }
