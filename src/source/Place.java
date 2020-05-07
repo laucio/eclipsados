@@ -8,7 +8,7 @@ public class Place {
 	private String gender;
 	private String number;
 	private ArrayList<String> items;
-	
+
 	public Place(String name, String gender, String number, Set<Item> items) {
 		super();
 		this.setName(name);
@@ -48,26 +48,24 @@ public class Place {
 	public void setItems(ArrayList<String> items) {
 		this.items = items;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		String cadena ="las ";
-		if(this.gender.equals("male") && this.number.equals("singular")) {
-						cadena="el ";
+		String cadena = "las ";
+		if (this.gender.equals("male") && this.number.equals("singular")) {
+			cadena = "el ";
 		}
 
-		if(this.gender.equals("male") && this.number.equals("plural")) {
-				cadena="los ";
+		if (this.gender.equals("male") && this.number.equals("plural")) {
+			cadena = "los ";
 		}
-		
-		if(this.gender.equals("female") && this.number.equals("singular")) {
-		cadena = "la ";
+
+		if (this.gender.equals("female") && this.number.equals("singular")) {
+			cadena = "la ";
 		}
-		
+
 		return cadena + this.getName();
-			
+
 	}
-	
-	
+
 }

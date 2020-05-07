@@ -11,7 +11,7 @@ public class Location {
 	private ArrayList<Place> places;
 	private ArrayList<String> npcs;
 	private ArrayList<Connection> connections;
-	
+
 	public Location(String name, String gender, String number, String description) {
 		super();
 		this.name = name;
@@ -77,24 +77,23 @@ public class Location {
 		npcs = nPCS;
 	}
 
-
 	@Override
 	public String toString() {
-		String cadena ="unas ";
-		if(this.gender.equals("male") && this.number.equals("singular")) {
-						cadena="un ";
+		String cadena = "unas ";
+		if (this.gender.equals("male") && this.number.equals("singular")) {
+			cadena = "un ";
 		}
 
-		if(this.gender.equals("male") && this.number.equals("plural")) {
-				cadena="unos ";
+		if (this.gender.equals("male") && this.number.equals("plural")) {
+			cadena = "unos ";
 		}
-		
-		if(this.gender.equals("female") && this.number.equals("singular")) {
-		cadena = "una ";
+
+		if (this.gender.equals("female") && this.number.equals("singular")) {
+			cadena = "una ";
 		}
-		
+
 		return cadena + this.getName();
-			
+
 	}
-	
+
 }

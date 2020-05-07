@@ -1,4 +1,5 @@
 package source;
+
 import java.util.ArrayList;
 
 public class Item {// implements Action{
@@ -8,10 +9,10 @@ public class Item {// implements Action{
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
 
-	public Item(String name,String gender, String number,ArrayList<String> actions, ArrayList<String> effects_over ) {
+	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over) {
 		this.name = name;
 		this.gender = gender;
-		this.number =number;
+		this.number = number;
 		this.actions = actions;
 		this.effects_over = effects_over;
 	}
@@ -24,10 +25,9 @@ public class Item {// implements Action{
 		this.name = name;
 	}
 
-/*	@Override
-	public String usar() {
-		return "Resultado";
-	}*/
+	/*
+	 * @Override public String usar() { return "Resultado"; }
+	 */
 
 	public String getGender() {
 		return gender;
@@ -63,22 +63,21 @@ public class Item {// implements Action{
 
 	@Override
 	public String toString() {
-		String cadena ="unas ";
-		if(this.gender.equals("male") && this.number.equals("singular")) {
-						cadena="un ";
+		String cadena = "unas ";
+		if (this.gender.equals("male") && this.number.equals("singular")) {
+			cadena = "un ";
 		}
 
-		if(this.gender.equals("male") && this.number.equals("plural")) {
-				cadena="unos ";
+		if (this.gender.equals("male") && this.number.equals("plural")) {
+			cadena = "unos ";
 		}
-		
-		if(this.gender.equals("female") && this.number.equals("singular")) {
-		cadena = "una ";
+
+		if (this.gender.equals("female") && this.number.equals("singular")) {
+			cadena = "una ";
 		}
-		
+
 		return cadena + this.getName();
-			
+
 	}
-	
-	
+
 }

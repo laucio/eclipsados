@@ -2,14 +2,14 @@ package source;
 
 import java.util.ArrayList;
 
-public class NonPlayableCharacter implements Action{
+public class NonPlayableCharacter implements Action {
 	private String name;
 	private String gender;
 	private String number;
 	private String description;
 	private String talk;
 	private ArrayList<Trigger> triggers = null;
-	
+
 	public NonPlayableCharacter(String name, String gender, String description, String message) {
 		super();
 		this.name = name;
@@ -42,8 +42,6 @@ public class NonPlayableCharacter implements Action{
 		this.description = description;
 	}
 
-	
-
 	@Override
 	public String usar() {
 		return "Resultado";
@@ -72,24 +70,24 @@ public class NonPlayableCharacter implements Action{
 	public void setTriggers(ArrayList<Trigger> triggers) {
 		this.triggers = triggers;
 	}
-	
+
 	@Override
 	public String toString() {
-		String cadena ="unas ";
-		if(this.gender.equals("male") && this.number.equals("singular")) {
-						cadena="un ";
+		String cadena = "unas ";
+		if (this.gender.equals("male") && this.number.equals("singular")) {
+			cadena = "un ";
 		}
 
-		if(this.gender.equals("male") && this.number.equals("plural")) {
-				cadena="unos ";
+		if (this.gender.equals("male") && this.number.equals("plural")) {
+			cadena = "unos ";
 		}
-		
-		if(this.gender.equals("female") && this.number.equals("singular")) {
-		cadena = "una ";
+
+		if (this.gender.equals("female") && this.number.equals("singular")) {
+			cadena = "una ";
 		}
-		
+
 		return cadena + this.getName();
-			
+
 	}
-	
+
 }
