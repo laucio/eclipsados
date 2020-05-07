@@ -24,7 +24,7 @@
       "npcs": ["pirata fantasma"],
       "connections": [
         {
-          "direction": "south",
+          "direction": "sur",
           "location": "taberna",
           "obstacles": "pirata fantasma"
         }
@@ -37,7 +37,7 @@
       "description": "Estás en una sucia taberna",
       "connections": [
         {
-          "direction": "north",
+          "direction": "norte",
           "location": "muelle"
         }
       ]

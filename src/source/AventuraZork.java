@@ -80,8 +80,9 @@ public class AventuraZork {
 		}
 		}
 		
-		//Agregamos 
+		//Agregamos NPCS
 		ArrayList<String> curNpcs = currentLocationObj.getNPCS();
+
 		if(curNpcs!=null) {
 			cadena += ". Hay ";
 			for(int i = 0; i<curNpcs.size();i++) {
@@ -90,10 +91,17 @@ public class AventuraZork {
 				
 			}
 		}
-		cadena += ".";
-		//System.out.println(currentLocationObj.getNPCS().get(0));
 		
-		System.out.println(cadena);
+
+		ArrayList<Connection> currentConnetions = currentLocationObj.getConnections();
+		currentConnetions.add(currentConnetions.get(0));
+		for(int i=0;i<currentConnetions.size();i++) {
+			String locationConnection = currentConnetions.get(i).getLocation();
+			int locationIndex = getLocationIndex(locationConnection);
+			cadena += ". Al "+ currentConnetions.get(i).getDirection() + " hay " + this.getLocations().get(locationIndex).toString();
+		}
+		
+		cadena += ".";
 		return cadena;
 	}
 	

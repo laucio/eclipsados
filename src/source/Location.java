@@ -78,6 +78,23 @@ public class Location {
 	}
 
 
-	
+	@Override
+	public String toString() {
+		String cadena ="unas ";
+		if(this.gender.equals("male") && this.number.equals("singular")) {
+						cadena="un ";
+		}
+
+		if(this.gender.equals("male") && this.number.equals("plural")) {
+				cadena="unos ";
+		}
+		
+		if(this.gender.equals("female") && this.number.equals("singular")) {
+		cadena = "una ";
+		}
+		
+		return cadena + this.getName();
+			
+	}
 	
 }
