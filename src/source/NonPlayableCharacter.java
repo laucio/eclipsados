@@ -85,5 +85,16 @@ public class NonPlayableCharacter {
 		return cadena + this.getName();
 
 	}
+	
+	public void llamarTrigger(String type, String thing) {
+	       
+        for (Trigger x : this.triggers) {
+            if(x.getType()== type && x.getThing()==thing)
+                x.activarTrigger(thing);
+        }
+       
+    }
+	
+
 
 }

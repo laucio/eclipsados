@@ -47,5 +47,12 @@ public class Trigger {
 		this.key = key;
 	}*/
 	
-	
+	public String activarTrigger(String thing){
+	       
+        if(this.thing == thing)
+            return this.on_trigger;
+        return "Eso no ha servido de nada";
+           
+       
+    }
 }

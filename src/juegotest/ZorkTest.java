@@ -105,6 +105,14 @@ public class ZorkTest {
 		System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
 	}
 
+	@Test
+    public void activarTrigger_PirataFantasma() throws IOException {
+        String path = "Juego.json";
+        AventuraZork juego = CargaAventura.cargarArchivo(path);
+        assertEquals("remove",juego.getNpcs().get(0).getTriggers().get(0).activarTrigger("rociador con cerveza de raiz"));
+    }
+
+	
 	/*
 	 * @Test public void getNPCSTalk1() throws IOException {
 	 * System.out.println("getNPCSTalk1"); String path = "Juego.json"; Partida
