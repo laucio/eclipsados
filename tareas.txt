@@ -1,16 +1,20 @@
-Tareas por ahora:
+1) Tareas por ahora:
 
-Chris y yo: vamos a ver c贸mo manejar los comandos de texto y traducirlos a acciones v谩lidas 
+2) Chris y yo: vamos a ver c贸mo manejar los comandos de texto y traducirlos a acciones v谩lidas 
 
-Nacho y Gaby: van a ver el manejo del inventario del personaje
+3) Nacho y Gaby: van a ver el manejo del inventario del personaje
 Las cosas que agarra, guarda y usa...
 
-Lautaro: - C贸mo se mueve el personaje de una ubicaci贸n a otra
+UPDATE: Ya hicimos los m閠odos tomarItem, guardarItem en inventario.
+		Agregamos el m閠odo buscarItemIndex en la clase Place, para validar la existencia de un item determinado.
 
-Meli y Bianca : - Hacer un nuevo Json con otra aventura m谩s larga y compleja (con la misma estructura que el q ya tenemos)
 
-Fede:
+4) Lautaro: - C贸mo se mueve el personaje de una ubicaci贸n a otra
+
+5) Meli y Bianca : - Hacer un nuevo Json con otra aventura m谩s larga y compleja (con la misma estructura que el q ya tenemos)
+
+6) Fede:
 - Realizar el c贸digo para que funcionen los triggers 
 
-Otras tareas:
+7) Otras tareas:
 - luego vemos...
