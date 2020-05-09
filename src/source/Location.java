@@ -19,6 +19,10 @@ public class Location {
 		this.number = number;
 		this.description = description;
 		this.setPlaces(null);
+		this.places = new ArrayList<Place>();
+		this.npcs = new ArrayList<String>();
+		this.connections = new ArrayList<Connection>();
+		
 	}
 
 	public String getName() {
