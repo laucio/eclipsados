@@ -1,0 +1,16 @@
+Tareas por ahora:
+
+Chris y yo: vamos a ver cómo manejar los comandos de texto y traducirlos a acciones válidas 
+
+Nacho y Gaby: van a ver el manejo del inventario del personaje
+Las cosas que agarra, guarda y usa...
+
+Lautaro: - Cómo se mueve el personaje de una ubicación a otra
+
+Meli y Bianca : - Hacer un nuevo Json con otra aventura más larga y compleja (con la misma estructura que el q ya tenemos)
+
+Fede:
+- Realizar el código para que funcionen los triggers 
+
+Otras tareas:
+- luego vemos...

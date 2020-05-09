@@ -126,6 +126,27 @@ public class AventuraZork {
 		}
 		return -1;
 	}
+	
+	public String verInventario() {
+		String cadena = "En tu inventario hay ";
+		ArrayList<String> inventory = this.getInventory();
+		for(String item : inventory) {
+			int itemIndex = getItemIndex(item);
+			Item currentItem = this.items.get(itemIndex);
+			cadena += (inventory.indexOf(item) > 0 ?  inventory.indexOf(item) == inventory.size() - 1?", y ": ", ":"")
+						+ currentItem.toString();
+		}
+		cadena += ".";
+		return cadena;
+	}
+	
+	public void tomarItem() {
+		
+	}
+	
+	public void agregarItemInventario(String item) {
+		this.inventory.add(item);
+	}
 
 	public int getLocationIndex(String locationName) {
 		int i = 0;

@@ -76,4 +76,14 @@ public class ZorkTest {
 		Partida partida = new Partida(path);
 
 	}
+	
+	@Test
+	public void verInventario1() throws IOException{
+		String path = "Juego.json";
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
+		juego.agregarItemInventario("barreta");
+		juego.agregarItemInventario("rociador con cerveza de raiz");
+		juego.agregarItemInventario("espejo");
+		System.out.println(juego.verInventario());
+	}
 }
