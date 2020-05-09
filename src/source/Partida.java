@@ -27,4 +27,8 @@ public class Partida {
 		this.currentLocation = currentLocation;
 	}
 
+	public String darBienvenida() {
+        return aventura.darBienvenida();
+    }
+	
 }

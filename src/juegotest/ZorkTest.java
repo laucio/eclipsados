@@ -63,22 +63,48 @@ public class ZorkTest {
 
 	@Test
 	public void mirarAlrededor() throws IOException {
-        System.out.println("mirar alrededor");
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		System.out.println(juego.verAlrededor("muelle"));
+		Assert.assertEquals("Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna." ,
+				juego.verAlrededor("muelle"));
+
+	}
+	
+	
+	@Test
+	public void mirarAlrededorSinItems() throws IOException {
+		String path = "Juego.json";
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
+		juego.tomarItem("muelle", "suelo", "barreta");
+		juego.tomarItem("muelle", "suelo", "rociador con cerveza de raiz");
+		juego.tomarItem("muelle", "suelo", "espejo");
+		Assert.assertEquals("Estas en un muelle. Hay un pirata fantasma. Al sur hay una taberna.", 
+				juego.verAlrededor("muelle"));
 
 	}
 
+	
 	@Test
+    public void darBienvenida() throws IOException {
+        String path = "Juego.json";
+        Partida partida = new Partida(path);
+        String cadenaEsperada = "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.";
+        Assert.assertEquals(cadenaEsperada, partida.darBienvenida());
+
+ 
+
+    }
+
+	
+/*	@Test
 	public void getNPCSTalk1() throws IOException {
 		System.out.println("getNPCSTalk1");
 		String path = "Juego.json";
 		Partida partida = new Partida(path);
 
-	}
+	} */ 
 	
-	@Test
+/*	@Test
 	public void verInventario1() throws IOException{
 		System.out.println("verInventario1");
 		String path = "Juego.json";
@@ -90,9 +116,9 @@ public class ZorkTest {
 				"En tu inventario hay una barreta, un rociador con cerveza de raiz, y un espejo.", 
 				juego.verInventario());
 		//System.out.println(juego.verInventario());
-	}
+	} */
 	
-	@Test
+/*	@Test
      public void pruebaQuitarItemDePlace() throws IOException{
 		
 		System.out.println("test quitar item de place");
@@ -105,10 +131,10 @@ public class ZorkTest {
         		"Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
         		juego.verAlrededor("muelle"));
 
-	}
+	} */
 	
 	
-	@Test
+/*	@Test
 	 public void tomaItemYloAgregaAlInventario() throws IOException {
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
@@ -125,13 +151,13 @@ public class ZorkTest {
 	    		juego.verInventario());
 	    
 
-	}
+	} */
 	
-	@Test
+/*	@Test
 	public void seFijaSinoEncuentraEseItem() throws IOException {
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		juego.tomarItem("muelle", "suelo", "escopeta");
-	}
+	} */
 
 }

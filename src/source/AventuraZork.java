@@ -76,21 +76,24 @@ public class AventuraZork {
 
 		if (currentLocationObj.getPlaces() != null) {
 			for (int i = 0; i < currentLocationObj.getPlaces().size(); i++) {
-				// Despues mencionamos el place (ej: el piso)
-				cadena += ". En ";
 				Place place = currentLocationObj.getPlaces().get(i);
-				cadena += place.toString() + " hay: ";
-				for (int j = 0; j < place.getItems().size(); j++) {
-					// Comenzamos a agregar los items que hay en cada place de la location
-					String item = place.getItems().get(j);
-					int itemIndex = getItemIndex(item);
-					cadena += ((j > 0) ? ((j == place.getItems().size() - 1) ? " y " : " , ") : "")
-							+ this.getItems().get(itemIndex).toString();
+				if (place.getItems().size() > 0) {
+					// Despues mencionamos el place (ej: el piso)
+					cadena += ". En ";
 
-				}
-			}
-		}
+					cadena += place.toString() + " hay: ";
+					for (int j = 0; j < place.getItems().size(); j++) {
+						// Comenzamos a agregar los items que hay en cada place de la location
+						String item = place.getItems().get(j);
+						int itemIndex = getItemIndex(item);
+						cadena += ((j > 0) ? ((j == place.getItems().size() - 1) ? " y " : " , ") : "")
+								+ this.getItems().get(itemIndex).toString();
 
+					} //end of for (int j = 0; j < place.getItems().size(); j++)
+				} //end of if (place.getItems().size() > 0)
+			} //for (int i = 0; i < currentLocationObj.getPlaces().size(); i++)
+		} // if (currentLocationObj.getPlaces() != null)
+ 
 		// Agregamos NPCS
 		ArrayList<String> curNpcs = currentLocationObj.getNPCS();
 
@@ -126,20 +129,20 @@ public class AventuraZork {
 		}
 		return -1;
 	}
-	
+
 	public String verInventario() {
 		String cadena = "En tu inventario hay ";
 		ArrayList<String> inventory = this.getInventory();
-		for(String item : inventory) {
+		for (String item : inventory) {
 			int itemIndex = getItemIndex(item);
 			Item currentItem = this.items.get(itemIndex);
-			cadena += (inventory.indexOf(item) > 0 ?  inventory.indexOf(item) == inventory.size() - 1?", y ": ", ":"")
-						+ currentItem.toString();
+			cadena += (inventory.indexOf(item) > 0 ? inventory.indexOf(item) == inventory.size() - 1 ? ", y " : ", "
+					: "") + currentItem.toString();
 		}
 		cadena += ".";
 		return cadena;
 	}
-	
+
 	public void tomarItem(String currentLocation, String currentPlace, String currentItem) {
 		int indiceLocation = getLocationIndex(currentLocation);
 		Location currentLocationObj = this.locations.get(indiceLocation);
@@ -156,13 +159,11 @@ public class AventuraZork {
 		}
 
 	}
-	
-	
+
 	public void agregarItemInventario(String item) {
 		this.inventory.add(item);
 	}
-    
-	
+
 	public int getLocationIndex(String locationName) {
 		int i = 0;
 		while (i < locations.size()) {
@@ -184,5 +185,9 @@ public class AventuraZork {
 		}
 		return -1;
 	}
+	
+    public String darBienvenida() {
+        return this.getSettings().getWelcome();
+    }
 
 }
