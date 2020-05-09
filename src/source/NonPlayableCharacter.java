@@ -2,7 +2,7 @@ package source;
 
 import java.util.ArrayList;
 
-public class NonPlayableCharacter implements Action {
+public class NonPlayableCharacter {
 	private String name;
 	private String gender;
 	private String number;
@@ -42,10 +42,6 @@ public class NonPlayableCharacter implements Action {
 		this.description = description;
 	}
 
-	@Override
-	public String usar() {
-		return "Resultado";
-	}
 
 	public String getNumber() {
 		return number;

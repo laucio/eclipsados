@@ -22,6 +22,7 @@ import com.google.gson.GsonBuilder;
 import source.CargaAventura;
 import source.Item;
 import source.Location;
+import source.Action;
 import source.AventuraZork;
 
 public class ZorkTest {
@@ -65,12 +66,12 @@ public class ZorkTest {
 	public void mirarAlrededor() throws IOException {
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		Assert.assertEquals("Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna." ,
+		Assert.assertEquals(
+				"Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
 				juego.verAlrededor("muelle"));
 
 	}
-	
-	
+
 	@Test
 	public void mirarAlrededorSinItems() throws IOException {
 		String path = "Juego.json";
@@ -78,86 +79,86 @@ public class ZorkTest {
 		juego.tomarItem("muelle", "suelo", "barreta");
 		juego.tomarItem("muelle", "suelo", "rociador con cerveza de raiz");
 		juego.tomarItem("muelle", "suelo", "espejo");
-		Assert.assertEquals("Estas en un muelle. Hay un pirata fantasma. Al sur hay una taberna.", 
+		Assert.assertEquals("Estas en un muelle. Hay un pirata fantasma. Al sur hay una taberna.",
 				juego.verAlrededor("muelle"));
 
 	}
 
-	
 	@Test
-    public void darBienvenida() throws IOException {
-        String path = "Juego.json";
-        Partida partida = new Partida(path);
-        String cadenaEsperada = "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.";
-        Assert.assertEquals(cadenaEsperada, partida.darBienvenida());
-
- 
-
-    }
-
-	
-/*	@Test
-	public void getNPCSTalk1() throws IOException {
-		System.out.println("getNPCSTalk1");
+	public void darBienvenida() throws IOException {
 		String path = "Juego.json";
 		Partida partida = new Partida(path);
+		String cadenaEsperada = "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.";
+		Assert.assertEquals(cadenaEsperada, partida.darBienvenida());
 
-	} */ 
-	
-/*	@Test
-	public void verInventario1() throws IOException{
-		System.out.println("verInventario1");
-		String path = "Juego.json";
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		juego.agregarItemInventario("barreta");
-		juego.agregarItemInventario("rociador con cerveza de raiz");
-		juego.agregarItemInventario("espejo");
-		Assert.assertEquals(
-				"En tu inventario hay una barreta, un rociador con cerveza de raiz, y un espejo.", 
-				juego.verInventario());
-		//System.out.println(juego.verInventario());
-	} */
-	
-/*	@Test
-     public void pruebaQuitarItemDePlace() throws IOException{
-		
-		System.out.println("test quitar item de place");
-		String path = "Juego.json";
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		//System.out.println(juego.verAlrededor("muelle"));
-        juego.getLocations().get(0).getPlaces().get(0).quitarItemDeArray("barreta");     
-		//System.out.println(juego.verAlrededor("muelle"));
-        Assert.assertEquals(
-        		"Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
-        		juego.verAlrededor("muelle"));
+	}
 
-	} */
-	
-	
-/*	@Test
-	 public void tomaItemYloAgregaAlInventario() throws IOException {
+	@Test
+	public void tesssssst() throws IOException {
+		Action obj = new Action();
 		String path = "Juego.json";
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		juego.agregarItemInventario("rociador con cerveza de raiz");
-		juego.agregarItemInventario("espejo");
-		//System.out.println(juego.verInventario());
-	    juego.tomarItem("muelle", "suelo", "barreta");
-	   // System.out.println(juego.verInventario());
-	    //System.out.println(juego.verAlrededor("muelle"));
-	    Assert.assertEquals(
-	    		"Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
-	    		juego.verAlrededor("muelle"));
-	    Assert.assertEquals("En tu inventario hay un rociador con cerveza de raiz, un espejo, y una barreta.", 
-	    		juego.verInventario());
-	    
+		Partida partida = new Partida(path);
+		if (!partida.traducir("roba un banco", obj))
+			System.out.println(obj.getMessage());
+		//else
+			//System.out.println("lo encontre");
+		System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+	}
 
-	} */
-	
-/*	@Test
-	public void seFijaSinoEncuentraEseItem() throws IOException {
-		String path = "Juego.json";
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		juego.tomarItem("muelle", "suelo", "escopeta");
-	} */
+	/*
+	 * @Test public void getNPCSTalk1() throws IOException {
+	 * System.out.println("getNPCSTalk1"); String path = "Juego.json"; Partida
+	 * partida = new Partida(path);
+	 * 
+	 * }
+	 */
+
+	/*
+	 * @Test public void verInventario1() throws IOException{
+	 * System.out.println("verInventario1"); String path = "Juego.json";
+	 * AventuraZork juego = CargaAventura.cargarArchivo(path);
+	 * juego.agregarItemInventario("barreta");
+	 * juego.agregarItemInventario("rociador con cerveza de raiz");
+	 * juego.agregarItemInventario("espejo"); Assert.assertEquals(
+	 * "En tu inventario hay una barreta, un rociador con cerveza de raiz, y un espejo."
+	 * , juego.verInventario()); //System.out.println(juego.verInventario()); }
+	 */
+
+	/*
+	 * @Test public void pruebaQuitarItemDePlace() throws IOException{
+	 * 
+	 * System.out.println("test quitar item de place"); String path = "Juego.json";
+	 * AventuraZork juego = CargaAventura.cargarArchivo(path);
+	 * //System.out.println(juego.verAlrededor("muelle"));
+	 * juego.getLocations().get(0).getPlaces().get(0).quitarItemDeArray("barreta");
+	 * //System.out.println(juego.verAlrededor("muelle")); Assert.assertEquals(
+	 * "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna."
+	 * , juego.verAlrededor("muelle"));
+	 * 
+	 * }
+	 */
+
+	/*
+	 * @Test public void tomaItemYloAgregaAlInventario() throws IOException { String
+	 * path = "Juego.json"; AventuraZork juego = CargaAventura.cargarArchivo(path);
+	 * juego.agregarItemInventario("rociador con cerveza de raiz");
+	 * juego.agregarItemInventario("espejo");
+	 * //System.out.println(juego.verInventario()); juego.tomarItem("muelle",
+	 * "suelo", "barreta"); // System.out.println(juego.verInventario());
+	 * //System.out.println(juego.verAlrededor("muelle")); Assert.assertEquals(
+	 * "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna."
+	 * , juego.verAlrededor("muelle")); Assert.
+	 * assertEquals("En tu inventario hay un rociador con cerveza de raiz, un espejo, y una barreta."
+	 * , juego.verInventario());
+	 * 
+	 * 
+	 * }
+	 */
+
+	/*
+	 * @Test public void seFijaSinoEncuentraEseItem() throws IOException { String
+	 * path = "Juego.json"; AventuraZork juego = CargaAventura.cargarArchivo(path);
+	 * juego.tomarItem("muelle", "suelo", "escopeta"); }
+	 */
 
 }
