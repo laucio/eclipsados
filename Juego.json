@@ -8,7 +8,7 @@
       "name": "muelle",
       "gender": "male",
       "number": "singular",
-      "description": "Estás en un muelle",
+      "description": "Estas en un muelle",
       "places": [
         {
           "name": "suelo",
@@ -34,7 +34,7 @@
       "name": "taberna",
       "gender": "female",
       "number": "singular",
-      "description": "Estás en una sucia taberna",
+      "description": "Estas en una sucia taberna",
       "connections": [
         {
           "direction": "norte",

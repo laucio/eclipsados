@@ -140,14 +140,29 @@ public class AventuraZork {
 		return cadena;
 	}
 	
-	public void tomarItem() {
-		
+	public void tomarItem(String currentLocation, String currentPlace, String currentItem) {
+		int indiceLocation = getLocationIndex(currentLocation);
+		Location currentLocationObj = this.locations.get(indiceLocation);
+
+		int indicePlace = currentLocationObj.getPlaceIndex(currentPlace);
+
+		Place currentPlaceObj = currentLocationObj.getPlaces().get(indicePlace);
+
+		if (currentPlaceObj.getItemIndex(currentItem) >= 0) {
+			currentPlaceObj.quitarItemDeArray(currentItem);
+			agregarItemInventario(currentItem);
+		} else {
+			System.out.println("Oh no!! ese item no esta aqui");
+		}
+
 	}
+	
 	
 	public void agregarItemInventario(String item) {
 		this.inventory.add(item);
 	}
-
+    
+	
 	public int getLocationIndex(String locationName) {
 		int i = 0;
 		while (i < locations.size()) {

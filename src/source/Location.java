@@ -77,6 +77,17 @@ public class Location {
 		npcs = nPCS;
 	}
 
+	public int getPlaceIndex(String placeName) {//me trae el indice del array de places en location
+		int i = 0;
+		while (i < places.size()) {
+			if (places.get(i).getName().equals(placeName)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
 	@Override
 	public String toString() {
 		String cadena = "unas ";

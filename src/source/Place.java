@@ -48,6 +48,23 @@ public class Place {
 	public void setItems(ArrayList<String> items) {
 		this.items = items;
 	}
+	
+	
+	public int getItemIndex(String itemName) {///Compara el index del  array items que se encuentra en place
+		int i = 0;
+		while (i < items.size()) {
+			if (items.get(i).equals(itemName)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
+	public void quitarItemDeArray(String currentItem) { ///saca el elemento del array de items de place
+		
+		items.remove((items.indexOf(currentItem)));
+	}
 
 	@Override
 	public String toString() {
