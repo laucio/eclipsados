@@ -20,13 +20,17 @@ public class Player {
 	public boolean goTo(String direction, HashMap<String, Location> locations) {
 		
 		for (Connection con : this.currentLocation.getConnections()) {
-			if (direction.equalsIgnoreCase(con.getDirection())) {
+			if (direction.equalsIgnoreCase(con.getDirection()) || direction.equalsIgnoreCase(con.getLocation())) {
 				//TODO: search location in a DB, in order not to pass it as a function parameter.
-				this.currentLocation = locations.get(direction);
-				return true;
+				if (!con.hasObstacles()) {
+					this.currentLocation = locations.get(direction);
+					return true;
+				}
 			}
 		}
 		
 		return false;
 	}
+	
+	
 }

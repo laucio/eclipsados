@@ -25,5 +25,9 @@ public class Connection {
 		this.obstacles = obstacles;
 	}
 	
+	public boolean hasObstacles() {
+		return (this.obstacles == null || this.obstacles.isEmpty()) ? false : true;
+	}
+	
 	
 }
