@@ -17,4 +17,9 @@ UPDATE: Ya hicimos los métodos tomarItem, guardarItem en inventario.
 - Realizar el cÃ³digo para que funcionen los triggers 
 
 7) Otras tareas:
-- luego vemos...
+- luego vemos......
+
+
+
+
+
