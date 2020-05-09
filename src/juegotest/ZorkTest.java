@@ -86,7 +86,10 @@ public class ZorkTest {
 		juego.agregarItemInventario("barreta");
 		juego.agregarItemInventario("rociador con cerveza de raiz");
 		juego.agregarItemInventario("espejo");
-		System.out.println(juego.verInventario());
+		Assert.assertEquals(
+				"En tu inventario hay una barreta, un rociador con cerveza de raiz, y un espejo.", 
+				juego.verInventario());
+		//System.out.println(juego.verInventario());
 	}
 	
 	@Test
@@ -95,9 +98,12 @@ public class ZorkTest {
 		System.out.println("test quitar item de place");
 		String path = "Juego.json";
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		System.out.println(juego.verAlrededor("muelle"));
+		//System.out.println(juego.verAlrededor("muelle"));
         juego.getLocations().get(0).getPlaces().get(0).quitarItemDeArray("barreta");     
-		System.out.println(juego.verAlrededor("muelle"));
+		//System.out.println(juego.verAlrededor("muelle"));
+        Assert.assertEquals(
+        		"Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
+        		juego.verAlrededor("muelle"));
 
 	}
 	
@@ -108,10 +114,16 @@ public class ZorkTest {
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		juego.agregarItemInventario("rociador con cerveza de raiz");
 		juego.agregarItemInventario("espejo");
-		System.out.println(juego.verInventario());
+		//System.out.println(juego.verInventario());
 	    juego.tomarItem("muelle", "suelo", "barreta");
-	    System.out.println(juego.verInventario());
-	    System.out.println(juego.verAlrededor("muelle"));
+	   // System.out.println(juego.verInventario());
+	    //System.out.println(juego.verAlrededor("muelle"));
+	    Assert.assertEquals(
+	    		"Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.",
+	    		juego.verAlrededor("muelle"));
+	    Assert.assertEquals("En tu inventario hay un rociador con cerveza de raiz, un espejo, y una barreta.", 
+	    		juego.verInventario());
+	    
 
 	}
 	

@@ -18,8 +18,3 @@ UPDATE: Ya hicimos los métodos tomarItem, guardarItem en inventario.
 
 7) Otras tareas:
 - luego vemos......
-
-
-
-
-
