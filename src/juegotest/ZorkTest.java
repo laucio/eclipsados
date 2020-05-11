@@ -94,25 +94,38 @@ public class ZorkTest {
 	}
 
 	@Test
-	public void tesssssst() throws IOException {
+	public void TraducirMoverseDeLocacion() throws IOException {
 		Action obj = new Action();
 		String path = "Juego.json";
 		Partida partida = new Partida(path);
-		if (!partida.traducir("roba un banco", obj))
+		if (!partida.traducir("ir al sur", obj)) {
 			System.out.println(obj.getMessage());
-		//else
-			//System.out.println("lo encontre");
-		System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+		} else {
+			System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+		}
+
+	}
+	
+	@Test
+	public void TraducirTomarObjeto() throws IOException {
+		Action obj = new Action();
+		String path = "Juego.json";
+		Partida partida = new Partida(path);
+		if (!partida.traducir("toma la barreta", obj)) {
+			System.out.println(obj.getMessage());
+		} else {
+			System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+		}
+
 	}
 
-	@Test
-    public void activarTrigger_PirataFantasma() throws IOException {
-        String path = "Juego.json";
-        AventuraZork juego = CargaAventura.cargarArchivo(path);
-        assertEquals("remove",juego.getNpcs().get(0).getTriggers().get(0).activarTrigger("rociador con cerveza de raiz"));
-    }
+	/*
+	 * @Test public void activarTrigger_PirataFantasma() throws IOException { String
+	 * path = "Juego.json"; AventuraZork juego = CargaAventura.cargarArchivo(path);
+	 * assertEquals("remove",juego.getNpcs().get(0).getTriggers().get(0).
+	 * activarTrigger("rociador con cerveza de raiz")); }
+	 */
 
-	
 	/*
 	 * @Test public void getNPCSTalk1() throws IOException {
 	 * System.out.println("getNPCSTalk1"); String path = "Juego.json"; Partida
