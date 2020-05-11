@@ -11,7 +11,7 @@ public class Partida {
 																											// de
 																											// location
 	private final String[] VERBO_TOMAR = { " tomar ", " agarrar ", " levantar ", " guardar ", " toma ", " garra ",
-			" levanta ", " guarda " }; // agarrar items
+			" levanta ", " guarda ", " recoger ", " recoge " }; // agarrar items
 	private final String[] VERBO_USAR = { " usar ", " usa ", " utilizar ", " utiliza " }; // usar barreta por ejemplo
 
 	public Partida(String aventuraPath) throws IOException {
@@ -57,6 +57,7 @@ public class Partida {
 		 * IF (verbo_usar) Si el objeto este en el array de Inventario
 		 */
 		comando = " " + comando + " ";
+		comando = comando.toLowerCase();
 
 		boolean encontrado = false;
 		boolean traducido = false;
@@ -82,12 +83,12 @@ public class Partida {
 						obj.setThing(currConnections.get(i).getLocation());
 					} else {
 						obj.setMessage("No entiendo donde quieres ir.");
-						
+
 					}
 				}
 				i++;
 			}
-			traducido =true;
+			traducido = true;
 		} else {
 			obj.setMessage("No entiendo que quieres decir.");
 		}
@@ -131,16 +132,23 @@ public class Partida {
 
 			} // if (encontrado)
 		}
-		
+		/// Fin buscar tomar objeto
 
-			if (!traducido) {
-				i = 0;
-				while (!encontrado && i < VERBO_USAR.length) {
-					encontrado = comando.contains(VERBO_USAR[i]);
-					i++;
-				}
-				if(encontrado)
+		/// Inicio usar objeto
+		if (!traducido) {
+			i = 0;
+			while (!encontrado && i < VERBO_USAR.length) {
+				encontrado = comando.contains(VERBO_USAR[i]);
+				i++;
 			}
+			if (encontrado) {
+				obj.setAction("usar");
+				encontrado = false;
+				i = 0;
+				
+
+			}
+		}
 
 		return encontrado;
 	}

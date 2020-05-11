@@ -5,6 +5,7 @@ public class Action {
 	String action;
 	String thing;
 	String condition;
+	String effect_over;
 	String message;
 	
 	public String getMessage() {
@@ -20,8 +21,17 @@ public class Action {
 		this.thing = thing;
 		this.condition = condition;
 		this.message = null;
+		this.effect_over = null;
 	}
 	
+	public String getEffect_over() {
+		return effect_over;
+	}
+
+	public void setEffect_over(String effect_over) {
+		this.effect_over = effect_over;
+	}
+
 	public Action() {
 	this.action = "";
 	this.thing = "";
