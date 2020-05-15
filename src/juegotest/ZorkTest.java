@@ -1,6 +1,6 @@
 package juegotest;
 
-import source.Partida;
+import source.Player;
 import source.Place;
 
 import static org.junit.Assert.*;
@@ -87,7 +87,7 @@ public class ZorkTest {
 	@Test
 	public void darBienvenida() throws IOException {
 		String path = "Juego.json";
-		Partida partida = new Partida(path);
+		Player partida = new Player(path);
 		String cadenaEsperada = "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.";
 		Assert.assertEquals(cadenaEsperada, partida.darBienvenida());
 
@@ -97,7 +97,7 @@ public class ZorkTest {
 	public void TraducirMoverseDeLocacion() throws IOException {
 		Action obj = new Action();
 		String path = "Juego.json";
-		Partida partida = new Partida(path);
+		Player partida = new Player(path);
 		if (!partida.traducir("ir al sur", obj)) {
 			System.out.println(obj.getMessage());
 		} else {
@@ -110,7 +110,7 @@ public class ZorkTest {
 	public void TraducirTomarObjeto() throws IOException {
 		Action obj = new Action();
 		String path = "Juego.json";
-		Partida partida = new Partida(path);
+		Player partida = new Player(path);
 		if (!partida.traducir("toma la barreta", obj)) {
 			System.out.println(obj.getMessage());
 		} else {
