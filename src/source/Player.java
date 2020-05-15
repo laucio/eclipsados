@@ -172,13 +172,31 @@ public class Player {
 			i++;
 		}
 		
-		if(exitoso==true && con.get(i-1).getObstacles()!=null) {
-			this.setCurrentLocation(con.get(i).getLocation());
+		if( exitoso==true) {
+	
+		if(con.get(i-1).getObstacles()==null) {
+			this.setCurrentLocation(con.get(i-1).getLocation());
+            System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation())); 			
 		}else {
-
-			action.setMessage("No puedes pasar. " + con.get(i-1).getObstaclesString());
+			int j = this.getAventura().getNPCSIndex((con.get(i-1).getObstacles()));///Buscamos el indice del obsctaculo sea un Npcs
+			if(j != -1){//1
+				
+				action.setMessage("'¡No puedes pasar!' " + this.getAventura().getNpcs().get(j).toString() + " no te dejará pasar" );
+			    exitoso=false;
+			}//1
+			
+			if( j == -1 ) {//2
+			  j = this.getAventura().getItemIndex((con.get(i-1).getObstacles()));///Buscamos el indice del obsctaculo sea un item
+			   if ( j != -1) {//3
+					action.setMessage("'¡No puedes pasar!' Hay " + this.getAventura().getItems().get(j).toString());				   
+			        exitoso=false;
+			   }//3	
+			}//2
 		}
-
+   }else {
+	   action.setMessage("No se a donde quieres ir ");
+   }
+	   
 		return exitoso;
 	}
 

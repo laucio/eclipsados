@@ -27,7 +27,7 @@ import source.AventuraZork;
 
 public class ZorkTest {
 
-	@Test
+	/*@Test
 	public void getCharacterName() throws IOException {
 
 		String path = "Juego.json";
@@ -117,8 +117,35 @@ public class ZorkTest {
 			System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
 		}
 
-	}
+	}*/
+	
+	@Test
+	public void Moverse() throws IOException {
+		Action obj = new Action();
+		String path = "Juego.json";
+		Player partida = new Player(path);
+	
+		if (!partida.traducir("ir al sur", obj)) {
+			System.out.println(obj.getMessage());
+			
+		} else {
+			
+			System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+		}
+		
+		System.out.println();
+		if(partida.goTo(obj)) {
+			
+		   System.out.println(partida.getAventura().verAlrededor(partida.getCurrentLocation()));
+		}
+		else {
+			
+			System.out.println(obj.getMessage());
+			
+		}
 
+	}
+     
 	/*
 	 * @Test public void activarTrigger_PirataFantasma() throws IOException { String
 	 * path = "Juego.json"; AventuraZork juego = CargaAventura.cargarArchivo(path);

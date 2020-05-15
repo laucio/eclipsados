@@ -24,10 +24,7 @@ public class Connection {
 	public void setObstacles(String obstacles) {
 		this.obstacles = obstacles;
 	}
-	public String getObstaclesString() {
-		
-		return null;
-	}
+	
 	
 	
 }
