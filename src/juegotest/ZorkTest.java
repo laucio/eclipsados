@@ -118,9 +118,9 @@ public class ZorkTest {
 		}
 
 	}*/
-	
+/*	
 	@Test
-	public void Moverse() throws IOException {
+	public void MoverseConObstaculo() throws IOException {
 		Action obj = new Action();
 		String path = "Juego.json";
 		Player partida = new Player(path);
@@ -143,6 +143,30 @@ public class ZorkTest {
 			System.out.println(obj.getMessage());
 			
 		}
+
+	}*/
+	
+	@Test
+	public void MoverseSinObstaculo() throws IOException {
+		Action obj = new Action();
+		String path = "Juego.json";
+		Player partida = new Player(path);
+	    partida.getAventura().getLocations().get(0).getConnections().get(0).setObstacles(null);
+		if (!partida.traducir("ir al sur", obj)) {
+			System.out.println(obj.getMessage());
+			
+		} else {
+			
+			System.out.println(obj.getAction() + " " + obj.getThing() + " " + obj.getCondition());
+		}
+		
+		System.out.println();
+		if(!partida.goTo(obj)) {
+			
+		   
+		   System.out.println(obj.getMessage());
+		}
+		
 
 	}
      
