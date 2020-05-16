@@ -2,7 +2,7 @@ package source;
 
 import java.util.ArrayList;
 
-public class NonPlayableCharacter implements Action {
+public class NonPlayableCharacter {
 	private String name;
 	private String gender;
 	private String number;
@@ -10,10 +10,11 @@ public class NonPlayableCharacter implements Action {
 	private String talk;
 	private ArrayList<Trigger> triggers = null;
 
-	public NonPlayableCharacter(String name, String gender, String description, String message) {
+	public NonPlayableCharacter(String name, String gender,String number, String description, String message) {
 		super();
 		this.name = name;
 		this.gender = gender;
+		this.number = number;
 		this.description = description;
 		this.talk = message;
 	}
@@ -42,10 +43,6 @@ public class NonPlayableCharacter implements Action {
 		this.description = description;
 	}
 
-	@Override
-	public String usar() {
-		return "Resultado";
-	}
 
 	public String getNumber() {
 		return number;
@@ -89,5 +86,9 @@ public class NonPlayableCharacter implements Action {
 		return cadena + this.getName();
 
 	}
+	
+	
+	
+
 
 }

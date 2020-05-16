@@ -18,3 +18,7 @@ UPDATE: Ya hicimos los métodos tomarItem, guardarItem en inventario.
 
 7) Otras tareas:
 - luego vemos......
+8) Crear una clase Traductor que tiene atributo Action (la cual pasa a Player , xq sabe interpretarla y ejecutarla)
+Traductor recibe String en su metodo traducir y lo convierte en Action... Además, traductor tiene los arrays de sinonimos de verbos, no player
+
+agregar a Player un metodo "interpretar Action", esta ultima  la recibe de Traductor...

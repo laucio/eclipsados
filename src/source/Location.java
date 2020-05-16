@@ -80,6 +80,22 @@ public class Location {
 	public void setNPCS(ArrayList<String> nPCS) {
 		npcs = nPCS;
 	}
+	
+	public boolean eliminarItemDePlaces(String item) {
+		int i = 0;
+		boolean eliminado = false;
+		while(i < places.size() && eliminado == false) {
+			Place currentPlace = places.get(i);
+			if(currentPlace.buscarItemEnArray(item)) {
+				currentPlace.quitarItemDeArray(item);
+				eliminado = true;
+				if(currentPlace.getItems().size() == 0) {
+					currentPlace.setItems(null);
+				}
+			}
+		}
+		return eliminado;
+	}
 
 	public int getPlaceIndex(String placeName) {//me trae el indice del array de places en location
 		int i = 0;
