@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-public class AventuraZork {
+public class Adventure {
 	private Setting settings;
 	private ArrayList<Location> locations = null;
-	private ArrayList<NonPlayableCharacter> npcs = null;
+	private ArrayList<NPC> npcs = null;
 	private ArrayList<Item> items = null;
 	private ArrayList<String> inventory = null;
 	private ArrayList<Endgame> endgames = null;
 
-	public AventuraZork() {
+	public Adventure() {
 
 	}
 
@@ -34,11 +34,11 @@ public class AventuraZork {
 		this.locations = locations;
 	}
 
-	public ArrayList<NonPlayableCharacter> getNpcs() {
+	public ArrayList<NPC> getNpcs() {
 		return npcs;
 	}
 
-	public void setNpcs(ArrayList<NonPlayableCharacter> npcs) {
+	public void setNpcs(ArrayList<NPC> npcs) {
 		this.npcs = npcs;
 	}
 
@@ -66,7 +66,7 @@ public class AventuraZork {
 		this.endgames = endgames;
 	}
 
-	public String verAlrededor(String currentLocation) {
+	public String locationDescription(String currentLocation) {
 		String cadena;
 		int indiceLocation = getLocationIndex(currentLocation);
 		Location currentLocationObj = this.locations.get(indiceLocation);
@@ -130,29 +130,33 @@ public class AventuraZork {
 		return -1;
 	}
 
-	public String verInventario() {
+	public String listarInventario() {
 		String cadena = "En tu inventario hay ";
 		ArrayList<String> inventory = this.getInventory();
-		for (String item : inventory) {
-			int itemIndex = getItemIndex(item);
-			Item currentItem = this.items.get(itemIndex);
-			cadena += (inventory.indexOf(item) > 0 ? inventory.indexOf(item) == inventory.size() - 1 ? ", y " : ", "
-					: "") + currentItem.toString();
+		if (inventory != null && inventory.size() > 0) {
+			for (String item : inventory) {
+				int itemIndex = getItemIndex(item);
+				Item currentItem = this.items.get(itemIndex);
+				cadena += (inventory.indexOf(item) > 0 ? inventory.indexOf(item) == inventory.size() - 1 ? ", y " : ", "
+						: "") + currentItem.toString();
+			}
+		}else {
+			cadena = "Tu inventario esta vacio";
 		}
+
 		cadena += ".";
 		return cadena;
 	}
 
 	public boolean entregarItem(int currentLocationIndex, String currentItem) {
 		Location currentLocationObj = this.locations.get(currentLocationIndex);
-		int i = 0;
 		boolean agregado = false;
-		if(currentLocationObj.eliminarItemDePlaces(currentItem)) {
+		if (currentLocationObj.eliminarItemDePlaces(currentItem)) {
 			agregarItemInventario(currentItem);
 			agregado = true;
 		}
 		return agregado;
-}
+	}
 
 	public void agregarItemInventario(String item) {
 		this.inventory.add(item);
@@ -189,7 +193,7 @@ public class AventuraZork {
 
 		locations.get(indexCurrentLocation).getNPCS().remove(personaje);
 		if (locations.get(indexCurrentLocation).getNPCS().size() == 0) {
-			locations.get(indexCurrentLocation).setNPCS(null);
+			locations.get(indexCurrentLocation).setNPCS(new ArrayList<String>());
 		}
 
 		for (Connection conection : locations.get(indexCurrentLocation).getConnections()) {

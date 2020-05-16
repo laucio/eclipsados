@@ -90,9 +90,10 @@ public class Location {
 				currentPlace.quitarItemDeArray(item);
 				eliminado = true;
 				if(currentPlace.getItems().size() == 0) {
-					currentPlace.setItems(null);
+					//currentPlace.setItems(null);
 				}
 			}
+			i++;
 		}
 		return eliminado;
 	}

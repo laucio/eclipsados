@@ -7,16 +7,16 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
-public class CargaAventura {
+public class LoadAdventure {
 
-	public static AventuraZork cargarArchivo(String pathAventura) throws IOException {
+	public static Adventure cargarArchivo(String pathAventura) throws IOException {
 		BufferedReader br = null;
-		AventuraZork juego = null;
+		Adventure juego = null;
 		final Gson gson = new Gson();
 		try {
 
 			br = new BufferedReader(new FileReader(pathAventura));
-			juego = gson.fromJson(br, AventuraZork.class);
+			juego = gson.fromJson(br, Adventure.class);
 			br.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

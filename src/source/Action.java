@@ -5,8 +5,9 @@ public class Action {
 	String action;	//usar
 	String thing;	//npcs
 	String condition; //direction,location,item,etc..
-	String effect_over;
+	String target;
 	String message;
+	String effect_over;
 	
 	public String getMessage() {
 		return message;
@@ -21,23 +22,25 @@ public class Action {
 		this.thing = thing;
 		this.condition = condition;
 		this.message = null;
+		this.target = null;
 		this.effect_over = null;
 	}
 	
-	public Action(String action, String thing, String condition, String effect_over) {
+	public Action(String action, String thing, String condition,String target, String effect_over) {
 		this.action = action;
 		this.thing = thing;
 		this.condition = condition;
 		this.message = null;
+		this.target = target;
 		this.effect_over = effect_over;
 	}
 	
-	public String getEffect_over() {
-		return effect_over;
+	public String getTarget() {
+		return target;
 	}
 
-	public void setEffect_over(String effect_over) {
-		this.effect_over = effect_over;
+	public void setTarget(String target) {
+		this.target = target;
 	}
 
 	public Action() {

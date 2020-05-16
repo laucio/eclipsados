@@ -19,16 +19,16 @@ import org.junit.Test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import source.CargaAventura;
+import source.LoadAdventure;
 import source.Item;
 import source.Location;
-import source.NonPlayableCharacter;
+import source.NPC;
 import source.Action;
-import source.AventuraZork;
+import source.Adventure;
 
 public class ZorkTest {
 
-	
+
 	
 	
 	/*
@@ -220,10 +220,11 @@ public class ZorkTest {
 		 }
 	
 	*/
-/*	
+
+	/*
 	@Test public void agregaNPCSyRemueve()throws IOException { 
 		String path = "Juego.json"; 
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
+		Adventure juego = LoadAdventure.cargarArchivo(path);
 		int indexTaberna = juego.getLocationIndex("taberna");
 		
 		ArrayList<String> nue =new ArrayList<String>(); 
@@ -239,6 +240,7 @@ public class ZorkTest {
 		
 	}
 	*/
+	
 	/*
 	@Test public void agregaNPCSyRemueveMuelle()throws IOException { 
 		String path = "Juego.json"; 
@@ -279,7 +281,11 @@ public class ZorkTest {
 	
 	
 	
-	
+	@Test
+	public void playerRecibeComando() {
+		Player jugador = new Player();
+		
+	}
 	
 	
 	

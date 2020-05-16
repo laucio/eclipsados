@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player {
-	private AventuraZork aventura = null;
+	private Adventure aventura = null;
 	private String currentLocation;
 
 	private final String[] VERBO_IR = { " ir ", " ve ", " camina ", " caminar ", " movete ", " moverse " }; // moverse
@@ -16,25 +16,21 @@ public class Player {
 	private final String[] VERBO_USAR = { " usar ", " usa ", " utilizar ", " utiliza " }; // usar barreta por ejemplo
 
 	public Player(String aventuraPath) throws IOException {
-		this.aventura = CargaAventura.cargarArchivo(aventuraPath);
+		this.aventura = LoadAdventure.cargarArchivo(aventuraPath);
 		this.currentLocation = aventura.getLocations().get(0).getName();
 	}
-	
-	
 
-	public Player(AventuraZork aventura) {
+	public Player(Adventure aventura) {
 		super();
 		this.aventura = aventura;
-		this.currentLocation = aventura.getLocations().get(0).getName();	
+		this.currentLocation = aventura.getLocations().get(0).getName();
 	}
 
-
-
-	public AventuraZork getAventura() {
+	public Adventure getAventura() {
 		return aventura;
 	}
 
-	public void setAventura(AventuraZork aventura) {
+	public void setAventura(Adventure aventura) {
 		this.aventura = aventura;
 	}
 
@@ -162,7 +158,8 @@ public class Player {
 		return encontrado;
 	}
 
-	public boolean goTo(Action action) {
+	public String goTo(Action action) {
+		String retorno = "No se a donde quieres ir.";
 		boolean exitoso = false;
 		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
 		Location currentLocation = aventura.getLocations().get(indexCurrentLocation);
@@ -181,15 +178,16 @@ public class Player {
 
 		if (exitoso == true) {
 
-			if (con.get(i - 1).getObstacles() == null) {
+			if (con.get(i - 1).getObstacles() == null) { // Cuando no hay obstaculos
 				this.setCurrentLocation(con.get(i - 1).getLocation());
-				//System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation()));
+				retorno = this.getAventura().locationDescription(this.getCurrentLocation());
+				// System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation()));
 			} else {
 				int j = this.getAventura().getNPCSIndex((con.get(i - 1).getObstacles()));/// Buscamos el indice del
 																							/// obsctaculo sea un Npcs
 				if (j != -1) {// 1
 
-					action.setMessage(this.getAventura().getNpcs().get(j).getDescription());
+					retorno = this.getAventura().getNpcs().get(j).getDescription();
 					exitoso = false;
 				} // 1
 
@@ -197,57 +195,60 @@ public class Player {
 					j = this.getAventura().getItemIndex((con.get(i - 1).getObstacles()));/// Buscamos el indice del
 																							/// obsctaculo sea un item
 					if (j != -1) {// 3
-						action.setMessage("'ï¿½No puedes pasar!' Hay " + this.getAventura().getItems().get(j).toString());
+						retorno = "¡No puedes pasar! Hay " + this.getAventura().getItems().get(j).toString();
 						exitoso = false;
 					} // 3
 				} // 2
 			}
-		} else {
-			action.setMessage("No se a donde quieres ir ");
 		}
 
-		return exitoso;
+		return retorno;
 	}
 
-	public void callTrigger(Action accion) {
+	public String detectTrigger(Action accion) {
 		// ACTION -> USAR --> remove
 		// CONDITION -> ITEM
 		// THING -> QUE ITEM -->
+		// TARGET -> sobre quien o que
 		// EFFECT_OVER -> NPCS
-
+		String retorno = "No ha servido de nada.";
 		boolean encontrado = false;
 		int i = 0;
 		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
-		int indexNpcs = aventura.getNPCSIndex(accion.getEffect_over());
-		ArrayList<Trigger> triggers = aventura.getNpcs().get(indexNpcs).getTriggers();
-		if (triggers != null) {
-			while (i < triggers.size() && !encontrado) {
-				if (triggers.get(i).getType().equals(accion.getCondition())
-						&& triggers.get(i).getThing().equals(accion.getThing())) {
-					encontrado = true;
-					accion.setMessage(triggers.get(i).getOn_trigger());
+		if (aventura.getLocations().get(indexCurrentLocation).getNPCS().contains(accion.getTarget())) {
+			int indexNpcs = aventura.getNPCSIndex(accion.getTarget());
+				ArrayList<Trigger> triggers = aventura.getNpcs().get(indexNpcs).getTriggers();
+				if (triggers != null) {
+					while (i < triggers.size() && !encontrado) {
+						if (triggers.get(i).getType().equals(accion.getCondition())
+								&& triggers.get(i).getThing().equals(accion.getThing())) {
+							encontrado = true;
+							retorno = triggers.get(i).getOn_trigger();
 
-					switch (triggers.get(i).getAfter_trigger()) {
-					case "remove":
-						aventura.removeNpc(accion.effect_over,indexCurrentLocation);
-						break;
-					default: 
-						break;
-					// case "invalidar":
+							switch (triggers.get(i).getAfter_trigger()) {
+							case "remove":
+								aventura.removeNpc(accion.target, indexCurrentLocation);
+								break;
+							default:
+								break;
+							// case "invalidar":
+							}
+						}
 					}
 				}
-			}
+			
 		}
-
+		return retorno;
 	}
-	
-	public boolean tomarItem(String item) {
-		boolean agregado = false;
+
+	public String tomarItem(String item) {
+		String cadena = "No encuentro ese objeto.";
 		int currentLocationIndex = this.aventura.getLocationIndex(this.currentLocation);
-		if(this.aventura.entregarItem(currentLocationIndex, item)) {
-			agregado = true;
+		if (this.aventura.entregarItem(currentLocationIndex, item)) {
+			int itemIndex = this.aventura.getItemIndex(item);
+			cadena = "Tienes " + this.aventura.getItems().get(itemIndex);
 		}
-		return agregado;
+		return cadena;
 	}
 	/*
 	 * for (Trigger x : ) { if(x.getType().equals(accion.getCondition()) &&
@@ -259,4 +260,74 @@ public class Player {
 	 * 
 	 * }
 	 */
+
+	public String verAlrededor() {
+		return aventura.locationDescription(getCurrentLocation());
+	}
+
+	public boolean recibirInstruccion(String comando) { // Devuelve false cuando sea ENDGAME
+		Action action = new Action();
+		if (!Translator.traducir(comando, action, this)) {
+			System.out.println(action.getMessage());
+		} else {
+			switchearAction(action);
+		}
+		return true;
+
+	}
+
+	public String verInventario() {
+		return aventura.listarInventario();
+	}
+
+	public String switchearAction(Action action) {
+		//
+		String cadena = "No entiendo que quieres hacer";
+		switch (action.getAction()) {
+		case "ir":
+			cadena = this.goTo(action);
+			break;
+		case "tomar":
+			cadena = this.tomarItem(action.getThing());
+			break;
+		case "usar":
+			cadena = detectTrigger(action);
+			break;
+		case "ver alrededor":
+			cadena = this.verAlrededor();
+			break;
+		case "ver inventario":
+			cadena = this.verInventario();
+			break;
+		case "hablar":
+			cadena = this.hablarConNPC(action);
+			break;
+		default:
+			break;
+
+		}
+
+		return cadena;
+	}
+
+	private String hablarConNPC(Action action) {
+		String retorno = "Nadie te respondera...";
+		int currentLocationIndex = this.getAventura().getLocationIndex(this.getCurrentLocation());
+		ArrayList<String> npcs = this.getAventura().getLocations().get(currentLocationIndex).getNPCS();
+		if (npcs != null && npcs.size() > 0) {
+			int i = 0;
+			while (i >= 0 && i < npcs.size()) {
+				if (npcs.get(i).equals(action.getTarget())) {
+					int npcsIndex = getAventura().getNPCSIndex(action.getTarget());
+					retorno = getAventura().getNpcs().get(npcsIndex).hablar();
+					i = -1;
+				} else {
+					i++;
+				}
+
+			}
+		}
+
+		return retorno;
+	}
 }

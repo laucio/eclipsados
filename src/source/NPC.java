@@ -2,7 +2,7 @@ package source;
 
 import java.util.ArrayList;
 
-public class NonPlayableCharacter {
+public class NPC {
 	private String name;
 	private String gender;
 	private String number;
@@ -10,7 +10,7 @@ public class NonPlayableCharacter {
 	private String talk;
 	private ArrayList<Trigger> triggers = null;
 
-	public NonPlayableCharacter(String name, String gender,String number, String description, String message) {
+	public NPC(String name, String gender,String number, String description, String message) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -87,7 +87,9 @@ public class NonPlayableCharacter {
 
 	}
 	
-	
+	public String hablar() {
+		return this.getTalk();
+	}
 	
 
 

@@ -69,7 +69,7 @@ public class Place {
 	
 	public boolean buscarItemEnArray(String item) {//me trae el indice del array de places en location
 		boolean encontrado = false;
-		if(getItemIndex(item) > 0) {
+		if(getItemIndex(item) >= 0) {
 			encontrado = true;
 		}
 		return encontrado;
