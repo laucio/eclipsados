@@ -2,9 +2,9 @@ package source;
 
 public class Action {
 
-	String action;
-	String thing;
-	String condition;
+	String action;	//usar
+	String thing;	//npcs
+	String condition; //direction,location,item,etc..
 	String effect_over;
 	String message;
 	

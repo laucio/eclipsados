@@ -89,11 +89,11 @@ public class AventuraZork {
 						cadena += ((j > 0) ? ((j == place.getItems().size() - 1) ? " y " : " , ") : "")
 								+ this.getItems().get(itemIndex).toString();
 
-					} //end of for (int j = 0; j < place.getItems().size(); j++)
-				} //end of if (place.getItems().size() > 0)
-			} //for (int i = 0; i < currentLocationObj.getPlaces().size(); i++)
+					} // end of for (int j = 0; j < place.getItems().size(); j++)
+				} // end of if (place.getItems().size() > 0)
+			} // for (int i = 0; i < currentLocationObj.getPlaces().size(); i++)
 		} // if (currentLocationObj.getPlaces() != null)
- 
+
 		// Agregamos NPCS
 		ArrayList<String> curNpcs = currentLocationObj.getNPCS();
 
@@ -185,9 +185,26 @@ public class AventuraZork {
 		}
 		return -1;
 	}
-	
-    public String darBienvenida() {
-        return this.getSettings().getWelcome();
-    }
+
+	public String darBienvenida() {
+		return this.getSettings().getWelcome();
+	}
+
+	public void removeNpc(String personaje, int indexCurrentLocation) {
+		// TODO Auto-generated method stub
+
+		locations.get(indexCurrentLocation).getNPCS().remove(personaje);
+		if (locations.get(indexCurrentLocation).getNPCS().size() == 0) {
+			locations.get(indexCurrentLocation).setNPCS(null);
+		}
+
+		for (Connection conection : locations.get(indexCurrentLocation).getConnections()) {
+			if (conection.getObstacles().equals(personaje)) {
+				conection.setObstacles(null);
+
+			}
+		}
+
+	}
 
 }

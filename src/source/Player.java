@@ -146,66 +146,100 @@ public class Player {
 				obj.setAction("usar");
 				encontrado = false;
 				i = 0;
-				
 
 			}
 		}
 
 		return encontrado;
 	}
-	
-	
+
 	public boolean goTo(Action action) {
 		boolean exitoso = false;
 		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
 		Location currentLocation = aventura.getLocations().get(indexCurrentLocation);
 		//
 		ArrayList<Connection> con = currentLocation.getConnections();
-		int i=0;
-		while(i<con.size() && !exitoso) {
+		int i = 0;
+		while (i < con.size() && !exitoso) {
 			if (action.getCondition().equals("direction") && action.getThing().equals(con.get(i).getDirection())) {
 				exitoso = true;
-			}else if (action.getCondition().equals("location") && action.getThing().equals(con.get(i).getLocation())) {				
+			} else if (action.getCondition().equals("location") && action.getThing().equals(con.get(i).getLocation())) {
 				exitoso = true;
 			}
-			
+
 			i++;
 		}
-		
-		if( exitoso==true) {
-	
-		if(con.get(i-1).getObstacles()==null) {
-			this.setCurrentLocation(con.get(i-1).getLocation());
-            System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation())); 			
-		}else {
-			int j = this.getAventura().getNPCSIndex((con.get(i-1).getObstacles()));///Buscamos el indice del obsctaculo sea un Npcs
-			if(j != -1){//1
-				
-				action.setMessage("'¡No puedes pasar!' " + this.getAventura().getNpcs().get(j).toString() + " no te dejará pasar" );
-			    exitoso=false;
-			}//1
-			
-			if( j == -1 ) {//2
-			  j = this.getAventura().getItemIndex((con.get(i-1).getObstacles()));///Buscamos el indice del obsctaculo sea un item
-			   if ( j != -1) {//3
-					action.setMessage("'¡No puedes pasar!' Hay " + this.getAventura().getItems().get(j).toString());				   
-			        exitoso=false;
-			   }//3	
-			}//2
+
+		if (exitoso == true) {
+
+			if (con.get(i - 1).getObstacles() == null) {
+				this.setCurrentLocation(con.get(i - 1).getLocation());
+				System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation()));
+			} else {
+				int j = this.getAventura().getNPCSIndex((con.get(i - 1).getObstacles()));/// Buscamos el indice del
+																							/// obsctaculo sea un Npcs
+				if (j != -1) {// 1
+
+					action.setMessage("'¡No puedes pasar!' " + this.getAventura().getNpcs().get(j).toString()
+							+ " no te dejará pasar");
+					exitoso = false;
+				} // 1
+
+				if (j == -1) {// 2
+					j = this.getAventura().getItemIndex((con.get(i - 1).getObstacles()));/// Buscamos el indice del
+																							/// obsctaculo sea un item
+					if (j != -1) {// 3
+						action.setMessage("'¡No puedes pasar!' Hay " + this.getAventura().getItems().get(j).toString());
+						exitoso = false;
+					} // 3
+				} // 2
+			}
+		} else {
+			action.setMessage("No se a donde quieres ir ");
 		}
-   }else {
-	   action.setMessage("No se a donde quieres ir ");
-   }
-	   
+
 		return exitoso;
 	}
 
-}
+	public void callTrigger(Action accion) {
+		// ACTION -> USAR --> remove
+		// CONDITION -> ITEM
+		// THING -> QUE ITEM -->
+		// EFFECT_OVER -> NPCS
 
-/*
- * if(encontrado=esMovimiento?(param))traducido=true if(traducido=false)
- * 
- * boolean traductor(String comando) { boolean traducido ; traducido =
- * esMovimient(param) if(!traducido) traducido = esTomarObjeto; if(!traducido)
- * traducido = esLanzarTrigger retrun traducido } }
- */
+		boolean encontrado = false;
+		int i = 0;
+		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
+		int indexNpcs = aventura.getNPCSIndex(accion.getEffect_over());
+		ArrayList<Trigger> triggers = aventura.getNpcs().get(indexNpcs).getTriggers();
+		if (triggers != null) {
+			while (i < triggers.size() && !encontrado) {
+				if (triggers.get(i).getType().equals(accion.getCondition())
+						&& triggers.get(i).getThing().equals(accion.getThing())) {
+					encontrado = true;
+					accion.setMessage(triggers.get(i).getOn_trigger());
+
+					switch (triggers.get(i).getAfter_trigger()) {
+					case "remove":
+						aventura.removeNpc(accion.effect_over,indexCurrentLocation);
+						break;
+					default: 
+						break;
+					// case "invalidar":
+					}
+				}
+			}
+		}
+
+	}
+	/*
+	 * for (Trigger x : ) { if(x.getType().equals(accion.getCondition()) &&
+	 * x.getThing().equals(accion.getThing())) {
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
+}
