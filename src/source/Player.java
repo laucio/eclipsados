@@ -232,6 +232,15 @@ public class Player {
 		}
 
 	}
+	
+	public boolean tomarItem(String item) {
+		boolean agregado = false;
+		int currentLocationIndex = this.aventura.getLocationIndex(this.currentLocation);
+		if(this.aventura.entregarItem(currentLocationIndex, item)) {
+			agregado = true;
+		}
+		return agregado;
+	}
 	/*
 	 * for (Trigger x : ) { if(x.getType().equals(accion.getCondition()) &&
 	 * x.getThing().equals(accion.getThing())) {
