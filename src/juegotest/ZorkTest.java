@@ -122,7 +122,7 @@ public class ZorkTest {
 	 * 
 	 * }
 	 */
-
+/*
 	@Test
 	public void MoverseSinObstaculo() throws IOException {
 		Action obj = new Action();
@@ -144,6 +144,7 @@ public class ZorkTest {
 		}
 
 	}
+	*/
 
 	/*
 	 * @Test public void activarTrigger_PirataFantasma() throws IOException { String
@@ -208,23 +209,45 @@ public class ZorkTest {
 	 * juego.tomarItem("muelle", "suelo", "escopeta"); }
 	 */
 
-	@Test public void remueveNPCS() throws IOException { 
+/*	@Test public void remueveNPCS() throws IOException { 
 		String path = "Juego.json"; 
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		juego.removeNpc("pirata fantasma", juego.getLocationIndex("muelle"));
 		System.out.println(juego.verAlrededor("muelle"));
 		 }
 	
+	*/
+/*	
 	@Test public void agregaNPCSyRemueve()throws IOException { 
 		String path = "Juego.json"; 
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
 		int indexTaberna = juego.getLocationIndex("taberna");
 		
-		NonPlayableCharacter npc2 = new NonPlayableCharacter("Chris", "male", "Soy chris y estudio informatica", "dame tu cerveza");
+		ArrayList<String> nue =new ArrayList<String>(); 
+		nue.add("Chris");
+		NonPlayableCharacter npc2 = new NonPlayableCharacter("Chris", "male","singular", "Soy chris y estudio informatica", "dame tu cerveza");
 		juego.getNpcs().add(npc2);
 		juego.getLocations().get(indexTaberna).getConnections().get(0).setObstacles("Chris");
-		juego.getLocations().get(indexTaberna).getNPCS().add("Chris");
+		juego.getLocations().get(indexTaberna).setNPCS(nue);
+		//juego.getLocations().get(indexTaberna).getNPCS().add("Chris");
 		juego.removeNpc("pirata fantasma", juego.getLocationIndex("muelle"));
+		
+		System.out.println(juego.verAlrededor("taberna"));
+		
+	}
+	*/
+	
+	@Test public void agregaNPCSyRemueveMuelle()throws IOException { 
+		String path = "Juego.json"; 
+		AventuraZork juego = CargaAventura.cargarArchivo(path);
+		int indexTaberna = juego.getLocationIndex("muelle");
+		
+		NonPlayableCharacter npc2 = new NonPlayableCharacter("Chris", "male","singular", "Soy chris y estudio informatica", "dame tu cerveza");
+		juego.getNpcs().add(npc2);
+		//juego.getLocations().get(indexTaberna).getConnections().get(0).setObstacles("Chris");
+		juego.getLocations().get(indexTaberna).getNPCS().add("Chris");
+		//juego.getLocations().get(indexTaberna).getNPCS().add("Chris");
+		//juego.removeNpc("pirata fantasma", juego.getLocationIndex("muelle"));
 		
 		System.out.println(juego.verAlrededor("muelle"));
 		

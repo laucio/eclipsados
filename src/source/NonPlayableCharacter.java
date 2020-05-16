@@ -10,10 +10,11 @@ public class NonPlayableCharacter {
 	private String talk;
 	private ArrayList<Trigger> triggers = null;
 
-	public NonPlayableCharacter(String name, String gender, String description, String message) {
+	public NonPlayableCharacter(String name, String gender,String number, String description, String message) {
 		super();
 		this.name = name;
 		this.gender = gender;
+		this.number = number;
 		this.description = description;
 		this.talk = message;
 	}
