@@ -18,8 +18,17 @@ public class Player {
 	public Player(String aventuraPath) throws IOException {
 		this.aventura = CargaAventura.cargarArchivo(aventuraPath);
 		this.currentLocation = aventura.getLocations().get(0).getName();
-
 	}
+	
+	
+
+	public Player(AventuraZork aventura) {
+		super();
+		this.aventura = aventura;
+		this.currentLocation = aventura.getLocations().get(0).getName();	
+	}
+
+
 
 	public AventuraZork getAventura() {
 		return aventura;
@@ -174,14 +183,13 @@ public class Player {
 
 			if (con.get(i - 1).getObstacles() == null) {
 				this.setCurrentLocation(con.get(i - 1).getLocation());
-				System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation()));
+				//System.out.println(this.getAventura().verAlrededor(this.getCurrentLocation()));
 			} else {
 				int j = this.getAventura().getNPCSIndex((con.get(i - 1).getObstacles()));/// Buscamos el indice del
 																							/// obsctaculo sea un Npcs
 				if (j != -1) {// 1
 
-					action.setMessage("'¡No puedes pasar!' " + this.getAventura().getNpcs().get(j).toString()
-							+ " no te dejará pasar");
+					action.setMessage(this.getAventura().getNpcs().get(j).getDescription());
 					exitoso = false;
 				} // 1
 

@@ -24,6 +24,14 @@ public class Action {
 		this.effect_over = null;
 	}
 	
+	public Action(String action, String thing, String condition, String effect_over) {
+		this.action = action;
+		this.thing = thing;
+		this.condition = condition;
+		this.message = null;
+		this.effect_over = effect_over;
+	}
+	
 	public String getEffect_over() {
 		return effect_over;
 	}
