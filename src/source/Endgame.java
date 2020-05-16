@@ -38,5 +38,9 @@ public class Endgame {
 		this.description = description;
 	}
 	
+	public boolean esEndgame(Action action) {
+		return action.getCondition().equals(this.condition) && action.getAction().equals(this.action)
+				&& action.getThing().equals(this.thing);
+	}
 	
 }

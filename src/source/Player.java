@@ -201,11 +201,19 @@ public class Player {
 				} // 2
 			}
 		}
-
+		if (!exitoso) { // si no es exitoso, "cancela" la accion.
+			action = new Action();
+		}
 		return retorno;
 	}
+	/*
+	 * public String detectTriggerItem(Action accion) { String retorno =
+	 * "No ha servido de nada."; boolean encontrado = false; int i = 0; int
+	 * indexCurrentLocation = aventura.getLocationIndex(this.currentLocation); if()
+	 * }
+	 */
 
-	public String detectTrigger(Action accion) {
+	public String detectTriggerNPC(Action accion) {
 		// ACTION -> USAR --> remove
 		// CONDITION -> ITEM
 		// THING -> QUE ITEM -->
@@ -217,26 +225,26 @@ public class Player {
 		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
 		if (aventura.getLocations().get(indexCurrentLocation).getNPCS().contains(accion.getTarget())) {
 			int indexNpcs = aventura.getNPCSIndex(accion.getTarget());
-				ArrayList<Trigger> triggers = aventura.getNpcs().get(indexNpcs).getTriggers();
-				if (triggers != null) {
-					while (i < triggers.size() && !encontrado) {
-						if (triggers.get(i).getType().equals(accion.getCondition())
-								&& triggers.get(i).getThing().equals(accion.getThing())) {
-							encontrado = true;
-							retorno = triggers.get(i).getOn_trigger();
+			ArrayList<Trigger> triggers = aventura.getNpcs().get(indexNpcs).getTriggers();
+			if (triggers != null) {
+				while (i < triggers.size() && !encontrado) {
+					if (triggers.get(i).getType().equals(accion.getCondition())
+							&& triggers.get(i).getThing().equals(accion.getThing())) {
+						encontrado = true;
+						retorno = triggers.get(i).getOn_trigger();
 
-							switch (triggers.get(i).getAfter_trigger()) {
-							case "remove":
-								aventura.removeNpc(accion.target, indexCurrentLocation);
-								break;
-							default:
-								break;
-							// case "invalidar":
-							}
+						switch (triggers.get(i).getAfter_trigger()) {
+						case "remove":
+							aventura.removeNpc(accion.target, indexCurrentLocation);
+							break;
+						default:
+							break;
+						// case "invalidar":
 						}
 					}
 				}
-			
+			}
+
 		}
 		return retorno;
 	}
@@ -265,14 +273,28 @@ public class Player {
 		return aventura.locationDescription(getCurrentLocation());
 	}
 
-	public boolean recibirInstruccion(String comando) { // Devuelve false cuando sea ENDGAME
+	public ResultadoInstruccion recibirInstruccion(String comando) { // Devuelve false cuando sea ENDGAME
+		String cadena;
 		Action action = new Action();
 		if (!Translator.traducir(comando, action, this)) {
-			System.out.println(action.getMessage());
+			cadena = (action.getMessage());
 		} else {
-			switchearAction(action);
+			cadena = switchearAction(action); // ACÁ EMPIEZA LA PARTE DE ENDGAME
 		}
-		return true;
+		ArrayList<Endgame> endgames = aventura.getEndgames();
+		boolean esEndgame = false;
+		int i = 0;
+		while (i < endgames.size() && !esEndgame) {
+			esEndgame = endgames.get(i).esEndgame(action);
+			i++; // G2
+		}
+		if (esEndgame) {
+			cadena += "\n" + endgames.get(i).getDescription();
+		}
+		return new ResultadoInstruccion(esEndgame, cadena); /*
+															 * devuelve si es fin de juego o no, junto con el mensaje
+															 * que se muestra por pantalla.
+															 */
 
 	}
 
@@ -291,7 +313,7 @@ public class Player {
 			cadena = this.tomarItem(action.getThing());
 			break;
 		case "usar":
-			cadena = detectTrigger(action);
+			cadena = usarItem(action);
 			break;
 		case "ver alrededor":
 			cadena = this.verAlrededor();
@@ -327,7 +349,38 @@ public class Player {
 
 			}
 		}
-
 		return retorno;
+	}
+
+	public String usarItem(Action action) {
+		String cadena = "No tienes ese objeto.";
+		boolean encontrado = false;
+		ArrayList<String> inventario = this.aventura.getInventory(); // si esta en inventario ya se validó que existe.
+		int i = 0;
+		while (i < inventario.size() && encontrado == false) {
+			if (inventario.get(i).equals(action.getThing())) {
+				int itemIndex = aventura.getItemIndex(action.thing);
+				if (itemIndex >= 0 && aventura.getItems().get(itemIndex).getName().equals(action.thing)) {
+					switch (action.getEffect_over()) {
+					case "npcs":
+						cadena = detectTriggerNPC(action);// npcs
+						encontrado = true;
+						break;
+					case "item":
+						cadena = "Usar item sobre item."; // item
+						encontrado = true;
+						break; // G2
+					case "self":
+						cadena = "Usar item sobre uno mismo."; // self
+						encontrado = true;
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			i++;
+		}
+		return cadena;
 	}
 }

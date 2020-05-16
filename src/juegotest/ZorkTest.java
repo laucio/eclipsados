@@ -278,7 +278,7 @@ public class ZorkTest {
 		System.out.println(accion2.getMessage());
 	}
 	*/
-	
+	/*
 	
 	
 	@Test
@@ -288,7 +288,7 @@ public class ZorkTest {
 	}
 	
 	
-	
+	*/
 	
 	
 	

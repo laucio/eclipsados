@@ -69,4 +69,14 @@ public class Action {
 		this.condition = condition;
 	}
 
+	public String getEffect_over() {
+		return effect_over;
+	}
+
+	public void setEffect_over(String effect_over) {
+		this.effect_over = effect_over;
+	}
+	
+	
+
 }

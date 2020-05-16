@@ -1,6 +1,8 @@
 package juegotest;
 
+import source.*;
 import static org.junit.Assert.*;
+
 
 import java.io.IOException;
 
@@ -141,6 +143,7 @@ public class AdventureTest {
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.switchearAction(action);
 		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
@@ -155,6 +158,7 @@ public class AdventureTest {
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.switchearAction(action);
 		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		//Ir a taberna	
@@ -168,6 +172,7 @@ public class AdventureTest {
 	public void eliminarObstaculoDosVeces() {
 		expected = "No ha servido de nada.";	
 		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		actuals = jugador.switchearAction(action);
@@ -186,13 +191,13 @@ public class AdventureTest {
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.switchearAction(action);
 		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		//Ir a taberna	
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.switchearAction(action);
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected, actuals);
 		
 	}
@@ -209,8 +214,10 @@ public class AdventureTest {
 	}
 	
 	@Test
-	public void hablarConNpc() {
+	public void hablarConNpcBorrado() {
 		expected = "Nadie te respondera...";	
+		
+		jugador.tomarItem("rociador con cerveza de raiz");
 		//Eliminar obstaculo
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
@@ -222,6 +229,44 @@ public class AdventureTest {
 		
 	}
 	
-
+	@Test
+	public void usarItemSobrePirata() {
+		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		
+		assertEquals(expected,actuals);
+	}
+	
+	@Test
+	public void usarItemSobreItem() {
+		expected = "Usar item sobre item.";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","barreta", "item","espejo", "item");
+		actuals = jugador.switchearAction(action);
+		
+		assertEquals(expected,actuals);
+	}
+	
+	@Test
+	public void usarItemSobreSelf() {
+		expected = "Usar item sobre uno mismo.";
+		jugador.tomarItem("espejo");
+		action = new Action("usar","espejo", "item",null, "self");
+		actuals = jugador.switchearAction(action);
+		
+		assertEquals(expected,actuals);
+	}
+	
+	@Test
+	public void esEndgame() {
+		boolean esperado = true;
+		action = new Action("move","taberna","location",null,null);
+		Endgame fin = juego.getEndgames().get(0);
+		esperado = fin.esEndgame(action);
+		assertEquals(true,esperado);
+	}
+	
 
 }
