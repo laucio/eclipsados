@@ -34,7 +34,7 @@ public class SavedGameTest {
 		 ArrayList<String> targets = new ArrayList<String>();
 		 ArrayList<Trigger> triggers = new ArrayList<Trigger>();
 		targets.add("espejo");
-		triggers.add(new Trigger("item","barreta","El espejo se ha rompido","remove"));
+		triggers.add(new Trigger("item","barreta","El espejo se ha roto","remove"));
 		jugador.getAventura().getItems().get(0).setTargets(targets);
 		jugador.getAventura().getItems().get(2).setTriggers(triggers);
 		
@@ -43,7 +43,19 @@ public class SavedGameTest {
         expected = "No encuentro ese objeto."; 
        
         SavedGame.saveStatus(jugador.getAventura(), filePath);
-        
        
     }
+	
+	@Test
+	public void usarBarretaSobreEspejo() throws JsonIOException, IOException {
+		path = "partidaGuardada.json";
+		juego = LoadAdventure.cargarArchivo(path);
+		jugador = new Player(juego);
+		action = new Action("usar","barreta", "item","espejo","item");//usa una barreta que es un 
+		                                                              //item sobre un espejo que es un item
+		expected = "El espejo se ha roto";
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+	}
+	
 }

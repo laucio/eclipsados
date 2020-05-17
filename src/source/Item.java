@@ -11,7 +11,6 @@ public class Item {// implements Action{
 	private ArrayList<String> targets = null;
 	private ArrayList<Trigger> triggers = null;
 
-	
 	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over,
 			ArrayList<String> targets, ArrayList<Trigger> triggers) {
 		this.name = name;
@@ -63,25 +62,52 @@ public class Item {// implements Action{
 		return actions;
 	}
 
-
 	public void setActions(ArrayList<String> actions) {
 		this.actions = actions;
 	}
-	
+
 	public ArrayList<String> getTargets() {
 		return targets;
 	}
-	
+
 	public void setTargets(ArrayList<String> targets) {
 		this.targets = targets;
 	}
-	
+
 	public ArrayList<Trigger> getTriggers() {
 		return triggers;
 	}
-	
+
 	public void setTriggers(ArrayList<Trigger> triggers) {
 		this.triggers = triggers;
+	}
+
+	public boolean validateAction(Action action) {
+		boolean resultado = false;
+		int i = 0;
+		while (!resultado && i < this.getEffects_over().size()) {
+
+			if (this.getEffects_over().get(i).equals(action.getEffect_over())) {
+				resultado = true;
+			}
+
+			i++;
+		}
+
+		if (resultado) {
+			resultado = false;
+			i = 0;
+			while (!resultado && i < this.getTargets().size()) {
+
+				if (this.getTargets().get(i).equals(action.getTarget())) {
+					resultado = true;
+				}
+
+				i++;
+			}
+		}
+
+		return resultado;
 	}
 
 	@Override

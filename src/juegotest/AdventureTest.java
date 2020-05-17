@@ -5,14 +5,12 @@ import static org.junit.Assert.*;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import source.Action;
-import source.Adventure;
-import source.LoadAdventure;
-import source.Player;
+import com.google.gson.JsonIOException;
 
 public class AdventureTest {
 
@@ -137,6 +135,7 @@ public class AdventureTest {
 	
 	@Test
 	public void dispararTrigger() {
+		
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";	
 		
 		//Ir a taberna	
@@ -149,6 +148,20 @@ public class AdventureTest {
 		assertEquals(expected, actuals);
 		
 	}
+	 /*@Test
+	 public void  NuevoDispTrigger() throws JsonIOException, IOException {
+		 ArrayList<String> targets = new ArrayList<String>();
+		targets.add("pirata fantasma");
+		jugador.getAventura().getItems().get(1).setTargets(targets);
+        		
+		
+        String filePath = "Juego.json";
+        expected = "No encuentro ese objeto."; 
+       
+        SavedGame.saveStatus(jugador.getAventura(), filePath);
+       
+    }*/
+	
 	
 	@Test
 	public void eliminarObstaculoConTrigger() {

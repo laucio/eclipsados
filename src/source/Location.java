@@ -108,6 +108,17 @@ public class Location {
 		}
 		return -1;
 	}
+	public boolean hasItem(String item) {
+      boolean retorno = false;
+        int i = 0 ; 
+        ArrayList<Place> places = this.places;
+        while(!retorno && i<places.size() ) {
+        	retorno = places.get(i).buscarItemEnArray(item);
+        	i++;
+        }
+       
+		return retorno ;
+	}
 	
 	@Override
 	public String toString() {
@@ -127,5 +138,6 @@ public class Location {
 		return cadena + this.getName();
 
 	}
+
 
 }
