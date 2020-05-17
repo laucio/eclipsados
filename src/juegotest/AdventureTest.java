@@ -268,5 +268,7 @@ public class AdventureTest {
 		assertEquals(true,esperado);
 	}
 	
+	
+	
 
 }

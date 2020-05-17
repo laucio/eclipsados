@@ -5,16 +5,14 @@ public class Trigger {
 	private String thing;
 	private String on_trigger;
 	private String after_trigger;
-	//private String key;
 	
 	
-	public Trigger(String type, String thing, String on_trigger, String after_trigger, String key) {
-		super();
+	public Trigger(String type, String thing, String on_trigger, String after_trigger) {
 		this.type = type;
 		this.thing = thing;
 		this.on_trigger = on_trigger;
 		this.after_trigger = after_trigger;
-		//this.key = key;
+		
 	}
 	public String getType() {
 		return type;
@@ -40,12 +38,7 @@ public class Trigger {
 	public void setAfter_trigger(String after_trigger) {
 		this.after_trigger = after_trigger;
 	}
-/*	public String getKey() {
-		return key;
-	}
-	public void setKey(String key) {
-		this.key = key;
-	}*/
+
 	
 	public String activarTrigger(String thing){
 	       

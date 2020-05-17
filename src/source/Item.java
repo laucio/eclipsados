@@ -8,13 +8,19 @@ public class Item {// implements Action{
 	private String number;
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
+	private ArrayList<String> targets = null;
+	private ArrayList<Trigger> triggers = null;
 
-	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over) {
+	
+	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over,
+			ArrayList<String> targets, ArrayList<Trigger> triggers) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 		this.actions = actions;
 		this.effects_over = effects_over;
+		this.targets = targets;
+		this.triggers = triggers;
 	}
 
 	public String getName() {
@@ -57,8 +63,25 @@ public class Item {// implements Action{
 		return actions;
 	}
 
+
 	public void setActions(ArrayList<String> actions) {
 		this.actions = actions;
+	}
+	
+	public ArrayList<String> getTargets() {
+		return targets;
+	}
+	
+	public void setTargets(ArrayList<String> targets) {
+		this.targets = targets;
+	}
+	
+	public ArrayList<Trigger> getTriggers() {
+		return triggers;
+	}
+	
+	public void setTriggers(ArrayList<Trigger> triggers) {
+		this.triggers = triggers;
 	}
 
 	@Override
