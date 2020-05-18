@@ -242,20 +242,15 @@ public class Player {
 						// case "invalidar":
 						}
 					}
-				 i++;
+					i++;
 				}
-				
+
 			}
 
 		}
 		return retorno;
 	}
 
-	
-	
-	
-	
-	
 	public String detectTriggerItem(Action accion) {
 		// ACTION -> USAR --> remove
 		// CONDITION -> ITEM
@@ -267,38 +262,36 @@ public class Player {
 		int i = 0;
 		int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
 		if (aventura.getLocations().get(indexCurrentLocation).hasItem(accion.getTarget())) {
-				int indexItem = aventura.getItemIndex(accion.getTarget());
-				ArrayList<Trigger> triggers = aventura.getItems().get(indexItem).getTriggers();
-				if (triggers != null) {
-					while (i < triggers.size() && !encontrado) {
-						if (triggers.get(i).getType().equals(accion.getCondition())
-								&& triggers.get(i).getThing().equals(accion.getThing())) {
-							encontrado = true;
-							retorno = triggers.get(i).getOn_trigger();
+			int indexItem = aventura.getItemIndex(accion.getTarget());
+			ArrayList<Trigger> triggers = aventura.getItems().get(indexItem).getTriggers();
+			if (triggers != null) {
+				while (i < triggers.size() && !encontrado) {
+					if (triggers.get(i).getType().equals(accion.getCondition())
+							&& triggers.get(i).getThing().equals(accion.getThing())) {
+						encontrado = true;
+						retorno = triggers.get(i).getOn_trigger();
 
-							switch (triggers.get(i).getAfter_trigger()) {
-							case "remove":
-								aventura.getLocations().get(indexCurrentLocation).eliminarItemDePlaces(accion.getTarget());
-								break;
-							default:
-								break;
-							// case "invalidar":
-							}
+						switch (triggers.get(i).getAfter_trigger()) {
+						case "remove":
+							aventura.getLocations().get(indexCurrentLocation).eliminarItemDePlaces(accion.getTarget());
+							break;
+						default:
+							break;
+						// case "invalidar":
 						}
-						i++;
 					}
+					i++;
 				}
-
 			}
-		
+
+		}
+
 		else {
 			retorno = "No encuentro el objeto."; // agregar lo ver el inventario
 		}
 		return retorno;
 	}
-	
-	
-	
+
 	public String tomarItem(String item) {
 		String cadena = "No encuentro ese objeto.";
 		int currentLocationIndex = this.aventura.getLocationIndex(this.currentLocation);
@@ -410,8 +403,8 @@ public class Player {
 		while (i < inventario.size() && encontrado == false) {
 			if (inventario.get(i).equals(action.getThing())) {
 				int itemIndex = aventura.getItemIndex(action.thing);
-				  if(itemIndex>=0 && aventura.getItems().get(itemIndex).validateAction(action) ) {	
-				switch (action.getEffect_over()) {
+				if (itemIndex >= 0 && aventura.getItems().get(itemIndex).validateAction(action)) {
+					switch (action.getEffect_over()) {
 					case "npcs":
 						cadena = detectTriggerNPC(action);// npcs
 						encontrado = true;
@@ -421,7 +414,7 @@ public class Player {
 						encontrado = true;
 						break; // G2
 					case "self":
-						cadena = "Usar item sobre uno mismo."; // self
+						cadena = detectTriggerItemSelf(action); // self
 						encontrado = true;
 						break;
 					default:
@@ -432,5 +425,40 @@ public class Player {
 			i++;
 		}
 		return cadena;
+	}
+
+	private String detectTriggerItemSelf(Action action) {
+		String retorno = "No ha servido de nada.";
+		boolean encontrado = false;
+		int i = 0;
+
+		int indexItem = aventura.getItemIndex(action.getThing());
+		ArrayList<Trigger> triggers = aventura.getItems().get(indexItem).getTriggers();
+		if (triggers != null) {
+			while (i < triggers.size() && !encontrado) {
+				if (triggers.get(i).getType().equals(action.getCondition())
+						&& triggers.get(i).getThing().equals(action.getThing())) {
+					encontrado = true;
+					retorno = triggers.get(i).getOn_trigger();
+
+					switch (triggers.get(i).getAfter_trigger()) {
+					case "remove":
+						// Quitar item de inventario y, TAL VEZ, dejarlo en location/place
+						/// aventura.getLocations().get(indexCurrentLocation).eliminarItemDePlaces(accion.getTarget());
+						break;
+					case "default":
+						//implica que lo deja en inventario
+						break;
+					default:
+						break;
+					// case "invalidar":
+					}
+				}
+
+				i++;
+			}
+		}
+
+		return retorno;
 	}
 }

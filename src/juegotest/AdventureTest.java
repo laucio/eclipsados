@@ -148,20 +148,7 @@ public class AdventureTest {
 		assertEquals(expected, actuals);
 		
 	}
-	 /*@Test
-	 public void  NuevoDispTrigger() throws JsonIOException, IOException {
-		 ArrayList<String> targets = new ArrayList<String>();
-		targets.add("pirata fantasma");
-		jugador.getAventura().getItems().get(1).setTargets(targets);
-        		
 		
-        String filePath = "Juego.json";
-        expected = "No encuentro ese objeto."; 
-       
-        SavedGame.saveStatus(jugador.getAventura(), filePath);
-       
-    }*/
-	
 	
 	@Test
 	public void eliminarObstaculoConTrigger() {
@@ -252,26 +239,98 @@ public class AdventureTest {
 		assertEquals(expected,actuals);
 	}
 	
+	
 	@Test
 	public void usarItemSobreItem() {
-		expected = "Usar item sobre item.";
+		expected = "El espejo se ha roto";
 		jugador.tomarItem("barreta");
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
 		
 		assertEquals(expected,actuals);
 	}
 	
 	@Test
-	public void usarItemSobreSelf() {
-		expected = "Usar item sobre uno mismo.";
-		jugador.tomarItem("espejo");
-		action = new Action("usar","espejo", "item",null, "self");
-		actuals = jugador.switchearAction(action);
+	public void verAfterTriggerDeItem() {
+		//Luego del trigger, el espejo ya no deberia esar en el muelle
 		
+		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur hay una taberna.";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","barreta", "item","espejo", "item");
+		jugador.switchearAction(action);
+		
+		//Luego del trigger, con remove, el espejo ya no deberia estar en el muelle
+		actuals = jugador.verAlrededor();
+		
+		assertEquals(expected,actuals);//si el trigger de espejo tuviera remove en lugar de default
+		//assertNotEquals(expected,actuals);//si en trigger self de espejo hay default
+	}
+	
+	
+	@Test
+	public void usarItemSobreSelf() {
+		expected = "Te ves muy bello hoy";
+		jugador.tomarItem("espejo");
+		action = new Action("usar","espejo", "item","self", "self");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
+		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
+		
+	}
+	
+	@Test
+	public void usarRociadorSobreSelf() {
+		expected = "Que delicia de cerveza!";
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","rociador con cerveza de raiz", "item","self", "self");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
+		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
+		
+	}
+	
+	@Test
+	public void usarBarretaSobreRociador() {
+		expected = "Se ha abollado la lata";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
 		assertEquals(expected,actuals);
 	}
 	
+	@Test
+	public void usarBarretaSobreSelf() {
+		expected = "Se ha abollado la lata";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","barreta","item","self", "self");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//REVISAR--- DEVUELVE "No tienes el objeto, cuando ya tienes la barreta
+	}
+	
+	@Test
+	public void usarEspejoSobreBarreta_AmbosEnInventario() {
+		expected = "Se ha abollado la lata";
+		jugador.tomarItem("espejo");
+		jugador.tomarItem("barreta");
+		action = new Action("usar","espejo","item","barreta", "item");
+		actuals = jugador.switchearAction(action);
+		System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//REVISAR--- DEVUELVE "No tienes ese objeto" y en realidad tiene ambos
+	}
+
+	
+	/*
 	@Test
 	public void esEndgame() {
 		boolean esperado = true;
@@ -280,7 +339,7 @@ public class AdventureTest {
 		esperado = fin.esEndgame(action);
 		assertEquals(true,esperado);
 	}
-	
+	*/
 	
 	
 
