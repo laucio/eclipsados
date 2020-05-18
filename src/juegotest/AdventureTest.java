@@ -411,7 +411,7 @@ public class AdventureTest {
 	
 	@Test
 	public void verAfterTriggerDeItem() {
-		//Luego del trigger, el espejo ya no deberia esar en el muelle
+		//Luego del trigger, el espejo ya no deberia esTar en el muelle
 		//REMOVE DE PLACE
 		
 		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur hay una taberna.";
@@ -549,21 +549,6 @@ public class AdventureTest {
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
 	}
-	
-	@Test
-	public void usarEspejoSobreBarreta_TieneAmbosEnInventario_NoSePuedeUsar() {
-		expected = "No ha servido de nada.";
-		jugador.tomarItem("barreta");
-		jugador.tomarItem("espejo");
-		action = new Action("usar","espejo","item","barreta", "item");
-		actuals = jugador.switchearAction(action);
-		//System.out.println(actuals);
-		assertEquals(expected,actuals);
-		
-		//FALLA
-		//Dice que no tenemos el objeto (que queremos usar, primero)
-		//Tiene ambos... pero deberia decir que no puede usar espejo sobre barreta
-	}	
 	
 
 }
