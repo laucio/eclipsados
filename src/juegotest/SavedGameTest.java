@@ -85,13 +85,12 @@ public class SavedGameTest {
 		//a espejo le asignamos un trigger ejecutado por si mismo, self
 		ArrayList<Trigger> triggers2 = new ArrayList<Trigger>();
 		triggers2.add(new Trigger("item","barreta","El espejo se ha roto","remove"));//si se pone remove, lo quita de invetario
-		triggers2.add(new Trigger("item","espejo","Te ves muy bello hoy","default"));
+		triggers2.add(new Trigger("item","espejo","Te ves horrible!","default"));
 		jugador.getAventura().getItems().get(2).setTriggers(triggers2);
 		
 		
 		//la barreta solo tendra efecto sobre npcs o sobre otro item, no self
 		ArrayList<String> paraBarreta = new ArrayList<String>();
-		paraBarreta.add("npcs");
 		paraBarreta.add("item");
 		jugador.getAventura().getItems().get(0).setEffects_over(paraBarreta);
 		

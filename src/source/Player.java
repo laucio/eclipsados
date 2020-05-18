@@ -307,7 +307,7 @@ public class Player {
 		}
 
 		else {
-			retorno = "No encuentro el objeto."; // agregar lo ver el inventario
+			retorno = "No encuentro el objeto.";
 		}
 
 		return retorno;

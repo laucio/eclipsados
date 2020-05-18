@@ -309,7 +309,7 @@ public class AdventureTest {
 	@Test
 	public void irADirection_NoSePuedeIr() {
 		expected = "No puedes ir hacia alla."; 
-		//Ir a taberna	
+		//Ir al norte	
 		action = new Action("ir","norte", "direction",null, null);
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
@@ -410,6 +410,9 @@ public class AdventureTest {
 		assertEquals(expected,actuals);
 	}
 	
+	
+	///USAR ITEM SOBRE ITEM//////////////////////
+	
 	@Test
 	public void usarBarretaSobreEspejo_TengoSoloBarreta_SePuedeUsar() {
 		expected = "El espejo se ha roto";
@@ -435,13 +438,12 @@ public class AdventureTest {
 		assertEquals(expected,actuals);//si el trigger de espejo tuviera remove en lugar de default
 		//assertNotEquals(expected,actuals);//si en trigger self de espejo hay default
 		
-		//FUNCIONA
 	}
 	
 	
 	@Test
 	public void usarEspejoSobreSelf_LoTengoEnInventario() {
-		expected = "Te ves muy bello hoy";
+		expected = "Te ves horrible!";
 		jugador.tomarItem("espejo");
 		action = new Action("usar","espejo", "item","self", "self");
 		actuals = jugador.switchearAction(action);
@@ -508,12 +510,8 @@ public class AdventureTest {
 		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
 		
-		//FALLA: CUANDO SE TIENEN EN INVENTARIO EL OBJETO Q REALIZA ACCION Y EL Q LA RECIBE, DICE QUE NO ENCUENTRA EL SEGUNDO
-		//CUANDO BUSCA EL SEGUNDO, TAMBIEN DEBE BUSCARLO EN INVENTARIO... SI HAY REMOVE, TAMBIN DEBE QUITARLO DE INVENTARIO
-		//DEBERIA FUNCIONAR
 	}
 	
 	
@@ -554,5 +552,12 @@ public class AdventureTest {
 		assertEquals(expected,actuals);
 	}
 	
-
+	@Test
+	public void usarEspejo_NoEstaEnInventario_SePuedeUsarSelf() {
+		expected = "No tienes ese objeto.";
+		action = new Action("usar","espejo","item","self", "self");
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected,actuals);
+	}
+	
 }
