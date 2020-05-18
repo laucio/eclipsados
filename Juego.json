@@ -1,1 +1,156 @@
-{"settings":{"welcome":"Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.","character":"Guybrush Threepwood"},"locations":[{"name":"muelle","gender":"male","number":"singular","description":"Estas en un muelle","places":[{"name":"suelo","gender":"male","number":"singular","items":["barreta","rociador con cerveza de raiz","espejo"]}],"npcs":["pirata fantasma"],"connections":[{"direction":"sur","location":"taberna","obstacles":"pirata fantasma"}]},{"name":"taberna","gender":"female","number":"singular","description":"Estas en una sucia taberna","connections":[{"direction":"norte","location":"muelle"}]}],"npcs":[{"name":"pirata fantasma","gender":"male","number":"singular","description":"No puedes pasar! El pirata fantasma no te dejara pasar","talk":"No hay nada que me digas que me haga cambiar de opinion!","triggers":[{"type":"item","thing":"rociador con cerveza de raiz","on_trigger":"Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.","after_trigger":"remove"}]}],"items":[{"name":"barreta","gender":"female","number":"singular","actions":["usar"],"effects_over":["item"],"targets":["espejo","rociador con cerveza de raiz"]},{"name":"rociador con cerveza de raiz","gender":"male","number":"singular","actions":["usar"],"effects_over":["npcs","self"],"targets":["self","pirata fantasma"],"triggers":[{"type":"item","thing":"barreta","on_trigger":"Se ha abollado la lata","after_trigger":"default"},{"type":"item","thing":"rociador con cerveza de raiz","on_trigger":"Que delicia de cerveza!","after_trigger":"default"}]},{"name":"espejo","gender":"male","number":"singular","actions":["usar"],"effects_over":["self"],"targets":["self"],"triggers":[{"type":"item","thing":"barreta","on_trigger":"El espejo se ha roto","after_trigger":"remove"},{"type":"item","thing":"espejo","on_trigger":"Te ves horrible!","after_trigger":"default"}]}],"inventory":[],"endgames":[{"condition":"location","action":"ir","thing":"taberna","description":"¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."},{"condition":"action","action":"usar","thing":"espejo","description":"¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"}]}
+{
+	"settings": {
+		"welcome": "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.",
+		"character": "Guybrush Threepwood"
+	},
+	"locations": [
+		{
+			"name": "muelle",
+			"gender": "male",
+			"number": "singular",
+			"description": "Estas en un muelle",
+			"places": [
+				{
+					"name": "suelo",
+					"gender": "male",
+					"number": "singular",
+					"items": [
+						"barreta",
+						"rociador con cerveza de raiz",
+						"espejo"
+					]
+				}
+			],
+			"npcs": [
+				"pirata fantasma"
+			],
+			"connections": [
+				{
+					"direction": "sur",
+					"location": "taberna",
+					"obstacles": "pirata fantasma"
+				}
+			]
+		},
+		{
+			"name": "taberna",
+			"gender": "female",
+			"number": "singular",
+			"description": "Estas en una sucia taberna",
+			"connections": [
+				{
+					"direction": "norte",
+					"location": "muelle"
+				}
+			]
+		}
+	],
+	"npcs": [
+		{
+			"name": "pirata fantasma",
+			"gender": "male",
+			"number": "singular",
+			"description": "No puedes pasar! El pirata fantasma no te dejara pasar",
+			"talk": "No hay nada que me digas que me haga cambiar de opinion!",
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "rociador con cerveza de raiz",
+					"on_trigger": "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.",
+					"after_trigger": "remove"
+				}
+			]
+		}
+	],
+	"items": [
+		{
+			"name": "barreta",
+			"gender": "female",
+			"number": "singular",
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"item"
+			],
+			"targets": [
+				"espejo",
+				"rociador con cerveza de raiz"
+			]
+		},
+		{
+			"name": "rociador con cerveza de raiz",
+			"gender": "male",
+			"number": "singular",
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"npcs",
+				"self"
+			],
+			"targets": [
+				"self",
+				"pirata fantasma"
+			],
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "barreta",
+					"on_trigger": "Se ha abollado la lata",
+					"after_trigger": "default"
+				},
+				{
+					"type": "item",
+					"thing": "rociador con cerveza de raiz",
+					"on_trigger": "Que delicia de cerveza!",
+					"after_trigger": "default"
+				}
+			]
+		},
+		{
+			"name": "espejo",
+			"gender": "male",
+			"number": "singular",
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"self"
+			],
+			"targets": [
+				"self"
+			],
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "barreta",
+					"on_trigger": "El espejo se ha roto",
+					"after_trigger": "remove"
+				},
+				{
+					"type": "item",
+					"thing": "espejo",
+					"on_trigger": "Te ves horrible!",
+					"after_trigger": "default"
+				}
+			]
+		}
+	],
+	"inventory": [
+	],
+	"endgames": [
+		{
+			"condition": "location",
+			"action": "ir",
+			"thing": "taberna",
+			"description": "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
+		},
+		{
+			"condition": "item",
+			"action": "usar",
+			"thing": "espejo",
+			"description": "¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"
+		}
+	]
+}

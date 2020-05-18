@@ -312,23 +312,54 @@ public class Player {
 
 		return retorno;
 	}
-}
 
 ////////////////////////////////////////////////////////////////////////////
-/*
- * /////////////////////////////////////////////////////// public
- * ResultadoInstruccion recibirInstruccion(String comando) { // Devuelve false
- * cuando sea ENDGAME String cadena; Action action = new Action(); if
- * (!Translator.traducir(comando, action, this)) { cadena =
- * (action.getMessage()); } else { cadena = switchearAction(action); // ACÁ
- * EMPIEZA LA PARTE DE ENDGAME } ArrayList<Endgame> endgames =
- * aventura.getEndgames(); boolean esEndgame = false; int i = 0; while (i <
- * endgames.size() && !esEndgame) { esEndgame =
- * endgames.get(i).esEndgame(action); i++; // G2 } if (esEndgame) { cadena +=
- * "\n" + endgames.get(i).getDescription(); } return new
- * ResultadoInstruccion(esEndgame, cadena); // devuelve si es fin de juego o no,
- * junto con el mensaje // que se muestra por pantalla.
- * 
- * 
- * }
- */
+
+	/////////////////////////////////////////////////////// public
+	
+	public ResultadoInstruccion recibirInstruccion(Action action) {
+		// Devuelve falsecuando sea ENDGAME
+		String cadena;
+		cadena = switchearAction(action); // ACÁ EMPIEZA LA PARTE DE ENDGAME
+		ArrayList<Endgame> endgames = aventura.getEndgames();
+		boolean esEndgame = false;
+		int i = 0;
+		while (i < endgames.size() && !esEndgame) {
+			esEndgame = endgames.get(i).esEndgame(action);
+			i++; // G2
+		}
+		if (esEndgame) {
+			cadena += "\n" + endgames.get(i-1).getDescription();// devuelve si es fin de juego o no, junto con el mensaje que se muestra por pantalla.
+																
+		}
+		return new ResultadoInstruccion(esEndgame, cadena);
+
+	}
+	
+	// este metodo se completara en la proxima entrega
+	
+	public ResultadoInstruccion recibirInstruccion(String comando) {
+		// Devuelve falsecuando sea ENDGAME
+		String cadena;
+		Action action = new Action();
+		if (!Translator.traducir(comando, action, this)) {
+			cadena = (action.getMessage());
+		} else {
+			cadena = switchearAction(action); // ACÁ EMPIEZA LA PARTE DE ENDGAME
+		}
+		ArrayList<Endgame> endgames = aventura.getEndgames();
+		boolean esEndgame = false;
+		int i = 0;
+		while (i < endgames.size() && !esEndgame) {
+			esEndgame = endgames.get(i).esEndgame(action);
+			i++; // G2
+		}
+		if (esEndgame) {
+			cadena += "\n" + endgames.get(i).getDescription();// devuelve si es fin de juego o no, junto con el mensaje que se muestra por pantalla.
+																
+		}
+		return new ResultadoInstruccion(esEndgame, cadena);
+
+	}
+	
+}
