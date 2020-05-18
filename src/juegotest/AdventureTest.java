@@ -296,13 +296,34 @@ public class AdventureTest {
 	
 	@Test
 	public void usarBarretaSobreRociador() {
+		//tenemos barreta, pero rociador esta en el place
+		
 		expected = "Se ha abollado la lata";
 		jugador.tomarItem("barreta");
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = jugador.switchearAction(action);
 		//System.out.println(actuals);
 		assertEquals(expected,actuals);
+		
+		//FUNCIONA
 	}
+	
+	@Test
+	public void usarBarretaSobreRociador_AmbosEnInventario_SePuedeUsar() {
+		//tenemos barreta y rociador en el inventario
+		
+		expected = "Se ha abollado la lata";
+		jugador.tomarItem("barreta");
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
+		actuals = jugador.switchearAction(action);
+		System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//FALLA: CUANDO SE TIENE EL OBJETO Q REALIZA ACCION EN INVENTARIO Y EL Q LA RECIBE ESTA EN EL PLACE, NO DICE QUE NO ENCUENTRA EL SEGUNDO
+	}
+	
+	
 	
 	@Test
 	public void usarBarretaSobreSelf() {
@@ -323,12 +344,112 @@ public class AdventureTest {
 		jugador.tomarItem("barreta");
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
+		//System.out.println(actuals);
 		assertEquals(expected,actuals);
 		
 		//REVISAR--- DEVUELVE "No tienes ese objeto" y en realidad tiene ambos
 	}
 
+	@Test
+	public void usarEspejoSobreBarreta_NingunoEnInventario() {
+		expected = "No tienes ese objeto.";
+		action = new Action("usar","espejo","item","barreta", "item");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+	}
+	
+	@Test
+	public void usarBarretaSobreEspejo_SoloTieneEspejoEnInventario_SePuedeUsar() {
+		expected = "No tienes ese objeto";
+		jugador.tomarItem("espejo");
+		action = new Action("usar","barreta","item","espejo", "item");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+	}
+	
+	@Test
+	public void usarEspejoSobreBarreta_SoloTienesBarretaEnInventario_NoSePuedeUsar() {
+		expected = "No tienes ese objeto.";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","espejo","item","barreta", "item");
+		actuals = jugador.switchearAction(action);
+		System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//Da "Bien"... quiere usar algo que no tiene
+	}
+	
+	@Test
+	public void usarEspejoSobreBarreta_TieneAmbosEnInventario_NoSePuedeUsar() {
+		expected = "No tienes ese objeto.";
+		jugador.tomarItem("barreta");
+		jugador.tomarItem("espejo");
+		action = new Action("usar","espejo","item","barreta", "item");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//Revisar...Deberia fallar...Tiene ambos... pero deberia decir que no puede usar espejo sobre barreta
+	}
+	
+	@Test
+	public void usarEspejoSobrePirata_EstaEnInventario_NoSePuedeUsar() {
+		expected = "No tienes ese objeto.";
+		jugador.tomarItem("espejo");
+		action = new Action("usar","espejo","item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//REVISAR
+		//Dice que no tiene objeto, pero si lo tiene... el problema es que no puede usar el objeto sobre un npcs
+	}
+	
+	@Test
+	public void usarBarretaSobrePirata_EstaEnInventario_NoSePuedeUsar() {
+		expected = "No tienes ese objeto.";
+		jugador.tomarItem("barreta");
+		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//REVISAR, FALLA
+		//Dice que no tiene objeto, pero si lo tiene... el problema es que no puede usar el objeto sobre un npcs
+	}
+	
+	
+	
+	@Test
+	public void usarRociadorSobrePirata_EstaEnInventario_SePuedeUsar() {
+		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","rociador con cerveza de raiz","item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//FUNCIONA
+		
+	}
+
+	@Test
+	public void usarBarretaSobrePirata_NoEstaEnInventario_NoSePuedeUsar() {
+		expected = "No tienes ese objeto.";
+
+		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		//System.out.println(actuals);
+		assertEquals(expected,actuals);
+		
+		//FUNCIONA... al vez deberia aclarar que es algo que no se puede hacer
+		
+	}
+	
+	
+	
 	
 	/*
 	@Test
