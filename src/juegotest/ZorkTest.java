@@ -40,7 +40,9 @@ public class ZorkTest {
 	 * assertEquals("Guybrush Threepwood", juego.getSettings().getCharacter());
 	 * 
 	 * }
-	 * 
+	 */
+	 
+	 /*
 	 * @Test public void getWelcome() throws IOException {
 	 * 
 	 * String path = "Juego.json"; AventuraZork juego =
@@ -241,7 +243,8 @@ public class ZorkTest {
 	}
 	*/
 	
-	/*
+	
+	 /*
 	@Test public void agregaNPCSyRemueveMuelle()throws IOException { 
 		String path = "Juego.json"; 
 		AventuraZork juego = CargaAventura.cargarArchivo(path);
@@ -257,39 +260,7 @@ public class ZorkTest {
 		System.out.println(juego.verAlrededor("muelle"));
 		
 	}
-	*/
-	
-	/*
-	@Test public void pruebaTrigger()throws IOException { 
-		String path = "Juego.json"; 
-		AventuraZork juego = CargaAventura.cargarArchivo(path);
-		
-		Action accion = new Action("usar", "rociador con cerveza de raiz", "item", "pirata fantasma");
-		Player jugador = new Player(juego);
-		
-		//jugador.callTrigger(accion);
-		
-		//System.out.println(accion.getMessage());
-		
-		Action accion2 = new Action("ir","taberna","location"); 
-		
-		jugador.goTo(accion2);
-		
-		System.out.println(accion2.getMessage());
-	}
-	*/
-	/*
-	
-	
-	@Test
-	public void playerRecibeComando() {
-		Player jugador = new Player();
-		
-	}
-	
-	
-	*/
-	
+	 */
 	
 	
 }

@@ -28,13 +28,17 @@ public class AdventureTest {
 		jugador = new Player(juego);
 	}
 	
+	//////BIENVENIDA DE INICIO DE JUEGO/////////////////////////////////
+	
 	@Test
-	public void verAlrededor() {
-		action = new Action("ver alrededor",null, null,null, null);
-		expected = "Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.";
-		actuals = jugador.switchearAction(action);
+	public void RecibirBienvenida() {
+		expected = "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.";
+		actuals = jugador.getWelcome();
 		assertEquals(expected, actuals);
 	}
+	
+	
+	////////////ACCION NO RECONOCIDA///////////////////////////////////////
 	
 	@Test
 	public void accionNoReconocida() {
@@ -44,10 +48,12 @@ public class AdventureTest {
 		assertEquals(expected, actuals);
 	}
 	
+	/////////VER INVENTARIO////////////////////////////////////////////////
+	
 	@Test
 	public void verInventarioVacio() {
-		action = new Action("ver inventario",null, null,null, null);
 		expected = "Tu inventario esta vacio.";
+		action = new Action("ver inventario",null, null,null, null);
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
 	}
@@ -56,17 +62,81 @@ public class AdventureTest {
 	// action, thing,condition, target,  effect_over
 	@Test
 	public void verInventarioConUnElemento() {
+		expected = "En tu inventario hay una barreta.";
+		
+		action = new Action("tomar","barreta", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		
+		action = new Action("ver inventario",null, null,null, null);
+		actuals = jugador.switchearAction(action);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void verInventarioConVariosElementos() {
+		expected = "En tu inventario hay una barreta, un espejo, y un rociador con cerveza de raiz.";
+		
+		action = new Action("tomar","barreta", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		
+		action = new Action("tomar","espejo", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		
+		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		
+		action = new Action("ver inventario",null, null,null, null);
+		actuals = jugador.switchearAction(action);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	/////////TOMAR ELEMENTO/////////////////////////////////////////
+	
+	@Test
+	public void tomarUnElemento() {
 		action = new Action("tomar","barreta", "item",null, null);
 		expected = "Tienes una barreta";
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
 	}
 	
+	
 	@Test
 	public void tomarDosVecesUnElemento() {
 		expected = "No encuentro ese objeto.";
 		action = new Action("tomar","barreta", "item",null, null);
 		actuals = jugador.switchearAction(action);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void tomarItemCuandoNoHayNinguno() {
+		expected = "No encuentro ese objeto.";	
+		//Tomamos la barreta
+		action = new Action("tomar","barreta", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		//Tomamos rociador
+		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		//Tomamos espejo
+		action = new Action("tomar","espejo", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		//Miramos alrededor habiendo sacado la barreta	
+		action = new Action("tomar","telefono", "item",null, null);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+	}
+	
+	
+	///////MIRAR ALREDEDOR////////////////////////////
+	
+	@Test
+	public void verAlrededor() {
+		action = new Action("ver alrededor",null, null,null, null);
+		expected = "Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.";
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
 	}
@@ -103,35 +173,7 @@ public class AdventureTest {
 		
 	}
 	
-	@Test
-	public void tomarItemCuandoNoHayNinguno() {
-		expected = "No encuentro ese objeto.";	
-		//Tomamos la barreta
-		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
-		//Tomamos rociador
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
-		//Tomamos espejo
-		action = new Action("tomar","espejo", "item",null, null);
-		actuals = jugador.switchearAction(action);
-		//Miramos alrededor habiendo sacado la barreta	
-		action = new Action("tomar","telefono", "item",null, null);
-		actuals = jugador.switchearAction(action);
-		assertEquals(expected, actuals);
-		
-	}
-
-	@Test
-	public void moverseATabernaConObstaculo() {
-		expected = "No puedes pasar! El pirata fantasma no te dejara pasar";	
-		
-		//Ir a taberna	
-		action = new Action("ir","taberna", "location",null, null);
-		actuals = jugador.switchearAction(action);
-		assertEquals(expected, actuals);
-		
-	}
+	////PRUEBAS DE TRIGGERS////////////////////////////////////////
 	
 	@Test
 	public void dispararTrigger() {
@@ -183,6 +225,33 @@ public class AdventureTest {
 		
 	}
 	
+	///////////MOVERSE//////////////////////////////////////
+	
+	@Test
+	public void moverseATabernaConObstaculo() {
+		expected = "No puedes pasar! El pirata fantasma no te dejara pasar";	
+		
+		//Ir a taberna	
+		action = new Action("ir","taberna", "location",null, null);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+		
+	}
+	
+	@Test
+	public void irALocation_SePuedeIr() {
+		expected = "Estas en una sucia taberna. Al norte hay un muelle.";	
+		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		//Ir a taberna	
+		action = new Action("ir","taberna", "location",null, null);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+		
+	}
+	
 	@Test
 	public void irALocationNoExistente() {
 		expected = "No se a donde quieres ir.";	
@@ -201,6 +270,37 @@ public class AdventureTest {
 		assertEquals(expected, actuals);
 		
 	}
+	
+	@Test
+	public void irADirection_SePuedeIr() {
+		expected = "Estas en una sucia taberna. Al norte hay un muelle.";	
+		//Eliminar obstaculo
+		jugador.tomarItem("rociador con cerveza de raiz");
+		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		actuals = jugador.switchearAction(action);
+		//Ir a taberna	
+		action = new Action("ir","sur", "direction",null, null);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void irADirection_NoSePuedeIr() {
+		expected = "No puedes ir por ahi."; //Mensaje propuesto
+		//Ir a taberna	
+		action = new Action("ir","norte", "direction",null, null);
+		actuals = jugador.switchearAction(action);//actuals tiene "No se a donde quieres ir."
+		System.out.println(actuals);
+		assertEquals(expected, actuals);
+		
+		//FALLA
+		//DICE QUE NO SABE DONDE SE QUIERE IR
+		//NORTE ES UNA DIRECCION
+		//DEBERIA DECIR QUE NO PUEDE IR EN ESA DIRECCION
+	}
+	
+	
+	/////////////HABLAR CON NPC//////////////////////////////////////////////
 	
 	@Test
 	public void hablarConNpcVigente() {
@@ -229,6 +329,7 @@ public class AdventureTest {
 		
 	}
 	
+	////////////////USO DE ITEMS//////////////////////////////
 	
 	@Test
 	public void UsarRociadorConNpcQueNoEstaEnPlace() {
@@ -243,12 +344,7 @@ public class AdventureTest {
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
-		
-		//FUNCIONA
-		
 	}
-	
-	
 	
 	@Test
 	public void usarRociadorSobrePirata_TengoEnInventario_SePuedeUsar() {
@@ -257,8 +353,6 @@ public class AdventureTest {
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -294,10 +388,7 @@ public class AdventureTest {
 
 		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
-		assertEquals(expected,actuals);
-		
-		//FUNCIONA
-		
+		assertEquals(expected,actuals);	
 	}
 	
 	@Test
@@ -306,11 +397,7 @@ public class AdventureTest {
 		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz","item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
-		//System.out.println(actuals);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
-		
 	}
 	
 	@Test
@@ -320,8 +407,6 @@ public class AdventureTest {
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -351,10 +436,9 @@ public class AdventureTest {
 		action = new Action("usar","espejo", "item","self", "self");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
+		//FUNCIONA
 		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
 		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -363,8 +447,6 @@ public class AdventureTest {
 		action = new Action("usar","espejo", "item","self", "self");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -375,11 +457,9 @@ public class AdventureTest {
 		actuals = jugador.switchearAction(action);
 		//System.out.println(actuals);
 		assertEquals(expected,actuals);
+		//FUNCIONA
 		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
 		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
-		
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -389,8 +469,6 @@ public class AdventureTest {
 		action = new Action("usar","barreta", "item","self", "self");
 		actuals = jugador.switchearAction(action);
 		assertNotEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -400,11 +478,7 @@ public class AdventureTest {
 		actuals = jugador.switchearAction(action);
 		System.out.println(actuals);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
-	
-	
 	
 	@Test
 	public void usarBarretaSobreRociador() {
@@ -415,8 +489,6 @@ public class AdventureTest {
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -458,8 +530,6 @@ public class AdventureTest {
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -469,8 +539,6 @@ public class AdventureTest {
 		action = new Action("usar","barreta","item","espejo", "item");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -480,8 +548,6 @@ public class AdventureTest {
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected,actuals);
-		
-		//FUNCIONA
 	}
 	
 	@Test
@@ -497,20 +563,7 @@ public class AdventureTest {
 		//FALLA
 		//Dice que no tenemos el objeto (que queremos usar, primero)
 		//Tiene ambos... pero deberia decir que no puede usar espejo sobre barreta
-	}
-	
-	
-	/*
-	@Test
-	public void esEndgame() {
-		boolean esperado = true;
-		action = new Action("move","taberna","location",null,null);
-		Endgame fin = juego.getEndgames().get(0);
-		esperado = fin.esEndgame(action);
-		assertEquals(true,esperado);
-	}
-	*/
-	
+	}	
 	
 
 }

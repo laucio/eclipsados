@@ -42,7 +42,7 @@ public class Player {
 		this.currentLocation = currentLocation;
 	}
 
-	public String darBienvenida() {
+	public String getWelcome() {
 		return aventura.darBienvenida();
 	}
 
