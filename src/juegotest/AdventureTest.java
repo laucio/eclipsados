@@ -253,8 +253,8 @@ public class AdventureTest {
 	}
 	
 	@Test
-	public void irALocationNoExistente() {
-		expected = "No se a donde quieres ir.";	
+	public void irALocationActual() {
+		expected = "Ya te encuentras aqui.";	
 		
 		//Ir a taberna	
 		action = new Action("ir","taberna", "location",null, null);
@@ -266,6 +266,28 @@ public class AdventureTest {
 		//Ir a taberna	
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.switchearAction(action);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+		
+	}
+	
+	@Test
+	public void irALocationNoExistente() {
+		expected = "No se a donde quieres ir.";	
+		
+		//Ir a cualquier lugar que no sea location	
+		action = new Action("ir","zoologico", "location",null, null);
+		actuals = jugador.switchearAction(action);
+		assertEquals(expected, actuals);
+		
+	}
+	
+	@Test
+	public void irAPuntoCardinalSinAcceso() {
+		expected = "No puedes ir hacia alla.";	
+		
+		//Ir a cualquier lugar que no sea location	
+		action = new Action("ir","sudeste", "direction",null, null);
 		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
 		
@@ -286,17 +308,12 @@ public class AdventureTest {
 	
 	@Test
 	public void irADirection_NoSePuedeIr() {
-		expected = "No puedes ir por ahi."; //Mensaje propuesto
+		expected = "No puedes ir hacia alla."; 
 		//Ir a taberna	
 		action = new Action("ir","norte", "direction",null, null);
-		actuals = jugador.switchearAction(action);//actuals tiene "No se a donde quieres ir."
-		System.out.println(actuals);
+		actuals = jugador.switchearAction(action);
 		assertEquals(expected, actuals);
 		
-		//FALLA
-		//DICE QUE NO SABE DONDE SE QUIERE IR
-		//NORTE ES UNA DIRECCION
-		//DEBERIA DECIR QUE NO PUEDE IR EN ESA DIRECCION
 	}
 	
 	
@@ -361,11 +378,8 @@ public class AdventureTest {
 		jugador.tomarItem("espejo");
 		action = new Action("usar","espejo", "item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
-		
-		//FALLA... SI SE TIENE EN INVENTARIO. DEBERIA DECIR QUE NO SE PUEDE REALIZAR ESA ACCION O QUE NO TIENE EFECTO
-		
+			
 	}
 	
 	@Test
@@ -374,12 +388,8 @@ public class AdventureTest {
 		jugador.tomarItem("barreta");
 		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
 		
-		//FALLA
-		//Dice que no tiene objeto, pero si lo tiene... 
-		//el problema es que no puede usar este objeto sobre un npcs
 	}
 	
 	@Test
@@ -455,7 +465,6 @@ public class AdventureTest {
 		jugador.tomarItem("rociador con cerveza de raiz");
 		action = new Action("usar","rociador con cerveza de raiz", "item","self", "self");
 		actuals = jugador.switchearAction(action);
-		//System.out.println(actuals);
 		assertEquals(expected,actuals);
 		//FUNCIONA
 		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
@@ -468,7 +477,7 @@ public class AdventureTest {
 		jugador.tomarItem("barreta");
 		action = new Action("usar","barreta", "item","self", "self");
 		actuals = jugador.switchearAction(action);
-		assertNotEquals(expected,actuals);
+		assertEquals(expected,actuals);
 	}
 	
 	@Test
@@ -476,7 +485,6 @@ public class AdventureTest {
 		expected = "No tienes ese objeto.";
 		action = new Action("usar","barreta", "item","self", "self");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
 	}
 	
@@ -511,17 +519,13 @@ public class AdventureTest {
 	
 	@Test
 	public void usarEspejoSobreBarreta_AmbosEnInventario_NoSePuedeUsar() {
-		expected = "Se ha abollado la lata";
+		expected = "No ha servido de nada.";
 		jugador.tomarItem("espejo");
 		jugador.tomarItem("barreta");
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
-		
-		//FALLA
-		//REVISAR--- DEVUELVE "No tienes ese objeto" y en realidad tiene ambos
-		//Deberia decir que no puede realizar eso o que la accion no tiene efecto
+
 	}
 
 	@Test

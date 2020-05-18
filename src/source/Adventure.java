@@ -205,4 +205,31 @@ public class Adventure {
 
 	}
 
+	public boolean esCaminoExistente(Action action) {
+		boolean exist = false;
+		ArrayList<Location> allLocations = this.getLocations();
+		int i =0 ;
+		while(!exist && i< allLocations.size()) {
+			if(allLocations.get(i).getName().equals(action.getThing())){
+				exist=true;
+			}
+			i++;
+		}
+		if(!exist) {
+			if( action.getThing().equals("sur") || action.getThing().equals("norte") ||
+					action.getThing().equals("este") || action.getThing().equals("oeste")
+					||action.getThing().equals("sureste") || action.getThing().equals("noroeste") ||
+					action.getThing().equals("noreste") || action.getThing().equals("suroeste")
+					|| action.getThing().equals("sudeste") || action.getThing().equals("sudoeste")) {
+				exist =true;
+			}
+		}
+		return exist;
+	}
+
+	public void eliminarItemDeInventario(String target) {
+		this.getInventory().remove(target);
+		
+	}
+
 }
