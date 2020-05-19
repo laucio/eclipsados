@@ -144,13 +144,13 @@
 			"condition": "location",
 			"action": "ir",
 			"thing": "taberna",
-			"description": "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
+			"description": "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
 		},
 		{
 			"condition": "item",
 			"action": "usar",
 			"thing": "espejo",
-			"description": "¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"
+			"description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
 		}
 	]
 }

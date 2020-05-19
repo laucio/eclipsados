@@ -42,10 +42,10 @@ public class ProcesarActionTest {
 	//////////OCURREN CONDICIONES DE FIN///////////////////
 	@Test
 	public void irALocation_condicionDeFin() {
-		expected = "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
+		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -65,7 +65,7 @@ public class ProcesarActionTest {
 		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -88,10 +88,10 @@ public class ProcesarActionTest {
 	
 	@Test
 	public void irADirection_SePuedeIr_EsFinDeJuego() {
-		expected = "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
+		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -270,7 +270,7 @@ public class ProcesarActionTest {
 		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		assertEquals(expected, actuals);
@@ -287,19 +287,18 @@ public class ProcesarActionTest {
 		 * A ESE FINAL DEL JUEGO
 		 */
 		
-		expected = "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
+		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Ir a taberna	
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
 		action = new Action("ir","taberna", "location",null, null);
 		actuals = jugador.processAction(action);
-		System.out.println(actuals);
 		assertEquals(expected, actuals);
 	}
 	
@@ -308,14 +307,10 @@ public class ProcesarActionTest {
 		expected = "No ha servido de nada.";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		actuals = jugador.processAction(action);
-		//Ir a taberna	
-		//action = new Action("ir","taberna", "location",null, null);
-		//actuals = jugador.switchearAction(action);
-		System.out.println(actuals);
 		assertEquals(expected, actuals);
 		
 	}
@@ -341,10 +336,10 @@ public class ProcesarActionTest {
 		 * ESTA ACCION LO DESENCADENA
 		 */
 		
-		expected = "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
+		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -363,7 +358,7 @@ public class ProcesarActionTest {
 		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -398,10 +393,10 @@ public class ProcesarActionTest {
 	
 	@Test
 	public void irADirection_SePuedeIr_() {
-		expected = "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
+		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		//Ir a taberna	
@@ -439,7 +434,7 @@ public class ProcesarActionTest {
 		expected = "Nadie te respondera...";	
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
@@ -458,7 +453,7 @@ public class ProcesarActionTest {
 		expected = "No ha servido de nada.";	
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		//Eliminar obstaculo
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
@@ -473,7 +468,7 @@ public class ProcesarActionTest {
 	public void usarRociadorSobrePirata_TengoEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -483,7 +478,7 @@ public class ProcesarActionTest {
 	public void usarEspejoSobrePirata_TengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","espejo", "item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -494,7 +489,7 @@ public class ProcesarActionTest {
 	public void usarBarretaSobrePirata_EstaEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -514,7 +509,7 @@ public class ProcesarActionTest {
 	public void usarRociadorSobrePirata_EstaEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz","item","pirata fantasma", "npcs");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -527,7 +522,7 @@ public class ProcesarActionTest {
 	public void usarBarretaSobreEspejo_TengoSoloBarreta_SePuedeUsar() {
 		expected = "El espejo se ha roto";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -540,7 +535,7 @@ public class ProcesarActionTest {
 		
 		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur hay una taberna.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = jugador.processAction(action);
 		
@@ -548,7 +543,6 @@ public class ProcesarActionTest {
 		actuals = jugador.verAlrededor();
 		
 		assertEquals(expected,actuals);//si el trigger de espejo tuviera remove en lugar de default
-		//assertNotEquals(expected,actuals);//si en trigger self de espejo hay default
 		
 	}
 	
@@ -560,12 +554,11 @@ public class ProcesarActionTest {
 		 * USAR EL ESPEJO ES UNA CONDICION DE FIN
 		 */
 		
-		expected = "¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!\nFIN.";
+		expected = "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!\nFIN.";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","espejo", "item","self", "self");
 		actuals = jugador.processAction(action);
-		System.out.println(actuals);
 		assertEquals(expected,actuals);
 		//FUNCIONA
 		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
@@ -584,7 +577,7 @@ public class ProcesarActionTest {
 	public void usarRociadorSobreSelf() {
 		expected = "Que delicia de cerveza!";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","rociador con cerveza de raiz", "item","self", "self");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -597,7 +590,7 @@ public class ProcesarActionTest {
 	public void usarBarretaSobreSelf_LoTengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta", "item","self", "self");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -617,7 +610,7 @@ public class ProcesarActionTest {
 		
 		expected = "Se ha abollado la lata";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -629,9 +622,9 @@ public class ProcesarActionTest {
 		
 		expected = "Se ha abollado la lata";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -643,9 +636,9 @@ public class ProcesarActionTest {
 	public void usarEspejoSobreBarreta_AmbosEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -664,7 +657,7 @@ public class ProcesarActionTest {
 	public void usarBarretaSobreEspejo_SoloTieneEspejoEnInventario_SePuedeUsar() {
 		expected = "No tienes ese objeto.";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","barreta","item","espejo", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
@@ -674,7 +667,7 @@ public class ProcesarActionTest {
 	public void usarEspejoSobreBarreta_SoloTienesBarretaEnInventario_NoSePuedeUsar() {
 		expected = "No tienes ese objeto.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = jugador.switchearAction(action);
+		actuals = jugador.processAction(action);
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = jugador.processAction(action);
 		assertEquals(expected,actuals);
