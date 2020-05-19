@@ -40,15 +40,17 @@ public class Player {
 	}
 
 	public String goTo(Action action) {
-
+		
+		boolean exitoso = false;
 		String retorno = "No se a donde quieres ir.";
 		if (action.getThing().equals(this.getCurrentLocation())) {
 			retorno = "Ya te encuentras aqui.";
+			action.setAchieved(false);
 		} else {
 			if (aventura.esCaminoExistente(action)) {
 				retorno = "No puedes ir hacia alla.";
 			}
-			boolean exitoso = false;
+			exitoso = false;
 			int indexCurrentLocation = aventura.getLocationIndex(this.currentLocation);
 			Location currentLocation = aventura.getLocations().get(indexCurrentLocation);
 			ArrayList<Connection> con = currentLocation.getConnections();
@@ -56,6 +58,8 @@ public class Player {
 			while (i < con.size() && !exitoso) {
 				if (action.getCondition().equals("direction") && action.getThing().equals(con.get(i).getDirection())) {
 					exitoso = true;
+					action.setCondition("location");
+					action.setThing(con.get(i).getLocation());
 				} else if (action.getCondition().equals("location")
 						&& action.getThing().equals(con.get(i).getLocation())) {
 					exitoso = true;
@@ -90,8 +94,9 @@ public class Player {
 					} // 2
 				}
 			}
-			if (!exitoso) { // si no es exitoso, "cancela" la accion.
-				action = new Action();
+			if (exitoso) { // si no es exitoso, "cancela" la accion.
+				//action = new Action();
+				action.setAchieved(true);
 			}
 		}
 		return retorno;
@@ -116,10 +121,11 @@ public class Player {
 							&& triggers.get(i).getThing().equals(accion.getThing())) {
 						encontrado = true;
 						retorno = triggers.get(i).getOn_trigger();
+						accion.setAchieved(true);
 
 						switch (triggers.get(i).getAfter_trigger()) {
 						case "remove":
-							aventura.removeNpc(accion.target, indexCurrentLocation);
+							aventura.removeNpc(accion.getTarget(), indexCurrentLocation);
 							break;
 						default:
 							break;
@@ -142,7 +148,7 @@ public class Player {
 		int i = 0;
 		while (i < inventario.size() && encontrado == false) {
 			if (inventario.get(i).equals(action.getThing())) {
-				int itemIndex = aventura.getItemIndex(action.thing);
+				int itemIndex = aventura.getItemIndex(action.getThing());
 				if (itemIndex >= 0) {
 					if (aventura.getItems().get(itemIndex).validateAction(action)) {
 						switch (action.getEffect_over()) {
@@ -171,12 +177,13 @@ public class Player {
 		return cadena;
 	}
 
-	public String tomarItem(String item) {
+	public String tomarItem(Action action) {
 		String cadena = "No encuentro ese objeto.";
 		int currentLocationIndex = this.aventura.getLocationIndex(this.currentLocation);
-		if (this.aventura.entregarItem(currentLocationIndex, item)) {
-			int itemIndex = this.aventura.getItemIndex(item);
+		if (this.aventura.entregarItem(currentLocationIndex, action.getThing())) {
+			int itemIndex = this.aventura.getItemIndex(action.getThing());
 			cadena = "Tienes " + this.aventura.getItems().get(itemIndex);
+			action.setAchieved(true);
 		}
 		return cadena;
 	}
@@ -197,7 +204,7 @@ public class Player {
 			cadena = this.goTo(action);
 			break;
 		case "tomar":
-			cadena = this.tomarItem(action.getThing());
+			cadena = this.tomarItem(action);
 			break;
 		case "usar":
 			cadena = usarItem(action);
@@ -252,6 +259,7 @@ public class Player {
 						&& triggers.get(i).getThing().equals(action.getThing())) {
 					encontrado = true;
 					retorno = triggers.get(i).getOn_trigger();
+					action.setAchieved(true);
 
 					switch (triggers.get(i).getAfter_trigger()) {
 					case "remove":
@@ -289,6 +297,7 @@ public class Player {
 							&& triggers.get(i).getThing().equals(accion.getThing())) {
 						encontrado = true;
 						retorno = triggers.get(i).getOn_trigger();
+						accion.setAchieved(true);
 
 						switch (triggers.get(i).getAfter_trigger()) {
 						case "remove":
@@ -312,54 +321,24 @@ public class Player {
 
 		return retorno;
 	}
-
-////////////////////////////////////////////////////////////////////////////
-
-	/////////////////////////////////////////////////////// public
 	
-	public ResultadoInstruccion recibirInstruccion(Action action) {
-		// Devuelve falsecuando sea ENDGAME
-		String cadena;
-		cadena = switchearAction(action); // ACÁ EMPIEZA LA PARTE DE ENDGAME
-		ArrayList<Endgame> endgames = aventura.getEndgames();
-		boolean esEndgame = false;
-		int i = 0;
-		while (i < endgames.size() && !esEndgame) {
-			esEndgame = endgames.get(i).esEndgame(action);
-			i++; // G2
+	public String processAction(Action action) {
+		String retorno = this.switchearAction(action);
+		
+		if(action.isAchieved()) {
+			ArrayList<Endgame> endgames = this.aventura.getEndgames();
+			int i=0;
+			boolean esEndgame = false;
+			while (i < endgames.size() && !esEndgame) {
+				esEndgame = endgames.get(i).esEndgame(action);
+				i++;
+			}
+			if (esEndgame) {
+				retorno = endgames.get(i-1).getDescription() + "\nFIN.";													
+			}
 		}
-		if (esEndgame) {
-			cadena += "\n" + endgames.get(i-1).getDescription();// devuelve si es fin de juego o no, junto con el mensaje que se muestra por pantalla.
-																
-		}
-		return new ResultadoInstruccion(esEndgame, cadena);
-
-	}
-	
-	// este metodo se completara en la proxima entrega
-	
-	public ResultadoInstruccion recibirInstruccion(String comando) {
-		// Devuelve falsecuando sea ENDGAME
-		String cadena;
-		Action action = new Action();
-		if (!Translator.traducir(comando, action, this)) {
-			cadena = (action.getMessage());
-		} else {
-			cadena = switchearAction(action); // ACÁ EMPIEZA LA PARTE DE ENDGAME
-		}
-		ArrayList<Endgame> endgames = aventura.getEndgames();
-		boolean esEndgame = false;
-		int i = 0;
-		while (i < endgames.size() && !esEndgame) {
-			esEndgame = endgames.get(i).esEndgame(action);
-			i++; // G2
-		}
-		if (esEndgame) {
-			cadena += "\n" + endgames.get(i).getDescription();// devuelve si es fin de juego o no, junto con el mensaje que se muestra por pantalla.
-																
-		}
-		return new ResultadoInstruccion(esEndgame, cadena);
-
+		
+	return retorno;
 	}
 	
 }

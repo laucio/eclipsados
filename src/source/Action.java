@@ -2,37 +2,40 @@ package source;
 
 public class Action {
 
-	String action;	//usar
-	String thing;	//npcs
-	String condition; //direction,location,item,etc..
-	String target;
-	String message;
-	String effect_over;
+	private String action;	//usar
+	private String thing;	//npcs
+	private String condition; //direction,location,item,etc..
+	private String target;
+	private String effect_over;
+	private boolean achieved;
 	
-	public String getMessage() {
-		return message;
-	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public Action() {
+	this.action = "";
+	this.thing = "";
+	this.condition = "";
+	
+	this.target = null;
+	this.effect_over = null;
+	this.achieved = false;
 	}
-
+	
 	public Action(String action, String thing, String condition) {
 		this.action = action;
 		this.thing = thing;
 		this.condition = condition;
-		this.message = null;
 		this.target = null;
 		this.effect_over = null;
+		this.achieved = false;
 	}
-	
+		
 	public Action(String action, String thing, String condition,String target, String effect_over) {
 		this.action = action;
 		this.thing = thing;
 		this.condition = condition;
-		this.message = null;
 		this.target = target;
 		this.effect_over = effect_over;
+		this.achieved = false;
 	}
 	
 	public String getTarget() {
@@ -42,13 +45,6 @@ public class Action {
 	public void setTarget(String target) {
 		this.target = target;
 	}
-
-	public Action() {
-	this.action = "";
-	this.thing = "";
-	this.condition = "";
-	}
-	
 	
 	public String getAction() {
 		return action;
@@ -76,6 +72,15 @@ public class Action {
 	public void setEffect_over(String effect_over) {
 		this.effect_over = effect_over;
 	}
+
+	public boolean isAchieved() {
+		return achieved;
+	}
+
+	public void setAchieved(boolean achieved) {
+		this.achieved = achieved;
+	}
+	
 	
 	
 
