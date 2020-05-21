@@ -39,13 +39,4 @@ public class Trigger {
 		this.after_trigger = after_trigger;
 	}
 
-	
-	public String activarTrigger(String thing){
-	       
-        if(this.thing == thing)
-            return this.on_trigger;
-        return "Eso no ha servido de nada";
-           
-       
-    }
 }

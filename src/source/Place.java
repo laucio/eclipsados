@@ -9,12 +9,13 @@ public class Place {
 	private String number;
 	private ArrayList<String> items;
 
-	public Place(String name, String gender, String number, Set<Item> items) {
+	
+	public Place(String name, String gender, String number, ArrayList<String> items) {
 		super();
-		this.setName(name);
-		this.setGender(gender);
-		this.setNumber(number);
-		this.setItems(null);
+		this.name = name;
+		this.gender = gender;
+		this.number = number;
+		this.items = items;
 	}
 
 	public String getName() {

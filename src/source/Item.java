@@ -30,10 +30,6 @@ public class Item {// implements Action{
 		this.name = name;
 	}
 
-	/*
-	 * @Override public String usar() { return "Resultado"; }
-	 */
-
 	public String getGender() {
 		return gender;
 	}
