@@ -1,10 +1,12 @@
-package source;
-
+package respaldo;
+/*
 import java.io.FileWriter;
 import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+
+import source.Adventure;
 
 public class SaveGame {
 	public static void saveStatus(Adventure adv,String filePath) throws JsonIOException, IOException {
@@ -16,4 +18,4 @@ public class SaveGame {
 	
 		
 	}
-}
+}*/

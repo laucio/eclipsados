@@ -1,5 +1,5 @@
-package juegotest;
-
+package respaldo;
+/*
 import static org.junit.Assert.*;
 
 import java.io.IOException;
@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gson.JsonIOException;
-
 
 import source.*;
 
@@ -28,7 +27,7 @@ public class SavedGameTest {
 		path = "Juego.json";
 		juego = LoadAdventure.cargarArchivo(path);
 		jugador = new Player(juego);
-	}
+	}*/
 	
 	/*
 	@Test
@@ -62,7 +61,7 @@ public class SavedGameTest {
 	}
 	*/
 	
-	 @Test//No es una prueba... se uso para modificar json
+	/* @Test//No es una prueba... se uso para modificar json
 	 public void  NuevoDispTrigger() throws JsonIOException, IOException {
        
 		 //a barreta le agregamos targets
@@ -134,3 +133,4 @@ public class SavedGameTest {
 
 	
 }
+*/

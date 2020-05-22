@@ -1,10 +1,12 @@
-package source;
-
+package respaldo;
+/*
 import java.io.FileWriter;
 import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+
+import source.Adventure;
 
 public class SavedGame {
 	
@@ -20,4 +22,4 @@ public class SavedGame {
        
     }
 	
-}
+}*/
