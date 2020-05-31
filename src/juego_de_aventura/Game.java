@@ -62,8 +62,8 @@ public class Game {
 		return adventure.darBienvenida();
 	}
 	
-	public String describeContextToPlayer() {
-		return player.lookAround();
+	public String makePlayerLookAround() {
+		return player.lookAround(adventure);
 	}
 	
 	public String makePlayerTakeItem(Action action) {

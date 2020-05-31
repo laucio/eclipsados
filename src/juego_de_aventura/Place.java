@@ -70,4 +70,9 @@ public class Place extends Thing{
 		return this.toString();
 	}
 
+	public boolean hasItem(String name) {
+		
+		return this.getItems().contains(name);
+	}
+
 }

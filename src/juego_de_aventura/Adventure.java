@@ -149,58 +149,7 @@ public class Adventure {
 		return retorno;
 	}
 
-	public String locationDescription(String currentLocation) {
-		String cadena;
-		int indiceLocation = getLocationIndex(currentLocation);
-		Location currentLocationObj = this.locations.get(indiceLocation);
-		// Como primera parte de donde estoy, es la descripcion de la location (ej:
-		// Estas en un muelle)
-		cadena = currentLocationObj.getDescription();
 
-		if (currentLocationObj.getPlaces() != null) {
-			for (int i = 0; i < currentLocationObj.getPlaces().size(); i++) {
-				Place place = currentLocationObj.getPlaces().get(i);
-				if (place.getItems().size() > 0) {
-					// Despues mencionamos el place (ej: el piso)
-					cadena += ". En ";
-
-					cadena += place.toString() + " hay: ";
-					for (int j = 0; j < place.getItems().size(); j++) {
-						// Comenzamos a agregar los items que hay en cada place de la location
-						String item = place.getItems().get(j);
-						int itemIndex = getItemIndex(item);
-						cadena += ((j > 0) ? ((j == place.getItems().size() - 1) ? " y " : " , ") : "")
-								+ this.getItems().get(itemIndex).toString();
-
-					} // end of for (int j = 0; j < place.getItems().size(); j++)
-				} // end of if (place.getItems().size() > 0)
-			} // for (int i = 0; i < currentLocationObj.getPlaces().size(); i++)
-		} // if (currentLocationObj.getPlaces() != null)
-
-		// Agregamos NPCS
-		ArrayList<String> curNpcs = currentLocationObj.getNPCS();
-
-		if (curNpcs != null) {
-			cadena += ". Hay ";
-			for (int i = 0; i < curNpcs.size(); i++) {
-				int npcsIndex = getNPCSIndex(curNpcs.get(i));
-				cadena += ((i > 0) ? ((i == curNpcs.size() - 1) ? " y " : " , ") : "")
-						+ this.getNpcs().get(npcsIndex).toString();
-
-			}
-		}
-
-		ArrayList<Connection> currentConnetions = currentLocationObj.getConnections();
-		for (int i = 0; i < currentConnetions.size(); i++) {
-			String locationConnection = currentConnetions.get(i).getLocation();
-			int locationIndex = getLocationIndex(locationConnection);
-			cadena += ". Al " + currentConnetions.get(i).getDirection() + " hay "
-					+ this.getLocations().get(locationIndex).toString();
-		}
-
-		cadena += ".";
-		return cadena;
-	}
 
 	public int getItemIndex(String itemName) {
 		int i = 0;

@@ -29,10 +29,12 @@ public class Connection {
 		return (this.obstacles == null || this.obstacles.isEmpty()) ? false : true;
 	}
 	
-	public void removeNPC(String personaje) {
-		if(this.obstacles.equals(personaje)) {
-			this.setObstacles(null);
+	public boolean removeNPC(String personaje) {
+		boolean removed;
+		if(removed = this.obstacles.equals(personaje)) {
+			this.setObstacles("");
 		}
+		return removed;
 	}
 	
 	

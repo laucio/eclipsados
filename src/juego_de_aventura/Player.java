@@ -53,7 +53,7 @@ public class Player {
 
 		if (exitoso == true) {
 
-			if (connections.get(i - 1).getObstacles() == null) {
+			if (connections.get(i - 1).getObstacles() == null || connections.get(i - 1).getObstacles().equals("")) {
 
 				Location newLocation = adventure.getLocation(connections.get(i - 1).getLocation());
 				this.setCurrentLocation(newLocation);
@@ -74,8 +74,8 @@ public class Player {
 		return retorno;
 	}
 
-	public String lookAround() {
-		return currentLocation.getDescription();
+	public String lookAround(Adventure adventure) {
+		return currentLocation.describeItself(adventure);
 	}
 
 	public String takeItem(Action action, Adventure adventure) {
@@ -86,7 +86,7 @@ public class Player {
 
 			if (item != null) {
 				this.addToInventory(item);
-				cadena = "Tienes " + item.getDescription();
+				cadena = "Tienes " + item;
 				action.setAchieved(true);
 			}
 		}
@@ -120,7 +120,7 @@ public class Player {
 
 		NPC personaje = adventure.getNPC(action.getTarget());
 
-		if (personaje != null) {
+		if (personaje != null && currentLocation.containsNpc(personaje.getName())) {
 			retorno = personaje.getTalk();
 			action.setAchieved(true);
 		}
@@ -135,13 +135,13 @@ public class Player {
 	public String useItem(Action action, Adventure adventure) {
 		String cadena = "No tienes ese objeto.";
 
-		Item item = adventure.getItem(action.getThing());
-
+		Item item = adventure.getItem(action.getThing()); 
 		if (item != null && this.hasItem(item)) {
 
 			if (item.hasEffectsOver(action)) {
-
-				Shootable shootable = adventure.findShootable(action.getTarget());
+				String shootableName = action.getTarget().equals("self")?action.getThing():
+					action.getTarget();
+				Shootable shootable = adventure.findShootable(shootableName);
 				
 				if(shootable != null) {
 					cadena = shootable.shootTrigger(action, adventure, currentLocation);

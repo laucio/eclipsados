@@ -71,7 +71,9 @@ public class NPC extends Obstacle implements Shootable{
 	public String shootTrigger(Action action, Adventure adventure, Location location) {
 		String retorno = "Eso no ha servido de nada.";
 		
+		if(this.isInLocation(location)) {
 		Trigger trigger = this.findTrigger(action);
+		
 		
 		if(trigger != null) {
 			retorno = trigger.getOn_trigger();
@@ -86,8 +88,13 @@ public class NPC extends Obstacle implements Shootable{
 			// case "invalidar":
 			}
 		}
+		}
 
 		return retorno;
+	}
+
+	private boolean isInLocation(Location location) {
+		return location.containsNpc(this.getName());
 	}
 	
 }
