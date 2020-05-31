@@ -139,7 +139,7 @@ public class Player {
 		if (item != null && this.hasItem(item)) {
 
 			if (item.hasEffectsOver(action)) {
-				String shootableName = action.getTarget().equals("self")?action.getThing():
+				String shootableName = action.IsSelfEffect()?action.getThing():
 					action.getTarget();
 				Shootable shootable = adventure.findShootable(shootableName);
 				

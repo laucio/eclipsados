@@ -59,9 +59,6 @@ public class NPC extends Obstacle implements Shootable{
 
 	}
 	
-	public String hablar() {
-		return this.getTalk();
-	}
 
 	public boolean isNamed(String npcName) {
 		return this.name.equals(npcName);

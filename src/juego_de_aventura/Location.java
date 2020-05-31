@@ -66,16 +66,7 @@ public class Location extends Thing {
 		return eliminado;
 	}
 
-	public int getPlaceIndex(String placeName) {// me trae el indice del array de places en location
-		int i = 0;
-		while (i < places.size()) {
-			if (places.get(i).getName().equals(placeName)) {
-				return i;
-			}
-			i++;
-		}
-		return -1;
-	}
+
 
 	public boolean hasItem(String item) {
 		boolean retorno = false;

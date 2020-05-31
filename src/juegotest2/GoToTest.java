@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import juego_de_aventura.*;
-import juegotest.Action;
 
 public class GoToTest {
 

@@ -150,46 +150,12 @@ public class Adventure {
 	}
 
 
-
-	public int getItemIndex(String itemName) {
-		int i = 0;
-		while (i < items.size()) {
-			if (items.get(i).getName().equals(itemName)) {
-				return i;
-			}
-			i++;
-		}
-		return -1;
-	}
-
 	public Item giveItem(Location currentLocation, String currentItem) {
 		Item retorno = null;
 		if (currentLocation.removeFromLocation(currentItem)) {
 			retorno = this.getItem(currentItem);
 		}
 		return retorno;
-	}
-
-	public int getLocationIndex(String locationName) {
-		int i = 0;
-		while (i < locations.size()) {
-			if (locations.get(i).getName().equals(locationName)) {
-				return i;
-			}
-			i++;
-		}
-		return -1;
-	}
-
-	public int getNPCSIndex(String nPCSName) {
-		int i = 0;
-		while (i < npcs.size()) {
-			if (npcs.get(i).getName().equals(nPCSName)) {
-				return i;
-			}
-			i++;
-		}
-		return -1;
 	}
 
 	public String darBienvenida() {
