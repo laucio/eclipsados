@@ -14,7 +14,7 @@ import juego_de_aventura.Player;
 
 public class TraductorTest {
 	
-
+/*
 	String path;
 	Game game;
 	Adventure adventure;
@@ -51,5 +51,5 @@ public class TraductorTest {
 		assertEquals(expected, actuals);
 		
 	}
-
+*/
 }

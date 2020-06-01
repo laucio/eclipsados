@@ -82,4 +82,53 @@ public class Game {
 		return player.useItem(action, adventure);
 	}
 	
+	public String processAction(Action action) {
+        String retorno = this.chooseAction(action);
+       
+        if(action.isAchieved()) {
+            ArrayList<Endgame> endgames = this.adventure.getEndgames();
+            int i=0;
+            boolean esEndgame = false;
+            while (i < endgames.size() && !esEndgame) {
+                esEndgame = endgames.get(i).esEndgame(action);
+                i++;
+            }
+            if (esEndgame) {
+                retorno = endgames.get(i-1).getDescription() + "\nFIN.";                                                   
+            }
+        }
+       
+    return retorno;
+    }
+	
+	public String chooseAction(Action action) {
+        //
+        String cadena = "No entiendo que quieres hacer";
+        switch (action.getAction()) {
+        case "ir":
+            cadena = this.movePlayer(action);
+            break;
+        case "tomar":
+            cadena = this.makePlayerTakeItem(action);
+            break;
+        case "usar":
+            cadena = this.makePlayerUseItem(action);
+            break;
+        case "ver alrededor":
+            cadena = this.makePlayerLookAround();
+            break;
+        case "ver inventario":
+            cadena = this.makePlayerWatchInventory();
+            break;
+        case "hablar":
+            cadena = this.makePlayerTalkToClosestNPC(action);
+            break;
+        default:
+            break;
+
+        }
+
+        return cadena;
+    }
+	
 }

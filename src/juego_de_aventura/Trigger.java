@@ -16,27 +16,35 @@ public class Trigger {
 		this.after_trigger = after_trigger;
 		
 	}
+	
 	public String getType() {
 		return type;
 	}
+	
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	public String getThing() {
 		return thing;
 	}
+	
 	public void setThing(String thing) {
 		this.thing = thing;
 	}
+	
 	public String getOn_trigger() {
 		return on_trigger;
 	}
+	
 	public void setOn_trigger(String on_trigger) {
 		this.on_trigger = on_trigger;
 	}
+	
 	public String getAfter_trigger() {
 		return after_trigger;
 	}
+	
 	public void setAfter_trigger(String after_trigger) {
 		this.after_trigger = after_trigger;
 	}
