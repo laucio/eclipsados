@@ -160,6 +160,4 @@ public class Location extends Thing {
 		return this.getNPCS().contains(name);
 	}
 
-
-
 }

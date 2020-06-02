@@ -11,6 +11,7 @@ import juego_de_aventura.Action;
 import juego_de_aventura.Adventure;
 import juego_de_aventura.Game;
 import juego_de_aventura.Player;
+import traductor_de_comandos.*;
 
 public class TraductorTest {
 	

@@ -3,12 +3,13 @@ package juego_de_aventura;
 import java.io.IOException;
 import java.util.ArrayList;
 import juego_de_aventura.*;
+import traductor_de_comandos.*;
 
 public class Game {
 	
 	Adventure adventure;
 	Player player;
-	Translator translator;
+	CommandTranslator translator;
 
 	public Game(String aventuraPath) throws IOException {
 		this.adventure = LoadAdventure.cargarArchivo(aventuraPath);
@@ -18,6 +19,8 @@ public class Game {
 		ArrayList<Item> initialInventory = adventure.getInitialInventory();
 
 		this.player = new Player(initialInventory, currentLocation);
+		
+		this.translator = new Translator();
 	}
 	
 	public Adventure getAdventure() {
@@ -35,13 +38,10 @@ public class Game {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
-	public Translator getTranslator() {
-		return translator;
-	}
-
-	public void setTranslator(Translator translator) {
-		this.translator = translator;
+	
+	public boolean translateCommand(String command, Action action) {
+		this.translator.translateCommand(command, action, this);
+		return !action.isUnknown();
 	}
 
 	public String movePlayer(Action action) {
@@ -81,6 +81,20 @@ public class Game {
 	public String makePlayerUseItem(Action action) {
 		return player.useItem(action, adventure);
 	}
+	
+	public String processCommand(String command) {
+		String respuesta = "No entiendo lo que me dices";
+		
+		Action action = new Action();
+		translateCommand(command, action);
+		
+		if(!action.isUnknown()) {
+			respuesta = processAction(action);
+		}
+	
+	return respuesta;
+	}
+	
 	
 	public String processAction(Action action) {
         String retorno = this.chooseAction(action);
