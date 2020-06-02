@@ -6,7 +6,6 @@ public class TranslatorDefault implements CommandTranslator{
 
 	@Override
 	public void translateCommand(String command, Action action, Game game) {
-		action.setAchieved(false);
 		action.setAction(null);
 	}
 

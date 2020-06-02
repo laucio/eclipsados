@@ -9,7 +9,7 @@ public class Game {
 	
 	Adventure adventure;
 	Player player;
-	CommandTranslator translator;
+	Translator translator;
 
 	public Game(String aventuraPath) throws IOException {
 		this.adventure = LoadAdventure.cargarArchivo(aventuraPath);
@@ -39,9 +39,8 @@ public class Game {
 		this.player = player;
 	}
 	
-	public boolean translateCommand(String command, Action action) {
+	public void translateCommand(String command, Action action) {
 		this.translator.translateCommand(command, action, this);
-		return !action.isUnknown();
 	}
 
 	public String movePlayer(Action action) {
