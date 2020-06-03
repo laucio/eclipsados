@@ -44,7 +44,7 @@ public class Game {
 	}
 
 	public String movePlayer(Action action) {
-		String retorno ="No se a donde quieres ir."; //tarea del traductor
+		String retorno;
 
 		if (player.getCurrentLocation().isNamed(action.getThing())) {
 			retorno = "Ya te encuentras aqui.";
