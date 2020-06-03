@@ -1,4 +1,4 @@
-package source;
+package juego_de_aventura;
 
 public class Action {
 
@@ -14,7 +14,6 @@ public class Action {
 	this.action = "";
 	this.thing = "";
 	this.condition = "";
-	
 	this.target = null;
 	this.effect_over = null;
 	this.achieved = false;
@@ -36,6 +35,10 @@ public class Action {
 		this.target = target;
 		this.effect_over = effect_over;
 		this.achieved = false;
+	}
+	
+	public boolean isUnknown() {
+		return action == null;
 	}
 	
 	public String getTarget() {
@@ -81,7 +84,37 @@ public class Action {
 		this.achieved = achieved;
 	}
 	
+	public boolean IsConditionADirection() {
+		return this.getCondition().equals("direction");
+	}
 	
+	public boolean hasSameDirection(String direction) {
+		return this.thing.equals(direction);
+	}
 	
+	public boolean isConditionALocation() {
+		return this.getCondition().equals("location");
+	}
+	
+	public boolean hasSameLocation(String location) {
+		return this.thing.equals(location);
+	}
 
+	public boolean IsSelfEffect() {
+		return this.target.equals("self");
+	}
+	
+	public boolean hasAnExistingDirection() {
+		boolean exist = false;
+
+			if (thing.equals("sur") || thing.equals("norte") || thing.equals("este")
+					|| thing.equals("oeste") || thing.equals("sureste")
+					|| thing.equals("noroeste") || thing.equals("noreste")
+					|| thing.equals("suroeste") || thing.equals("sudeste")
+					|| thing.equals("sudoeste")) {
+				exist = true;
+			}
+		
+	return exist;
+	}
 }

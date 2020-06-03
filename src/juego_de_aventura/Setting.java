@@ -1,4 +1,4 @@
-package source;
+package juego_de_aventura;
 
 public class Setting {
 	private String welcome;

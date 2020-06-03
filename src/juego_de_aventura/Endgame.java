@@ -1,4 +1,4 @@
-package source;
+package juego_de_aventura;
 
 public class Endgame {
 	private String condition;

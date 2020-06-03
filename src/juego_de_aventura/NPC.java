@@ -1,55 +1,27 @@
-package source;
+package juego_de_aventura;
 
 import java.util.ArrayList;
 
-public class NPC {
-	private String name;
-	private String gender;
-	private String number;
+import juego_de_aventura.*;
+
+public class NPC extends Obstacle implements Shootable{
+	
 	private String description;
 	private String talk;
-	private ArrayList<Trigger> triggers = null;
 
 	public NPC(String name, String gender,String number, String description, String message) {
-		super();
-		this.name = name;
-		this.gender = gender;
-		this.number = number;
+		super(name, gender, number);
 		this.description = description;
 		this.talk = message;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
+	@Override
 	public String getDescription() {
 		return description;
 	}
-
+	
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
 	}
 
 	public String getTalk() {
@@ -87,10 +59,39 @@ public class NPC {
 
 	}
 	
-	public String hablar() {
-		return this.getTalk();
+
+	public boolean isNamed(String npcName) {
+		return this.name.equals(npcName);
+	}
+
+	@Override
+	public String shootTrigger(Action action, Adventure adventure, Location location) {
+		String retorno = "Eso no ha servido de nada.";
+		
+		if(this.isInLocation(location)) {
+		Trigger trigger = this.findTrigger(action);
+		
+		
+		if(trigger != null) {
+			retorno = trigger.getOn_trigger();
+			action.setAchieved(true);
+			
+			switch (trigger.getAfter_trigger()) {
+			case "remove":
+				adventure.removeNpc(action.getTarget(), location);
+				break;
+			default:
+				break;
+			// case "invalidar":
+			}
+		}
+		}
+
+		return retorno;
+	}
+
+	private boolean isInLocation(Location location) {
+		return location.containsNpc(this.getName());
 	}
 	
-
-
 }

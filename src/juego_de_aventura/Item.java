@@ -1,51 +1,26 @@
-package source;
+package juego_de_aventura;
 
 import java.util.ArrayList;
 
-public class Item {// implements Action{
-	private String name;
-	private String gender;
-	private String number;
+public class Item extends Obstacle implements Shootable{// implements Action{
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
 	private ArrayList<String> targets = null;
-	private ArrayList<Trigger> triggers = null;
 
 	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over,
 			ArrayList<String> targets, ArrayList<Trigger> triggers) {
-		this.name = name;
-		this.gender = gender;
-		this.number = number;
+		
+		super(name, gender, number, triggers);
 		this.actions = actions;
 		this.effects_over = effects_over;
 		this.targets = targets;
-		this.triggers = triggers;
 	}
-
-	public String getName() {
-		return name;
+	
+	@Override
+	public String getDescription() {
+		return "No puedes pasar! Hay " + this.toString();
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
+	
 	public ArrayList<String> getEffects_over() {
 		return effects_over;
 	}
@@ -78,7 +53,7 @@ public class Item {// implements Action{
 		this.triggers = triggers;
 	}
 
-	public boolean validateAction(Action action) {
+	public boolean hasEffectsOver(Action action) {
 		boolean resultado = false;
 		int i = 0;
 		while (!resultado && i < this.getEffects_over().size()) {
@@ -124,5 +99,35 @@ public class Item {// implements Action{
 		return cadena + this.getName();
 
 	}
+	
+	public boolean isNamed(String name) {
+		return this.name.equals(name);
+	}
 
+	@Override
+	public String shootTrigger(Action action, Adventure adventure, Location location) {
+		String retorno = "Eso no ha servido de nada.";
+		
+		Trigger trigger = this.findTrigger(action);
+		
+		if(trigger != null) {
+			retorno = trigger.getOn_trigger();
+			action.setAchieved(true);
+			
+			switch (trigger.getAfter_trigger()) {
+			case "remove":
+				adventure.removeItemFromTrigger(action, adventure, location);
+				break;
+			default:
+				break;
+			// case "invalidar":
+			}
+		}
+		
+		
+		
+		return retorno;
+	}
+	
+	
 }

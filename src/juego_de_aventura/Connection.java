@@ -1,4 +1,4 @@
-package source;
+package juego_de_aventura;
 
 public class Connection {
 	
@@ -27,6 +27,14 @@ public class Connection {
 	
 	public boolean hasObstacles() {
 		return (this.obstacles == null || this.obstacles.isEmpty()) ? false : true;
+	}
+	
+	public boolean removeNPC(String personaje) {
+		boolean removed;
+		if(removed = this.obstacles.equals(personaje)) {
+			this.setObstacles("");
+		}
+		return removed;
 	}
 	
 	

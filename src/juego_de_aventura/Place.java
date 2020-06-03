@@ -1,45 +1,15 @@
-package source;
+package juego_de_aventura;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Place {
-	private String name;
-	private String gender;
-	private String number;
+public class Place extends Thing{
+	
 	private ArrayList<String> items;
 
-	
 	public Place(String name, String gender, String number, ArrayList<String> items) {
-		super();
-		this.name = name;
-		this.gender = gender;
-		this.number = number;
+		super(name, gender, number);
 		this.items = items;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public ArrayList<String> getItems() {
@@ -62,13 +32,13 @@ public class Place {
 		return -1;
 	}
 
-	public void quitarItemDeArray(String currentItem) { ///saca el elemento del array de items de place
+	public void removeItem(String currentItem) { ///saca el elemento del array de items de place
 		
 		items.remove((items.indexOf(currentItem)));
 	}
 	
 	
-	public boolean buscarItemEnArray(String item) {//verifica si esta el item en el place
+	public boolean containsItem(String item) {//verifica si esta el item en el place
 		boolean encontrado = false;
 		if(getItemIndex(item) >= 0) {
 			encontrado = true;
@@ -93,6 +63,16 @@ public class Place {
 
 		return cadena + this.getName();
 
+	}
+	
+	@Override
+	public String getDescription() {
+		return this.toString();
+	}
+
+	public boolean hasItem(String name) {
+		
+		return this.getItems().contains(name);
 	}
 
 }
