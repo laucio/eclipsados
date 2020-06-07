@@ -1,7 +1,12 @@
 package juego_de_aventura;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 import juego_de_aventura.*;
 import traductor_de_comandos.*;
 
@@ -144,4 +149,30 @@ public class Game {
         return cadena;
     }
 	
+	// return the path of the selected adventure
+	public String selectAdventure(String folderPath) {
+		File folder = new File(folderPath);
+		Integer index = 1;
+		Map<Integer, String> adventuresPath = new HashMap<Integer, String>();
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Aventuras Disponibles: ");
+		for (final File adventure : folder.listFiles()) {
+			String adventureName = index.toString() + " - " + adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
+			adventuresPath.put(index, adventure.getPath());
+			System.out.println(adventureName);
+			index ++;
+		}
+		
+		System.out.println("Por favor ingrese el numero de aventura que desea jugar: ");
+		
+        int selectedAdventure = in.nextInt();
+        
+        while (!adventuresPath.containsKey(selectedAdventure)) {
+        	System.out.println("Numero invalido Ingrese otro: ");
+        	selectedAdventure = in.nextInt();
+        }
+        
+        return adventuresPath.get(selectedAdventure);
+	}
 }
