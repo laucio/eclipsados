@@ -1,0 +1,135 @@
+{
+	"settings": {
+		"welcome": "Te encuentras en una cabania. Luego de una larga siesta, te levantas con ganas de ir a un bar.",
+		"character": "Indiana Jones"
+	},
+	"locations": [
+		{
+			"name": "cabania",
+			"gender": "female",
+			"number": "singular",
+			"description": "Estas en una cabania",
+			"places": [
+				{
+					"name": "comedor",
+					"gender": "male",
+					"number": "singular",
+					"items": [
+						"sanguche de atun"
+					//	"veneno de cobras rumanas",
+						//"cuchillo"
+					]
+				}
+			],
+			"npcs": [
+				"tu vieja"
+			],
+			"connections": [
+				{
+					"direction": "oeste",
+					"location": "bar",
+					"obstacles": "tu vieja"
+				},
+				{
+					"direction": "este",
+					"location": "mercado"
+				}
+			]
+		},
+		{
+			"name": "mercado",
+			"gender": "male",
+			"number": "singular",
+			"description": "Estas en concurrido mercado",
+			"connections": [
+				{
+					"direction": "oeste",
+					"location": "cabania"
+				}
+			]
+		},
+		{
+			"name": "bar",
+			"gender": "male",
+			"number": "singular",
+			"description": "Estas en un popular bar",
+			"connections": [
+				{
+					"direction": "este",
+					"location": "cabania"
+				}
+			]
+		}
+	],
+	"npcs": [
+		{
+			"name": "tu vieja",
+			"gender": "female",
+			"number": "singular",
+			"description": "A donde vas pibe? anda a comprarme pan primero",
+			"talk": "No hay nada que me digas que me haga cambiar de opinion!",
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "pan",
+					"on_trigger": "Pillo. Ahora si queres, podes salir al bar.",
+					"after_trigger": "remove"
+				}
+			]
+		}
+	],
+	"items": [
+        {
+			"name": "sanguche de atun",
+			"gender": "male",
+			"number": "singular",
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"self"
+			],
+			"targets": [
+				"self"
+            ],
+            "triggers": [
+				{
+					"type": "item",
+					"thing": "Sanguche de atun",
+					"on_trigger": "Mmmm rikoooo, ahora tengo mas energia",
+					"after_trigger": "remove"
+				}
+            ]
+        },
+        {
+			"name": "Pan",
+			"gender": "male",
+			"number": "singular",
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"npc"
+			],
+			"targets": [
+				"tu vieja"
+            ]
+        }
+	],
+	"inventory": [
+	],
+	"endgames": [
+		{
+			"condition": "location",
+			"action": "ir",
+			"thing": "taberna",
+			"description": "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
+		},
+		{
+			"condition": "item",
+			"action": "usar",
+			"thing": "espejo",
+			"description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
+		}
+	]
+}
