@@ -15,6 +15,7 @@ public class Game {
 	Adventure adventure;
 	Player player;
 	Translator translator;
+	
 	public Game() {}
 	public Game(String aventuraPath) throws IOException {
 		this.adventure = FileManager.cargarArchivo(aventuraPath);

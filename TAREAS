@@ -2,6 +2,6 @@
 2) Generar nueva aventura. -- NACHO Y GABY.
 3) Interfaz de entradas y salidas para los comandos del usuario. 
 	Ver como se dispara el Endgame, y como se refleja en dicha interfaz.
-    Que se vaya guardado la partida con cada nueva accion,y que quede guardada al cerrar el juego.
-    Que se vaya guardando en un txt.
-4) Ver el tema de las nuevas settings en la interfaz de salida.    
+
+4) Ver el tema de las nuevas settings en la interfaz de salida.
+5) Guardar el historial de los strings que te muestra el juego (lauti)
