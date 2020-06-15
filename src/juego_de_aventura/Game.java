@@ -15,9 +15,9 @@ public class Game {
 	Adventure adventure;
 	Player player;
 	Translator translator;
-
+	public Game() {}
 	public Game(String aventuraPath) throws IOException {
-		this.adventure = LoadAdventure.cargarArchivo(aventuraPath);
+		this.adventure = FileManager.cargarArchivo(aventuraPath);
 
 		Location currentLocation = adventure.getInitialLocation();
 
@@ -27,7 +27,26 @@ public class Game {
 		
 		this.translator = new Translator();
 	}
+	public void saveProgress() {
+		try {
+			FileManager.saveGameProgress(this);
+		} catch (IOException e) {
+			System.out.println("Error al guardar progreso del juego");
+			e.printStackTrace();
+		}
+	}
 	
+	public void getSavedProgress() {
+		try {
+			Game savedGame = FileManager.getGameProgress();
+			this.adventure = savedGame.adventure;
+			this.player = savedGame.player;
+			this.translator = savedGame.translator;
+		} catch (IOException e) {
+			System.out.println("Error al guardar progreso");
+			e.printStackTrace();
+		}
+	}
 	public Adventure getAdventure() {
 		return adventure;
 	}
