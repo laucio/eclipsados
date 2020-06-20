@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 
 public class FileManager {
 	final static String StatusGameFilePath = "./StatusGame.txt";
+	final static String AdventureFilePath = "./Adventure.txt";
+	
 	public static Adventure cargarArchivo(String pathAventura) throws IOException {
 		BufferedReader br = null;
 		Adventure adventure = null;
@@ -45,5 +47,13 @@ public class FileManager {
 		br.close();
 		
 		return game;
+	}
+	
+	public static void saveAdventureProgress(Adventure adventure) throws IOException {
+		final Gson gson = new Gson();
+		String jsonAdventure = gson.toJson(adventure);
+		BufferedWriter bw = new BufferedWriter(new FileWriter(AdventureFilePath));
+		bw.write(jsonAdventure);
+		bw.close();
 	}
 }
