@@ -15,7 +15,9 @@ public class Game {
 	Adventure adventure;
 	Player player;
 	Translator translator;
+	ArrayList<String> log;
 	
+	// Constructor que se usa para  "Continuar" la aventura.
 	public Game() {}
 	public Game(String aventuraPath) throws IOException {
 		this.adventure = FileManager.cargarArchivo(aventuraPath);
@@ -25,7 +27,8 @@ public class Game {
 		ArrayList<Item> initialInventory = adventure.getInitialInventory();
 
 		this.player = new Player(initialInventory, currentLocation);
-		
+		this.log = new ArrayList<String>();
+		this.log.add(this.adventure.darBienvenida());
 		this.translator = new Translator();
 	}
 	public void saveProgress() {
@@ -43,6 +46,7 @@ public class Game {
 			this.adventure = savedGame.adventure;
 			this.player = savedGame.player;
 			this.translator = savedGame.translator;
+			this.log = savedGame.log;
 		} catch (IOException e) {
 			System.out.println("Error al guardar progreso");
 			e.printStackTrace();
@@ -108,14 +112,14 @@ public class Game {
 	
 	public String processCommand(String command) {
 		String respuesta = "No entiendo lo que me dices";
-		
+		this.log.add("> " + command);
 		Action action = new Action();
 		translateCommand(command, action);
 		
 		if(!action.isUnknown()) {
 			respuesta = processAction(action);
 		}
-	
+	this.log.add(respuesta);
 	return respuesta;
 	}
 	
