@@ -22,7 +22,7 @@ public class CommandTraductorTest {
 
 	@Before
 	public void setup() throws IOException {
-		path = "Juego.json";
+		path = "Adventures/Juego.json";
 		game = new Game(path);
 	}
 	
