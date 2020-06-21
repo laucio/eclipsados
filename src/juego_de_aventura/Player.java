@@ -155,4 +155,32 @@ public class Player {
 		return cadena;
 	}
 
+	public String attack(Action action, Adventure adventure) {
+		String cadena = "No ha servido de nada.";
+		Item item = adventure.getItem(action.getThing());
+		
+		if(item.allowsAction(action.getAction())) {
+			cadena = "No tienes ese objeto.";
+ 
+			if (item != null && this.hasItem(item)) {
+
+				if (item.hasEffectsOver(action)) {
+					String shootableName = action.IsSelfEffect()?action.getThing():
+						action.getTarget();
+					Shootable shootable = adventure.findShootable(shootableName);
+					
+					if(shootable != null) {
+						cadena = shootable.shootTrigger(action, adventure, currentLocation);
+					}
+
+				} else {
+					cadena = "No ha servido de nada.";
+				}
+			}
+
+		}
+		
+	return cadena;
+	}
+
 }
