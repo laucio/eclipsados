@@ -93,6 +93,10 @@ public class Player {
 
 		return cadena;
 	}
+	
+	public void removeItemFromInventory(Item item) {
+		inventory.remove(item);
+	}
 
 	public void addToInventory(Item item) {
 		inventory.add(item);
@@ -144,7 +148,7 @@ public class Player {
 				Shootable shootable = adventure.findShootable(shootableName);
 				
 				if(shootable != null) {
-					cadena = shootable.shootTrigger(action, adventure, currentLocation);
+					cadena = shootable.shootTrigger(action, adventure, currentLocation,this);
 				}
 
 			} else {
