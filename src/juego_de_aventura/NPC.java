@@ -65,7 +65,7 @@ public class NPC extends Obstacle implements Shootable{
 	}
 
 	@Override
-	public String shootTrigger(Action action, Adventure adventure, Location location) {
+	public String shootTrigger(Action action, Adventure adventure, Location location, Player player) {
 		String retorno = "Eso no ha servido de nada.";
 		
 		if(this.isInLocation(location)) {
@@ -80,9 +80,12 @@ public class NPC extends Obstacle implements Shootable{
 			case "remove":
 				adventure.removeNpc(action.getTarget(), location);
 				break;
+			case "remove item":
+				Item item = adventure.getItem(action.getThing());
+				player.removeItemFromInventory(item);
+				break;
 			default:
 				break;
-			// case "invalidar":
 			}
 		}
 		}

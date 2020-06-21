@@ -105,7 +105,7 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 	}
 
 	@Override
-	public String shootTrigger(Action action, Adventure adventure, Location location) {
+	public String shootTrigger(Action action, Adventure adventure, Location location, Player player) {
 		String retorno = "Eso no ha servido de nada.";
 		
 		Trigger trigger = this.findTrigger(action);
@@ -118,6 +118,8 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 			case "remove":
 				adventure.removeItemFromTrigger(action, adventure, location);
 				break;
+			case "restart":
+				player.setCurrentLocation(adventure.getLocations().get(0));
 			default:
 				break;
 			// case "invalidar":
