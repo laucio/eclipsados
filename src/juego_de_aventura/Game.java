@@ -16,6 +16,7 @@ public class Game {
 	Player player;
 	Translator translator;
 	ArrayList<String> log;
+	boolean isEndgame;
 	
 	// Constructor que se usa para  "Continuar" la aventura.
 	public Game() {}
@@ -30,6 +31,7 @@ public class Game {
 		this.log = new ArrayList<String>();
 		this.log.add(this.adventure.darBienvenida());
 		this.translator = new Translator();
+		this.isEndgame=false;
 	}
 	public void saveProgress() {
 		try {
@@ -130,12 +132,12 @@ public class Game {
         if(action.isAchieved()) {
             ArrayList<Endgame> endgames = this.adventure.getEndgames();
             int i=0;
-            boolean esEndgame = false;
-            while (i < endgames.size() && !esEndgame) {
-                esEndgame = endgames.get(i).esEndgame(action);
+            this.isEndgame = false;
+            while (i < endgames.size() && !this.isEndgame) {
+            	this.isEndgame = endgames.get(i).esEndgame(action);
                 i++;
             }
-            if (esEndgame) {
+            if (this.isEndgame) {
                 retorno = endgames.get(i-1).getDescription() + "\nFIN.";                                                   
             }
         }
@@ -173,30 +175,9 @@ public class Game {
         return cadena;
     }
 	
-	// return the path of the selected adventure
-	public String selectAdventure(String folderPath) {
-		File folder = new File(folderPath);
-		Integer index = 1;
-		Map<Integer, String> adventuresPath = new HashMap<Integer, String>();
-		Scanner in = new Scanner(System.in);
-		
-		System.out.println("Aventuras Disponibles: ");
-		for (final File adventure : folder.listFiles()) {
-			String adventureName = index.toString() + " - " + adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
-			adventuresPath.put(index, adventure.getPath());
-			System.out.println(adventureName);
-			index ++;
-		}
-		
-		System.out.println("Por favor ingrese el numero de aventura que desea jugar: ");
-		
-        int selectedAdventure = in.nextInt();
-        
-        while (!adventuresPath.containsKey(selectedAdventure)) {
-        	System.out.println("Numero invalido Ingrese otro: ");
-        	selectedAdventure = in.nextInt();
-        }
-        
-        return adventuresPath.get(selectedAdventure);
+
+	
+	public boolean isEndgame() {
+		return isEndgame;
 	}
 }
