@@ -7,7 +7,7 @@ public class TranslatorVerbSeeAround implements CommandTranslator {
 	
 	private final static String[] VERBO_VER_ALREDEDOR = { " ver alrededor ", " observar alrededor ",
 			" mirar alrededor ", " inspeccionar alrededor ", " ver alrededores ",
-			" observar alrededores ", " mirar alrededores ", " inspeccionar alrededores " };//ver alrededor
+			" observar alrededores ", " mirar alrededores ", " inspeccionar alrededores " };
 	
 	private CommandTranslator next = null;
 

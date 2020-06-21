@@ -146,7 +146,7 @@ public class Game {
     }
 	
 	private String makePlayerAttack(Action action) {
-		String retorno = "";
+		String retorno;
 		
 		if(action.isUnknownTarget()) {
 			retorno = "No entiendo a quien quieres atacar";
@@ -161,6 +161,10 @@ public class Game {
 		return retorno;
 	}
 	
+	private String makePlayerObserveAnItem(Action action) {
+		return player.observeItem(action, adventure); 
+	}
+	
 	public boolean isEndgame() {
 		return isEndgame;
 	}
@@ -171,6 +175,9 @@ public class Game {
         switch (action.getAction()) {
         case "atacar":
             cadena = this.makePlayerAttack(action);
+            break;
+        case "observar":
+            cadena = this.makePlayerObserveAnItem(action);
             break;
         case "ir":
             cadena = this.movePlayer(action);
@@ -197,5 +204,5 @@ public class Game {
 
         return cadena;
     }
-	
+
 }

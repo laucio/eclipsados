@@ -55,6 +55,7 @@ public class TranslatorVerbAttack implements CommandTranslator {
 						action.setEffect_over("npcs");
 					}
 					else {
+						//sabe con que, pero no sabe a quien atacar
 						action.setEffect_over("unknown");
 					}
 					
