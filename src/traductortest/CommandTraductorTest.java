@@ -174,7 +174,7 @@ public class CommandTraductorTest {
 		assertEquals(expected, actuals);
 		
 	}
-	/*
+	
 	////PRUEBAS DE TRIGGERS////////////////////////////////////////
 	
 	@Test
@@ -183,13 +183,13 @@ public class CommandTraductorTest {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";	
 		
 		//Ir a taberna	
-		action = new Action("ir","taberna", "location",null, null);
+		command = "ir a la taberna";
 		actuals = game.processCommand(command);
 		//Eliminar obstaculo
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
@@ -201,33 +201,35 @@ public class CommandTraductorTest {
 		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		
 		//Ir a taberna	
-		action = new Action("ir","taberna", "location",null, null);
+		command = "ir a sur";
 		actuals = game.processCommand(command);
 		//Eliminar obstaculo
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "agarrar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usa rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		//Ir a taberna	
-		action = new Action("ir","taberna", "location",null, null);
+		command = "ir taberna";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
 	}
 	
+	
 	@Test
 	public void eliminarObstaculoDosVeces() {
 		expected = "Eso no ha servido de nada.";	
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.processCommand(command);	
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "tomar rociador con cerveza de raiz";
+		actuals = game.processCommand(command);
+		
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
 	}
-	*/
+	
 	///////////MOVERSE//////////////////////////////////////
 	
 	@Test
@@ -240,23 +242,23 @@ public class CommandTraductorTest {
 		assertEquals(expected, actuals);
 		
 	}
-	/*	
+	
 	@Test
 	public void irALocation_SePuedeIr() {
 		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "toma rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usa rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
-		//Ir a taberna	
-		action = new Action("ir","taberna", "location",null, null);
+		//Ir a taberna
+		command = "ir hacia el sur";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
 	}
-	*/
+	
 	
 	@Test
 	public void irALocationActual() {
@@ -264,7 +266,6 @@ public class CommandTraductorTest {
 		
 		//Ir a muelle	
 		command = "ir al muelle";
-		actuals = game.processCommand(command);
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
@@ -284,22 +285,22 @@ public class CommandTraductorTest {
 	}
 	
 	
-	/*
 	@Test
 	public void irADirection_SePuedeIr() {
 		expected = "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.\nFIN.";	
 		//Eliminar obstaculo
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz pirata fantasma";
 		actuals = game.processCommand(command);
 		//Ir a taberna	
-		action = new Action("ir","sur", "direction",null, null);
+		command = "ir al sur";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 	}
-	*/
+	
 	
 	@Test
 	public void irADirection_NoSePuedeIr() {
@@ -343,7 +344,6 @@ public class CommandTraductorTest {
 	}
 	
 	////////////////USO DE ITEMS//////////////////////////////
-	
 	@Test
 	public void UsarRociadorConNpcQueNoEstaEnPlace() {
 		expected = "Eso no ha servido de nada.";	

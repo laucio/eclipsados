@@ -205,4 +205,50 @@ public class Adventure {
 		location.removeFromLocation(item);
 	}
 
+	public String containsNPC(String cadena) {
+		String retorno = null;
+		boolean found = false;
+		int i = 0;
+		
+		while(i < npcs.size() && !found) {
+			if(cadena.contains(npcs.get(i).getName())) {
+				retorno = npcs.get(i).getName();
+				found = true;
+			}
+			i++;
+		}
+		
+		return retorno;
+	}
+
+	public String containsItem(String cadena) {
+		String retorno = null;
+		
+		boolean found = false;
+		int i = 0;
+		
+		while(i < items.size() && !found) {
+			if(cadena.contains(items.get(i).getName())) {
+				retorno = items.get(i).getName();
+				found = true;
+			}
+			i++;
+		}
+		
+		return retorno;
+	}
+	
+	public void ItemsOcurrences(String cadena, ArrayList<String> objs) {
+		int cant = 0;
+		int i = 0;
+		
+		while(i < items.size() && cant<2) {
+			if(cadena.contains(items.get(i).getName())) {
+				objs.add(items.get(i).getName());
+				cant++;
+			}
+			i++;
+		}
+	}
+
 }
