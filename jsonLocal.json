@@ -5,27 +5,24 @@
 	},
 	"locations": [
 		{
-			"name": "living",
-			"gender": "male",
-			"number": "singular",
 			"description": "Estas en el living de la casa",
 			"places": [
 				{
-					"name": "repisa",
-					"gender": "female",
-					"number": "singular",
 					"items": [
 						"veneno de cobra"
-					]
+					],
+					"name": "repisa",
+					"gender": "female",
+					"number": "singular"
 				},
 				{
-					"name": "pared",
-					"gender": "female",
-					"number": "singular",
 					"items": [
 						"espejo",
 						"ventana"
-					]
+					],
+					"name": "pared",
+					"gender": "female",
+					"number": "singular"
 				}
 			],
 			"npcs": [
@@ -39,50 +36,46 @@
 				},
 				{
 					"direction": "sur",
-					"location": "ciudad",
-					"obstacle": "puerta"
+					"location": "ciudad"
 				}
-
-			]
-        },
+			],
+			"name": "living",
+			"gender": "male",
+			"number": "singular"
+		},
 		{
-			"name": "cocina",
-			"gender": "female",
-			"number": "singular",
 			"description": "Estas en la cocina de la casa",
 			"places": [
 				{
+					"items": [
+						"cuchillo"
+					],
 					"name": "mesada",
 					"gender": "female",
-					"number": "singular",
-					"items": [
-					    "cuchillo"
-					]
+					"number": "singular"
 				},
 				{
-					"name": "heladera",
-					"gender": "female",
-					"number": "singular",
 					"items": [
 						"sandwich de atun"
-					]
+					],
+					"name": "heladera",
+					"gender": "female",
+					"number": "singular"
 				}
 			],
-
 			"npcs": [
-				
 			],
 			"connections": [
 				{
 					"direction": "oeste",
 					"location": "living"
 				}
-			]
-        },
-        {
-			"name": "ciudad",
+			],
+			"name": "cocina",
 			"gender": "female",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en una ciudad tetrica",
 			"places": [
 			],
@@ -95,127 +88,125 @@
 				},
 				{
 					"direction": "oeste",
-                    "location": "bar",
-                    "obstacle": "troll"
-                },
-                {
-                    "direction": "norte",
-                    "location": "living",
-                    "obstacle": "puerta"
-                },
-                {
-                    "direction": "sur",
-                    "location": "camino"
-                }
-			]
+					"location": "bar"
+				},
+				{
+					"direction": "norte",
+					"location": "living"
+				},
+				{
+					"direction": "sur",
+					"location": "camino"
+				}
+			],
+			"name": "ciudad",
+			"gender": "female",
+			"number": "singular"
 		},
 		{
-			"name": "mercado",
-			"gender": "male",
-			"number": "singular",
-            "description": "Estas en un mercado abandonado",
-            "places": [
-                {
+			"description": "Estas en un mercado abandonado",
+			"places": [
+				{
+					"items": [
+						"llave"
+					],
 					"name": "mostrador",
 					"gender": "male",
-					"number": "singular",
+					"number": "singular"
+				},
+				{
 					"items": [
-                        "llave"
-					]
-                },
-                {
-                    "name": "estanteria",
+						"manzana podrida",
+						"rata"
+					],
+					"name": "estanteria",
 					"gender": "female",
-					"number": "singular",
-					"items": [
-                        "manzana podrida",
-                        "rata"
-					]
-                }
-            ],
-            "npcs": [
+					"number": "singular"
+				}
+			],
+			"npcs": [
 			],
 			"connections": [
 				{
 					"direction": "oeste",
 					"location": "ciudad"
 				}
-			]
+			],
+			"name": "mercado",
+			"gender": "male",
+			"number": "singular"
 		},
 		{
-			"name": "bar",
-			"gender": "male",
-			"number": "singular",
-            "description": "Estas en un famoso bar antiguo",
-            "places": [
-                {
+			"description": "Estas en un famoso bar antiguo",
+			"places": [
+				{
+					"items": [
+						"cerveza",
+						"gin tonic"
+					],
 					"name": "barra de tragos",
 					"gender": "female",
-					"number": "singular",
+					"number": "singular"
+				},
+				{
 					"items": [
-                        "cerveza",
-                        "gin tonic"
-					]
-                },
-                {
-                    "name": "mesa",
+						"carta"
+					],
+					"name": "mesa",
 					"gender": "female",
-					"number": "singular",
-					"items": [
-                        "carta"
-					]
-                }
-            ],
-            "npcs": [
-                "hermanastra mas fea"
+					"number": "singular"
+				}
+			],
+			"npcs": [
+				"hermanastra mas fea"
 			],
 			"connections": [
 				{
 					"direction": "este",
 					"location": "ciudad"
 				}
-			]
-        },
-        {
-			"name": "camino",
+			],
+			"name": "bar",
 			"gender": "male",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en un camino silencioso",
 			"places": [
 				{
-					"name": "suelo",
-					"gender": "male",
-					"number": "singular",
 					"items": [
 						"cadaver"
-					]
+					],
+					"name": "suelo",
+					"gender": "male",
+					"number": "singular"
 				},
 				{
-					"name": "arbol",
-					"gender": "male",
-					"number": "singular",
 					"items": [
 						"letrero"
-					]
+					],
+					"name": "arbol",
+					"gender": "male",
+					"number": "singular"
 				}
 			],
 			"npcs": [
 			],
 			"connections": [
-                {
-                    "direction": "norte",
-                    "location": "ciudad"
-                },
-                {
-                    "direction": "sur",
-                    "location": "base de la montania"
-                }
-			]
-        },
-        {
-			"name": "base de la montania",
-			"gender": "female",
-			"number": "singular",
+				{
+					"direction": "norte",
+					"location": "ciudad"
+				},
+				{
+					"direction": "sur",
+					"location": "base de la montania"
+				}
+			],
+			"name": "camino",
+			"gender": "male",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en la base de la montania",
 			"places": [
 				{
@@ -224,156 +215,146 @@
 					"number": "singular"
 				},
 				{
-					"name": "tienda",
-					"gender": "female",
-					"number": "singular",
 					"items": [
 						"souvenir"
-					]
+					],
+					"name": "tienda",
+					"gender": "female",
+					"number": "singular"
 				}
 			],
 			"npcs": [
-                "maestro sabio"
+				"maestro sabio"
 			],
 			"connections": [
-                {
-                    "direction": "norte",
-                    "location": "camino"
-                },
-                {
-                    "direction": "este",
-                    "location": "templo"
-                },
-                {
-                    "direction": "oeste",
-                    "location": "montania"
-                }
-			]
-        },
-        {
-			"name": "montania",
+				{
+					"direction": "norte",
+					"location": "camino"
+				},
+				{
+					"direction": "este",
+					"location": "templo"
+				},
+				{
+					"direction": "oeste",
+					"location": "montania"
+				}
+			],
+			"name": "base de la montania",
 			"gender": "female",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en la montania",
 			"places": [
 			],
 			"npcs": [
 			],
 			"connections": [
-                {
-                    "direction": "norte",
-                    "location": "cima",
-                    "obstacle": "piedra"
-                },
-                {
-                    "direction": "este",
-                    "location": "base de la montania"
-                },
-                {
-                    "direction": "sur",
-                    "location": "camino misterioso"
-                }
-			]
-        },
-        {
-			"name": "cima",
-			"gender": "female",
-			"number": "singular",
-			"description": "Estas en la cima de la montania",
-			"places": [
-                {
-					"name": "guarida",
-					"gender": "male",
-					"number": "singular",
-					"items": [
-					]
+				{
+					"direction": "norte",
+					"location": "cima"
 				},
 				{
-					"name": "pozo",
+					"direction": "este",
+					"location": "base de la montania"
+				},
+				{
+					"direction": "sur",
+					"location": "camino misterioso"
+				}
+			],
+			"name": "montania",
+			"gender": "female",
+			"number": "singular"
+		},
+		{
+			"description": "Estas en la cima de la montania",
+			"places": [
+				{
+					"items": [
+					],
+					"name": "guarida",
 					"gender": "male",
-					"number": "singular",
+					"number": "singular"
+				},
+				{
 					"items": [
 						"espada"
-					]
+					],
+					"name": "pozo",
+					"gender": "male",
+					"number": "singular"
 				}
 			],
 			"npcs": [
-                "dragon"
+				"dragon"
 			],
 			"connections": [
-                {
-                    "direction": "sur",
-                    "location": "montania"
-                }
-			]
-        },
-        {
-			"name": "sendero misterioso",
-			"gender": "male",
-			"number": "singular",
+				{
+					"direction": "sur",
+					"location": "montania"
+				}
+			],
+			"name": "cima",
+			"gender": "female",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en el sendero misterioso",
 			"places": [
 			],
 			"npcs": [
 			],
 			"connections": [
-                {
-                    "direction": "norte",
-                    "location": "montania"
-                }, 
-                {
-                    "direction": "sur", 
-                    "location": "castillo"
-                }
-			]
-        }, 
-        {
-			"name": "templo",
+				{
+					"direction": "norte",
+					"location": "montania"
+				},
+				{
+					"direction": "sur",
+					"location": "castillo"
+				}
+			],
+			"name": "sendero misterioso",
 			"gender": "male",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"description": "Estas en el templo",
 			"places": [
 			],
 			"npcs": [
 			],
 			"connections": [
-                {
-                    "direction": "oeste",
-                    "location": "base de la montania"
-                }
-			]
-        }
+				{
+					"direction": "oeste",
+					"location": "base de la montania"
+				}
+			],
+			"name": "templo",
+			"gender": "male",
+			"number": "singular"
+		}
 	],
 	"npcs": [
 		{
+			"description": "Deberias comer algo... fijate en la cocina.",
+			"talk": "Te deje algo para comer en la cocina!",
 			"name": "madre",
 			"gender": "female",
-			"number": "singular",
-			"description": "A donde vas pibe? anda a comprarme pan primero",
-			"talk": "No hay nada que me digas que me haga cambiar de opinion!",
-			"triggers": [
-				{
-					"type": "item",
-					"thing": "pan",
-					"on_trigger": "Pillo. Ahora si queres, podes salir al bar.",
-					"after_trigger": "remove"
-				}
-			]
+			"number": "singular"
 		},
-
 		{
+			"description": "Ohh eh visto un lindo gatito",
+			"talk": "Miau miau...miau",
 			"name": "gato",
 			"gender": "male",
-			"number": "singular",
-			"description": "Ohh eh visto un lindo gatito",
-			"talk": "Miau miau...miau"
+			"number": "singular"
 		}
 	],
 	"items": [
-        {
-			"name": "sanguche de atun",
-			"gender": "male",
-			"number": "singular",
+		{
 			"actions": [
 				"usar"
 			],
@@ -382,21 +363,20 @@
 			],
 			"targets": [
 				"self"
-            ],
-            "triggers": [
+			],
+			"triggers": [
 				{
 					"type": "item",
-					"thing": "Sanguche de atun",
-					"on_trigger": "Mmmm rikoooo, ahora tengo mas energia",
+					"thing": "sanguche de atun",
+					"on_trigger": "Mmmmm... delicioso.",
 					"after_trigger": "remove"
 				}
-            ]
-		},
-		
-		{
-			"name": "cuchillo",
+			],
+			"name": "sanguche de atun",
 			"gender": "male",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"actions": [
 				"usar"
 			],
@@ -405,30 +385,63 @@
 			],
 			"targets": [
 				"dracula"
-            ],
-            "triggers": [
+			],
+			"triggers": [
 				{
 					"type": "item",
 					"thing": "cuchillo",
 					"on_trigger": "me has cortado pero no he sentido nada",
 					"after_trigger": "default"
 				}
-            ]
-        },
-        {
-			"name": "Pan",
+			],
+			"name": "cuchillo",
 			"gender": "male",
-			"number": "singular",
+			"number": "singular"
+		},
+		{
 			"actions": [
 				"usar"
 			],
 			"effects_over": [
-				"npc"
+				"self"
 			],
 			"targets": [
-				"tu vieja"
-            ]
-        }
+				"self"
+			],
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "espejo",
+					"on_trigger": "Oh... soy hermoso...",
+					"after_trigger": "default"
+				}
+			],
+			"name": "espejo",
+			"gender": "male",
+			"number": "singular"
+		},
+		{
+			"actions": [
+				"usar"
+			],
+			"effects_over": [
+				"self"
+			],
+			"targets": [
+				"self"
+			],
+			"triggers": [
+				{
+					"type": "item",
+					"thing": "ventana",
+					"on_trigger": "Parece que se avecina una tormenta",
+					"after_trigger": "default"
+				}
+			],
+			"name": "ventana",
+			"gender": "female",
+			"number": "singular"
+		}
 	],
 	"inventory": [
 	],
