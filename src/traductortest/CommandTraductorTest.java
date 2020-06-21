@@ -325,19 +325,19 @@ public class CommandTraductorTest {
 		
 	}
 	
-	/*
+	
 	@Test
 	public void hablarConNpcBorrado() {
 		expected = "Nadie te respondera...";	
 		
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		//Eliminar obstaculo
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		
 		//Hablar con npcs
-		action = new Action("hablar",null, null,"pirata fantasma", "npcs");
+		command = "hablar con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 		
@@ -348,14 +348,14 @@ public class CommandTraductorTest {
 	public void UsarRociadorConNpcQueNoEstaEnPlace() {
 		expected = "Eso no ha servido de nada.";	
 		
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		//Eliminar obstaculo
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		
 		//intenar volver a usar rociador sobre fantasma
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected, actuals);
 	}
@@ -364,43 +364,49 @@ public class CommandTraductorTest {
 	@Test
 	public void usarRociadorSobrePirata_TengoEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+	
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
 	
+	
 	@Test
 	public void usarEspejoSobrePirata_TengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
-		action = new Action("tomar","espejo", "item",null, null);
+		
+		command = "tomar espejo";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","espejo", "item","pirata fantasma", "npcs");
+		command = "usar espejo con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 			
 	}
 	
+	
 	@Test
 	public void usarBarretaSobrePirata_EstaEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
-		action = new Action("tomar","barreta", "item",null, null);
+		
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
+		command = "usar barreta con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 		
 	}
 	
+	
 	@Test
 	public void usarBarretaSobrePirata_NoEstaEnInventario_NoSePuedeUsar() {
 		expected = "No tienes ese objeto.";
 
-		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
+		command = "usar barreta con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);	
 	}
@@ -410,10 +416,11 @@ public class CommandTraductorTest {
 	@Test
 	public void usarRociadorSobrePirata_EstaEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 
-		action = new Action("usar","rociador con cerveza de raiz","item","pirata fantasma", "npcs");
+		command = "usar rociador con cerveza de raiz con pirata fantasma";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
@@ -424,10 +431,11 @@ public class CommandTraductorTest {
 	@Test
 	public void usarBarretaSobreEspejo_TengoSoloBarreta_SePuedeUsar() {
 		expected = "El espejo se ha roto";
-		action = new Action("tomar","barreta", "item",null, null);
+		
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta", "item","espejo", "item");
+		command = "usar barreta en espejo";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
@@ -439,14 +447,15 @@ public class CommandTraductorTest {
 		//REMOVE DE PLACE
 		
 		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur hay una taberna.";
-		action = new Action("tomar","barreta", "item",null, null);
+		
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta", "item","espejo", "item");
+		command = "usa barreta con espejo";
 		actuals = game.processCommand(command);
 		
 		//Luego del trigger, con remove, el espejo ya no deberia estar en el muelle
-		action = new Action("ver alrededor",null, null,null, null);
+		command = "ver alrededor";
 		actuals = game.processCommand(command);
 		
 		assertEquals(expected,actuals);//si el trigger de espejo tuviera remove en lugar de default
@@ -458,32 +467,37 @@ public class CommandTraductorTest {
 	@Test
 	public void usarEspejoSobreSelf_LoTengoEnInventario() {
 		expected = "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!\nFIN.";
-		action = new Action("tomar","espejo", "item",null, null);
+		
+		command = "tomar espejo";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","espejo", "item","self", "self");
+		command = "usar espejo";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 		//FUNCIONA
 		//Cuando se quiera usar un objeto sobre si mismo, en la action se usa self para target y effect_over 
 		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
 	}
+	
 	
 	@Test
 	public void usarEspejoSobreSelf_NoLoTengoEnInventario() {
 		expected = "No tienes ese objeto.";
-		action = new Action("usar","espejo", "item","self", "self");
+		
+		command = "usar espejo";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
 	
+	
 	@Test
 	public void usarRociadorSobreSelf() {
 		expected = "Que delicia de cerveza!";
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","rociador con cerveza de raiz", "item","self", "self");
+		command = "usar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 		//FUNCIONA
@@ -491,50 +505,58 @@ public class CommandTraductorTest {
 		//si se quiere q el item dispare un trigger, debe tener en su array de targets "self" y su trigger debe tener: type="item", 
 	}
 	
+	
 	@Test
 	public void usarBarretaSobreSelf_LoTengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
-		action = new Action("tomar","barreta", "item",null, null);
+		
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta", "item","self", "self");
+		command = "usar barreta";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
 	
+	
 	@Test
 	public void usarBarretaSobreSelf_NoLoTengoEnInventario_NoSePuedeUsar() {
 		expected = "No tienes ese objeto.";
-		action = new Action("usar","barreta", "item","self", "self");
+		
+		command = "usar barreta";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
+	
 	
 	@Test
 	public void usarBarretaSobreRociador() {
 		//tenemos barreta, pero rociador esta en el place
 		
 		expected = "Se ha abollado la lata";
-		action = new Action("tomar","barreta", "item",null, null);
+		
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
+		command = "usa barreta con rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
+	
 	
 	@Test
 	public void usarBarretaSobreRociador_AmbosEnInventario_SePuedeUsar() {
 		//tenemos barreta y rociador en el inventario
 		
 		expected = "Se ha abollado la lata";
-		action = new Action("tomar","barreta", "item",null, null);
+	
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
+		command = "tomar rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
+		command = "usar barreta con rociador con cerveza de raiz";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 		
@@ -545,57 +567,65 @@ public class CommandTraductorTest {
 	public void usarEspejoSobreBarreta_AmbosEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		
-		action = new Action("tomar","espejo", "item",null, null);
+		command = "tomar espejo";
 		actuals = game.processCommand(command);
 		
-		action = new Action("tomar","barreta", "item",null, null);
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","espejo","item","barreta", "item");
+		command = "usar espejo en barreta";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 
 	}
 	
+	
 	@Test
 	public void usarEspejoSobreBarreta_NingunoEnInventario() {
 		expected = "No tienes ese objeto.";
-		action = new Action("usar","espejo","item","barreta", "item");
+		
+		command = "usar espejo sobre barreta";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
+	
+	
 	
 	@Test
 	public void usarBarretaSobreEspejo_SoloTieneEspejoEnInventario_SePuedeUsar() {
 		expected = "No tienes ese objeto.";
 		
 		action = new Action("tomar","espejo", "item",null, null);
+		command = "tomar espejo";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","barreta","item","espejo", "item");
+		command = "usar barreta en espejo";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
+	
 	
 	@Test
 	public void usarEspejoSobreBarreta_SoloTienesBarretaEnInventario_NoSePuedeUsar() {
 		expected = "No tienes ese objeto.";
 		
-		action = new Action("tomar","barreta", "item",null, null);
+		command = "tomar barreta";
 		actuals = game.processCommand(command);
 		
-		action = new Action("usar","espejo","item","barreta", "item");
+		command = "usar espejo en barreta";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
 	
+	
 	@Test
 	public void usarEspejo_NoEstaEnInventario_SePuedeUsarSelf() {
 		expected = "No tienes ese objeto.";
-		action = new Action("usar","espejo","item","self", "self");
+		
+		command = "usar espejo";
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
-	*/
+
 	
 }

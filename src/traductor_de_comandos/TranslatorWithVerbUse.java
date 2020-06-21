@@ -71,9 +71,15 @@ public class TranslatorWithVerbUse implements CommandTranslator {
 				case 2:
 					//usa un item sobre otro item
 					//Action("usar","barreta","item","rociador con cerveza de raiz", "item");
-					action.setThing(objs.get(0));
+					if(command.indexOf(objs.get(0)) > command.indexOf(objs.get(1))) {
+						action.setThing(objs.get(1));
+						action.setTarget(objs.get(0));
+					}else {
+						action.setThing(objs.get(0));
+						action.setTarget(objs.get(1));
+					}
+					
 					action.setCondition("item");
-					action.setTarget(objs.get(1));
 					action.setEffect_over("item");
 					break;
 				}
