@@ -64,7 +64,7 @@ public class UserInterface {
 			output="OK, guardado";
 			break;
 		case "AYUDA":
-			output="Para salir escriba: SALIR\n Para guardar el juego escriba: GUARDAR\n Para ver inventario escriba INVENTARIO\n";//imprimir la ayuda
+			output="Para salir escriba: SALIR\nPara guardar el juego escriba: GUARDAR\nPara ver su inventario escriba 'Ver Inventario'\n";//imprimir la ayuda
 			break;
 		default:
 			output=null;
