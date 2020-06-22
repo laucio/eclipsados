@@ -66,7 +66,20 @@ public class Location extends Thing {
 		return eliminado;
 	}
 
-
+	public Connection getConnectionFromObstacle(String thing) {
+		Connection retorno = null;
+		boolean found = false;
+		int i = 0;
+		while (i < connections.size() && !found) {
+			if(connections.get(i).getObstacles().equals(thing)) {
+				retorno = connections.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return retorno;
+	}
+		
 
 	public boolean hasItem(String item) {
 		boolean retorno = false;

@@ -153,7 +153,7 @@ public class Player {
 				Shootable shootable = adventure.findShootable(shootableName);
 				
 				if(shootable != null) {
-					cadena = shootable.shootTrigger(action, adventure, currentLocation,this);
+					cadena = shootable.shootTrigger(action, adventure, this);
 				}
 
 			} else {
@@ -178,7 +178,7 @@ public class Player {
 					Shootable shootable = adventure.findShootable(shootableName);
 					
 					if(shootable != null) {
-						cadena = shootable.shootTrigger(action, adventure, currentLocation, this);
+						cadena = shootable.shootTrigger(action, adventure, this);
 					}
 
 				} else {
@@ -205,7 +205,7 @@ public class Player {
 					Shootable shootable = adventure.findShootable(shootableName);
 					
 					if(shootable != null) {
-						cadena = shootable.shootTrigger(action, adventure, currentLocation, this);
+						cadena = shootable.shootTrigger(action, adventure, this);
 					}
 
 				} else {

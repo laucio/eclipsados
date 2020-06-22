@@ -105,7 +105,7 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 	}
 
 	@Override
-	public String shootTrigger(Action action, Adventure adventure, Location location, Player player) {
+	public String shootTrigger(Action action, Adventure adventure, Player player) {
 		String retorno = "Eso no ha servido de nada.";
 		
 		Trigger trigger = this.findTrigger(action);
@@ -116,7 +116,13 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
-				adventure.removeItemFromTrigger(action, adventure, location);
+				if(!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
+					player.removeItemFromInventory(adventure.getItem(action.getThing()));
+				}
+				break;
+			case "remove obstacles":
+				removeObstacle(action.getTarget(), player.getCurrentLocation());
+				adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation());
 				break;
 			case "restart":
 				player.setCurrentLocation(adventure.getLocations().get(0));
@@ -129,6 +135,12 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		
 		
 		return retorno;
+	}
+	
+	@Override
+	public void removeObstacle(String obstacle, Location location) {
+		location.getConnectionFromObstacle(obstacle).setObstacles(null);
+		
 	}
 
 	public boolean allowsAction(String action) {

@@ -383,7 +383,8 @@
       "actions": [
         "usar",
         "comer",
-        "tomar"
+        "tomar",
+        "dejar"
       ],
       "effects_over": [
         "self"
@@ -407,7 +408,8 @@
       "actions": [
         "atacar",
         "tomar",
-        "usar"
+        "usar",
+        "dejar"
       ],
       "effects_over": [
         "npc"
@@ -423,7 +425,7 @@
     },
     {
       "actions": [
-        "ver"
+        "observar"
       ],
       "effects_over": [
         "self"
@@ -531,7 +533,7 @@
           "type": "item",
           "thing": "veneno de cobra",
           "on_trigger": "Le hechas veneno a la bisagra de la puerta, y esta se termina rompiendo... ahora puedes salir!",
-          "after_trigger": "remove"
+          "after_trigger": "remove obstacles"
         }
       ],
       "name": "puerta",
@@ -541,7 +543,8 @@
     {
       "actions": [
         "tomar",
-        "usar"
+        "usar",
+        "dejar"
       ],
       "effects_over": [
         "item"
@@ -556,7 +559,9 @@
     {
       "actions": [
         "beber",
-        "usar"
+        "usar",
+        "tomar",
+        "dejar"
       ],
       "effects_over": [
         "self"
@@ -579,7 +584,9 @@
     {
       "actions": [
         "beber",
-        "usar"
+        "usar",
+        "tomar",
+        "dejar"
       ],
       "effects_over": [
         "self"

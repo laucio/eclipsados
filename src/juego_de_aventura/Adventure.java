@@ -161,9 +161,9 @@ public class Adventure {
 		return this.getSettings().getWelcome();
 	}
 
-	public void removeNpc(String personaje, Location location) {
+	/*public void removeNpc(String personaje, Location location) {
 		location.removeNpc(personaje);
-	}
+	}*/
 
 	
 
@@ -200,9 +200,10 @@ public class Adventure {
 		return retorno;
 	}
 
-	public void removeItemFromTrigger(Action action, Adventure adventure, Location location) {
+	public boolean removeItemFromTrigger(Action action, Adventure adventure, Location location) {
 		String item = action.IsSelfEffect() ? action.getThing() : action.getTarget();
-		location.removeFromLocation(item);
+		boolean eliminado = location.removeFromLocation(item);
+		return eliminado;
 	}
 
 	public String containsNPC(String cadena) {

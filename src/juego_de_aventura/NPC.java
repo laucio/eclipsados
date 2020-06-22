@@ -65,10 +65,10 @@ public class NPC extends Obstacle implements Shootable{
 	}
 
 	@Override
-	public String shootTrigger(Action action, Adventure adventure, Location location, Player player) {
+	public String shootTrigger(Action action, Adventure adventure, Player player) {
 		String retorno = "Eso no ha servido de nada.";
 		
-		if(this.isInLocation(location)) {
+		if(this.isInLocation(player.getCurrentLocation())) {
 		Trigger trigger = this.findTrigger(action);
 		
 		
@@ -78,7 +78,7 @@ public class NPC extends Obstacle implements Shootable{
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
-				adventure.removeNpc(action.getTarget(), location);
+				removeObstacle(action.getTarget(), player.getCurrentLocation());
 				break;
 			case "remove item":
 				Item item = adventure.getItem(action.getThing());
@@ -91,6 +91,12 @@ public class NPC extends Obstacle implements Shootable{
 		}
 
 		return retorno;
+	}
+	
+	@Override
+	public void removeObstacle(String obstacle,Location location) {
+		location.removeNpc(obstacle);
+		
 	}
 
 	private boolean isInLocation(Location location) {

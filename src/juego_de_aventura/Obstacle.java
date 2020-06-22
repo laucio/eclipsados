@@ -32,4 +32,6 @@ public abstract class Obstacle extends Thing{
 	
 	return trigger;
 	}
+	
+	public abstract void removeObstacle(String obstacle, Location location);
 }
