@@ -80,14 +80,20 @@ public class Player {
 
 	public String takeItem(Action action, Adventure adventure) {
 		String cadena = "No encuentro ese objeto.";
+		
+		Item item = adventure.giveItem(currentLocation, action.getThing());
+		
+		if(item!=null && !item.allowsAction(action.getAction())) {
+			cadena = "No puedes tomar eso";
+		}else {
+			cadena = "No encuentro ese objeto, tal vez ya lo tengas en tu inventario";
+			if (currentLocation.hasItem(action.getThing())) {
 
-		if (currentLocation.hasItem(action.getThing())) {
-			Item item = adventure.giveItem(currentLocation, action.getThing());
-
-			if (item != null) {
-				this.addToInventory(item);
-				cadena = "Tienes " + item;
-				action.setAchieved(true);
+				if (item != null) {
+					this.addToInventory(item);
+					cadena = "Tienes " + item;
+					action.setAchieved(true);
+				}
 			}
 		}
 
