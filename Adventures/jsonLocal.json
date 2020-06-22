@@ -36,8 +36,7 @@
         },
         {
           "direction": "sur",
-          "location": "camino",
-          "obstacles": "puerta"
+          "location": "camino"
         }
       ],
       "name": "living",
@@ -64,7 +63,6 @@
           "number": "singular"
         }
       ],
-      "npcs": [],
       "connections": [
         {
           "direction": "oeste",
@@ -400,10 +398,11 @@
       "actions": [
         "atacar",
         "tomar",
-        "usar"
+        "usar",
+        "observar"
       ],
       "effects_over": [
-        "npc"
+        "npcs"
       ],
       "targets": [
         "dracula",
@@ -416,7 +415,7 @@
     },
     {
       "actions": [
-        "ver"
+        "ver","observar"
       ],
       "effects_over": [
         "self"

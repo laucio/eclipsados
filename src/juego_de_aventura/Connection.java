@@ -30,8 +30,8 @@ public class Connection {
 	}
 	
 	public boolean removeNPC(String personaje) {
-		boolean removed;
-		if(removed = this.obstacles.equals(personaje)) {
+		boolean removed = false;
+		if(this.obstacles!=null && (removed = this.obstacles.equals(personaje))) {
 			this.setObstacles("");
 		}
 		return removed;

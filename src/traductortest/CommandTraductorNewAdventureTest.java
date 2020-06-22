@@ -33,17 +33,52 @@ public class CommandTraductorNewAdventureTest {
 		assertEquals(expected, actuals);
 	}
 	
-	/*
 	@Test
-	public void () {
-		expected = "No puedes pasar! El pirata fantasma no te dejara pasar";
+	public void dispararTriggerDeTrollConCuchillo() {
 		
-		// Ir a taberna
+		expected = "Atacas al troll con el cuchillo. Luego de un ligero corte, tu contrincante huye corriendo entre sollozos. Al parecer no era tan temible...";
+		//Ir a cocina	
+		command = "ir cocina";
 		actuals = game.processCommand(command);
+		System.out.println(actuals);
 		
+		//tomar cuchillo
+		command = "tomar cuchillo";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		
+		//ir living
+		command = "ir living";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		
+		//ir sur (no hay puerta)
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		
+		
+		//ir oeste (bar)
+		command = "ir oeste";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		
+		
+		/*
+		//atacar troll con cuchillo
+		command = "usar cuchillo con troll";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		*/
+		/*
+		command = "hablar con troll";
+		actuals = game.processCommand(command);
+		System.out.println(actuals);
+		*/
 		assertEquals(expected, actuals);
+		
 	}
-	*/
+
 
 }
 
