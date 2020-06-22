@@ -36,7 +36,8 @@
         },
         {
           "direction": "sur",
-          "location": "camino"
+          "location": "camino",
+          "obstacle": "puerta"
         }
       ],
       "name": "living",
@@ -63,6 +64,7 @@
           "number": "singular"
         }
       ],
+      "npcs": [],
       "connections": [
         {
           "direction": "oeste",
@@ -169,7 +171,7 @@
         {
           "direction": "oeste",
           "location": "bar",
-          "obstacles": "troll"
+          "obstacle": "troll"
         },
         {
           "direction": "este",
@@ -219,7 +221,7 @@
         {
           "direction": "oeste",
           "location": "cueva",
-          "obstacles": "piedra"
+          "obstacle": "piedra"
         }
       ],
       "name": "campamento siniestro",
@@ -354,6 +356,13 @@
       ]
     },
     {
+      "description": "Busco a la hermanastra mas fea..por dios eres tu",
+      "talk": "Conoces al principe encantador? su cara parece tallada por los mismos angeles",
+      "name": "hermanastra mas fea",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
       "description": "Un horripilante troll espera en la puerta del bar.",
       "talk": "Pasaras sobre mi cadaver. Vale la pena tanto por un trago?",
       "name": "troll",
@@ -398,11 +407,10 @@
       "actions": [
         "atacar",
         "tomar",
-        "usar",
-        "observar"
+        "usar"
       ],
       "effects_over": [
-        "npcs"
+        "npc"
       ],
       "targets": [
         "dracula",
@@ -415,7 +423,7 @@
     },
     {
       "actions": [
-        "ver","observar"
+        "ver"
       ],
       "effects_over": [
         "self"
@@ -588,6 +596,28 @@
         }
       ],
       "name": "cerveza",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "observar"
+      ],
+      "effects_over": [
+        "self"
+      ],
+      "targets": [
+        "self"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "carta",
+          "on_trigger": "parece que estas instrucciones son para un baile, aqui dice que se llama el meneaito",
+          "after_trigger": "default"
+        }
+      ],
+      "name": "carta",
       "gender": "female",
       "number": "singular"
     }
