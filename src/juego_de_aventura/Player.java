@@ -159,4 +159,62 @@ public class Player {
 		return cadena;
 	}
 
+	public String attack(Action action, Adventure adventure) {
+		String cadena = "No ha servido de nada.";
+		Item item = adventure.getItem(action.getThing());
+		
+		if(item != null && item.allowsAction(action.getAction())) {
+			cadena = "No tienes ese objeto.";
+ 
+			if (this.hasItem(item)) {
+
+				if (item.hasEffectsOver(action)) {
+					String shootableName = action.getTarget();
+					Shootable shootable = adventure.findShootable(shootableName);
+					
+					if(shootable != null) {
+						cadena = shootable.shootTrigger(action, adventure, currentLocation);
+					}
+
+				} else {
+					cadena = "No ha servido de nada.";
+				}
+			}
+
+		}
+		
+	return cadena;
+	}
+
+	public String observeItem(Action action, Adventure adventure) {
+		String cadena = "No se que es lo que quieres mirar";
+		
+		Item item = adventure.getItem(action.getThing());
+		
+		if(item != null && !action.isUnknownThing() && item.allowsAction(action.getAction())) {
+ 
+			if (this.hasItem(item) || this.isNearItem(action.getThing())) {
+
+				if (item.hasEffectsOver(action)) {
+					String shootableName = action.getThing();
+					Shootable shootable = adventure.findShootable(shootableName);
+					
+					if(shootable != null) {
+						cadena = shootable.shootTrigger(action, adventure, currentLocation);
+					}
+
+				} else {
+					cadena = "No tiene nada en especial";
+				}
+			}
+
+		}
+		
+	return cadena;
+	}
+
+	private boolean isNearItem(String item) {
+		return currentLocation.hasItem(item);
+	}
+
 }

@@ -117,4 +117,12 @@ public class Action {
 		
 	return exist;
 	}
+	
+	public boolean isUnknownThing() {
+		return this.condition.equals("unknown");
+	}
+	
+	public boolean isUnknownTarget() {
+		return this.effect_over.equals("unknown");
+	}
 }

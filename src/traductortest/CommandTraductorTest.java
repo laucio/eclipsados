@@ -626,6 +626,6 @@ public class CommandTraductorTest {
 		actuals = game.processCommand(command);
 		assertEquals(expected,actuals);
 	}
-
+	
 	
 }

@@ -130,6 +130,20 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		
 		return retorno;
 	}
+
+	public boolean allowsAction(String action) {
+		boolean found = false;
+		int i=0;
+		
+		while(i<actions.size() && !found) {
+			if(action.equals(actions.get(i))) {
+				found = true;
+			}
+			
+		i++;
+		}
+	return found;	
+	}
 	
 	
 }
