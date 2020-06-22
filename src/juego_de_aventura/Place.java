@@ -75,4 +75,9 @@ public class Place extends Thing{
 		return this.getItems().contains(name);
 	}
 
+	public boolean hasItems() {
+		
+		return items.size()>0;
+	}
+
 }

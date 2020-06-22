@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import juego_de_aventura.*;
 
-public class TranslatorVerbRead implements CommandTranslator {
+public class TranslatorVerbObserve implements CommandTranslator {
 
 	private final static String[] VERBO_OBSERVAR = { " observar ", " leer ", " inspeccionar ", " ver ", " mirar ", " chusmear "};
 
 	private CommandTranslator next = null;
 
-	public TranslatorVerbRead(CommandTranslator next) {
+	public TranslatorVerbObserve(CommandTranslator next) {
 		this.next = next;
 	}
 
@@ -38,8 +38,19 @@ public class TranslatorVerbRead implements CommandTranslator {
 			int cant = objs.size();
 			switch(cant) {
 			case 0:
-				//no sabe que observar
-				action.setThing("unknown");
+				//No hay item en el comando
+				
+				//vemos si quiere mirar un place de la location
+				Player player = game.getPlayer();
+				Location location = player.getCurrentLocation();
+				Place place;
+				if((place = location.getMentionedPlace(command))!= null) {
+					action.setThing(place.getName());
+					action.setCondition("place");
+				}else {
+					action.setThing("unknown");
+				}
+				
 				break;
 			case 1:
 				//observar una cosa

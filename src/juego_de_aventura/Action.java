@@ -125,4 +125,8 @@ public class Action {
 	public boolean isUnknownTarget() {
 		return this.effect_over.equals("unknown");
 	}
+
+	public boolean isConditionAPlace() {
+		return condition.equals("place");
+	}
 }

@@ -37,7 +37,7 @@
         {
           "direction": "sur",
           "location": "camino",
-          "obstacle": "puerta"
+          "obstacles": "puerta"
         }
       ],
       "name": "living",
@@ -501,7 +501,7 @@
         {
           "type": "item",
           "thing": "letrero",
-          "on_trigger": "Ya sea una botella de alcochol, o un ramo de flores, el final es donde parti...",
+          "on_trigger": "Ya sea una botella de alcohol, o un ramo de flores, el final es donde parti...",
           "after_trigger": "default"
         }
       ],
