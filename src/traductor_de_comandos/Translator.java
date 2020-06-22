@@ -18,7 +18,7 @@ public class Translator implements CommandTranslator{
 		translatorDefault = new TranslatorDefault();
 		verbToGo = new TranslatorWithVerbGo(translatorDefault);
 		verbToTake = new TranslatorWithVerbTake(verbToGo);
-		verbToObserve = new TranslatorVerbRead(verbToTake);
+		verbToObserve = new TranslatorVerbObserve(verbToTake);
 		verbToUse = new TranslatorWithVerbUse(verbToObserve);
 		verbToTalk = new TranslatorVerbTalkToNPC(verbToUse);
 		verbToAttack = new TranslatorVerbAttack(verbToTalk);

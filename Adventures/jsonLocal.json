@@ -415,7 +415,7 @@
     },
     {
       "actions": [
-        "ver","observar"
+        "ver","observar","usar","tomar"
       ],
       "effects_over": [
         "self"

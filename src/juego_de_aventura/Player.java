@@ -79,23 +79,22 @@ public class Player {
 	}
 
 	public String takeItem(Action action, Adventure adventure) {
-		String cadena = "No encuentro ese objeto.";
+		String cadena = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
 		
-		Item item = adventure.giveItem(currentLocation, action.getThing());
-		
-		if(item!=null && !item.allowsAction(action.getAction())) {
-			cadena = "No puedes tomar eso";
-		}else {
-			cadena = "No encuentro ese objeto, tal vez ya lo tengas en tu inventario";
-			if (currentLocation.hasItem(action.getThing())) {
-
-				if (item != null) {
-					this.addToInventory(item);
-					cadena = "Tienes " + item;
-					action.setAchieved(true);
+		if(!action.isUnknownThing()) {
+			Item item = adventure.getItem(action.getThing());
+			if(item != null && !item.allowsAction(action.getAction())) {
+				cadena = "No puedes tomar eso";
+			}else {	
+					
+						if(item != null) {
+							item = adventure.giveItem(currentLocation, action.getThing());
+							this.addToInventory(item);
+							cadena = "Tienes " + item;
+							action.setAchieved(true);
+						}
 				}
 			}
-		}
 
 		return cadena;
 	}
@@ -115,7 +114,7 @@ public class Player {
 
 			for (int i = 0; i < inventory.size(); i++) {
 				Item item = inventory.get(i);
-				cadena += (i > 0 ? i == inventory.size() - 1 ? ", y " : ", " : "") + item.toString();
+				cadena += (i > 0 ? i == inventory.size() - 1 ? " y " : ", " : "") + item.toString();
 			}
 		} else {
 			cadena = "Tu inventario esta vacio";
@@ -193,15 +192,15 @@ public class Player {
 	}
 
 	public String observeItem(Action action, Adventure adventure) {
-		String cadena = "No se que es lo que quieres mirar";
+		String cadena = "No entiendo que es lo que quieres mirar";
 		
 		Item item = adventure.getItem(action.getThing());
 		
-		if(item != null && !action.isUnknownThing() && item.allowsAction(action.getAction())) {
+		if(item != null && !action.isUnknownThing()) {
  
 			if (this.hasItem(item) || this.isNearItem(action.getThing())) {
 
-				if (item.hasEffectsOver(action)) {
+				if (item.hasEffectsOver(action) && item.allowsAction(action.getAction())) {
 					String shootableName = action.getThing();
 					Shootable shootable = adventure.findShootable(shootableName);
 					
@@ -212,8 +211,28 @@ public class Player {
 				} else {
 					cadena = "No tiene nada en especial";
 				}
+			}else {
+				cadena = "No encuentro eso que quieres mirar";
 			}
+		}else {
+			if(action.isConditionAPlace()) {
+				Place place = this.currentLocation.getPlace(action.getThing());
+				
+				if(place.hasItems()) {
+							cadena = "En ";
 
+							cadena += place.toString() + " hay: ";
+							for (int j = 0; j < place.getItems().size(); j++) {
+								String itemName = place.getItems().get(j);
+								Item itemObj = adventure.getItem(itemName);
+								cadena += ((j > 0) ? ((j == place.getItems().size() - 1) ? " y " : " , ") : "") + itemObj;
+
+							}
+				}else {
+					cadena = "No hay nada de raro en "+ place.getDescription();
+				}
+				
+			}
 		}
 		
 	return cadena;

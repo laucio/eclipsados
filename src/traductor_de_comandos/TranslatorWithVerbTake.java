@@ -43,13 +43,16 @@ public class TranslatorWithVerbTake implements CommandTranslator {
 																						// pala y escribio paladar
 						if (encontrado) {
 							action.setCondition("item");
-							action.setAction("tomar");
 							action.setThing(currItems.get(j));
 						}
 						j++;
 					} // while(!encontrado && j<currPlaces.get(i).getItems())
 					i++;
 				} // end of while
+			}
+			
+			if(!encontrado) {
+				action.setCondition("unknown");
 			}
 
 		} else {

@@ -160,4 +160,37 @@ public class Location extends Thing {
 		return this.getNPCS().contains(name);
 	}
 
+	public Place getMentionedPlace(String command) {
+		Place place = null;
+		boolean found = false;
+		int i = 0;
+		
+		while( i < places.size() && !found) {
+			if(command.contains(places.get(i).getName())) {
+				place = places.get(i);
+				found = true;
+			}
+			
+			i++;
+		}
+	return place;
+	}
+
+	public Place getPlace(String placeName) {
+		Place place = null;
+		boolean found = false;
+		int i = 0;
+		
+		while( i < places.size() && !found) {
+			if(placeName.equals(places.get(i).getName())) {
+				place = places.get(i);
+				found = true;
+			}
+			
+			i++;
+		}
+		
+	return place;
+	}
+
 }
