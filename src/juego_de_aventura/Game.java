@@ -148,13 +148,17 @@ public class Game {
 	private String makePlayerAttack(Action action) {
 		String retorno;
 		
-		if(action.isUnknownTarget()) {
-			retorno = "No entiendo a quien quieres atacar";
+		if(action.isUnknownThing() && action.isUnknownTarget()) {
+			retorno = "A quien y con que? Debes ser mas claro";
 		}else {
 			if(action.isUnknownThing()) {
 				retorno = "No entiendo con que cosa quieres atacar";
 			}else {
-				retorno = player.attack(action, adventure);
+				if(action.isUnknownTarget()) {
+					retorno = "No entiendo a quien quieres atacar";
+				}else {
+					retorno = player.attack(action, adventure);
+				}
 			}
 		}
 		

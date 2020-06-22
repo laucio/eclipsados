@@ -22,7 +22,7 @@ public class CommandTraductorNewAdventureTest {
 
 	@Before
 	public void setup() throws IOException {
-		path = "C:\\Users\\Noblex\\Desktop\\jsonLocal.json";
+		path = "Adventures\\jsonLocal.json";
 		game = new Game(path);
 	}
 	
@@ -33,50 +33,170 @@ public class CommandTraductorNewAdventureTest {
 		assertEquals(expected, actuals);
 	}
 	
+	////////////DISPARAR TRIGGERS
+	
 	@Test
-	public void dispararTriggerDeTrollConCuchillo() {
+	public void dispararTriggerDeTrollConCuchilloVerboUsar() {
 		
 		expected = "Atacas al troll con el cuchillo. Luego de un ligero corte, tu contrincante huye corriendo entre sollozos. Al parecer no era tan temible...";
-		//Ir a cocina	
+		
 		command = "ir cocina";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
 		
-		//tomar cuchillo
 		command = "tomar cuchillo";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
 		
-		//ir living
 		command = "ir living";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
 		
-		//ir sur (no hay puerta)
 		command = "ir sur";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
 		
-		
-		//ir oeste (bar)
 		command = "ir oeste";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
 		
-		
-		/*
-		//atacar troll con cuchillo
 		command = "usar cuchillo con troll";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
-		*/
-		/*
-		command = "hablar con troll";
+		
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void dispararTriggerDeTrollSinCuchilloVerboUsar() {
+		
+		expected = "No tienes ese objeto.";
+		
+		command = "ir sur";
 		actuals = game.processCommand(command);
-		System.out.println(actuals);
-		*/
+		
+		command = "ir oeste";
+		actuals = game.processCommand(command);
+		
+		command = "usar cuchillo con troll";
+		actuals = game.processCommand(command);
+		
 		assertEquals(expected, actuals);
 		
+	}
+	
+	///////////VERBO ATACAR A NPC
+	
+	@Test
+	public void dispararTriggerDeTrollConCuchilloVerboAtacar() {
+		
+		expected = "Atacas al troll con el cuchillo. Luego de un ligero corte, tu contrincante huye corriendo entre sollozos. Al parecer no era tan temible...";
+			
+		command = "ir cocina";
+		actuals = game.processCommand(command);
+		
+		command = "tomar cuchillo";
+		actuals = game.processCommand(command);
+		
+		command = "ir living";
+		actuals = game.processCommand(command);
+		
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		
+		command = "ir oeste";
+		actuals = game.processCommand(command);
+		
+		command = "atacar troll con cuchillo";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void dispararTriggerDeTrollSinCuchilloVerboAtacar() {
+		
+		expected = "No tienes ese objeto.";
+		
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		
+		command = "ir oeste";
+		actuals = game.processCommand(command);
+		
+		command = "atacar troll con cuchillo";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+		
+	}
+	
+	@Test
+	public void noSabeAQuienAtacarNiConQue() {
+		
+		expected = "A quien y con que? Debes ser mas claro";
+		
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		
+		command = "atacar";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void noSabeConQueAtacar() {
+		
+		expected = "No entiendo con que cosa quieres atacar";
+		
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		
+		command = "atacar troll";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void noSabeAQuienAtacar() {
+		
+		expected = "No entiendo a quien quieres atacar";
+		
+		command = "ir sur";
+		actuals = game.processCommand(command);
+		
+		command = "atacar con cuchillo";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+	}
+	
+	/////////VERBO OBSERVAR
+	
+	@Test
+	public void observarObjetoEnInventarioConTrigger() {
+		expected = "Oh... soy hermoso...";
+		
+		command = "tomar espejo";
+		actuals = game.processCommand(command);
+		
+		command = "observar espejo";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
+		
+	}
+	
+	@Test
+	public void observarObjetoEnInventarioSinTrigger() {
+		expected = "No tiene nada en especial";
+		
+		command = "Ir a la cocina";
+		actuals = game.processCommand(command);
+		
+		command = "agarrar el cuchillo";
+		actuals = game.processCommand(command);
+		
+		command = "observar cuchillo";
+		actuals = game.processCommand(command);
+		
+		assertEquals(expected, actuals);
 	}
 
 

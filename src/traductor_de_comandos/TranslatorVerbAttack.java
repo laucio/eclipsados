@@ -41,6 +41,18 @@ public class TranslatorVerbAttack implements CommandTranslator {
 				case 0:
 					//no sabe con que atacar, no hay item
 					action.setCondition("unknown");
+					
+					//verifica a quien quiere atacar
+					if ((npcName = adventure.containsNPC(command)) != null) {
+						//  ataca a npc
+						action.setTarget(npcName);
+						action.setEffect_over("npcs");
+					}
+					else {
+						//sabe con que, pero no sabe a quien atacar
+						action.setEffect_over("unknown");
+					}
+					
 					break;
 				case 1:
 					//ataca con un item 
