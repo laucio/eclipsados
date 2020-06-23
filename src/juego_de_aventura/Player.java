@@ -239,7 +239,7 @@ public class Player {
 	}
 
 	private boolean isNearItem(String item) {
-		return currentLocation.hasItem(item);
+		return currentLocation.hasItem(item) || currentLocation.hasObstacle(item);
 	}
 
 	public String eat(Action action, Adventure adventure) {
@@ -271,14 +271,43 @@ public class Player {
 	}
 	
 	public String openSomething(Action action, Adventure adventure) {
-		String cadena;
+		String cadena = "No ha servido de nada";
+		
 		if(action.isUnknownThing()) {
 			cadena = "No se que es lo que quieres abrir";
 		}else {
+			
 			Item item = adventure.getItem(action.getThing());
+			
 			if(item.allowsAction(action.getAction())) {
-				action.setAction("usar");
-				cadena = this.useItem(action, adventure);
+				
+				switch(action.getEffect_over()) {
+				case "self":
+					if (this.isNearItem(item.getName()) || this.hasItem(item)) {
+
+						if (item.hasEffectsOver(action)) {
+							String shootableName = action.getThing();
+							Shootable shootable = adventure.findShootable(shootableName);
+							
+							if(shootable != null) {
+								cadena = shootable.shootTrigger(action, adventure, this);
+							}
+
+						} 
+					}else {
+						cadena = "No encuentro eso que quieres abrir";
+					}
+					
+					break;
+					
+				case "item":
+					action.setAction("usar");
+					cadena = this.useItem(action, adventure);
+					break;
+				default:
+					break;
+				}
+				
 			}else {
 				cadena = "No puedes hacer eso";
 			}
