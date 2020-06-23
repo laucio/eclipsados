@@ -26,7 +26,7 @@
         }
       ],
       "npcs": [
-        "madre",
+        "mujer",
         "gato"
       ],
       "connections": [
@@ -329,7 +329,7 @@
     {
       "description": "Deberias comer algo... fijate en la cocina.",
       "talk": "Te deje algo para comer en la cocina!",
-      "name": "madre",
+      "name": "mujer",
       "gender": "female",
       "number": "singular"
     },
