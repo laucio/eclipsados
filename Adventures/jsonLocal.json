@@ -217,7 +217,7 @@
         {
           "direction": "este",
           "location": "templo",
-          "obstacles": "puerta de hierro"
+          "obstacles": "porton de hierro"
         },
         {
           "direction": "oeste",
@@ -559,7 +559,8 @@
       "actions": [
         "tomar",
         "usar",
-        "dejar"
+        "dejar",
+        "abrir"
       ],
       "effects_over": [
         "item"
@@ -657,7 +658,7 @@
         "item"
       ],
       "targets": [
-        "puerta de hierro"
+        "porton de hierro"
       ],
       "name": "llave esmeralda",
       "gender": "female",
@@ -677,19 +678,19 @@
       "triggers": [
         {
           "type": "item",
-          "thing": "puerta de hierro",
-          "on_trigger": "La gran puerta de hierro no parece moverse. Debajo del picaporte, ves una cerradura esmeralda.",
+          "thing": "porton de hierro",
+          "on_trigger": "El gran porton de hierro no parece moverse. Debajo del picaporte ves una cerradura esmeralda.",
           "after_trigger": "default"
         },
         {
           "type": "item",
           "thing": "llave esmeralda",
-          "on_trigger": "La llave encaja perfectamente! La puerta se abre con un gran chirrido metalico.",
-          "after_trigger": "remove"
+          "on_trigger": "La llave encaja perfectamente! El porton se abre con un gran chirrido metalico.",
+          "after_trigger": "remove obstacles"
         }
       ],
-      "name": "puerta de hierro",
-      "gender": "female",
+      "name": "porton de hierro",
+      "gender": "male",
       "number": "singular"
     },
     {
