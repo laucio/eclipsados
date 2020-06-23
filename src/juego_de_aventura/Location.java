@@ -67,11 +67,13 @@ public class Location extends Thing {
 	}
 
 	public Connection getConnectionFromObstacle(String thing) {
+		String obstacle;
 		Connection retorno = null;
 		boolean found = false;
 		int i = 0;
 		while (i < connections.size() && !found) {
-			if(connections.get(i).getObstacles().equals(thing)) {
+			obstacle = connections.get(i).getObstacles();
+			if(obstacle!=null && obstacle.equals(thing)) {
 				retorno = connections.get(i);
 				found = true;
 			}
