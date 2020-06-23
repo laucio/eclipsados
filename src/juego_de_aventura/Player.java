@@ -243,7 +243,7 @@ public class Player {
 	}
 
 	public String eat(Action action, Adventure adventure) {
-		String cadena = "comete esta";
+		String cadena = "Para comer algo, primero debes tomarlo";
 		
 		switch(action.getCondition()) {
 		case "unknown":
@@ -251,17 +251,61 @@ public class Player {
 			break;
 		case "item":
 			Item item = adventure.getItem(action.getThing());
-			if(item.allowsAction(action.getAction())) {
-				action.setAction("usar");
-				this.useItem(action, adventure);
+			if(this.hasItem(item)) {
+				if(item.allowsAction(action.getAction())) {
+					action.setAction("usar");
+					cadena = this.useItem(action, adventure);
+				}else {
+					cadena = "No puedes comer eso";
+				}
 			}
-			else {
-				cadena = "No puedes comer eso";
-			}
-			
 			break;
 		case "tooManyThings":
 			cadena = "Aclarame que quieres comer primero";
+			break;
+		default:
+			break;
+		}
+		
+	return cadena;
+	}
+	
+	public String openSomething(Action action, Adventure adventure) {
+		String cadena;
+		if(action.isUnknownThing()) {
+			cadena = "No se que es lo que quieres abrir";
+		}else {
+			Item item = adventure.getItem(action.getThing());
+			if(item.allowsAction(action.getAction())) {
+				action.setAction("usar");
+				cadena = this.useItem(action, adventure);
+			}else {
+				cadena = "No puedes hacer eso";
+			}
+		}
+	return cadena;
+	}
+	
+	public String drink(Action action, Adventure adventure) {
+		String cadena = "Para beber algo, primero debes tomarlo";
+		
+		switch(action.getCondition()) {
+		case "unknown":
+			cadena = "No entiendo que es lo que quieres beber";
+			break;
+		case "item":
+			Item item = adventure.getItem(action.getThing());
+			if(this.hasItem(item)) {
+				if(item.allowsAction(action.getAction())) {
+					action.setAction("usar");
+					cadena = this.useItem(action, adventure);
+				}else {
+					cadena = "No puedes beber eso";
+				}
+			}
+			break;
+		case "tooManyThings":
+			cadena = "Aclarame que quieres beber primero";
 			break;
 		default:
 			break;
