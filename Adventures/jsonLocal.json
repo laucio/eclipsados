@@ -523,7 +523,7 @@
           "type": "item",
           "thing": "pico",
           "on_trigger": "la piedra se ha salido del camino",
-          "after_trigger": "remove"
+          "after_trigger": "remove obstacles"
         }
       ],
       "name": "piedra",
