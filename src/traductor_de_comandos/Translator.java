@@ -6,6 +6,7 @@ public class Translator implements CommandTranslator{
 	
 	CommandTranslator translatorDefault;
 	CommandTranslator verbToGo;
+	CommandTranslator verbToGoOut;
 	CommandTranslator verbToTake;
 	CommandTranslator verbToObserve;
 	CommandTranslator verbToTalk;
@@ -16,10 +17,12 @@ public class Translator implements CommandTranslator{
 	CommandTranslator verbToAttack;
 	CommandTranslator verbToWatchInventory;
 	CommandTranslator verbToSeeAround;
+	CommandTranslator translatorOthers;
 	
 	public Translator() {
 		translatorDefault = new TranslatorDefault();
-		verbToGo = new TranslatorWithVerbGo(translatorDefault);
+		verbToGoOut = new TranslatorGoOut(translatorDefault);
+		verbToGo = new TranslatorWithVerbGo(verbToGoOut);
 		verbToTake = new TranslatorWithVerbTake(verbToGo);
 		verbToObserve = new TranslatorVerbObserve(verbToTake);
 		verbToUse = new TranslatorWithVerbUse(verbToObserve);
@@ -30,6 +33,7 @@ public class Translator implements CommandTranslator{
 		verbToAttack = new TranslatorVerbAttack(verbToTalk);
 		verbToWatchInventory = new TranslatorVerbWatchInventory(verbToAttack);
 		verbToSeeAround = new TranslatorVerbSeeAround(verbToWatchInventory);
+		translatorOthers = new TranslatorOthers(verbToSeeAround);
 	}
 	
 	@Override
@@ -38,7 +42,7 @@ public class Translator implements CommandTranslator{
 		command = " " + command.toLowerCase() + " ";
 		
 		//Poner el mayor en jerarquia: seria verbToSeeAround
-		verbToSeeAround.translateCommand(command, action, game);
+		translatorOthers.translateCommand(command, action, game);
 	}
 	
 		

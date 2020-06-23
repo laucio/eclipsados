@@ -9,7 +9,7 @@ import juego_de_aventura.Game;
 public class TranslatorVerbAttack implements CommandTranslator {
 
 	private final static String[] VERBO_ATACAR = { " atacar ", " golpear ", " cortar ", " herir ", " pelear ",
-			" matar ", " destruir ", " abatir ", " derrotar " };
+			" matar ", " destruir ", " abatir ", " derrotar ", " defender ", " defenderse " };
 
 	private CommandTranslator next = null;
 

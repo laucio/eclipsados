@@ -6,7 +6,8 @@ import juego_de_aventura.*;
 
 public class TranslatorWithVerbGo implements CommandTranslator {
 
-	private final static String[] VERBO_IR = { " ir ", " ve ", " camina ", " caminar ", " movete ", " moverse " };
+	private final static String[] VERBO_IR = { " ir ", " ve ", " camina ", " caminar ",
+			" movete ", " moverse ", " correr ", " entrar ", " ingresar "};
 	private final static String[] POSSIBLE_DIRECTIONS = { " noreste ", " noroeste ", " sureste ", " suroeste ",
 			" sudoeste ", " sudeste ", " sur ", " este ", " norte ", " oeste " };
 
@@ -25,12 +26,15 @@ public class TranslatorWithVerbGo implements CommandTranslator {
 
 		int i = 0;
 		while (!translated && i < VERBO_IR.length) {
-			translated = command.contains(VERBO_IR[i]);
-			i++;
+			if(command.contains(VERBO_IR[i])) {
+				translated = true;
+				action.setAction("ir");
+			}
+			
+		i++;
 		}
 
 		if (translated) {
-			action.setAction("ir");
 			found = false;
 			i = 0;
 			ArrayList<Connection> currConnections = player.getCurrentLocation().getConnections();
