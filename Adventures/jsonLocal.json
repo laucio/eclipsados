@@ -291,6 +291,10 @@
           "direction": "sur",
           "location": "tumba",
           "obstacles": "lobo"
+        },
+        {
+          "direction": "oeste",
+          "location": "campamento siniestro"
         }
       ],
       "name": "templo",
@@ -299,7 +303,24 @@
     },
     {
       "description": "tumba",
-      "places": [],
+      "places": [
+        {
+          "items": [
+            "escritura"
+          ],
+          "name": "lapida",
+          "gender": "female",
+          "number": "singular"
+        },
+        {
+          "items": [
+            "espada"
+          ],
+          "name": "tierra",
+          "gender": "female",
+          "number": "singular"
+        }
+      ],
       "npcs": [
         "diablo"
       ],
@@ -323,6 +344,13 @@
       "number": "singular"
     },
     {
+      "description": "Aparece un sacerdote en el templo",
+      "talk": "La profecia se ha cumplido el elegido para derrotar al rey de las tinieblas esta aqui",
+      "name": "sacerdote",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
       "description": "Ohh eh visto un lindo gatito",
       "talk": "Miau miau...miau",
       "name": "gato",
@@ -330,7 +358,49 @@
       "number": "singular"
     },
     {
-      "description": "Un feroz lobo se acerca",
+      "description": "El diablo se hace presente",
+      "talk": "Osas ha venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi lucifer!!",
+      "name": "diablo",
+      "gender": "male",
+      "number": "singular",
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "cruz",
+          "on_trigger": "Noooo!!! como pudiste?? se supone que yo era inevitable!!!...",
+          "after_trigger": "remove"
+        },
+        {
+          "type": "item",
+          "thing": "tesoro",
+          "on_trigger": "Muaajajajaj crees que este artefacto de codicia y avaricia puede contra mi? eres solo un simple mortal...",
+          "after_trigger": "default"
+        }
+      ]
+    },
+    {
+      "description": "Un dragon se aparece",
+      "talk": "Te quemare y me preparare un gran asado contigo..solo me falta el fernet y una picada",
+      "name": "dragon",
+      "gender": "male",
+      "number": "singular",
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "espada",
+          "on_trigger": "Me has atacado..siento como mi llama sagrada se extingue.",
+          "after_trigger": "remove"
+        },
+        {
+          "type": "item",
+          "thing": "lanza",
+          "on_trigger": "Mejor me pego una siesta, estoy cansado de tanta lucha zzzz",
+          "after_trigger": "default"
+        }
+      ]
+    },
+    {
+      "description": "Un feroz lobo hambriento te impide el paso hacia la tumba, defenderte con tus manos seria algo muy inutil",
       "talk": "Grrrrrrrrrr...",
       "name": "lobo",
       "gender": "male",
@@ -341,12 +411,18 @@
           "thing": "cuchillo",
           "on_trigger": "Con un feroz movimiento, el lobo te arranca el cuchillo de las manos.",
           "after_trigger": "remove item"
+        },
+        {
+          "type": "item",
+          "thing": "lanza",
+          "on_trigger": "El lobo feroz huye despaborido lo has herido en su patita con la lanza...pobrechito...",
+          "after_trigger": "remove"
         }
       ]
     },
     {
       "description": "Busco a la hermanastra mas fea..por dios eres tu",
-      "talk": "Conoces al principe encantador? su cara parece tallada por los mismos angeles",
+      "talk": "Conoces al principe encantador? Es un papucho..su cara parece tallada por los mismos angeles",
       "name": "hermanastra mas fea",
       "gender": "female",
       "number": "singular"
@@ -368,7 +444,7 @@
     },
     {
       "description": "Una princesa borracha se tambalea delante de la entrada al mercado. Parece que esta de malas, no te dejara pasar.",
-      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penas...",
+      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera una cervezita para ahogar mis penas...",
       "name": "princesa borracha",
       "gender": "female",
       "number": "singular",
@@ -426,11 +502,44 @@
         "npcs"
       ],
       "targets": [
-        "dracula",
         "lobo",
         "troll"
       ],
       "name": "cuchillo",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "atacar",
+        "tomar",
+        "usar",
+        "dejar"
+      ],
+      "effects_over": [
+        "npcs"
+      ],
+      "targets": [
+        "dragon"
+      ],
+      "name": "espada",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "atacar",
+        "tomar",
+        "usar",
+        "dejar"
+      ],
+      "effects_over": [
+        "npcs"
+      ],
+      "targets": [
+        "lobo"
+      ],
+      "name": "lanza",
       "gender": "male",
       "number": "singular"
     },
@@ -722,16 +831,16 @@
   "inventory": [],
   "endgames": [
     {
-      "condition": "location",
-      "action": "ir",
-      "thing": "taberna",
-      "description": "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
+      "condition": "item",
+      "action": "usar",
+      "thing": "espada",
+      "description": "Felicitaciones has derrotado  dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
     },
     {
       "condition": "item",
       "action": "usar",
-      "thing": "espada",
-      "description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
+      "thing": "cruz",
+      "description": "El diablo se esparce en cenizas...la paz y el pecado han desaparecido del reino"
     }
   ]
 }
