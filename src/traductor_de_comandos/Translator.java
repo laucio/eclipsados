@@ -10,6 +10,7 @@ public class Translator implements CommandTranslator{
 	CommandTranslator verbToObserve;
 	CommandTranslator verbToTalk;
 	CommandTranslator verbToUse;
+	CommandTranslator verbToEat;
 	CommandTranslator verbToAttack;
 	CommandTranslator verbToWatchInventory;
 	CommandTranslator verbToSeeAround;
@@ -20,7 +21,8 @@ public class Translator implements CommandTranslator{
 		verbToTake = new TranslatorWithVerbTake(verbToGo);
 		verbToObserve = new TranslatorVerbObserve(verbToTake);
 		verbToUse = new TranslatorWithVerbUse(verbToObserve);
-		verbToTalk = new TranslatorVerbTalkToNPC(verbToUse);
+		verbToEat = new TranslatorVerbEat(verbToUse);
+		verbToTalk = new TranslatorVerbTalkToNPC(verbToEat);
 		verbToAttack = new TranslatorVerbAttack(verbToTalk);
 		verbToWatchInventory = new TranslatorVerbWatchInventory(verbToAttack);
 		verbToSeeAround = new TranslatorVerbSeeAround(verbToWatchInventory);
