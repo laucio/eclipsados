@@ -37,6 +37,8 @@ public class Connection {
 		return removed;
 	}
 	
-	
+	public boolean hasObstacle(String itemName) {
+		return obstacles!=null && obstacles.equals(itemName);
+	}
 	
 }

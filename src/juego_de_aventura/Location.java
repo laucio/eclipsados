@@ -208,4 +208,19 @@ public class Location extends Thing {
 	return place;
 	}
 
+	public boolean hasObstacle(String item) {
+		boolean found = false;
+		int i=0;
+		while(i<connections.size() && !found) {
+	
+			if(connections.get(i).hasObstacle(item)) {
+				found = true;
+			}
+				
+		i++;
+		}
+		
+	return found;
+	}
+
 }
