@@ -468,6 +468,20 @@
   "items": [
     {
       "actions": [
+        "usar"
+      ],
+      "effects_over": [
+        "item"
+      ],
+      "targets": [
+        "piedra"
+      ],
+      "name": "pico",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
         "usar",
         "comer",
         "tomar",
@@ -489,6 +503,31 @@
       ],
       "name": "sanguche de atun",
       "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "comer",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "self"
+      ],
+      "targets": [
+        "self"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "pico",
+          "on_trigger": "la piedra se ha salido del camino",
+          "after_trigger": "remove"
+        }
+      ],
+      "name": "piedra",
+      "gender": "female",
       "number": "singular"
     },
     {
