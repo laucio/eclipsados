@@ -64,7 +64,6 @@
           "number": "singular"
         }
       ],
-      "npcs": [],
       "connections": [
         {
           "direction": "oeste",
@@ -80,7 +79,7 @@
       "places": [
         {
           "items": [
-            "llave"
+            "llave esmeralda"
           ],
           "name": "mostrador",
           "gender": "male",
@@ -88,21 +87,20 @@
         },
         {
           "items": [
-            "manzana podrida"
+            "manzana"
           ],
           "name": "estanteria",
           "gender": "female",
           "number": "singular"
         }
       ],
-      "npcs": [],
       "connections": [
         {
           "direction": "oeste",
           "location": "camino"
         }
       ],
-      "name": "mercado",
+      "name": "mercado abandonado",
       "gender": "male",
       "number": "singular"
     },
@@ -161,7 +159,8 @@
         }
       ],
       "npcs": [
-        "troll"
+        "troll",
+        "princesa borracha"
       ],
       "connections": [
         {
@@ -175,7 +174,8 @@
         },
         {
           "direction": "este",
-          "location": "mercado abandonado"
+          "location": "mercado abandonado",
+          "obstacles": "princesa borracha"
         },
         {
           "direction": "sur",
@@ -376,6 +376,21 @@
           "after_trigger": "remove"
         }
       ]
+    },
+    {
+      "description": "Una princesa borracha se tambalea delante de la entrada al mercado. Parece que esta de malas, no te dejara pasar.",
+      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penas...",
+      "name": "princesa borracha",
+      "gender": "female",
+      "number": "singular",
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "cerveza",
+          "on_trigger": "Gracias por el trago, creo que me ire a mimir...",
+          "after_trigger": "remove"
+        }
+      ]
     }
   ],
   "items": [
@@ -425,7 +440,8 @@
     },
     {
       "actions": [
-        "observar"
+        "observar",
+        "usar"
       ],
       "effects_over": [
         "self"
@@ -447,7 +463,8 @@
     },
     {
       "actions": [
-        "observar"
+        "observar",
+        "usar"
       ],
       "effects_over": [
         "self"
@@ -469,7 +486,8 @@
     },
     {
       "actions": [
-        "observar"
+        "observar",
+        "usar"
       ],
       "effects_over": [
         "self"
@@ -491,7 +509,8 @@
     },
     {
       "actions": [
-        "observar"
+        "observar",
+        "usar"
       ],
       "effects_over": [
         "self"
@@ -589,10 +608,12 @@
         "dejar"
       ],
       "effects_over": [
-        "self"
+        "self",
+        "npcs"
       ],
       "targets": [
-        "self"
+        "self",
+        "princesa borracha"
       ],
       "triggers": [
         {
@@ -608,7 +629,8 @@
     },
     {
       "actions": [
-        "observar"
+        "observar",
+        "usar"
       ],
       "effects_over": [
         "self"
@@ -625,6 +647,77 @@
         }
       ],
       "name": "carta",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "tomar",
+        "dejar",
+        "usar",
+        "abrir"
+      ],
+      "effects_over": [
+        "item"
+      ],
+      "targets": [
+        "puerta de hierro"
+      ],
+      "name": "llave esmeralda",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "abrir"
+      ],
+      "effects_over": [
+        "self"
+      ],
+      "targets": [
+        "self"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "puerta de hierro",
+          "on_trigger": "La gran puerta de hierro no parece moverse. Debajo del picaporte, ves una cerradura esmeralda.",
+          "after_trigger": "default"
+        },
+        {
+          "type": "item",
+          "thing": "llave esmeralda",
+          "on_trigger": "La llave encaja perfectamente! La puerta se abre con un gran chirrido metalico.",
+          "after_trigger": "remove"
+        }
+      ],
+      "name": "puerta de hierro",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "comer",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "self"
+      ],
+      "targets": [
+        "self"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "manzana",
+          "on_trigger": "Ups! la manzana estaba podrida. (quizas pueda perder vida)",
+          "after_trigger": "remove"
+        }
+      ],
+      "name": "manzana",
       "gender": "female",
       "number": "singular"
     }
