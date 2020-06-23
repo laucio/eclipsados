@@ -169,6 +169,10 @@ public class Game {
 		return player.observeItem(action, adventure); 
 	}
 	
+	private String makePlayerEat(Action action) {
+		return player.eat(action, adventure);
+	}
+	
 	public boolean isEndgame() {
 		return isEndgame;
 	}
@@ -185,6 +189,9 @@ public class Game {
             break;
         case "ir":
             cadena = this.movePlayer(action);
+            break;
+        case "comer":
+            cadena = this.makePlayerEat(action);
             break;
         case "tomar":
             cadena = this.makePlayerTakeItem(action);

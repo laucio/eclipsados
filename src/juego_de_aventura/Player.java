@@ -242,4 +242,32 @@ public class Player {
 		return currentLocation.hasItem(item);
 	}
 
+	public String eat(Action action, Adventure adventure) {
+		String cadena = "comete esta";
+		
+		switch(action.getCondition()) {
+		case "unknown":
+			cadena = "No entiendo que es lo que quieres comer";
+			break;
+		case "item":
+			Item item = adventure.getItem(action.getThing());
+			if(item.allowsAction(action.getAction())) {
+				action.setAction("usar");
+				this.useItem(action, adventure);
+			}
+			else {
+				cadena = "No puedes comer eso";
+			}
+			
+			break;
+		case "tooManyThings":
+			cadena = "Aclarame que quieres comer primero";
+			break;
+		default:
+			break;
+		}
+		
+	return cadena;
+	}
+
 }
