@@ -173,6 +173,14 @@ public class Game {
 		return player.eat(action, adventure);
 	}
 	
+	private String makePlayerDrink(Action action) {
+		return player.drink(action, adventure);
+	}
+	
+	private String makePlayerOpenSomething(Action action) {
+		return player.openSomething(action, adventure);
+	}
+
 	public boolean isEndgame() {
 		return isEndgame;
 	}
@@ -192,6 +200,12 @@ public class Game {
             break;
         case "comer":
             cadena = this.makePlayerEat(action);
+            break;
+        case "beber":
+            cadena = this.makePlayerDrink(action);
+            break;
+        case "abrir":
+            cadena = this.makePlayerOpenSomething(action);
             break;
         case "tomar":
             cadena = this.makePlayerTakeItem(action);
@@ -215,5 +229,5 @@ public class Game {
 
         return cadena;
     }
-
+	
 }
