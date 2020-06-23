@@ -216,12 +216,13 @@
         },
         {
           "direction": "este",
-          "location": "templo"
+          "location": "templo",
+          "obstacles": "puerta de hierro"
         },
         {
           "direction": "oeste",
           "location": "cueva",
-          "obstacle": "piedra"
+          "obstacles": "piedra"
         }
       ],
       "name": "campamento siniestro",
@@ -262,66 +263,54 @@
       "number": "singular"
     },
     {
-      "description": "Estas en la cima de la montania",
+      "description": "Estas en un templo",
       "places": [
         {
-          "items": [],
-          "name": "guarida",
-          "gender": "male",
+          "items": [
+            "tesoro"
+          ],
+          "name": "boveda",
+          "gender": "female",
           "number": "singular"
         },
         {
           "items": [
-            "espada"
+            "cruz"
           ],
-          "name": "pozo",
+          "name": "altar",
           "gender": "male",
           "number": "singular"
         }
       ],
       "npcs": [
-        "dragon"
+        "sacerdote",
+        "lobo"
       ],
       "connections": [
         {
           "direction": "sur",
-          "location": "montania"
-        }
-      ],
-      "name": "cima",
-      "gender": "female",
-      "number": "singular"
-    },
-    {
-      "description": "Estas en el sendero misterioso",
-      "places": [],
-      "npcs": [],
-      "connections": [
-        {
-          "direction": "norte",
-          "location": "montania"
-        },
-        {
-          "direction": "sur",
-          "location": "castillo"
-        }
-      ],
-      "name": "sendero misterioso",
-      "gender": "male",
-      "number": "singular"
-    },
-    {
-      "description": "Estas en el templo",
-      "places": [],
-      "npcs": [],
-      "connections": [
-        {
-          "direction": "oeste",
-          "location": "base de la montania"
+          "location": "tumba",
+          "obstacles": "lobo"
         }
       ],
       "name": "templo",
       "gender": "male",
+      "number": "singular"
+    },
+    {
+      "description": "tumba",
+      "places": [],
+      "npcs": [
+        "diablo"
+      ],
+      "connections": [
+        {
+          "direction": "norte",
+          "location": "templo"
+        }
+      ],
+      "name": "tumba",
+      "gender": "female",
       "number": "singular"
     }
   ],
@@ -391,6 +380,13 @@
           "after_trigger": "remove"
         }
       ]
+    },
+    {
+      "description": "Se ve en el camino a un maestro sabio",
+      "talk": "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara y el terror de los hombres viviras",
+      "name": "maestro sabio",
+      "gender": "male",
+      "number": "singular"
     }
   ],
   "items": [
