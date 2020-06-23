@@ -180,6 +180,14 @@ public class Game {
 	private String makePlayerOpenSomething(Action action) {
 		return player.openSomething(action, adventure);
 	}
+	
+	private String makePlayerGoOut() {
+		return "Debes decirme hacia donde quieres ir";
+	}
+	
+	private String rejectAction() {
+		return "No puedes hacer eso";
+	}
 
 	public boolean isEndgame() {
 		return isEndgame;
@@ -197,6 +205,9 @@ public class Game {
             break;
         case "ir":
             cadena = this.movePlayer(action);
+            break;
+        case "salir":
+            cadena = this.makePlayerGoOut();
             break;
         case "comer":
             cadena = this.makePlayerEat(action);
@@ -222,6 +233,9 @@ public class Game {
         case "hablar":
             cadena = this.makePlayerTalkToClosestNPC(action);
             break;
+        case "otros":
+            cadena = this.rejectAction();
+            break;    
         default:
             break;
 
