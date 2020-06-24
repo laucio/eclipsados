@@ -38,7 +38,7 @@ boolean translated = false;
 			
 			i=0;
 			boolean found = false;
-			while(!found && i < npcs.size()) {
+			while(!found && npcs != null && i < npcs.size()) {
 				if(command.contains(npcs.get(i))) {
 					found = true;
 					action.setTarget(npcs.get(i));
