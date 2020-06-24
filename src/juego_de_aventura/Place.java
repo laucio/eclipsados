@@ -80,4 +80,8 @@ public class Place extends Thing{
 		return items.size()>0;
 	}
 
+	public void takeItem(Item item) {
+		items.add(item.getName());
+	}
+
 }

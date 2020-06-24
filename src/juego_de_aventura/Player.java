@@ -351,4 +351,41 @@ public class Player {
 	return cadena;
 	}
 
+	public String leavelocation(Action action) {
+		return currentLocation.isNamed(action.getThing())?"Debes decirme hacia donde quieres ir":"No puedes irte de un lugar en el que no te encuentras";
+	}
+
+	public String leaveItem(Action action, Adventure adventure) {
+		String cadena = "No puedes hacer eso";
+		
+		switch(action.getCondition()) {
+		case "unknown":
+			cadena = "No entiendo que es lo que quieres dejar";
+			break;
+		case "tooManyThings":
+			cadena = "Especifica solamente lo que quieres dejar (solo una cosa)";
+			break;
+			
+		case "item":
+			
+			Item item = adventure.getItem(action.getThing());
+			
+			if(this.hasItem(item)) {
+				if(item.allowsAction(action.getAction())) {
+					currentLocation.placeItem(item);
+					removeItemFromInventory(item);
+					cadena = "Ya no tienes "+item;
+					action.setAchieved(true);
+				}else {
+					cadena = "Parece que no puedes deshacerte de eso...";
+				}
+			}else {
+				cadena = "No encuentro nada parecido en tu inventario... Deberias revisarlo";
+			}
+			break;
+		}
+		
+	return cadena;	
+	}
+
 }

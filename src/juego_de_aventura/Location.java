@@ -223,4 +223,8 @@ public class Location extends Thing {
 	return found;
 	}
 
+	public void placeItem(Item item) {
+		places.get(0).takeItem(item);
+	}
+
 }

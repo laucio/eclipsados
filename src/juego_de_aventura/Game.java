@@ -220,6 +220,15 @@ public class Game {
         case "tomar":
             cadena = this.makePlayerTakeItem(action);
             break;
+        case "dejar":
+            
+        	if(action.isConditionALocation()) {
+        		cadena = this.makePlayerLeaveLocation(action);
+        	}else {
+        		cadena = this.makePlayerLeaveItem(action);
+        	}
+        	
+            break;
         case "usar":
             cadena = this.makePlayerUseItem(action);
             break;
@@ -242,5 +251,13 @@ public class Game {
 
         return cadena;
     }
+	
+	private String makePlayerLeaveItem(Action action) {
+		return player.leaveItem(action, adventure);
+	}
+	
+	private String makePlayerLeaveLocation(Action action) {
+		return player.leavelocation(action);
+	}
 	
 }

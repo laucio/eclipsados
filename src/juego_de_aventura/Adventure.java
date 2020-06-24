@@ -252,4 +252,21 @@ public class Adventure {
 		}
 	}
 
+	public Location getMentionedLocation(String cadena) {
+		Location retorno = null;
+		
+		boolean found = false;
+		int i = 0;
+		
+		while(i < locations.size() && !found) {
+			if(cadena.contains(locations.get(i).getName())) {
+				retorno = locations.get(i);
+				found = true;
+			}
+			i++;
+		}
+		
+		return retorno;
+	}
+
 }
