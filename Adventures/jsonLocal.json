@@ -506,14 +506,14 @@
         {
           "type": "item",
           "thing": "vodka",
-          "on_trigger": "Puedes beberte tu asqueroso vodka.me parece que lo vas a necesitar...",
+          "on_trigger": "Puedes beberte tu asqueroso vodka, me parece que lo vas a necesitar...",
           "after_trigger": "default"
         }
       ]
     },
     {
       "description": "Se ve en el camino a un maestro sabio",
-      "talk": "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara y el terror de los hombres viviras",
+      "talk": "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
       "name": "maestro sabio",
       "gender": "male",
       "number": "singular"
@@ -711,12 +711,14 @@
         "dejar"
       ],
       "effects_over": [
-        "npcs"
+        "npcs",
+        "item"
       ],
       "targets": [
         "lobo",
         "troll",
-        "dragon"
+        "dragon",
+        "piedra"
       ],
       "name": "cuchillo",
       "gender": "male",
@@ -754,7 +756,7 @@
         "lobo"
       ],
       "name": "lanza",
-      "gender": "male",
+      "gender": "female",
       "number": "singular"
     },
     {
@@ -905,10 +907,12 @@
         "dejar"
       ],
       "effects_over": [
-        "self"
+        "self",
+        "npcs"
       ],
       "targets": [
-        "self"
+        "self",
+        "princesa borracha"
       ],
       "triggers": [
         {
