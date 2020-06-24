@@ -7,6 +7,7 @@ public class Action {
 	private String condition; //direction,location,item,etc..
 	private String target;
 	private String effect_over;
+	private boolean trigger;
 	private boolean achieved;
 	
 
@@ -17,6 +18,7 @@ public class Action {
 	this.target = null;
 	this.effect_over = null;
 	this.achieved = false;
+	this.trigger = false;
 	}
 	
 	public Action(String action, String thing, String condition) {
@@ -26,8 +28,10 @@ public class Action {
 		this.target = null;
 		this.effect_over = null;
 		this.achieved = false;
+		this.trigger = false;
 	}
 		
+
 	public Action(String action, String thing, String condition,String target, String effect_over) {
 		this.action = action;
 		this.thing = thing;
@@ -35,6 +39,7 @@ public class Action {
 		this.target = target;
 		this.effect_over = effect_over;
 		this.achieved = false;
+		this.trigger = false;
 	}
 	
 	public boolean isUnknown() {
@@ -82,6 +87,14 @@ public class Action {
 
 	public void setAchieved(boolean achieved) {
 		this.achieved = achieved;
+	}
+	
+	public boolean isTrigger() {
+		return trigger;
+	}
+
+	public void setTrigger(boolean trigger) {
+		this.trigger = trigger;
 	}
 	
 	public boolean IsConditionADirection() {

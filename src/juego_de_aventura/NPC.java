@@ -75,6 +75,7 @@ public class NPC extends Obstacle implements Shootable{
 		if(trigger != null) {
 			retorno = trigger.getOn_trigger();
 			action.setAchieved(true);
+			action.setTrigger(true);
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
