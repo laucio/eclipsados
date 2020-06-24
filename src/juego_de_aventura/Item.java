@@ -113,7 +113,6 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		
 		if(trigger != null) {
 			retorno = trigger.getOn_trigger();
-			//action.setAchieved(true);
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
@@ -157,6 +156,10 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		i++;
 		}
 	return found;	
+	}
+
+	public boolean couldBeOpened() {
+		return this.allowsAction("abrir");
 	}
 	
 	

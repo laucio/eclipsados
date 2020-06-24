@@ -150,7 +150,7 @@ public class Location extends Thing {
 
 		ArrayList<String> curNpcs = this.getNPCS();
 
-		if (curNpcs != null) {
+		if (curNpcs != null && curNpcs.size()>0) {
 			cadena += ". Hay ";
 			for (int i = 0; i < curNpcs.size(); i++) {
 				String npc = curNpcs.get(i);

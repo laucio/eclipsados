@@ -144,24 +144,25 @@ public class Player {
 	public String useItem(Action action, Adventure adventure) {
 		String cadena = "No tienes ese objeto.";
 
-		Item item = adventure.getItem(action.getThing()); 
-		if (item != null && this.hasItem(item)) {
+		Item item = adventure.getItem(action.getThing());
+		
+			if (item != null && this.hasItem(item)) {
 
-			if (item.hasEffectsOver(action)) {
-				String shootableName = action.IsSelfEffect()?action.getThing():
-					action.getTarget();
-				
-				Shootable shootable = adventure.findShootable(shootableName);
-				
-				if(shootable != null) {
-					action.setShooteable(shootableName);
-					cadena = shootable.shootTrigger(action, adventure, this);
+				if (item.hasEffectsOver(action)) {
+					String shootableName = action.IsSelfEffect()?action.getThing():
+						action.getTarget();
+					
+					Shootable shootable = adventure.findShootable(shootableName);
+					
+					if(shootable != null) {
+						action.setShooteable(shootableName);
+						cadena = shootable.shootTrigger(action, adventure, this);
+					}
+
+				} else {
+					cadena = "No ha servido de nada.";
 				}
-
-			} else {
-				cadena = "No ha servido de nada.";
 			}
-		}
 
 		return cadena;
 	}

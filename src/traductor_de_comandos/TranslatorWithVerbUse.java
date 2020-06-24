@@ -67,6 +67,12 @@ public class TranslatorWithVerbUse implements CommandTranslator {
 					action.setCondition("item");
 					action.setTarget("self");
 					action.setEffect_over("self");
+					
+					Item item = adventure.getItem(action.getThing());
+					if(item.couldBeOpened()) {
+						action.setAction("abrir");
+					}
+					
 					break;
 				case 2:
 					//usa un item sobre otro item
@@ -81,6 +87,8 @@ public class TranslatorWithVerbUse implements CommandTranslator {
 					
 					action.setCondition("item");
 					action.setEffect_over("item");
+					break;
+				default:
 					break;
 				}
 			}
