@@ -129,7 +129,7 @@ public class Game {
 	public String processAction(Action action) {
         String retorno = this.chooseAction(action);
        
-        if(action.isAchieved()) {
+        if(action.isAchieved() && !action.isTrigger()) {
             ArrayList<Endgame> endgames = this.adventure.getEndgames();
             int i=0;
             this.isEndgame = false;
