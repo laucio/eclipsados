@@ -21,7 +21,7 @@ public class TestUnitarios {
 
 	@Before
 	public void setup() throws IOException {
-		path = "Adventures/Juego.json";
+		path = "Adventures/Aventura_Pirata_Fantasma.json";
 		game = new Game(path);
 	}
 
@@ -75,7 +75,7 @@ public class TestUnitarios {
 	
 	@Test
 	public void verInventarioConVariosElementos() {
-		expected = "En tu inventario hay una barreta, un espejo, y un rociador con cerveza de raiz.";
+		expected = "En tu inventario hay una barreta, un espejo y un rociador con cerveza de raiz.";
 		
 		action = new Action("tomar","barreta", "item",null, null);
 		actuals = game.makePlayerTakeItem(action);
@@ -102,19 +102,11 @@ public class TestUnitarios {
 		assertEquals(expected, actuals);
 	}
 	
-	
-	@Test
-	public void tomarDosVecesUnElemento() {
-		expected = "No encuentro ese objeto.";
-		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
-		actuals = game.makePlayerTakeItem(action);
-		assertEquals(expected, actuals);
-	}
+
 	
 	@Test
 	public void tomarItemCuandoNoHayNinguno() {
-		expected = "No encuentro ese objeto.";	
+		expected = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";	
 		//Tomamos la barreta
 		action = new Action("tomar","barreta", "item",null, null);
 		actuals = game.makePlayerTakeItem(action);

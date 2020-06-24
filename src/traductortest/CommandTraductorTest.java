@@ -69,7 +69,7 @@ public class CommandTraductorTest {
 	
 	@Test
 	public void verInventarioConVariosElementos() {
-		expected = "En tu inventario hay una barreta, un espejo, y un rociador con cerveza de raiz.";
+		expected = "En tu inventario hay una barreta, un espejo y un rociador con cerveza de raiz.";
 		
 		command = "tomar barreta";
 		actuals = game.processCommand(command);
@@ -100,7 +100,7 @@ public class CommandTraductorTest {
 	
 	@Test
 	public void tomarDosVecesUnElemento() {
-		expected = "No encuentro ese objeto.";
+		expected = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
 		
 		command = "tomar barreta";
 		actuals = game.processCommand(command);
@@ -113,7 +113,7 @@ public class CommandTraductorTest {
 	
 	@Test
 	public void tomarItemCuandoNoHayNinguno() {
-		expected = "No encuentro ese objeto.";	
+		expected = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";	
 		//Tomamos la barreta
 		command = "tomar barreta";
 		actuals = game.processCommand(command);

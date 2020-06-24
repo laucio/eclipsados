@@ -68,7 +68,10 @@
 			"gender": "female",
 			"number": "singular",
 			"actions": [
-				"usar"
+				"usar",
+				"tomar",
+				"atacar",
+				"observar"
 			],
 			"effects_over": [
 				"item"
@@ -83,7 +86,10 @@
 			"gender": "male",
 			"number": "singular",
 			"actions": [
-				"usar"
+				"usar",
+				"tomar",
+				"atacar",
+				"observar"
 			],
 			"effects_over": [
 				"npcs",
@@ -113,7 +119,10 @@
 			"gender": "male",
 			"number": "singular",
 			"actions": [
-				"usar"
+				"usar",
+				"tomar",
+				"atacar",
+				"observar"
 			],
 			"effects_over": [
 				"self"
@@ -144,12 +153,14 @@
 			"condition": "location",
 			"action": "ir",
 			"thing": "taberna",
+			"shooteable" : "",
 			"description": "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
 		},
 		{
 			"condition": "item",
 			"action": "usar",
 			"thing": "espejo",
+			"shooteable" : "espejo",
 			"description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
 		}
 	]
