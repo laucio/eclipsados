@@ -70,12 +70,11 @@ public class NPC extends Obstacle implements Shootable{
 		
 		if(this.isInLocation(player.getCurrentLocation())) {
 		Trigger trigger = this.findTrigger(action);
-		
+		action.setAchieved(true);
 		
 		if(trigger != null) {
 			retorno = trigger.getOn_trigger();
-			action.setAchieved(true);
-			action.setTrigger(true);
+			//action.setAchieved(true);
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
@@ -84,6 +83,9 @@ public class NPC extends Obstacle implements Shootable{
 			case "remove item":
 				Item item = adventure.getItem(action.getThing());
 				player.removeItemFromInventory(item);
+				break;
+			case "restart":
+				player.setCurrentLocation(adventure.getLocations().get(0));
 				break;
 			default:
 				break;

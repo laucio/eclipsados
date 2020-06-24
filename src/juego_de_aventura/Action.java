@@ -7,7 +7,7 @@ public class Action {
 	private String condition; //direction,location,item,etc..
 	private String target;
 	private String effect_over;
-	private boolean trigger;
+	private String shooteable;
 	private boolean achieved;
 	
 
@@ -18,7 +18,7 @@ public class Action {
 	this.target = null;
 	this.effect_over = null;
 	this.achieved = false;
-	this.trigger = false;
+	this.shooteable = "";
 	}
 	
 	public Action(String action, String thing, String condition) {
@@ -28,7 +28,7 @@ public class Action {
 		this.target = null;
 		this.effect_over = null;
 		this.achieved = false;
-		this.trigger = false;
+		this.shooteable = "";
 	}
 		
 
@@ -39,7 +39,15 @@ public class Action {
 		this.target = target;
 		this.effect_over = effect_over;
 		this.achieved = false;
-		this.trigger = false;
+		this.shooteable = "";
+	}
+	
+	public String getShooteable() {
+		return shooteable;
+	}
+
+	public void setShooteable(String shooteable) {
+		this.shooteable = shooteable;
 	}
 	
 	public boolean isUnknown() {
@@ -89,13 +97,6 @@ public class Action {
 		this.achieved = achieved;
 	}
 	
-	public boolean isTrigger() {
-		return trigger;
-	}
-
-	public void setTrigger(boolean trigger) {
-		this.trigger = trigger;
-	}
 	
 	public boolean IsConditionADirection() {
 		return this.getCondition().equals("direction");

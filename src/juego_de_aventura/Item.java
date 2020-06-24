@@ -109,11 +109,11 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		String retorno = "Eso no ha servido de nada.";
 		
 		Trigger trigger = this.findTrigger(action);
+		action.setAchieved(true);
 		
 		if(trigger != null) {
 			retorno = trigger.getOn_trigger();
-			action.setAchieved(true);
-			action.setTrigger(true);
+			//action.setAchieved(true);
 			
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
@@ -127,6 +127,7 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 				break;
 			case "restart":
 				player.setCurrentLocation(adventure.getLocations().get(0));
+				break;
 			default:
 				break;
 			// case "invalidar":

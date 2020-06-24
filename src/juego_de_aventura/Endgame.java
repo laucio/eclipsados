@@ -5,6 +5,7 @@ public class Endgame {
 	private String action;
 	private String thing;
 	private String description;
+	private String shooteable;
 	
 	public Endgame(String condition, String action, String thing, String description) {
 		super();
@@ -12,6 +13,14 @@ public class Endgame {
 		this.action = action;
 		this.thing = thing;
 		this.description = description;
+		this.shooteable = "";
+	}
+	
+	public String getShooteable() {
+		return shooteable;
+	}
+	public void setShooteable(String shooteable) {
+		this.shooteable = shooteable!=null?shooteable:"";
 	}
 	public String getCondition() {
 		return condition;
@@ -40,7 +49,7 @@ public class Endgame {
 	
 	public boolean esEndgame(Action action) {
 		return action.getCondition().equals(this.condition) && action.getAction().equals(this.action)
-				&& action.getThing().equals(this.thing);
+				&& action.getThing().equals(this.thing) && action.getShooteable().equals(this.shooteable);
 	}
 	
 }

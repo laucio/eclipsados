@@ -150,9 +150,11 @@ public class Player {
 			if (item.hasEffectsOver(action)) {
 				String shootableName = action.IsSelfEffect()?action.getThing():
 					action.getTarget();
+				
 				Shootable shootable = adventure.findShootable(shootableName);
 				
 				if(shootable != null) {
+					action.setShooteable(shootableName);
 					cadena = shootable.shootTrigger(action, adventure, this);
 				}
 
@@ -178,6 +180,7 @@ public class Player {
 					Shootable shootable = adventure.findShootable(shootableName);
 					
 					if(shootable != null) {
+						action.setShooteable(shootableName);
 						cadena = shootable.shootTrigger(action, adventure, this);
 					}
 
@@ -254,6 +257,7 @@ public class Player {
 			if(this.hasItem(item)) {
 				if(item.allowsAction(action.getAction())) {
 					action.setAction("usar");
+					action.setShooteable(action.getThing());
 					cadena = this.useItem(action, adventure);
 				}else {
 					cadena = "No puedes comer eso";
@@ -290,6 +294,7 @@ public class Player {
 							Shootable shootable = adventure.findShootable(shootableName);
 							
 							if(shootable != null) {
+								action.setShooteable(shootableName);
 								cadena = shootable.shootTrigger(action, adventure, this);
 							}
 
@@ -302,6 +307,7 @@ public class Player {
 					
 				case "item":
 					action.setAction("usar");
+					action.setShooteable(action.getTarget());
 					cadena = this.useItem(action, adventure);
 					break;
 				default:
@@ -327,6 +333,7 @@ public class Player {
 			if(this.hasItem(item)) {
 				if(item.allowsAction(action.getAction())) {
 					action.setAction("usar");
+					action.setShooteable(action.getThing());
 					cadena = this.useItem(action, adventure);
 				}else {
 					cadena = "No puedes beber eso";

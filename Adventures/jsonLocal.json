@@ -1050,36 +1050,42 @@
       "condition": "item",
       "action": "usar",
       "thing": "espada",
-      "description": "Felicitaciones has derrotado  dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
+      "shooteable": "dragon",
+      "description": "Felicitaciones has derrotado al dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
     },
     {
       "condition": "item",
       "action": "atacar",
       "thing": "espada",
-      "description": "Felicitaciones has derrotado  dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
+      "shooteable": "dragon",
+      "description": "Felicitaciones has derrotado al dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "cruz",
+      "shooteable": "demonio",
       "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
     },
     {
       "condition": "item",
       "action": "atacar",
       "thing": "cruz",
+      "shooteable": "demonio",
       "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "tesoro",
+      "shooteable": "mujer",
       "description": "Oh mi amor... lo trajiste!!!... nunca nadie hizo esto por mi... eres el mejor de los principes... mi principe encantador. "
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "flor",
+      "shooteable": "princesa borracha",
       "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de mi reino... salve cesar!!!"
     }
   ]
