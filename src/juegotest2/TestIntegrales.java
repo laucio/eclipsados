@@ -21,7 +21,7 @@ public class TestIntegrales {
 
 	@Before
 	public void setup() throws IOException {
-		path = "Adventures/Juego.json";
+		path = "Adventures/Aventura_Pirata_Fantasma.json";
 		game = new Game(path);
 	}
 
@@ -77,7 +77,7 @@ public class TestIntegrales {
 	
 	@Test
 	public void verInventarioConVariosElementos() {
-		expected = "En tu inventario hay una barreta, un espejo, y un rociador con cerveza de raiz.";
+		expected = "En tu inventario hay una barreta, un espejo y un rociador con cerveza de raiz.";
 		
 		action = new Action("tomar","barreta", "item",null, null);
 		actuals = game.processAction(action);
@@ -90,7 +90,7 @@ public class TestIntegrales {
 		
 		action = new Action("ver inventario",null, null,null, null);
 		actuals = game.processAction(action);
-		
+
 		assertEquals(expected, actuals);
 	}
 	
@@ -105,18 +105,10 @@ public class TestIntegrales {
 	}
 	
 	
-	@Test
-	public void tomarDosVecesUnElemento() {
-		expected = "No encuentro ese objeto.";
-		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.processAction(action);
-		actuals = game.processAction(action);
-		assertEquals(expected, actuals);
-	}
 	
 	@Test
 	public void tomarItemCuandoNoHayNinguno() {
-		expected = "No encuentro ese objeto.";	
+		expected = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";	
 		//Tomamos la barreta
 		action = new Action("tomar","barreta", "item",null, null);
 		actuals = game.processAction(action);
