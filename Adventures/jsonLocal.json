@@ -199,7 +199,7 @@
         },
         {
           "items": [
-            "salchichas"
+            "salchicha"
           ],
           "name": "fogata",
           "gender": "female",
@@ -322,7 +322,7 @@
         }
       ],
       "npcs": [
-        "diablo"
+        "demonio"
       ],
       "connections": [
         {
@@ -338,7 +338,7 @@
   "npcs": [
     {
       "description": "Deberias comer algo... fijate en la cocina.",
-      "talk": "Te deje algo para comer en la cocina!",
+      "talk": "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante años... adios.",
       "name": "mujer",
       "gender": "female",
       "number": "singular"
@@ -359,22 +359,22 @@
     },
     {
       "description": "El diablo se hace presente",
-      "talk": "Osas ha venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi lucifer!!",
-      "name": "diablo",
+      "talk": "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi lucifer!!",
+      "name": "demonio",
       "gender": "male",
       "number": "singular",
       "triggers": [
         {
           "type": "item",
-          "thing": "cruz",
-          "on_trigger": "Noooo!!! como pudiste?? se supone que yo era inevitable!!!...",
-          "after_trigger": "remove"
+          "thing": "tesoro",
+          "on_trigger": "Muaajajajaj crees que este artefacto de codicia y avaricia puede contra mi? eres solo un simple mortal...",
+          "after_trigger": "remove item"
         },
         {
           "type": "item",
-          "thing": "tesoro",
-          "on_trigger": "Muaajajajaj crees que este artefacto de codicia y avaricia puede contra mi? eres solo un simple mortal...",
-          "after_trigger": "default"
+          "thing": "espada",
+          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto desendiente de adan... ",
+          "after_trigger": "restart"
         }
       ]
     },
@@ -387,15 +387,33 @@
       "triggers": [
         {
           "type": "item",
-          "thing": "espada",
-          "on_trigger": "Me has atacado..siento como mi llama sagrada se extingue.",
-          "after_trigger": "remove"
+          "thing": "cuchillo",
+          "on_trigger": "Haz lastimado al dragon... pero sigue con vida.",
+          "after_trigger": "remove item"
+        },
+        {
+          "type": "item",
+          "thing": "pico",
+          "on_trigger": "OHHH el dragon se muere... naa mentira con el pico le hiciste un arito que le quedo muy beio ",
+          "after_trigger": "remove item"
         },
         {
           "type": "item",
           "thing": "lanza",
           "on_trigger": "Mejor me pego una siesta, estoy cansado de tanta lucha zzzz",
           "after_trigger": "default"
+        },
+        {
+          "type": "item",
+          "thing": "salchicha",
+          "on_trigger": "El dragon te rostiza a vos y a la salchicha... vuelves al principio",
+          "after_trigger": "restart"
+        },
+        {
+          "type": "item",
+          "thing": "sanguche de atun",
+          "on_trigger": "El dragon se come el sanguche y lo disfruta como nunca... pero sigue estorbando en el camino ",
+          "after_trigger": "remove item"
         }
       ]
     },
@@ -417,6 +435,24 @@
           "thing": "lanza",
           "on_trigger": "El lobo feroz huye despaborido lo has herido en su patita con la lanza...pobrechito...",
           "after_trigger": "remove"
+        },
+        {
+          "type": "item",
+          "thing": "salchichas",
+          "on_trigger": "OHHH el lobo ha comido demasiado rapido..la bestia esta lista para el ataque ",
+          "after_trigger": "remove item"
+        },
+        {
+          "type": "item",
+          "thing": "sanguche de atun",
+          "on_trigger": "Al parecer al lobo no le gusta el atun... ha decidido comerte... mueres y vuelves al comenzar tu viaje ",
+          "after_trigger": "restart"
+        },
+        {
+          "type": "item",
+          "thing": "pico",
+          "on_trigger": "El lobo tiene una agildad tremendaaa!!! no podes acertar ningun golpe jajaja!!!",
+          "after_trigger": "default"
         }
       ]
     },
@@ -439,12 +475,24 @@
           "thing": "cuchillo",
           "on_trigger": "Atacas al troll con el cuchillo. Luego de un ligero corte, tu contrincante huye corriendo entre sollozos. Al parecer no era tan temible...",
           "after_trigger": "remove"
+        },
+        {
+          "type": "item",
+          "thing": "sanguche de atun",
+          "on_trigger": "Noo loco!!!, el chegusan de atun no es mi cosa... a mi dame carne humana... ",
+          "after_trigger": "default"
+        },
+        {
+          "type": "item",
+          "thing": "veneno de cobra",
+          "on_trigger": "JA!!, me das veneno a mi??...esto para mi es como tomar aguita",
+          "after_trigger": "remove item"
         }
       ]
     },
     {
       "description": "Una princesa borracha se tambalea delante de la entrada al mercado. Parece que esta de malas, no te dejara pasar.",
-      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera una cervezita para ahogar mis penas...",
+      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penurias...",
       "name": "princesa borracha",
       "gender": "female",
       "number": "singular",
@@ -452,8 +500,14 @@
         {
           "type": "item",
           "thing": "cerveza",
-          "on_trigger": "Gracias por el trago, creo que me ire a mimir...",
+          "on_trigger": "Gracias por el trago, creo que me ire a mimir... ia stoy arta... te dejo el camino libre",
           "after_trigger": "remove"
+        },
+        {
+          "type": "item",
+          "thing": "vodka",
+          "on_trigger": "Puedes beberte tu asqueroso vodka.me parece que lo vas a necesitar...",
+          "after_trigger": "default"
         }
       ]
     },
@@ -468,13 +522,121 @@
   "items": [
     {
       "actions": [
+        "usar",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "npcs"
+      ],
+      "targets": [
+        "princesa borracha"
+      ],
+      "name": "flor",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "tomar",
+        "dejar",
+        "atacar"
+      ],
+      "effects_over": [
+        "npcs"
+      ],
+      "targets": [
+        "demonio"
+      ],
+      "name": "cruz",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "npcs"
+      ],
+      "targets": [
+        "mujer",
+        "demonio"
+      ],
+      "name": "tesoro",
+      "gender": "male",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "observar",
         "usar"
       ],
       "effects_over": [
-        "item"
+        "self"
       ],
       "targets": [
-        "piedra"
+        "self"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "escritura",
+          "on_trigger": "Aqui yacen todos los muertos que han intentado a enfrentar al peor de los terrores de la humanidad.",
+          "after_trigger": "default"
+        }
+      ],
+      "name": "escritura",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "comer",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "self",
+        "npcs"
+      ],
+      "targets": [
+        "self",
+        "lobo",
+        "dragon"
+      ],
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "salchicha",
+          "on_trigger": "Olala!! esto es carne asada... no conocia este placer de los dioses...",
+          "after_trigger": "default"
+        }
+      ],
+      "name": "salchicha",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "tomar",
+        "atacar",
+        "dejar",
+        "observar"
+      ],
+      "effects_over": [
+        "item",
+        "npcs"
+      ],
+      "targets": [
+        "piedra",
+        "dragon",
+        "lobo"
       ],
       "name": "pico",
       "gender": "male",
@@ -488,10 +650,15 @@
         "dejar"
       ],
       "effects_over": [
-        "self"
+        "self",
+        "npcs"
       ],
       "targets": [
-        "self"
+        "self",
+        "troll",
+        "princesa borracha",
+        "dragon",
+        "lobo"
       ],
       "triggers": [
         {
@@ -522,8 +689,14 @@
         {
           "type": "item",
           "thing": "pico",
-          "on_trigger": "la piedra se ha salido del camino",
+          "on_trigger": "La piedra se ha salido del camino",
           "after_trigger": "remove obstacles"
+        },
+        {
+          "type": "item",
+          "thing": "cuchillo",
+          "on_trigger": "Has raspado la piedra y salen chispass..te pensas que un chuchillo sirve para sacar una piedra?? ... iluso...",
+          "after_trigger": "default"
         }
       ],
       "name": "piedra",
@@ -542,7 +715,8 @@
       ],
       "targets": [
         "lobo",
-        "troll"
+        "troll",
+        "dragon"
       ],
       "name": "cuchillo",
       "gender": "male",
@@ -559,7 +733,8 @@
         "npcs"
       ],
       "targets": [
-        "dragon"
+        "dragon",
+        "demonio"
       ],
       "name": "espada",
       "gender": "male",
@@ -711,10 +886,12 @@
         "abrir"
       ],
       "effects_over": [
-        "item"
+        "item",
+        "npcs"
       ],
       "targets": [
-        "puerta"
+        "puerta",
+        "troll"
       ],
       "name": "veneno de cobra",
       "gender": "male",
@@ -877,9 +1054,33 @@
     },
     {
       "condition": "item",
+      "action": "atacar",
+      "thing": "espada",
+      "description": "Felicitaciones has derrotado  dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
+    },
+    {
+      "condition": "item",
       "action": "usar",
       "thing": "cruz",
-      "description": "El diablo se esparce en cenizas...la paz y el pecado han desaparecido del reino"
+      "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+    },
+    {
+      "condition": "item",
+      "action": "atacar",
+      "thing": "cruz",
+      "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+    },
+    {
+      "condition": "item",
+      "action": "usar",
+      "thing": "tesoro",
+      "description": "Oh mi amor... lo trajiste!!!... nunca nadie hizo esto por mi... eres el mejor de los principes... mi principe encantador. "
+    },
+    {
+      "condition": "item",
+      "action": "usar",
+      "thing": "flor",
+      "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de mi reino... salve cesar!!!"
     }
   ]
 }
