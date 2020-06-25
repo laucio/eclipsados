@@ -17,6 +17,7 @@ public class Game {
 	Translator translator;
 	ArrayList<String> log;
 	boolean isEndgame;
+	String userName;
 	
 	// Constructor que se usa para  "Continuar" la aventura.
 	public Game() {}
@@ -32,10 +33,12 @@ public class Game {
 		this.log.add(this.adventure.darBienvenida());
 		this.translator = new Translator();
 		this.isEndgame=false;
+
 	}
 	public void saveProgress() {
 		try {
 			FileManager.saveGameProgress(this);
+			FileManager.saveLogTxt(this);
 		} catch (IOException e) {
 			System.out.println("Error al guardar progreso del juego");
 			e.printStackTrace();
@@ -70,6 +73,12 @@ public class Game {
 		this.player = player;
 	}
 	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserName() {
+		return userName;
+	}
 	public void translateCommand(String command, Action action) {
 		this.translator.translateCommand(command, action, this);
 	}
@@ -114,7 +123,7 @@ public class Game {
 	
 	public String processCommand(String command) {
 		String respuesta = "No entiendo lo que me dices";
-		this.log.add("> " + command);
+		this.log.add(userName + " > " + command);
 		Action action = new Action();
 		translateCommand(command, action);
 		
