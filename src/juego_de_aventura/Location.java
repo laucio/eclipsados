@@ -172,7 +172,8 @@ public class Location extends Thing {
 	}
 
 	public boolean containsNpc(String name) {
-		return this.getNPCS().contains(name);
+		ArrayList<String> npcs = this.getNPCS();
+		return npcs!=null&&npcs.size()>0?npcs.contains(name):false;		
 	}
 
 	public Place getMentionedPlace(String command) {

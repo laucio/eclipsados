@@ -230,7 +230,7 @@
       "number": "singular"
     },
     {
-      "description": "cueva",
+      "description": "Estas en una oscura cueva. Sientes el aroma a metal y carne fundida. Logras oir un sonido amenazante, como si fuera la respiracion de una criatura monstruosa. Luego de que tus ojos se acostumbran a a la poca luz, alcanzas a ver dos enormes ojos observante fijo.",
       "places": [
         {
           "items": [
@@ -302,7 +302,7 @@
       "number": "singular"
     },
     {
-      "description": "tumba",
+      "description": "Estas en una sombria tumba. Los quejidos de las almas perdidas resuenan en el vacio de la noche. Una solemne prescencia se aparece delante tuyo. Parece ser de la realeza, probablemente un principe. Su rostro es muy bello, parece tallado por los angeles.",
       "places": [
         {
           "items": [
@@ -322,7 +322,7 @@
         }
       ],
       "npcs": [
-        "demonio"
+        "angel caido"
       ],
       "connections": [
         {
@@ -345,7 +345,7 @@
     },
     {
       "description": "Aparece un sacerdote en el templo",
-      "talk": "La profecia se ha cumplido el elegido para derrotar al rey de las tinieblas esta aqui",
+      "talk": "La profecia se ha cumplido, el elegido para derrotar al rey de las tinieblas esta aqui.",
       "name": "sacerdote",
       "gender": "male",
       "number": "singular"
@@ -358,9 +358,9 @@
       "number": "singular"
     },
     {
-      "description": "El diablo se hace presente",
-      "talk": "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi lucifer!!",
-      "name": "demonio",
+      "description": "El angel caido se hace presente",
+      "talk": "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
+      "name": "angel caido",
       "gender": "male",
       "number": "singular",
       "triggers": [
@@ -438,7 +438,7 @@
         },
         {
           "type": "item",
-          "thing": "salchichas",
+          "thing": "salchicha",
           "on_trigger": "OHHH el lobo ha comido demasiado rapido..la bestia esta lista para el ataque ",
           "after_trigger": "remove item"
         },
@@ -547,10 +547,10 @@
         "npcs"
       ],
       "targets": [
-        "demonio"
+        "angel caido"
       ],
       "name": "cruz",
-      "gender": "male",
+      "gender": "female",
       "number": "singular"
     },
     {
@@ -564,7 +564,7 @@
       ],
       "targets": [
         "mujer",
-        "demonio"
+        "angel caido"
       ],
       "name": "tesoro",
       "gender": "male",
@@ -736,10 +736,10 @@
       ],
       "targets": [
         "dragon",
-        "demonio"
+        "angel caido"
       ],
       "name": "espada",
-      "gender": "male",
+      "gender": "female",
       "number": "singular"
     },
     {
@@ -1068,15 +1068,15 @@
       "condition": "item",
       "action": "usar",
       "thing": "cruz",
-      "shooteable": "demonio",
-      "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+      "shooteable": "angel caido",
+      "description": "El angel caido se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
     },
     {
       "condition": "item",
       "action": "atacar",
       "thing": "cruz",
-      "shooteable": "demonio",
-      "description": "El demonio se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+      "shooteable": "angel caido",
+      "description": "El angel caido se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
     },
     {
       "condition": "item",
