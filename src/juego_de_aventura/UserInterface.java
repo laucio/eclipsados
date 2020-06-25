@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-	Game game;
-	boolean continuarPartida = true;
+	private Game game;
+	private boolean continuarPartida = true;
 
 	public void UserInterface() {
 	}
