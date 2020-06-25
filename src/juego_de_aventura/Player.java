@@ -6,8 +6,8 @@ import juego_de_aventura.*;
 
 public class Player {
 
-	Location currentLocation;
-	ArrayList<Item> inventory;
+	private Location currentLocation;
+	private ArrayList<Item> inventory;
 
 	public Player(ArrayList<Item> initialInventory, Location currentLocation) {
 
