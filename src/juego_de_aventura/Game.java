@@ -12,12 +12,12 @@ import traductor_de_comandos.*;
 
 public class Game {
 	
-	Adventure adventure;
-	Player player;
-	Translator translator;
-	ArrayList<String> log;
-	boolean isEndgame;
-	String userName;
+	private Adventure adventure;
+	private Player player;
+	private Translator translator;
+	private ArrayList<String> log;
+	private boolean isEndgame;
+	private String userName;
 	
 	// Constructor que se usa para  "Continuar" la aventura.
 	public Game() {}
