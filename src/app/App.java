@@ -1,8 +1,8 @@
-package test_user_interface;
+package app;
 
 import juego_de_aventura.UserInterface;
 
-public class TestUserInterface {
+public class App {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -6,13 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
+import traductor_de_comandos.Translator;
+
 public class FileManager {
 	final static String StatusGameFilePath = "./StatusGame.txt";
 	final static String AdventureFilePath = "./Adventure.txt";
+	final static String LogFile = "./Log.txt";
 	
 	public static Adventure cargarArchivo(String pathAventura) throws IOException {
 		BufferedReader br = null;
@@ -32,8 +36,10 @@ public class FileManager {
 	
 	public static void saveGameProgress(Game game) throws IOException {
 		final Gson gson = new Gson();
+		game.translator=null;
 		String jsonGame = gson.toJson(game);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(StatusGameFilePath));
+		
 		bw.write(jsonGame);
 		bw.close();
 	}
@@ -46,8 +52,19 @@ public class FileManager {
 		br = new BufferedReader(new FileReader(StatusGameFilePath));
 		game = gson.fromJson(br, Game.class);
 		br.close();
-		
+		game.translator=new Translator();
 		return game;
+	}
+	
+	public static void saveLogTxt (Game game) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new FileWriter(LogFile));
+		PrintWriter out = new PrintWriter(bw);
+		for(String linea : game.log) {
+			out.println(linea);
+		}
+		out.close();
+		bw.close();
+		
 	}
 	
 	public static void saveAdventureProgress(Adventure adventure) throws IOException {
