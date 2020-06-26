@@ -4,21 +4,21 @@ import juego_de_aventura.*;
 
 public class Translator implements CommandTranslator{
 	
-	CommandTranslator translatorDefault;
-	CommandTranslator verbToGoOut;
-	CommandTranslator verbToGo;
-	CommandTranslator verbToLeave;
-	CommandTranslator verbToTake;
-	CommandTranslator verbToObserve;
-	CommandTranslator verbToTalk;
-	CommandTranslator verbToUse;
-	CommandTranslator verbToOpen;
-	CommandTranslator verbToDrink;
-	CommandTranslator verbToEat;
-	CommandTranslator verbToAttack;
-	CommandTranslator verbToWatchInventory;
-	CommandTranslator verbToSeeAround;
-	CommandTranslator translatorOthers;
+	private CommandTranslator translatorDefault;
+	private CommandTranslator verbToGoOut;
+	private CommandTranslator verbToGo;
+	private CommandTranslator verbToLeave;
+	private CommandTranslator verbToTake;
+	private CommandTranslator verbToObserve;
+	private CommandTranslator verbToTalk;
+	private CommandTranslator verbToUse;
+	private CommandTranslator verbToOpen;
+	private CommandTranslator verbToDrink;
+	private CommandTranslator verbToEat;
+	private CommandTranslator verbToAttack;
+	private CommandTranslator verbToWatchInventory;
+	private CommandTranslator verbToSeeAround;
+	private CommandTranslator translatorOthers;
 	
 	public Translator() {
 		translatorDefault = new TranslatorDefault();
