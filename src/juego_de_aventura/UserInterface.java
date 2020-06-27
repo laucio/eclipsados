@@ -17,12 +17,26 @@ public class UserInterface {
 	}
 
 	public void run() {
-		// to do: definir una carpeta donde se van a poner las aventuras
+		System.out.println("Bienvenido a Eclipsados.\n");
+		System.out.println("Para jugar tu personaje puede realizar acciones como:");
+		System.out.println(" - ir a un lugar");
+		System.out.println(" - tomar un objeto");
+		System.out.println(" - abrir puertas");
+		System.out.println(" - atacar con un objeto a otro personaje");
+		System.out.println(" - dar un objeto a otro personaje");
+		System.out.println(" - hablar con un personaje");
+		System.out.println(" - mirar alrededor y mirar tu inventario");
+		System.out.println("Y todas las que se te puedan ocurrir...");
+		System.out.println();
+		System.out.println("Para mas comandos escriba: AYUDA");
+		System.out.println();
+		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Ingrese su nombre: \n");
 		String userName = in.nextLine();
-
+		System.out.println();
 		String adventurePath = selectAdventure("Adventures");
+		System.out.println();
 		if (adventurePath == FileManager.StatusGameFilePath) {
 			game = new Game();
 			game.getSavedProgress();
@@ -37,10 +51,12 @@ public class UserInterface {
 				System.out.println("No se pudo cargar la aventura seleccionada");
 			}
 		}
+		
 
 		String output = null;
 		System.out.println(game.getWelcome());
-
+		
+		
 		String command = "";
 		while (!game.isEndgame() && continuarPartida) {
 			command = in.nextLine();
@@ -49,7 +65,7 @@ public class UserInterface {
 			System.out.println(output);
 		}
 
-	
+		this.game.saveProgress();
 	}
 
 	public String handleCommand(String command) {
@@ -69,7 +85,7 @@ public class UserInterface {
 			output = "OK, guardado";
 			break;
 		case "AYUDA":
-			output = "Para salir escriba: SALIR\nPara guardar el juego escriba: GUARDAR\nPara ver su inventario escriba 'Ver Inventario'\nPara recuperar un juego guardado escriba: RECUPERAR";																																											// ayuda
+			output = "Para salir escriba: SALIR\nPara guardar el juego escriba: GUARDAR\nPara ver su inventario escriba 'Ver Inventario'";
 			break;
 		case "RECUPERAR":
 			this.game.getSavedProgress();

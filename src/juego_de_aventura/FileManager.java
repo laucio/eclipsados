@@ -36,7 +36,6 @@ public class FileManager {
 	
 	public static void saveGameProgress(Game game) throws IOException {
 		final Gson gson = new Gson();
-		game.translator=null;
 		String jsonGame = gson.toJson(game);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(StatusGameFilePath));
 		
@@ -52,14 +51,14 @@ public class FileManager {
 		br = new BufferedReader(new FileReader(StatusGameFilePath));
 		game = gson.fromJson(br, Game.class);
 		br.close();
-		game.translator=new Translator();
+		game.setTranslator(new Translator());
 		return game;
 	}
 	
 	public static void saveLogTxt (Game game) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(LogFile));
 		PrintWriter out = new PrintWriter(bw);
-		for(String linea : game.log) {
+		for(String linea : game.getLog()) {
 			out.println(linea);
 		}
 		out.close();

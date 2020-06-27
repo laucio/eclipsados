@@ -373,7 +373,7 @@
         {
           "type": "item",
           "thing": "espada",
-          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto desendiente de adan... ",
+          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
           "after_trigger": "restart"
         }
       ]

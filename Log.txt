@@ -1,9 +1,3 @@
 Te encuentras en el living de una casa. Luego de una larga siesta, te levantas con ganas de ir a un bar.
-bianca > ir a la cocina
-Estas en la cocina de la casa
-bianca > ver alrededor
-Estas en la cocina de la casa. En la mesada hay: un cuchillo. En la heladera hay: un sanguche de atun. Al oeste hay un living.
-bianca > tomar cuchillo
-Tienes un cuchillo
-bianca > tomar sanguche de atun
-Tienes un sanguche de atun
+BIANCA > ver alrededor
+Estas en el living de la casa. En la repisa hay: un veneno de cobra. En la pared hay: un espejo y una ventana. Hay una mujer y un gato. Al este hay una cocina. Al sur hay un camino.

@@ -79,6 +79,15 @@ public class Game {
 	public String getUserName() {
 		return userName;
 	}
+	public void setTranslator(Translator translator) {
+		this.translator = translator;
+	}
+	public ArrayList<String> getLog() {
+		return log;
+	}
+	public Translator getTranslator() {
+		return translator;
+	}
 	public void translateCommand(String command, Action action) {
 		this.translator.translateCommand(command, action, this);
 	}
