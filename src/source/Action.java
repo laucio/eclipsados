@@ -19,6 +19,8 @@ public class Action {
 	this.effect_over = null;
 	this.achieved = false;
 	}
+	//prueba de cambio
+	
 	
 	public Action(String action, String thing, String condition) {
 		this.action = action;
