@@ -165,6 +165,10 @@ public class PlayerWindow extends JFrame implements Runnable {
 		this.textArea.setVisible(false);
 	}
 	
+	public static void main(String[] args) {
+		PlayerWindow ventana = new PlayerWindow("Mamita", "Bolitas Calientes");
+		ventana.run();
+	}
 
 
 }
