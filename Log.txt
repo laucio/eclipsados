@@ -1,3 +1,3 @@
-Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.
-lautaro > mirar alrededor
-Estas en un muelle. En el suelo hay: una barreta , un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.
+Te encuentras en el living de una casa. Luego de una larga siesta, te levantas con ganas de ir a un bar.
+lau > mirar alrededor
+Estas en el living de la casa. En la repisa hay: un veneno de cobra. En la pared hay: un espejo y una ventana. Hay una mujer y un gato. Al este hay una cocina. Al sur hay un camino.
