@@ -30,6 +30,8 @@ public class VentanaJuego {
 	public VentanaJuego() {
 		initialize();
 	}
+	
+	//asd
 
 	/**
 	 * Initialize the contents of the frame.
