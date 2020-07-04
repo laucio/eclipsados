@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+
+import juego_de_aventura.GraphicalUserInterface;
+
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -39,7 +42,7 @@ public class GameWindow extends JFrame implements Runnable {
 	private JPanel contentPane;
 	
 	private JPanelBackground panelSettings;
-	private JTextField textField;
+	private JTextField textFieldUserName;
 	private JComboBox<String> aventuras;
 	
 	private JPanelBackground panelAdventures;
@@ -48,9 +51,11 @@ public class GameWindow extends JFrame implements Runnable {
 	private JButton btnEntrar;
 	private JButton btnSalir;
 
+	private GraphicalUserInterface userInterface;
 
-	public GameWindow() {
+	public GameWindow(GraphicalUserInterface userInterface) {
 		
+		this.userInterface = userInterface;
 		setTitle("Eclipsados");
 		setResizable(true);
 		setBounds(100, 100, 400, 200);
@@ -59,7 +64,7 @@ public class GameWindow extends JFrame implements Runnable {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
-				textField.requestFocus();
+				textFieldUserName.requestFocus();
 
 			}
 		});
@@ -77,22 +82,22 @@ public class GameWindow extends JFrame implements Runnable {
 		panelSettings.setBackground("Images/background.jpg");
 
 
-		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
+		textFieldUserName = new JTextField();
+		textFieldUserName.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					textField.setText("");
+					textFieldUserName.setText("");
 				}
 
 			}
 		});
 		
-		textField.addMouseListener(new MouseListener() {
+		textFieldUserName.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textField.setText("");
+				textFieldUserName.setText("");
 				
 			}
 
@@ -120,11 +125,11 @@ public class GameWindow extends JFrame implements Runnable {
 			}
 		});
 		
-		textField.setText("Escriba su Nombre de Usuario");
-		textField.setToolTipText("Escriba su nombre de Usuario");
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setColumns(20);
-		panelSettings.add(textField);
+		textFieldUserName.setText("Escriba su Nombre de Usuario");
+		textFieldUserName.setToolTipText("Escriba su nombre de Usuario");
+		textFieldUserName.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldUserName.setColumns(20);
+		panelSettings.add(textFieldUserName);
 		
 		//panel central
 		panelAdventures = new JPanelBackground();
@@ -158,6 +163,11 @@ public class GameWindow extends JFrame implements Runnable {
 		btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int index = aventuras.getSelectedIndex(); 
+				if(index != 0 && !textFieldUserName.getText().equals("Escriba su Nombre de Usuario") && 
+						!textFieldUserName.getText().equals("")) {
+					userInterface.setPlayerWindow(index,textFieldUserName.getText());	
+				}
 				
 			}
 		});
@@ -201,11 +211,11 @@ public class GameWindow extends JFrame implements Runnable {
 
 	}
 
-	
-	public static void main(String[] args) {
-		GameWindow game = new GameWindow();
-		game.run();
+	public void agregarAventurasComboBox(String adventureName) {
+		this.aventuras.addItem(adventureName);
 	}
+	
+
 
 }
 

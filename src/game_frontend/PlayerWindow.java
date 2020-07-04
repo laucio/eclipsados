@@ -12,6 +12,8 @@ import java.awt.FlowLayout;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
@@ -33,16 +35,20 @@ public class PlayerWindow extends JFrame implements Runnable {
 
 	private JPanel contentPane;
 	private JPanel panelMensajeAEnviar;
+	private JPanel panelLateral;
+	private JPanel panelPrincipal;
 	private JTextField textField;
 	private JButton btnEnviar;
 	private JButton btnDescargar;
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
+	private String userName;
+	private String adventureName;
 
-
-	public PlayerWindow() {
-		
-		setTitle("Nombre de juego");
+	public PlayerWindow(String userName,String adventureName) {
+		this.adventureName = adventureName;
+		this.userName = userName;
+		setTitle("Eclipsados - " + adventureName);
 		setResizable(true);
 		setBounds(100, 100, 650, 400);
 
@@ -64,7 +70,7 @@ public class PlayerWindow extends JFrame implements Runnable {
 		contentPane.add(panelMensajeAEnviar, BorderLayout.SOUTH);
 		panelMensajeAEnviar.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
 
-		JLabel username = new JLabel("Usuario");
+		JLabel username = new JLabel(userName);
 		contentPane.add(username, BorderLayout.NORTH);
 
 		textField = new JTextField();
@@ -159,10 +165,7 @@ public class PlayerWindow extends JFrame implements Runnable {
 		this.textArea.setVisible(false);
 	}
 	
-	public static void main(String[] args) {
-		PlayerWindow player = new PlayerWindow();
-		player.run();
-	}
+
 
 }
 
