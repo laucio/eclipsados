@@ -407,7 +407,7 @@ public class Player {
 			if (this.hitPoints > 100) {
 				this.hitPoints = 100;
 			}
-			retorno = (points < 0 ? "Has perdido " : "Has ganado: ") + Integer.toString(Math.abs(points))
+			retorno = (points < 0 ? "Has perdido " : "Has ganado ") + Integer.toString(Math.abs(points))
 					+ " puntos de vida.\n" + printHitPoints();
 		}
 		return retorno;

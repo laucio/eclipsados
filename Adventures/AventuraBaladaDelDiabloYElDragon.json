@@ -275,7 +275,8 @@
         },
         {
           "items": [
-            "cruz"
+            "cruz",
+            "agua bendita"
           ],
           "name": "altar",
           "gender": "male",
@@ -359,7 +360,7 @@
       "number": "singular"
     },
     {
-      "description": "Ohh eh visto un lindo gatito",
+      "description": "Ohh he visto un lindo gatito",
       "talks": [
         "Miau miau...miau",
         "Hola gatito presiosho",
@@ -381,7 +382,7 @@
     {
       "description": "El angel caido se hace presente",
       "talks": [
-        "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
+        "Osas venir a enfrentarme? Ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
         "Uajjajaj, deberas enfrentarme y sufrir las consecuencias del más allá"
       ],
       "name": "angel caido",
@@ -400,6 +401,12 @@
           "thing": "espada",
           "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
           "after_trigger": "alter points & remove item"
+        },
+        {
+          "type": "item",
+          "thing": "agua bendita",
+          "on_trigger": "Con el agua bendita solo logras quemarme, nunca podras matarme!!",
+          "after_trigger": "alter points & remove item"
         }
       ]
     },
@@ -407,8 +414,8 @@
       "description": "Un dragon se aparece",
       "talks": [
         "Te quemare y me preparare un gran asado contigo..solo me falta el fernet y una picada",
-        "te voy a cocinar al espiedo",
-        "te abrazare con el hermoso calor del fuego forastero"
+        "Te voy a cocinar al espiedo",
+        "Te abrazare con el hermoso calor del fuego forastero"
       ],
       "name": "dragon",
       "gender": "male",
@@ -490,9 +497,9 @@
       ]
     },
     {
-      "description": "Busco a la hermanastra mas fea..por dios eres tu",
+      "description": "Busco a la hermanastra mas fea... por dios eres tu",
       "talks": [
-        "Conoces al principe encantador? Es un papucho..su cara parece tallada por los mismos angeles",
+        "Conoces al principe encantador? Es un papucho.. .su cara parece tallada por los mismos angeles",
         "Mmm tu otra vez?? maldito cazafortunas",
         "Aqui he oido varias teorias conspirativas... dragones y demonios... JA!!... es como dice el dicho... pueblo chico infierno grande"
       ],
@@ -582,6 +589,34 @@
         "princesa borracha"
       ],
       "name": "flor",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "tomar",
+        "dejar",
+        "beber"
+      ],
+      "effects_over": [
+        "self",
+        "npcs"
+      ],
+      "targets": [
+        "self",
+        "angel caido"
+      ],
+      "points": 100,
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "agua bendita",
+          "on_trigger": "Bendecido por el agua has recuperado todos tus puntos de vida.",
+          "after_trigger": "alter points & remove"
+        }
+      ],
+      "name": "agua bendita",
       "gender": "female",
       "number": "singular"
     },
@@ -951,7 +986,7 @@
         "troll",
         "self"
       ],
-        "triggers": [
+      "triggers": [
         {
           "type": "item",
           "thing": "veneno de cobra",
@@ -1106,7 +1141,7 @@
         {
           "type": "item",
           "thing": "manzana",
-          "on_trigger": "Ups! la manzana estaba podrida.",
+          "on_trigger": "Mmm refrescante y deliciosa manzana!! Ahora me siento un poco mejor.",
           "after_trigger": "alter points & remove"
         }
       ],
