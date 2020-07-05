@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
-	<classpathentry kind="lib" path="E:/Nacho/Documentos/RepoEclipsados/eclipsados/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="C:/Repositories/eclipsados/lib/gson-2.8.6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

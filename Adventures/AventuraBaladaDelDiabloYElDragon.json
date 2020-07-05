@@ -338,28 +338,43 @@
   "npcs": [
     {
       "description": "Deberias comer algo... fijate en la cocina.",
-      "talk": "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante años... adios.",
+      "talks": [
+        "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante aï¿½os... adios.",
+        "Hola buen dia, como estais??, he escuchado en el pueblo rumores que en el templo andan sucediendo cosas muy extraï¿½as",
+        " Hola querido, me entere de algo muy raro... dicen que estos dias en la cueva ubicada a unos kilometros de aqui se escucharon como ruidos que parecen venir de las profundidades de la tierra.. como si una bestia buscara salir o algo parecido"
+      ],
       "name": "mujer",
       "gender": "female",
       "number": "singular"
     },
     {
       "description": "Aparece un sacerdote en el templo",
-      "talk": "La profecia se ha cumplido, el elegido para derrotar al rey de las tinieblas esta aqui.",
+      "talks": [
+        "La profecia se ha cumplido, el elegido para derrotar al rey de las tinieblas esta aqui.",
+        "En la boveda quizas puedas encontrar algo que te pueda salvar de por vida... nadie sabe su valor... yo que tu lo usaria bien  ",
+        "Si ir hacia la tumba quieres, deberias llevar una cruz, te sera de mucha utilidad"
+      ],
       "name": "sacerdote",
       "gender": "male",
       "number": "singular"
     },
     {
       "description": "Ohh eh visto un lindo gatito",
-      "talk": "Miau miau...miau",
+      "talks": [
+        "Miau miau...miau",
+        "Hola gatito gatito presiosho",
+        "Salem, sali del sillon!!!"
+      ],
       "name": "gato",
       "gender": "male",
       "number": "singular"
     },
     {
       "description": "El angel caido se hace presente",
-      "talk": "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
+      "talks": [
+        "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
+        "Uajjajaj, deberas enfrentarme y sufrir las consecuencias del mï¿½s allï¿½"
+      ],
       "name": "angel caido",
       "gender": "male",
       "number": "singular",
@@ -373,14 +388,18 @@
         {
           "type": "item",
           "thing": "espada",
-          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
+          "on_trigger": "Con una espada piensas en hacerme daï¿½o... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
           "after_trigger": "restart"
         }
       ]
     },
     {
       "description": "Un dragon se aparece",
-      "talk": "Te quemare y me preparare un gran asado contigo..solo me falta el fernet y una picada",
+      "talks": [
+        "Te quemare y me preparare un gran asado contigo..solo me falta el fernet y una picada",
+        "te voy a cocinar al espiedo",
+        "te abrazare con el hermoso calor del fuego forastero"
+      ],
       "name": "dragon",
       "gender": "male",
       "number": "singular",
@@ -419,7 +438,9 @@
     },
     {
       "description": "Un feroz lobo hambriento te impide el paso hacia la tumba, defenderte con tus manos seria algo muy inutil",
-      "talk": "Grrrrrrrrrr...",
+      "talks": [
+        "Grrrrrrrrrr..."
+      ],
       "name": "lobo",
       "gender": "male",
       "number": "singular",
@@ -458,14 +479,20 @@
     },
     {
       "description": "Busco a la hermanastra mas fea..por dios eres tu",
-      "talk": "Conoces al principe encantador? Es un papucho..su cara parece tallada por los mismos angeles",
+      "talks": [
+        "Conoces al principe encantador? Es un papucho..su cara parece tallada por los mismos angeles",
+        "Mmm tu otra vez?? maldito cazafortunas"
+      ],
       "name": "hermanastra mas fea",
       "gender": "female",
       "number": "singular"
     },
     {
       "description": "Un horripilante troll espera en la puerta del bar.",
-      "talk": "Pasaras sobre mi cadaver. Vale la pena tanto por un trago?",
+      "talks": [
+        "Pasaras sobre mi cadaver. Vale la pena tanto por un trago?",
+        "Por aqui no pasaras!!!"
+      ],
       "name": "troll",
       "gender": "male",
       "number": "singular",
@@ -492,7 +519,11 @@
     },
     {
       "description": "Una princesa borracha se tambalea delante de la entrada al mercado. Parece que esta de malas, no te dejara pasar.",
-      "talk": "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penurias...",
+      "talks": [
+        "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penurias...",
+        "Si tienes algo proveniente de la madre tierra al darmelo ocuparas el lugar de trajano, marco aurelio o vespasiano",
+        "Los hombres la ven a diario, la miran pero ninguno la apreciado y no saben que detras de ella se esconde algo que ellos siempre han anelado"
+      ],
       "name": "princesa borracha",
       "gender": "female",
       "number": "singular",
@@ -513,7 +544,11 @@
     },
     {
       "description": "Se ve en el camino a un maestro sabio",
-      "talk": "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
+      "talks": [
+        "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
+        "Crees tener la fuerza necesaria para esto?? he vivido miles de vidas y creeme nadie puede derrotar a lucifer",
+        "Cuenta una leyenda que hace aï¿½os un tal marco aurelio encontro el poder al otorgarle a una princesa un obsequio que solo la naturaleza posee"
+      ],
       "name": "maestro sabio",
       "gender": "male",
       "number": "singular"
@@ -820,7 +855,7 @@
         {
           "type": "item",
           "thing": "cadaver",
-          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... y tiene un extraño grafo con forma de estrella en pecho!!!",
+          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... y tiene un extraï¿½o grafo con forma de estrella en pecho!!!",
           "after_trigger": "default"
         }
       ],

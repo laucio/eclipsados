@@ -1,18 +1,18 @@
 package juego_de_aventura;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 import juego_de_aventura.*;
 
 public class NPC extends Obstacle implements Shootable{
 	
 	private String description;
-	private String talk;
+	private ArrayList<String> talks;
 
-	public NPC(String name, String gender,String number, String description, String message) {
+	public NPC(String name, String gender,String number, String description, ArrayList<String> messages) {
 		super(name, gender, number);
 		this.description = description;
-		this.talk = message;
+		this.talks = messages;
 	}
 
 	@Override
@@ -25,11 +25,9 @@ public class NPC extends Obstacle implements Shootable{
 	}
 
 	public String getTalk() {
-		return talk;
-	}
-
-	public void setTalk(String talk) {
-		this.talk = talk;
+	  Random rand = new Random();
+      int int_random = rand.nextInt(this.talks.size()); 
+	  return this.talks.get(int_random);
 	}
 
 	public ArrayList<Trigger> getTriggers() {
