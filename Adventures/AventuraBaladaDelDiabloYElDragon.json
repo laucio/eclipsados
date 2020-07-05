@@ -339,9 +339,9 @@
     {
       "description": "Deberias comer algo... fijate en la cocina.",
       "talks": [
-        "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante aï¿½os... adios.",
-        "Hola buen dia, como estais??, he escuchado en el pueblo rumores que en el templo andan sucediendo cosas muy extraï¿½as",
-        " Hola querido, me entere de algo muy raro... dicen que estos dias en la cueva ubicada a unos kilometros de aqui se escucharon como ruidos que parecen venir de las profundidades de la tierra.. como si una bestia buscara salir o algo parecido"
+        "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante años... adios.",
+        "Hola buen dia, como estais??, he escuchado en el pueblo rumores de que en el templo andan sucediendo cosas muy extrañas",
+        "Hola querido, me entere de algo muy raro... dicen que estos dias en la cueva ubicada a unos kilometros de aqui se escucharon como ruidos que parecen venir de las profundidades de la tierra.. como si una bestia buscara salir o algo parecido"
       ],
       "name": "mujer",
       "gender": "female",
@@ -362,7 +362,7 @@
       "description": "Ohh eh visto un lindo gatito",
       "talks": [
         "Miau miau...miau",
-        "Hola gatito gatito presiosho",
+        "Hola gatito presiosho",
         "Salem, sali del sillon!!!"
       ],
       "name": "gato",
@@ -373,7 +373,7 @@
       "description": "El angel caido se hace presente",
       "talks": [
         "Osas venir a enfrentarme? ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
-        "Uajjajaj, deberas enfrentarme y sufrir las consecuencias del mï¿½s allï¿½"
+        "Uajjajaj, deberas enfrentarme y sufrir las consecuencias del más allá"
       ],
       "name": "angel caido",
       "gender": "male",
@@ -388,7 +388,7 @@
         {
           "type": "item",
           "thing": "espada",
-          "on_trigger": "Con una espada piensas en hacerme daï¿½o... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
+          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
           "after_trigger": "restart"
         }
       ]
@@ -481,7 +481,8 @@
       "description": "Busco a la hermanastra mas fea..por dios eres tu",
       "talks": [
         "Conoces al principe encantador? Es un papucho..su cara parece tallada por los mismos angeles",
-        "Mmm tu otra vez?? maldito cazafortunas"
+        "Mmm tu otra vez?? maldito cazafortunas",
+        "Aqui he oido varias teorias conspirativas... dragones y demonios... JA!!... es como dice el dicho... pueblo chico infierno grande"
       ],
       "name": "hermanastra mas fea",
       "gender": "female",
@@ -522,7 +523,7 @@
       "talks": [
         "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penurias...",
         "Si tienes algo proveniente de la madre tierra al darmelo ocuparas el lugar de trajano, marco aurelio o vespasiano",
-        "Los hombres la ven a diario, la miran pero ninguno la apreciado y no saben que detras de ella se esconde algo que ellos siempre han anelado"
+        "En este mercado yace un objeto capaz de abrir un oscuro secreto encerrado durante miles de años en este pueblo..."
       ],
       "name": "princesa borracha",
       "gender": "female",
@@ -547,7 +548,7 @@
       "talks": [
         "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
         "Crees tener la fuerza necesaria para esto?? he vivido miles de vidas y creeme nadie puede derrotar a lucifer",
-        "Cuenta una leyenda que hace aï¿½os un tal marco aurelio encontro el poder al otorgarle a una princesa un obsequio que solo la naturaleza posee"
+        "Cuenta una leyenda que hace años un tal marco aurelio encontro el poder al otorgarle a una princesa un obsequio que solo la naturaleza puede dar"
       ],
       "name": "maestro sabio",
       "gender": "male",
