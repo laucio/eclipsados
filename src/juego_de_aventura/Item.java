@@ -130,10 +130,10 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 				retorno += "\n" + player.restart(adventure.getLocations().get(0));
 				break;
 			case "alter points":
-				retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+				retorno += "\n" + alterPlayerHitPoints(player, adventure);
 				break;
 			case "alter points & remove":
-				retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+				retorno += "\n" + alterPlayerHitPoints(player, adventure);
 				if (!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
 					player.removeItemFromInventory(adventure.getItem(action.getThing()));
 				}
@@ -172,12 +172,12 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 	}
 
 	@Override
-	public String alterPlayerHitPoints(Player player, Adventure adventure, int hitPoints) {
+	public String alterPlayerHitPoints(Player player, Adventure adventure) {
 		String retorno = "";
-		retorno = player.alterHitPoints(hitPoints);
+		retorno = player.alterHitPoints(this.points);
 		if (retorno.equals("restart")) {
 			player.restart(adventure.getLocations().get(0));
-			retorno = "Se agotaron todos tus puntos de vida! vuelves al principio con 50 HP.";
+			retorno = "Has perdido " + Math.abs(this.points) + " puntos de vida.\nSe agotaron todos tus puntos de vida! Vuelves al principio con 50 HP.";
 		}
 		return retorno;
 	}

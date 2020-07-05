@@ -7,8 +7,7 @@ import juego_de_aventura.*;
 public class NPC extends Obstacle implements Shootable, HitPointsController {
 
 	private String description;
-
-private ArrayList<String> talks;
+	private ArrayList<String> talks;
 	private int points;
 
 	public NPC(String name, String gender, String number, String description, ArrayList<String> messages, int points) {
@@ -28,9 +27,9 @@ private ArrayList<String> talks;
 	}
 
 	public String getTalk() {
-	  Random rand = new Random();
-      int int_random = rand.nextInt(this.talks.size()); 
-	  return this.talks.get(int_random);
+		Random rand = new Random();
+		int int_random = rand.nextInt(this.talks.size());
+		return this.talks.get(int_random);
 	}
 
 	public ArrayList<Trigger> getTriggers() {
@@ -89,14 +88,14 @@ private ArrayList<String> talks;
 					retorno += "\n" + player.restart(adventure.getLocations().get(0));
 					break;
 				case "alter points":
-					retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+					retorno += "\n" + alterPlayerHitPoints(player, adventure);
 					break;
 				case "alter points & remove":
-					retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+					retorno += "\n" + alterPlayerHitPoints(player, adventure);
 					removeObstacle(action.getTarget(), player.getCurrentLocation());
 					break;
 				case "alter points & remove item":
-					retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+					retorno += "\n" + alterPlayerHitPoints(player, adventure);
 					item = adventure.getItem(action.getThing());
 					player.removeItemFromInventory(item);
 				default:
@@ -119,12 +118,12 @@ private ArrayList<String> talks;
 	}
 
 	@Override
-	public String alterPlayerHitPoints(Player player, Adventure adventure, int hitPoints) {
+	public String alterPlayerHitPoints(Player player, Adventure adventure) {
 		String retorno = "";
-		retorno = player.alterHitPoints(hitPoints);
+		retorno = player.alterHitPoints(this.points);
 		if (retorno.equals("restart")) {
 			player.restart(adventure.getLocations().get(0));
-			retorno = "Se agotaron todos tus puntos de vida! vuelves al principio con 50 HP.";
+			retorno = "Has perdido " + Math.abs(this.points) + " puntos de vida.\nSe agotaron todos tus puntos de vida! Vuelves al principio con 50 HP.";
 		}
 		return retorno;
 	}
