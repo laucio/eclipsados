@@ -1,3 +1,5 @@
 Te encuentras en el living de una casa. Luego de una larga siesta, te levantas con ganas de ir a un bar.
-BIANCA > ver alrededor
+sorry > ver alrededor
 Estas en el living de la casa. En la repisa hay: un veneno de cobra. En la pared hay: un espejo y una ventana. Hay una mujer y un gato. Al este hay una cocina. Al sur hay un camino.
+sorry > tomar veneno de cobra
+Tienes un veneno de cobra

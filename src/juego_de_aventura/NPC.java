@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 import juego_de_aventura.*;
 
-public class NPC extends Obstacle implements Shootable{
+public class NPC extends Obstacle implements Shootable, HitPointsController{
 	
 	private String description;
 	private String talk;
+	private int ataque;
 
-	public NPC(String name, String gender,String number, String description, String message) {
+	public NPC(String name, String gender,String number, String description, String message, int ataque) {
 		super(name, gender, number);
 		this.description = description;
 		this.talk = message;
+		this.ataque = ataque;
 	}
 
 	@Override
@@ -104,6 +106,12 @@ public class NPC extends Obstacle implements Shootable{
 
 	private boolean isInLocation(Location location) {
 		return location.containsNpc(this.getName());
+	}
+
+	@Override
+	public String alterPlayerHitPoints(Player player, Adventure adventure, int hitPoints) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

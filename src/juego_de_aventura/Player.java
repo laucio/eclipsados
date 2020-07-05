@@ -8,6 +8,7 @@ public class Player {
 
 	private Location currentLocation;
 	private ArrayList<Item> inventory;
+	private int hitPoints = 100;
 
 	public Player(ArrayList<Item> initialInventory, Location currentLocation) {
 
@@ -386,6 +387,20 @@ public class Player {
 		}
 		
 	return cadena;	
+	}
+
+	public String alterHitPoints(int points) {
+		String retorno = "";
+		this.hitPoints+=points;
+		if(this.hitPoints<=0) {
+			hitPoints = 50;
+			retorno = "restart";
+		}
+		return retorno;
+	}
+	
+	public String printHitPoints() {
+		return "Tus puntos de vida ahora son: " + Integer.toString(this.hitPoints);
 	}
 
 }

@@ -2,18 +2,20 @@ package juego_de_aventura;
 
 import java.util.ArrayList;
 
-public class Item extends Obstacle implements Shootable{// implements Action{
+public class Item extends Obstacle implements Shootable, HitPointsController{// implements Action{
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
 	private ArrayList<String> targets = null;
+	private int attack;
 
 	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over,
-			ArrayList<String> targets, ArrayList<Trigger> triggers) {
+			ArrayList<String> targets, ArrayList<Trigger> triggers, int attack) {
 		
 		super(name, gender, number, triggers);
 		this.actions = actions;
 		this.effects_over = effects_over;
 		this.targets = targets;
+		this.attack = attack;
 	}
 	
 	@Override
@@ -39,6 +41,12 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 
 	public ArrayList<String> getTargets() {
 		return targets;
+	}
+	
+	
+
+	public int getAttack() {
+		return attack;
 	}
 
 	public void setTargets(ArrayList<String> targets) {
@@ -127,6 +135,10 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 			case "restart":
 				player.setCurrentLocation(adventure.getLocations().get(0));
 				break;
+			case "damage":
+				player.alterHitPoints(adventure.getItem(action.getThing()).getAttack());
+				retorno += "\n" + player.printHitPoints();
+				break;
 			default:
 				break;
 			// case "invalidar":
@@ -160,6 +172,12 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 
 	public boolean couldBeOpened() {
 		return this.allowsAction("abrir");
+	}
+
+	@Override
+	public String alterPlayerHitPoints(Player player, Adventure adventure, int hitPoints) {
+		
+		return null;
 	}
 	
 	
