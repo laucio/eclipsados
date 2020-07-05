@@ -29,7 +29,7 @@ public class PlayerWindow extends JFrame implements Runnable{
 	private JPanelBackground topPanel;
 	private JLabel userNameLabel;
 	private JLabel pointsLabel;
-	private JLabel commandCounter;
+	private JLabel commandCounterLabel;
 	private JLabel currentLocationLabel;
 	
 //Panel Medio	
@@ -44,7 +44,6 @@ public class PlayerWindow extends JFrame implements Runnable{
 //Panel Inferior
 	private JPanelBackground bottomPanel;
 	private JTextField commandTextField;
-	
 	
 	private String adventureName;
 	private String userName;
@@ -70,20 +69,20 @@ public class PlayerWindow extends JFrame implements Runnable{
 		topPanel.setBackground(Color.ORANGE);
 		topPanel.setBackground(Color.BLACK);
 		topPanel.setLayout(new GridLayout(1,4));
-		currentLocationLabel = new JLabel("Current Location");
-		pointsLabel = new JLabel("Puntos");
-		commandCounter = new JLabel("Movimientos");
-		userNameLabel = new JLabel(userName);
+		currentLocationLabel = new JLabel("Locacion actual: "+guInterface.getCurrentLocation());
+		pointsLabel = new JLabel("Puntos: "+guInterface.getHitPoints());
+		commandCounterLabel = new JLabel("Comandos: "+guInterface.getCommandCounter());
+		userNameLabel = new JLabel("Usuario: "+guInterface.getUserName());
 		
 		userNameLabel.setForeground(Color.WHITE);
 		currentLocationLabel.setForeground(Color.WHITE);
 		pointsLabel.setForeground(Color.WHITE);
-		commandCounter.setForeground(Color.WHITE);
+		commandCounterLabel.setForeground(Color.WHITE);
 		
 		topPanel.add(userNameLabel,BorderLayout.CENTER);
 		topPanel.add(currentLocationLabel,BorderLayout.CENTER);
 		topPanel.add(pointsLabel,BorderLayout.CENTER);
-		topPanel.add(commandCounter,BorderLayout.CENTER);
+		topPanel.add(commandCounterLabel,BorderLayout.CENTER);
 		
 		mainContainer.add(topPanel, BorderLayout.NORTH);
 		
@@ -111,8 +110,6 @@ public class PlayerWindow extends JFrame implements Runnable{
 		gridPanel.add(btnSalir);
 		gridPanel.add(btnAyuda);
 
-		
-		
 		
 		middlePanel.add(gridPanel,BorderLayout.CENTER);
 		mainContainer.add(middlePanel, BorderLayout.WEST);
@@ -146,7 +143,9 @@ public class PlayerWindow extends JFrame implements Runnable{
             @Override
             public void keyPressed(KeyEvent arg0) {
                 if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-                    textArea.append(commandTextField.getText()+"\n");
+                    textArea.append(guInterface.getUserName()+": "+commandTextField.getText()+"\n\n");
+                    String output = guInterface.processCommand(commandTextField.getText());
+                    textArea.append(">> "+output +"\n\n");
                     commandTextField.setText("");
                 }
             }

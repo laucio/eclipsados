@@ -129,6 +129,18 @@ public class GraphicalUserInterface {
 		return this.game.getUserName();
 	}
 	
+	public String getCurrentLocation() {
+		return game.getPlayer().getCurrentLocation().getName();
+	}
+	
+	public String getHitPoints() {
+		return Integer.toString(game.getPlayer().getHitPoints());
+	}
+	
+	public String getCommandCounter() {
+		return Integer.toString(game.getPlayer().getCommandCounter());
+	}
+	
 	public void setPlayerWindow(int adventureIndex,String userName) {
 		String adventurePath = adventuresPath.get(adventureIndex);
 		
@@ -169,6 +181,11 @@ public class GraphicalUserInterface {
 	public void openLobby() {
 		this.gameWindow.setVisible(true);
 	}
+	
+	public String processCommand(String command) {
+		return game.processCommand(command);
+	}
+	
 	
 	/*
 			System.out.println("Bienvenido a Eclipsados.\n");
