@@ -1,172 +1,171 @@
 package game_frontend;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import java.awt.Container;
 import java.awt.FlowLayout;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.awt.Component;
 
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
-public class PlayerWindow extends JFrame implements Runnable {
+public class PlayerWindow extends JFrame implements Runnable{
 
-	private JPanel contentPane;
-	private JPanel panelMensajeAEnviar;
-	private JPanel panelLateral;
-	private JPanel panelPrincipal;
-	private JTextField textField;
-	private JButton btnEnviar;
-	private JButton btnDescargar;
-	private JScrollPane scrollPane;
+	private static final long serialVersionUID = 1292509713072966217L;
+	
+	Container mainContainer;
+//Panel superior	
+	private JPanelBackground topPanel;
+	private JLabel userNameLabel;
+	private JLabel pointsLabel;
+	private JLabel commandCounter;
+	private JLabel currentLocationLabel;
+	
+//Panel Medio	
+	private JPanelBackground middlePanel;
+	private JPanelBackground gridPanel;
+	private JButton btnAyuda;
+	private JButton btnHistorial;
+	private JButton btnSalir;
 	private JTextArea textArea;
-	private String userName;
+	private JScrollPane scrollPane;
+	
+//Panel Inferior
+	private JPanelBackground bottomPanel;
+	private JTextField commandTextField;
+	
+	
 	private String adventureName;
+	private String userName;
 
-	public PlayerWindow(String userName,String adventureName) {
+	public PlayerWindow(String userName, String adventureName) {
 		this.adventureName = adventureName;
 		this.userName = userName;
 		setTitle("Eclipsados - " + adventureName);
-		setResizable(true);
-		setBounds(100, 100, 650, 400);
+		setResizable(false);
+		setBounds(200, 200, 800, 400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		mainContainer = this.getContentPane();
+		mainContainer.setLayout(new BorderLayout(8,6));
+		mainContainer.setBackground(Color.BLACK);
+		this.getRootPane().setBorder(BorderFactory.createMatteBorder(4,4,4,4,Color.gray));
+		
+		topPanel = new JPanelBackground();
+		topPanel.setBorder(new LineBorder(Color.BLUE, 1));
+		topPanel.setBackground(Color.ORANGE);
+		topPanel.setBackground(Color.BLACK);
+		topPanel.setLayout(new GridLayout(1,4));
+		currentLocationLabel = new JLabel("Current Location");
+		pointsLabel = new JLabel("Puntos");
+		commandCounter = new JLabel("Movimientos");
+		userNameLabel = new JLabel(userName);
+		
+		userNameLabel.setForeground(Color.WHITE);
+		currentLocationLabel.setForeground(Color.WHITE);
+		pointsLabel.setForeground(Color.WHITE);
+		commandCounter.setForeground(Color.WHITE);
+		
+		topPanel.add(userNameLabel,BorderLayout.CENTER);
+		topPanel.add(currentLocationLabel,BorderLayout.CENTER);
+		topPanel.add(pointsLabel,BorderLayout.CENTER);
+		topPanel.add(commandCounter,BorderLayout.CENTER);
+		
+		mainContainer.add(topPanel, BorderLayout.NORTH);
+		
+		middlePanel = new JPanelBackground();
+		middlePanel.setBorder(new LineBorder(Color.BLUE, 1));
 
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowOpened(WindowEvent arg0) {
-				textField.requestFocus();
-
-			}
-		});
+		middlePanel.setBackground("Images/background.jpg");
+		
+		
+		gridPanel = new JPanelBackground();
+		gridPanel.setBorder(new LineBorder(Color.BLUE, 1));
+		gridPanel.setBackground(Color.DARK_GRAY);
+		gridPanel.setLayout(new GridLayout(3,1,5,5));
+		
+		btnAyuda = new JButton();
+		btnHistorial = new JButton();
+		btnSalir = new JButton();
+		
+		btnAyuda.setText("Ayuda");
+		btnSalir.setText("Salir");
+		btnHistorial.setText("Guardar Historial");
+		
+		
+		gridPanel.add(btnHistorial);
+		gridPanel.add(btnSalir);
+		gridPanel.add(btnAyuda);
 
 		
-		contentPane = new JPanel();
-		contentPane.setBorder(null);
-		contentPane.setLayout(new BorderLayout(1, 1));
-		setContentPane(contentPane);
-
-		panelMensajeAEnviar = new JPanel();
-		contentPane.add(panelMensajeAEnviar, BorderLayout.SOUTH);
-		panelMensajeAEnviar.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
-
-		JLabel username = new JLabel(userName);
-		contentPane.add(username, BorderLayout.NORTH);
-
-		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					textField.setText("");
-				}
-
-			}
-		});
-
-		textField.setToolTipText("Escriba su mensaje para enviar");
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setColumns(40);
-		panelMensajeAEnviar.add(textField);
-
-		btnEnviar = new JButton("Enviar");
-		btnEnviar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-
-		btnEnviar.setToolTipText("Click para enviar mensaje");
-		panelMensajeAEnviar.add(btnEnviar);
-
-		btnDescargar = new JButton("Descargar");
-		btnDescargar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-
-		btnDescargar.setToolTipText("Click para guardar historial");
-		panelMensajeAEnviar.add(btnDescargar);
-
+		
+		
+		middlePanel.add(gridPanel,BorderLayout.CENTER);
+		mainContainer.add(middlePanel, BorderLayout.WEST);
+		
+		
 		scrollPane = new JScrollPane();
-		scrollPane.setEnabled(false);
-		contentPane.add(scrollPane, BorderLayout.CENTER);
+        scrollPane.setEnabled(false);
 
-		textArea = new JTextArea();
-		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		textArea.setEditable(false);
-		scrollPane.setViewportView(textArea);
+ 
 
-		this.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				
-			}
+        textArea = new JTextArea();
+        textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
+        textArea.setEditable(false);
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(Color.CYAN);
+        scrollPane.setViewportView(textArea);
+        scrollPane.setBorder(new LineBorder(Color.BLUE,1));
 
-		});
+        mainContainer.add(scrollPane, BorderLayout.CENTER);
+		bottomPanel = new JPanelBackground();
+		bottomPanel.setLayout(new FlowLayout());
+		bottomPanel.setBorder(new LineBorder(Color.BLUE,1));
+		bottomPanel.setBackground("Images/background.jpg");
+		bottomPanel.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+		textArea.setLineWrap(true);
 
-		//setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
+        commandTextField = new JTextField();
+        commandTextField.setBackground(Color.BLACK);
+        commandTextField.setForeground(Color.CYAN);
+        commandTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+                    textArea.append(commandTextField.getText()+"\n");
+                    commandTextField.setText("");
+                }
+            }
+        });
 
-	}
 
+        commandTextField.setToolTipText("Escriba su mensaje para enviar");
 
-	public void agregarTextoTextArea(String texto) {
-		textArea.append(texto + "\n");
-		textArea.setCaretPosition(textArea.getText().length());
-	}
+        commandTextField.setColumns(65);
+        
 
-	private void selectAllTextoTextField(JTextField textField) {
-		textField.requestFocus();
-		textField.setSelectionStart(0);
-		textField.setSelectionEnd(textField.getText().length());
+        bottomPanel.add(commandTextField,BorderLayout.SOUTH);
+		mainContainer.add(bottomPanel,BorderLayout.SOUTH);
+		
+
+		
 	}
 
 	@Override
 	public void run() {
-		this.setVisible(true);
-
-	}
-
-	public String horaYFechaActual() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
-		LocalDateTime now = LocalDateTime.now();
-		return dtf.format(now);
-	}
-
-	public void cerrarVentana() {
-		this.setVisible(false);
+		setVisible(true);
 		
 	}
-
-	public void bloquearVentana() {
-		this.btnEnviar.setVisible(false);;
-		this.textArea.setVisible(false);
+	
+	public static void main(String[] args) {
+		PlayerWindow ventana = new PlayerWindow("Eclipsades", "CORDOBA :@");
+		ventana.run();
 	}
 	
-
-
 }
-
-
