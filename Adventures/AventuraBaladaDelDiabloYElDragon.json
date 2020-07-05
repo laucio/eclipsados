@@ -367,7 +367,16 @@
       ],
       "name": "gato",
       "gender": "male",
-      "number": "singular"
+      "number": "singular",
+      "points": -15,
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "cuchillo",
+          "on_trigger": "Tu gato se ofende y te muerde.",
+          "after_trigger": "alter points"
+        }
+      ]
     },
     {
       "description": "El angel caido se hace presente",
@@ -378,6 +387,7 @@
       "name": "angel caido",
       "gender": "male",
       "number": "singular",
+      "points": -100,
       "triggers": [
         {
           "type": "item",
@@ -389,7 +399,7 @@
           "type": "item",
           "thing": "espada",
           "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
-          "after_trigger": "restart"
+          "after_trigger": "alter points & remove item"
         }
       ]
     },
@@ -403,18 +413,19 @@
       "name": "dragon",
       "gender": "male",
       "number": "singular",
+      "points": -100,
       "triggers": [
         {
           "type": "item",
           "thing": "cuchillo",
-          "on_trigger": "Haz lastimado al dragon... pero sigue con vida.",
-          "after_trigger": "remove item"
+          "on_trigger": "Has lastimado al dragon... pero sigue con vida. Te ataca con su fuego, y te calcina hasta los huesos.",
+          "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "pico",
-          "on_trigger": "OHHH el dragon se muere... naa mentira con el pico le hiciste un arito que le quedo muy beio ",
-          "after_trigger": "remove item"
+          "on_trigger": "OHHH el dragon se muere... naa mentira con el pico le hiciste un arito que le quedo muy beio. En agradecimiento, te sopla fuego y te incinera.",
+          "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
@@ -425,8 +436,8 @@
         {
           "type": "item",
           "thing": "salchicha",
-          "on_trigger": "El dragon te rostiza a vos y a la salchicha... vuelves al principio",
-          "after_trigger": "restart"
+          "on_trigger": "El dragon te rostiza a vos y a la salchicha...",
+          "after_trigger": "alter points"
         },
         {
           "type": "item",
@@ -444,12 +455,13 @@
       "name": "lobo",
       "gender": "male",
       "number": "singular",
+      "points": -35,
       "triggers": [
         {
           "type": "item",
           "thing": "cuchillo",
           "on_trigger": "Con un feroz movimiento, el lobo te arranca el cuchillo de las manos.",
-          "after_trigger": "remove item"
+          "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
@@ -497,12 +509,13 @@
       "name": "troll",
       "gender": "male",
       "number": "singular",
+      "points": -10,
       "triggers": [
         {
           "type": "item",
           "thing": "cuchillo",
           "on_trigger": "Atacas al troll con el cuchillo. Luego de un ligero corte, tu contrincante huye corriendo entre sollozos. Al parecer no era tan temible...",
-          "after_trigger": "remove"
+          "after_trigger": "alter points & remove"
         },
         {
           "type": "item",
@@ -514,7 +527,7 @@
           "type": "item",
           "thing": "veneno de cobra",
           "on_trigger": "JA!!, me das veneno a mi??...esto para mi es como tomar aguita",
-          "after_trigger": "remove item"
+          "after_trigger": "alter points & remove item"
         }
       ]
     },
@@ -645,12 +658,13 @@
         "lobo",
         "dragon"
       ],
+      "points": 20,
       "triggers": [
         {
           "type": "item",
           "thing": "salchicha",
           "on_trigger": "Olala!! esto es carne asada... no conocia este placer de los dioses...",
-          "after_trigger": "default"
+          "after_trigger": "alter points"
         }
       ],
       "name": "salchicha",
@@ -696,12 +710,13 @@
         "dragon",
         "lobo"
       ],
+      "points": 25,
       "triggers": [
         {
           "type": "item",
           "thing": "sanguche de atun",
           "on_trigger": "Mmmmm... delicioso.",
-          "after_trigger": "remove"
+          "after_trigger": "alter points & remove"
         }
       ],
       "name": "sanguche de atun",
@@ -754,7 +769,8 @@
         "lobo",
         "troll",
         "dragon",
-        "piedra"
+        "piedra",
+        "gato"
       ],
       "name": "cuchillo",
       "gender": "male",
@@ -789,7 +805,8 @@
         "npcs"
       ],
       "targets": [
-        "lobo"
+        "lobo",
+        "dragon"
       ],
       "name": "lanza",
       "gender": "female",
@@ -921,16 +938,28 @@
         "tomar",
         "usar",
         "dejar",
-        "abrir"
+        "abrir",
+        "beber"
       ],
       "effects_over": [
         "item",
-        "npcs"
+        "npcs",
+        "self"
       ],
       "targets": [
         "puerta",
-        "troll"
+        "troll",
+        "self"
       ],
+        "triggers": [
+        {
+          "type": "item",
+          "thing": "veneno de cobra",
+          "on_trigger": "El veneno es muy toxico!",
+          "after_trigger": "alter points"
+        }
+      ],
+      "points": -99,
       "name": "veneno de cobra",
       "gender": "male",
       "number": "singular"
@@ -977,12 +1006,13 @@
         "self",
         "princesa borracha"
       ],
+      "points": -5,
       "triggers": [
         {
           "type": "item",
           "thing": "cerveza",
           "on_trigger": "Puaj... la cerveza esta vencida y es asquerosa , solo a un troll podria gustarle esto.",
-          "after_trigger": "default"
+          "after_trigger": "alter points"
         }
       ],
       "name": "cerveza",
@@ -1071,12 +1101,13 @@
       "targets": [
         "self"
       ],
+      "points": 15,
       "triggers": [
         {
           "type": "item",
           "thing": "manzana",
-          "on_trigger": "Ups! la manzana estaba podrida. (quizas pueda perder vida)",
-          "after_trigger": "remove"
+          "on_trigger": "Ups! la manzana estaba podrida.",
+          "after_trigger": "alter points & remove"
         }
       ],
       "name": "manzana",

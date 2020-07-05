@@ -2,25 +2,27 @@ package juego_de_aventura;
 
 import java.util.ArrayList;
 
-public class Item extends Obstacle implements Shootable{// implements Action{
+public class Item extends Obstacle implements Shootable, HitPointsController {// implements Action{
 	private ArrayList<String> actions = null;
 	private ArrayList<String> effects_over = null;
 	private ArrayList<String> targets = null;
+	private int points;
 
 	public Item(String name, String gender, String number, ArrayList<String> actions, ArrayList<String> effects_over,
-			ArrayList<String> targets, ArrayList<Trigger> triggers) {
-		
+			ArrayList<String> targets, ArrayList<Trigger> triggers, int points) {
+
 		super(name, gender, number, triggers);
 		this.actions = actions;
 		this.effects_over = effects_over;
 		this.targets = targets;
+		this.points = points;
 	}
-	
+
 	@Override
 	public String getDescription() {
 		return "No puedes pasar! Hay " + this.toString();
 	}
-	
+
 	public ArrayList<String> getEffects_over() {
 		return effects_over;
 	}
@@ -99,7 +101,7 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 		return cadena + this.getName();
 
 	}
-	
+
 	public boolean isNamed(String name) {
 		return this.name.equals(name);
 	}
@@ -107,16 +109,16 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 	@Override
 	public String shootTrigger(Action action, Adventure adventure, Player player) {
 		String retorno = "Eso no ha servido de nada.";
-		
+
 		Trigger trigger = this.findTrigger(action);
 		action.setAchieved(true);
-		
-		if(trigger != null) {
+
+		if (trigger != null) {
 			retorno = trigger.getOn_trigger();
-			
+
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
-				if(!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
+				if (!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
 					player.removeItemFromInventory(adventure.getItem(action.getThing()));
 				}
 				break;
@@ -125,42 +127,59 @@ public class Item extends Obstacle implements Shootable{// implements Action{
 				adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation());
 				break;
 			case "restart":
-				player.setCurrentLocation(adventure.getLocations().get(0));
+				retorno += "\n" + player.restart(adventure.getLocations().get(0));
+				break;
+			case "alter points":
+				retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+				break;
+			case "alter points & remove":
+				retorno += "\n" + alterPlayerHitPoints(player, adventure, this.points);
+				if (!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
+					player.removeItemFromInventory(adventure.getItem(action.getThing()));
+				}
 				break;
 			default:
 				break;
 			// case "invalidar":
 			}
 		}
-		
-		
-		
+
 		return retorno;
 	}
-	
+
 	@Override
 	public void removeObstacle(String obstacle, Location location) {
 		location.getConnectionFromObstacle(obstacle).setObstacles(null);
-		
+
 	}
 
 	public boolean allowsAction(String action) {
 		boolean found = false;
-		int i=0;
-		
-		while(i<actions.size() && !found) {
-			if(action.equals(actions.get(i))) {
+		int i = 0;
+
+		while (i < actions.size() && !found) {
+			if (action.equals(actions.get(i))) {
 				found = true;
 			}
-			
-		i++;
+
+			i++;
 		}
-	return found;	
+		return found;
 	}
 
 	public boolean couldBeOpened() {
 		return this.allowsAction("abrir");
 	}
-	
-	
+
+	@Override
+	public String alterPlayerHitPoints(Player player, Adventure adventure, int hitPoints) {
+		String retorno = "";
+		retorno = player.alterHitPoints(hitPoints);
+		if (retorno.equals("restart")) {
+			player.restart(adventure.getLocations().get(0));
+			retorno = "Se agotaron todos tus puntos de vida! vuelves al principio con 50 HP.";
+		}
+		return retorno;
+	}
+
 }
