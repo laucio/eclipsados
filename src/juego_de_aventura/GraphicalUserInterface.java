@@ -22,6 +22,7 @@ public class GraphicalUserInterface {
 
 	public GraphicalUserInterface() {
 	}
+	
 
 	public void run() {
 
