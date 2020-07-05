@@ -8,17 +8,23 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.Component;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import juego_de_aventura.GraphicalUserInterface;
+
 public class PlayerWindow extends JFrame implements Runnable{
 
 	private static final long serialVersionUID = 1292509713072966217L;
 	
-	Container mainContainer;
+	private GraphicalUserInterface guInterface;
+	
+	private Container mainContainer;
 //Panel superior	
 	private JPanelBackground topPanel;
 	private JLabel userNameLabel;
@@ -43,13 +49,15 @@ public class PlayerWindow extends JFrame implements Runnable{
 	private String adventureName;
 	private String userName;
 
-	public PlayerWindow(String userName, String adventureName) {
+	public PlayerWindow(GraphicalUserInterface guInterface, String adventureName) {
+		this.guInterface = guInterface;
 		this.adventureName = adventureName;
-		this.userName = userName;
+		this.userName = this.guInterface.getUserName();
+		
 		setTitle("Eclipsados - " + adventureName);
 		setResizable(false);
 		setBounds(200, 200, 800, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		
 		mainContainer = this.getContentPane();
@@ -153,8 +161,12 @@ public class PlayerWindow extends JFrame implements Runnable{
         bottomPanel.add(commandTextField,BorderLayout.SOUTH);
 		mainContainer.add(bottomPanel,BorderLayout.SOUTH);
 		
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				guInterface.openLobby();
+			}
 
-		
+		});
 	}
 
 	@Override
@@ -163,9 +175,8 @@ public class PlayerWindow extends JFrame implements Runnable{
 		
 	}
 	
-	public static void main(String[] args) {
-		PlayerWindow ventana = new PlayerWindow("Eclipsades", "CORDOBA :@");
-		ventana.run();
+	public void addTextToTextArea(String text) {
+		textArea.append(text+"\n");
 	}
 	
 }

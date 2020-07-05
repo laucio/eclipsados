@@ -14,45 +14,23 @@ import game_frontend.PlayerWindow;
 public class GraphicalUserInterface {
 
 	private Game game;
-	private boolean continuarPartida = true;
 	private GameWindow gameWindow;
 	private PlayerWindow playerWindow;
+	
+	private boolean continuarPartida = true;
 	private Map<Integer, String> adventuresPath;
-	private String userName;
 
 	public GraphicalUserInterface() {
+		gameWindow = new GameWindow(this);
 	}
 	
 
 	public void run() {
-
-		gameWindow = new GameWindow(this);
-		gameWindow.run();
 		
-		//Scanner in = new Scanner(System.in);
-		//System.out.println("Ingrese su nombre: \n");
-		//String userName = in.nextLine();
-		//System.out.println();
-		String adventurePath = selectAdventure("Adventures");
-		System.out.println();
-		if (adventurePath == FileManager.StatusGameFilePath) {
-			game = new Game();
-			game.getSavedProgress();
-		} else {
-
-			try {
-				game = new Game(adventurePath);
-				//game.setUserName(userName);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("No se pudo cargar la aventura seleccionada");
-			}
-		}
+		loadAdventuresPaths("Adventures");
+		loadAdventuresInComboBox("Adventures");
 		
-
-		String output = null;
-		System.out.println(game.getWelcome());
+		gameWindow.run();	
 		
 		
 		String command = "";
@@ -63,7 +41,7 @@ public class GraphicalUserInterface {
 			System.out.println(output);
 		} */
 
-		this.game.saveProgress();
+		//this.game.saveProgress();
 	}
 
 	public String handleCommand(String command) {
@@ -97,24 +75,17 @@ public class GraphicalUserInterface {
 	}
 
 	// return the path of the selected adventure
-	public String selectAdventure(String folderPath) {
+	public void loadAdventuresPaths(String folderPath) {
 		File folder = new File(folderPath);
 		Integer index = 1;
 		adventuresPath = new HashMap<Integer, String>();
-		Scanner in = new Scanner(System.in);
 
-		System.out.println("Aventuras Disponibles: ");
-		System.out.println("0 - Salir");
 		for (final File adventure : folder.listFiles()) {
-			String adventureName = index.toString() + " - "
-					+ adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
 			adventuresPath.put(index, adventure.getPath());
-			this.gameWindow.agregarAventurasComboBox(adventureName);
-			//System.out.println(adventureName);
 			index++;
 		}
 		
-		
+		/*
 		if (hasSavedGame()) {
 			System.out.println(index.toString() + " - Recuperar Partida");
 			adventuresPath.put(index, FileManager.StatusGameFilePath);
@@ -134,6 +105,7 @@ public class GraphicalUserInterface {
 		}
 
 		return adventuresPath.get(selectedAdventure);
+		*/
 	}
 
 	public boolean hasSavedGame() {
@@ -153,12 +125,49 @@ public class GraphicalUserInterface {
 
 	}
 	
-	
+	public String getUserName() {
+		return this.game.getUserName();
+	}
 	
 	public void setPlayerWindow(int adventureIndex,String userName) {
-		String adventureName = adventuresPath.get(adventureIndex);
-		this.playerWindow = new PlayerWindow(userName,adventureName);
+		String adventurePath = adventuresPath.get(adventureIndex);
+		
+		if (adventurePath == FileManager.StatusGameFilePath) {
+			game = new Game();
+			game.getSavedProgress();
+		} else {
+
+			try {
+				game = new Game(adventurePath);
+				game.setUserName(userName);
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("No se pudo cargar la aventura seleccionada");
+			}
+		}
+		
+		this.playerWindow = new PlayerWindow(this, adventurePath);
+		this.playerWindow.addTextToTextArea(game.getWelcome());
+		this.gameWindow.setVisible(false);
 		this.playerWindow.run();
+	}
+	
+	public void loadAdventuresInComboBox(String folderPath) {
+		File folder = new File(folderPath);
+		Integer index = 1;
+		
+		for (final File adventure : folder.listFiles()) {
+			String adventureName = index.toString() + " - "
+					+ adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
+			this.gameWindow.agregarAventurasComboBox(adventureName);
+			index++;
+		}
+		
+	}
+
+
+	public void openLobby() {
+		this.gameWindow.setVisible(true);
 	}
 	
 	/*
