@@ -10,6 +10,7 @@ public class Action {
 	private String shooteable;
 	private boolean achieved;
 	
+	
 
 	public Action() {
 	this.action = "";
