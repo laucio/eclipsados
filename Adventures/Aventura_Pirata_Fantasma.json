@@ -51,7 +51,7 @@
       "gender": "male",
       "number": "singular",
       "description": "No puedes pasar! El pirata fantasma no te dejara pasar",
-      "talk": [
+      "talks": [
         "No hay nada que me digas que me haga cambiar de opinion!",
         "jajaja madito forastero hagas lo que digas me mantendre firme en mi decision"
       ],
