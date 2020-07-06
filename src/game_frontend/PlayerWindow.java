@@ -6,6 +6,8 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -18,7 +20,7 @@ import javax.swing.border.LineBorder;
 
 import juego_de_aventura.GraphicalUserInterface;
 
-public class PlayerWindow extends JFrame implements Runnable{
+public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 
 	private static final long serialVersionUID = 1292509713072966217L;
 	
@@ -50,14 +52,13 @@ public class PlayerWindow extends JFrame implements Runnable{
 
 	public PlayerWindow(GraphicalUserInterface guInterface, String adventureName) {
 		this.guInterface = guInterface;
-		this.adventureName = adventureName;
+		this.adventureName = adventureName.replace("Adventures\\", "").replace(".json", "");
 		this.userName = this.guInterface.getUserName();
 		
-		setTitle("Eclipsados - " + adventureName);
+		setTitle("Eclipsados - " + this.adventureName);
 		setResizable(false);
 		setBounds(200, 200, 800, 400);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		
 		
 		mainContainer = this.getContentPane();
 		mainContainer.setLayout(new BorderLayout(8,6));
@@ -69,10 +70,13 @@ public class PlayerWindow extends JFrame implements Runnable{
 		topPanel.setBackground(Color.ORANGE);
 		topPanel.setBackground(Color.BLACK);
 		topPanel.setLayout(new GridLayout(1,4));
-		currentLocationLabel = new JLabel("Locacion actual: "+guInterface.getCurrentLocation());
-		pointsLabel = new JLabel("Puntos: "+guInterface.getHitPoints());
-		commandCounterLabel = new JLabel("Comandos: "+guInterface.getCommandCounter());
+
 		userNameLabel = new JLabel("Usuario: "+guInterface.getUserName());
+		currentLocationLabel = new JLabel();
+		pointsLabel = new JLabel();
+		commandCounterLabel = new JLabel();
+		
+		updateWindowInfo();
 		
 		userNameLabel.setForeground(Color.WHITE);
 		currentLocationLabel.setForeground(Color.WHITE);
@@ -105,11 +109,35 @@ public class PlayerWindow extends JFrame implements Runnable{
 		btnSalir.setText("Salir");
 		btnHistorial.setText("Guardar Historial");
 		
+		btnAyuda.setToolTipText("Click para ver posibles comandos");
+		btnSalir.setToolTipText("Click para abandonar partida");
+		btnHistorial.setToolTipText("Click para guardar progreso");
+		
+		btnAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showHelp();
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int dialogResult = JOptionPane.showConfirmDialog (null, "En verdad desea salir?\nPerderas tu progreso no guardado","Advertencia",JOptionPane.YES_NO_OPTION);
+				if(dialogResult == JOptionPane.YES_OPTION){
+				  closePlayerWindow();
+				}
+			}
+		});
+		
+		btnHistorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				guInterface.saveProgress();
+				addTextToTextArea("-- PROGRESO GUARDADO--\n");
+			}
+		});
 		
 		gridPanel.add(btnHistorial);
 		gridPanel.add(btnSalir);
 		gridPanel.add(btnAyuda);
-
 		
 		middlePanel.add(gridPanel,BorderLayout.CENTER);
 		mainContainer.add(middlePanel, BorderLayout.WEST);
@@ -118,7 +146,6 @@ public class PlayerWindow extends JFrame implements Runnable{
 		scrollPane = new JScrollPane();
         scrollPane.setEnabled(false);
 
- 
 
         textArea = new JTextArea();
         textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
@@ -143,9 +170,10 @@ public class PlayerWindow extends JFrame implements Runnable{
             @Override
             public void keyPressed(KeyEvent arg0) {
                 if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-                    textArea.append(guInterface.getUserName()+": "+commandTextField.getText()+"\n\n");
+                    textArea.append(normalizar(guInterface.getUserName())+": "+commandTextField.getText()+"\n\n");
                     String output = guInterface.processCommand(commandTextField.getText());
                     textArea.append(">> "+output +"\n\n");
+                    updateWindowInfo();
                     if(guInterface.isEndgame()) {
                     	commandTextField.setText("FELICITACIONES, HAS GANADO LA PARTIDA!");
                     	commandTextField.setEditable(false);
@@ -162,7 +190,6 @@ public class PlayerWindow extends JFrame implements Runnable{
 
         commandTextField.setColumns(65);
         
-
         bottomPanel.add(commandTextField,BorderLayout.SOUTH);
 		mainContainer.add(bottomPanel,BorderLayout.SOUTH);
 		
@@ -182,6 +209,35 @@ public class PlayerWindow extends JFrame implements Runnable{
 	
 	public void addTextToTextArea(String text) {
 		textArea.append(text+"\n");
+	}
+	
+	private void updateWindowInfo(){
+		
+		currentLocationLabel.setText("Ubicacion actual: "+normalizar(guInterface.getCurrentLocation()));
+		pointsLabel.setText("Puntos: "+guInterface.getHitPoints());
+		commandCounterLabel.setText("Comandos: "+guInterface.getCommandCounter());
+	}
+	
+	public void closePlayerWindow() {
+		guInterface.openLobby();
+		this.dispose();
+	}
+	
+	public void showHelp(){
+			addTextToTextArea("-- AYUDA --");
+			addTextToTextArea("Para jugar tu personaje puede realizar acciones como:");
+			addTextToTextArea(" - ir a un lugar");
+			addTextToTextArea(" - tomar un objeto");
+			addTextToTextArea(" - abrir puertas");
+			addTextToTextArea(" - atacar con un objeto a otro personaje");
+			addTextToTextArea(" - dar un objeto a otro personaje");
+			addTextToTextArea(" - hablar con un personaje");
+			addTextToTextArea(" - mirar alrededor y mirar tu inventario");
+			addTextToTextArea("-- FIN DE AYUDA --\n");
+	}
+	
+	public String normalizar(String cadena) {
+		return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();
 	}
 	
 }

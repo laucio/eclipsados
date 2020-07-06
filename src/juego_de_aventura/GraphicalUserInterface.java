@@ -73,7 +73,6 @@ public class GraphicalUserInterface {
 
 	}
 
-	// return the path of the selected adventure
 	public void loadAdventuresPaths(String folderPath) {
 		File folder = new File(folderPath);
 		Integer index = 1;
@@ -113,7 +112,6 @@ public class GraphicalUserInterface {
 			try {
 				file.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
@@ -158,7 +156,7 @@ public class GraphicalUserInterface {
 		}
 		
 		this.playerWindow = new PlayerWindow(this, adventurePath);
-		this.playerWindow.addTextToTextArea(game.getWelcome());
+		this.playerWindow.addTextToTextArea(game.getWelcome()+"\n");
 		this.gameWindow.setVisible(false);
 		this.playerWindow.run();
 	}
@@ -182,15 +180,6 @@ public class GraphicalUserInterface {
 	}
 	
 	public String processCommand(String command) {
-		
-		/*
-		while (!game.isEndgame() && continuarPartida) {
-			command = in.nextLine();
-			output = handleCommand(command);
-			output = output == null ? game.processCommand(command) : output;
-			System.out.println(output);
-		} */
-		
 		return game.processCommand(command);
 	}
 
@@ -199,20 +188,9 @@ public class GraphicalUserInterface {
 		return game.isEndgame();
 	}
 	
+	public void saveProgress() {
+		game.saveProgress();
+	}
 	
-	/*
-			System.out.println("Bienvenido a Eclipsados.\n");
-		System.out.println("Para jugar tu personaje puede realizar acciones como:");
-		System.out.println(" - ir a un lugar");
-		System.out.println(" - tomar un objeto");
-		System.out.println(" - abrir puertas");
-		System.out.println(" - atacar con un objeto a otro personaje");
-		System.out.println(" - dar un objeto a otro personaje");
-		System.out.println(" - hablar con un personaje");
-		System.out.println(" - mirar alrededor y mirar tu inventario");
-		System.out.println("Y todas las que se te puedan ocurrir...");
-		System.out.println();
-		System.out.println("Para mas comandos escriba: AYUDA");
-		System.out.println();
-	*/
+	
 }

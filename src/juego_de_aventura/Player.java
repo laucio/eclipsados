@@ -422,4 +422,8 @@ public class Player {
 		return "Tus puntos de vida ahora son: " + Integer.toString(this.hitPoints);
 	}
 
+	public void increaseCommandCounter() {
+		commandCounter++;
+	}
+
 }

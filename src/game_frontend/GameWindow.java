@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
@@ -35,7 +36,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class GameWindow extends JFrame implements Runnable {
+public class GameWindow extends JFrame implements Runnable, Normalizador{
 
 	private static final long serialVersionUID = 5807596703352926257L;
 
@@ -166,7 +167,7 @@ public class GameWindow extends JFrame implements Runnable {
 				int index = aventuras.getSelectedIndex(); 
 				if(index != 0 && !textFieldUserName.getText().equals("Escriba su Nombre de Usuario") && 
 						!textFieldUserName.getText().equals("")) {
-					userInterface.setPlayerWindow(index,textFieldUserName.getText());	
+					userInterface.setPlayerWindow(index,normalizar(textFieldUserName.getText()));	
 				}
 				
 			}
@@ -183,7 +184,10 @@ public class GameWindow extends JFrame implements Runnable {
 		btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				int dialogResult = JOptionPane.showConfirmDialog (null, "En verdad desea salir?","Advertencia",JOptionPane.YES_NO_OPTION);
+				if(dialogResult == JOptionPane.YES_OPTION){
+				  System.exit(0);
+				}
 			}
 		});
 		
@@ -215,7 +219,9 @@ public class GameWindow extends JFrame implements Runnable {
 		this.aventuras.addItem(adventureName);
 	}
 	
-
+	public String normalizar(String cadena) {
+		return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();
+	}
 
 }
 
