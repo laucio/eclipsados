@@ -186,6 +186,8 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
                     String output = guInterface.processCommand(commandTextField.getText());
                     textArea.append(">> "+output +"\n\n");
                     updateWindowInfo();
+                    updateImage();
+                    
                     if(guInterface.isEndgame()) {
                     	commandTextField.setText("FELICITACIONES, HAS GANADO LA PARTIDA!");
                     	commandTextField.setEditable(false);
@@ -249,7 +251,6 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 	}
 	
 	public void updateImage() {
-		//imageIcon = new ImageIcon("Images/living.png"); // load the image to a imageIcon
 		imageIcon = new ImageIcon("Images/"+guInterface.getImageName()+".png");
 		Image image = imageIcon.getImage(); // transform it 
 		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  

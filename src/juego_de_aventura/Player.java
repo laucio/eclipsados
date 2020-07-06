@@ -69,6 +69,7 @@ public class Player {
 
 				Location newLocation = adventure.getLocation(connections.get(i - 1).getLocation());
 				this.setCurrentLocation(newLocation);
+				this.setImageName(this.currentLocation.getName());
 				retorno = currentLocation.getDescription();
 
 			} else {
