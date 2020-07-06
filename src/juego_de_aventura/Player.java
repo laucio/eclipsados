@@ -9,6 +9,7 @@ public class Player {
 	private Location currentLocation;
 	private ArrayList<Item> inventory;
 	private int hitPoints = 100;
+	private int commandCounter = 0;
 
 	public Player(ArrayList<Item> initialInventory, Location currentLocation) {
 
@@ -34,6 +35,10 @@ public class Player {
 
 	public int getHitPoints() {
 		return hitPoints;
+	}
+	
+	public int getCommandCounter() {
+		return commandCounter;
 	}
 
 	public String goTo(Action action, Adventure adventure) {
@@ -415,6 +420,10 @@ public class Player {
 
 	public String printHitPoints() {
 		return "Tus puntos de vida ahora son: " + Integer.toString(this.hitPoints);
+	}
+
+	public void increaseCommandCounter() {
+		commandCounter++;
 	}
 
 }

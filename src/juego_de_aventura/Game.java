@@ -131,6 +131,7 @@ public class Game {
 	}
 	
 	public String processCommand(String command) {
+		player.increaseCommandCounter();
 		String respuesta = "No entiendo lo que me dices";
 		this.log.add(userName + " > " + command);
 		Action action = new Action();

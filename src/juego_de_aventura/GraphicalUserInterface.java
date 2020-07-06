@@ -14,48 +14,25 @@ import game_frontend.PlayerWindow;
 public class GraphicalUserInterface {
 
 	private Game game;
-	private boolean continuarPartida = true;
 	private GameWindow gameWindow;
 	private PlayerWindow playerWindow;
+	
+	private boolean continuarPartida = true;
 	private Map<Integer, String> adventuresPath;
-	private String userName;
 
 	public GraphicalUserInterface() {
+		gameWindow = new GameWindow(this);
 	}
 	
 
 	public void run() {
-
-		gameWindow = new GameWindow(this);
-		gameWindow.run();
 		
-		//Scanner in = new Scanner(System.in);
-		//System.out.println("Ingrese su nombre: \n");
-		//String userName = in.nextLine();
-		//System.out.println();
-		String adventurePath = selectAdventure("Adventures");
-		System.out.println();
-		if (adventurePath == FileManager.StatusGameFilePath) {
-			game = new Game();
-			game.getSavedProgress();
-		} else {
-
-			try {
-				game = new Game(adventurePath);
-				//game.setUserName(userName);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("No se pudo cargar la aventura seleccionada");
-			}
-		}
+		loadAdventuresPaths("Adventures");
+		loadAdventuresInComboBox("Adventures");
 		
-
-		String output = null;
-		System.out.println(game.getWelcome());
+		gameWindow.run();	
 		
 		
-		String command = "";
 	/*	while (!game.isEndgame() && continuarPartida) {
 			command = in.nextLine();
 			output = handleCommand(command);
@@ -63,7 +40,7 @@ public class GraphicalUserInterface {
 			System.out.println(output);
 		} */
 
-		this.game.saveProgress();
+		//this.game.saveProgress();
 	}
 
 	public String handleCommand(String command) {
@@ -96,25 +73,17 @@ public class GraphicalUserInterface {
 
 	}
 
-	// return the path of the selected adventure
-	public String selectAdventure(String folderPath) {
+	public void loadAdventuresPaths(String folderPath) {
 		File folder = new File(folderPath);
 		Integer index = 1;
 		adventuresPath = new HashMap<Integer, String>();
-		Scanner in = new Scanner(System.in);
 
-		System.out.println("Aventuras Disponibles: ");
-		System.out.println("0 - Salir");
 		for (final File adventure : folder.listFiles()) {
-			String adventureName = index.toString() + " - "
-					+ adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
 			adventuresPath.put(index, adventure.getPath());
-			this.gameWindow.agregarAventurasComboBox(adventureName);
-			//System.out.println(adventureName);
 			index++;
 		}
 		
-		
+		/*
 		if (hasSavedGame()) {
 			System.out.println(index.toString() + " - Recuperar Partida");
 			adventuresPath.put(index, FileManager.StatusGameFilePath);
@@ -134,6 +103,7 @@ public class GraphicalUserInterface {
 		}
 
 		return adventuresPath.get(selectedAdventure);
+		*/
 	}
 
 	public boolean hasSavedGame() {
@@ -142,7 +112,6 @@ public class GraphicalUserInterface {
 			try {
 				file.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
@@ -153,27 +122,75 @@ public class GraphicalUserInterface {
 
 	}
 	
+	public String getUserName() {
+		return this.game.getUserName();
+	}
 	
+	public String getCurrentLocation() {
+		return game.getPlayer().getCurrentLocation().getName();
+	}
+	
+	public String getHitPoints() {
+		return Integer.toString(game.getPlayer().getHitPoints());
+	}
+	
+	public String getCommandCounter() {
+		return Integer.toString(game.getPlayer().getCommandCounter());
+	}
 	
 	public void setPlayerWindow(int adventureIndex,String userName) {
-		String adventureName = adventuresPath.get(adventureIndex);
-		this.playerWindow = new PlayerWindow(userName,adventureName);
+		String adventurePath = adventuresPath.get(adventureIndex);
+		
+		if (adventurePath == FileManager.StatusGameFilePath) {
+			game = new Game();
+			game.getSavedProgress();
+		} else {
+
+			try {
+				game = new Game(adventurePath);
+				game.setUserName(userName);
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("No se pudo cargar la aventura seleccionada");
+			}
+		}
+		
+		this.playerWindow = new PlayerWindow(this, adventurePath);
+		this.playerWindow.addTextToTextArea(game.getWelcome()+"\n");
+		this.gameWindow.setVisible(false);
 		this.playerWindow.run();
 	}
 	
-	/*
-			System.out.println("Bienvenido a Eclipsados.\n");
-		System.out.println("Para jugar tu personaje puede realizar acciones como:");
-		System.out.println(" - ir a un lugar");
-		System.out.println(" - tomar un objeto");
-		System.out.println(" - abrir puertas");
-		System.out.println(" - atacar con un objeto a otro personaje");
-		System.out.println(" - dar un objeto a otro personaje");
-		System.out.println(" - hablar con un personaje");
-		System.out.println(" - mirar alrededor y mirar tu inventario");
-		System.out.println("Y todas las que se te puedan ocurrir...");
-		System.out.println();
-		System.out.println("Para mas comandos escriba: AYUDA");
-		System.out.println();
-	*/
+	public void loadAdventuresInComboBox(String folderPath) {
+		File folder = new File(folderPath);
+		Integer index = 1;
+		
+		for (final File adventure : folder.listFiles()) {
+			String adventureName = index.toString() + " - "
+					+ adventure.getName().substring(0, adventure.getName().lastIndexOf('.'));
+			this.gameWindow.agregarAventurasComboBox(adventureName);
+			index++;
+		}
+		
+	}
+
+
+	public void openLobby() {
+		this.gameWindow.setVisible(true);
+	}
+	
+	public String processCommand(String command) {
+		return game.processCommand(command);
+	}
+
+
+	public boolean isEndgame() {
+		return game.isEndgame();
+	}
+	
+	public void saveProgress() {
+		game.saveProgress();
+	}
+	
+	
 }
