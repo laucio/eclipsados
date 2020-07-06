@@ -279,4 +279,11 @@ public class Game {
 		return player.leavelocation(action);
 	}
 	
+	public String getImageName() {
+		return player.getImageName();
+	}
+
+	public void setImageName(String imageName) {
+		player.setImageName(imageName);
+	}
 }

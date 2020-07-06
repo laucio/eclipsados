@@ -41,6 +41,10 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 	private JButton btnAyuda;
 	private JButton btnHistorial;
 	private JButton btnSalir;
+	
+	private ImageIcon imageIcon;
+	private JLabel imageLabel;
+	
 	private JTextArea textArea;
 	private JScrollPane scrollPane;
 	
@@ -142,14 +146,9 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		
 		middlePanel.add(gridPanel);
 		
-		ImageIcon imageIcon = new ImageIcon("Images/living.png"); // load the image to a imageIcon
-		Image image = imageIcon.getImage(); // transform it 
-		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  
-		imageIcon = new ImageIcon(newimg);
-		
-		JLabel imageLabel = new JLabel();
-		imageLabel.setIcon(imageIcon);
+		imageLabel = new JLabel();
 		imageLabel.setBorder(new LineBorder(Color.BLUE, 1));
+		updateImage();
 		
 		middlePanel.add(imageLabel,BorderLayout.CENTER);
 		
@@ -247,6 +246,15 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 			addTextToTextArea(" - hablar con un personaje");
 			addTextToTextArea(" - mirar alrededor y mirar tu inventario");
 			addTextToTextArea("-- FIN DE AYUDA --\n");
+	}
+	
+	public void updateImage() {
+		//imageIcon = new ImageIcon("Images/living.png"); // load the image to a imageIcon
+		imageIcon = new ImageIcon("Images/"+guInterface.getImageName()+".png");
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+		imageLabel.setIcon(imageIcon);
 	}
 	
 	public String normalizar(String cadena) {

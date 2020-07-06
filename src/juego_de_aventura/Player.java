@@ -10,11 +10,13 @@ public class Player {
 	private ArrayList<Item> inventory;
 	private int hitPoints = 100;
 	private int commandCounter = 0;
+	private String imageName;
 
 	public Player(ArrayList<Item> initialInventory, Location currentLocation) {
 
 		this.currentLocation = currentLocation;
 		this.inventory = initialInventory;
+		this.imageName = currentLocation.getName();
 	}
 
 	public Location getCurrentLocation() {
@@ -424,6 +426,14 @@ public class Player {
 
 	public void increaseCommandCounter() {
 		commandCounter++;
+	}
+	
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 }

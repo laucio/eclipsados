@@ -192,5 +192,8 @@ public class GraphicalUserInterface {
 		game.saveProgress();
 	}
 	
+	public String getImageName() {
+		return game.getImageName();
+	}
 	
 }
