@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -40,6 +41,10 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 	private JButton btnAyuda;
 	private JButton btnHistorial;
 	private JButton btnSalir;
+	
+	private ImageIcon imageIcon;
+	private JLabel imageLabel;
+	
 	private JTextArea textArea;
 	private JScrollPane scrollPane;
 	
@@ -92,9 +97,9 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		
 		middlePanel = new JPanelBackground();
 		middlePanel.setBorder(new LineBorder(Color.BLUE, 1));
-
-		middlePanel.setBackground("Images/background.jpg");
-		
+		//middlePanel.setBackground("Images/background.jpg");
+		middlePanel.setBackground(Color.BLACK);
+		middlePanel.setLayout(new GridLayout(2,1,5,5));
 		
 		gridPanel = new JPanelBackground();
 		gridPanel.setBorder(new LineBorder(Color.BLUE, 1));
@@ -139,7 +144,14 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		gridPanel.add(btnSalir);
 		gridPanel.add(btnAyuda);
 		
-		middlePanel.add(gridPanel,BorderLayout.CENTER);
+		middlePanel.add(gridPanel);
+		
+		imageLabel = new JLabel();
+		imageLabel.setBorder(new LineBorder(Color.BLUE, 1));
+		updateImage();
+		
+		middlePanel.add(imageLabel,BorderLayout.CENTER);
+		
 		mainContainer.add(middlePanel, BorderLayout.WEST);
 		
 		
@@ -174,6 +186,8 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
                     String output = guInterface.processCommand(commandTextField.getText());
                     textArea.append(">> "+output +"\n\n");
                     updateWindowInfo();
+                    updateImage();
+                    
                     if(guInterface.isEndgame()) {
                     	commandTextField.setText("FELICITACIONES, HAS GANADO LA PARTIDA!");
                     	commandTextField.setEditable(false);
@@ -234,6 +248,14 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 			addTextToTextArea(" - hablar con un personaje");
 			addTextToTextArea(" - mirar alrededor y mirar tu inventario");
 			addTextToTextArea("-- FIN DE AYUDA --\n");
+	}
+	
+	public void updateImage() {
+		imageIcon = new ImageIcon("Images/"+guInterface.getImageName()+".png");
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+		imageLabel.setIcon(imageIcon);
 	}
 	
 	public String normalizar(String cadena) {
