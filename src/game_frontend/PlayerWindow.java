@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -92,9 +93,9 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		
 		middlePanel = new JPanelBackground();
 		middlePanel.setBorder(new LineBorder(Color.BLUE, 1));
-
-		middlePanel.setBackground("Images/background.jpg");
-		
+		//middlePanel.setBackground("Images/background.jpg");
+		middlePanel.setBackground(Color.BLACK);
+		middlePanel.setLayout(new GridLayout(2,1,5,5));
 		
 		gridPanel = new JPanelBackground();
 		gridPanel.setBorder(new LineBorder(Color.BLUE, 1));
@@ -139,7 +140,19 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		gridPanel.add(btnSalir);
 		gridPanel.add(btnAyuda);
 		
-		middlePanel.add(gridPanel,BorderLayout.CENTER);
+		middlePanel.add(gridPanel);
+		
+		ImageIcon imageIcon = new ImageIcon("Images/living.png"); // load the image to a imageIcon
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+		
+		JLabel imageLabel = new JLabel();
+		imageLabel.setIcon(imageIcon);
+		imageLabel.setBorder(new LineBorder(Color.BLUE, 1));
+		
+		middlePanel.add(imageLabel,BorderLayout.CENTER);
+		
 		mainContainer.add(middlePanel, BorderLayout.WEST);
 		
 		
