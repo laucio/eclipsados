@@ -33,7 +33,6 @@ public class GraphicalUserInterface {
 		gameWindow.run();	
 		
 		
-		String command = "";
 	/*	while (!game.isEndgame() && continuarPartida) {
 			command = in.nextLine();
 			output = handleCommand(command);
@@ -183,7 +182,21 @@ public class GraphicalUserInterface {
 	}
 	
 	public String processCommand(String command) {
+		
+		/*
+		while (!game.isEndgame() && continuarPartida) {
+			command = in.nextLine();
+			output = handleCommand(command);
+			output = output == null ? game.processCommand(command) : output;
+			System.out.println(output);
+		} */
+		
 		return game.processCommand(command);
+	}
+
+
+	public boolean isEndgame() {
+		return game.isEndgame();
 	}
 	
 	

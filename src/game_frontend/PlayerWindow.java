@@ -146,7 +146,13 @@ public class PlayerWindow extends JFrame implements Runnable{
                     textArea.append(guInterface.getUserName()+": "+commandTextField.getText()+"\n\n");
                     String output = guInterface.processCommand(commandTextField.getText());
                     textArea.append(">> "+output +"\n\n");
-                    commandTextField.setText("");
+                    if(guInterface.isEndgame()) {
+                    	commandTextField.setText("FELICITACIONES, HAS GANADO LA PARTIDA!");
+                    	commandTextField.setEditable(false);
+                    }else {
+                    	commandTextField.setText("");
+                    }
+                    
                 }
             }
         });
