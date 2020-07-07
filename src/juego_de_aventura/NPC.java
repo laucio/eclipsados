@@ -73,7 +73,8 @@ public class NPC extends Obstacle implements Shootable, HitPointsController {
 
 			if (trigger != null) {
 				retorno = trigger.getOn_trigger();
-				// action.setAchieved(true);
+				player.setImageName("trigger-"+this.getTriggerIndex(trigger)+"-"+this.getName());
+				
 				Item item;
 
 				switch (trigger.getAfter_trigger()) {

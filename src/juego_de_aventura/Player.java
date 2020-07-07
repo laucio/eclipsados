@@ -173,6 +173,7 @@ public class Player {
 
 			} else {
 				cadena = "No ha servido de nada.";
+				this.setImageName("trigger-fail");
 			}
 		}
 
@@ -199,6 +200,7 @@ public class Player {
 
 				} else {
 					cadena = "No ha servido de nada.";
+					this.setImageName("trigger-fail");
 				}
 			}
 
