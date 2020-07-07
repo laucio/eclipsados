@@ -33,5 +33,9 @@ public abstract class Obstacle extends Thing{
 	return trigger;
 	}
 	
+	public int getTriggerIndex(Trigger trigger) {
+		return triggers.indexOf(trigger);
+	}
+	
 	public abstract void removeObstacle(String obstacle, Location location);
 }
