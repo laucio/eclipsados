@@ -97,7 +97,6 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 		
 		middlePanel = new JPanelBackground();
 		middlePanel.setBorder(new LineBorder(Color.BLUE, 1));
-		//middlePanel.setBackground("Images/background.jpg");
 		middlePanel.setBackground(Color.BLACK);
 		middlePanel.setLayout(new GridLayout(2,1,5,5));
 		
@@ -251,8 +250,8 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 	}
 	
 	public void updateImage() {
-		imageIcon = new ImageIcon("Images/"+guInterface.getImageName()+".png");
-		Image image = imageIcon.getImage(); // transform it 
+		imageIcon = new ImageIcon("Images/"+adventureName+"/"+guInterface.getImageName()+".png");
+		Image image = imageIcon.getImage();
 		Image newimg = image.getScaledInstance(150, 150,Image.SCALE_SMOOTH); // scale it the smooth way  
 		imageIcon = new ImageIcon(newimg);
 		imageLabel.setIcon(imageIcon);
