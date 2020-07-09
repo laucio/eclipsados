@@ -88,6 +88,7 @@ public class Player {
 	}
 
 	public String lookAround(Adventure adventure) {
+		this.setImageName("Locations/"+currentLocation.getName());
 		return currentLocation.describeItself(adventure);
 	}
 
