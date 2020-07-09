@@ -26,9 +26,10 @@ public class NPC extends Obstacle implements Shootable, HitPointsController {
 		this.description = description;
 	}
 
-	public String getTalk() {
+	public String getTalk(Player player) {
 		Random rand = new Random();
 		int int_random = rand.nextInt(this.talks.size());
+		player.setImageName("NPCs/"+this.name+"/Talks/"+int_random);
 		return this.talks.get(int_random);
 	}
 
@@ -73,7 +74,7 @@ public class NPC extends Obstacle implements Shootable, HitPointsController {
 
 			if (trigger != null) {
 				retorno = trigger.getOn_trigger();
-				player.setImageName("trigger-"+this.getTriggerIndex(trigger)+"-"+this.getName());
+				player.setImageName("NPCs/"+this.getName()+"/Triggers/"+this.getTriggerIndex(trigger));
 				
 				Item item;
 

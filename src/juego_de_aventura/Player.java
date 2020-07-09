@@ -16,7 +16,7 @@ public class Player {
 
 		this.currentLocation = currentLocation;
 		this.inventory = initialInventory;
-		this.imageName = currentLocation.getName();
+		this.imageName = "Locations/"+currentLocation.getName();
 	}
 
 	public Location getCurrentLocation() {
@@ -69,7 +69,7 @@ public class Player {
 
 				Location newLocation = adventure.getLocation(connections.get(i - 1).getLocation());
 				this.setCurrentLocation(newLocation);
-				this.setImageName(this.currentLocation.getName());
+				this.setImageName("Locations/"+this.currentLocation.getName());
 				retorno = currentLocation.getDescription();
 
 			} else {
@@ -143,7 +143,7 @@ public class Player {
 		NPC personaje = adventure.getNPC(action.getTarget());
 
 		if (personaje != null && currentLocation.containsNpc(personaje.getName())) {
-			retorno = personaje.getTalk();
+			retorno = personaje.getTalk(this);
 			action.setAchieved(true);
 		}
 
@@ -192,6 +192,7 @@ public class Player {
 				if (item.hasEffectsOver(action)) {
 					String shootableName = action.getTarget();
 					Shootable shootable = adventure.findShootable(shootableName);
+					
 
 					if (shootable != null) {
 						action.setShooteable(shootableName);
