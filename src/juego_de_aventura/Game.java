@@ -156,7 +156,9 @@ public class Game {
                 i++;
             }
             if (this.isEndgame) {
-                retorno = endgames.get(i-1).getDescription() + "\nFIN.";                                                   
+            	int index = i-1;
+            	player.setImageName("Endgames/"+index);
+                retorno = endgames.get(index).getDescription() + "\nFIN.";                                                   
             }
         }
        

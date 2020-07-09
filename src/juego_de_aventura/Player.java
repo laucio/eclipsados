@@ -216,6 +216,7 @@ public class Player {
 		Item item = adventure.getItem(action.getThing());
 
 		if (item != null && !action.isUnknownThing()) {
+			action.setShooteable(item.getName());
 
 			if (this.hasItem(item) || this.isNearItem(action.getThing())) {
 
@@ -224,18 +225,25 @@ public class Player {
 					Shootable shootable = adventure.findShootable(shootableName);
 
 					if (shootable != null) {
+						
+						this.setImageName("Items/"+item.getName()+"/"+item.getName());
 						cadena = shootable.shootTrigger(action, adventure, this);
 					}
 
 				} else {
+					this.setImageName("Items/"+item.getName()+"/"+item.getName());
+					action.setAchieved(true);
 					cadena = "No tiene nada en especial";
 				}
 			} else {
+				
 				cadena = "No encuentro eso que quieres mirar";
 			}
 		} else {
 			if (action.isConditionAPlace()) {
 				Place place = this.currentLocation.getPlace(action.getThing());
+				setImageName("Locations/"+currentLocation.getName());
+				action.setAchieved(true);
 
 				if (place.hasItems()) {
 					cadena = "En ";

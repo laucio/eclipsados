@@ -139,12 +139,6 @@
           "thing": "barreta",
           "on_trigger": "El espejo se ha roto",
           "after_trigger": "remove"
-        },
-        {
-          "type": "item",
-          "thing": "espejo",
-          "on_trigger": "Te ves horrible!",
-          "after_trigger": "default"
         }
       ]
     }
@@ -161,6 +155,13 @@
     {
       "condition": "item",
       "action": "usar",
+      "thing": "espejo",
+      "shooteable": "espejo",
+      "description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
+    },
+    {
+      "condition": "item",
+      "action": "observar",
       "thing": "espejo",
       "shooteable": "espejo",
       "description": "Oh, no! Acabas de descubrir que tu tambien eres un pirata fantasma... El horror!"
