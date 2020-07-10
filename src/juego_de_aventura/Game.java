@@ -19,7 +19,6 @@ public class Game {
 	private boolean isEndgame;
 	private String userName;
 	
-	// Constructor que se usa para  "Continuar" la aventura.
 	public Game() {}
 	public Game(String aventuraPath) throws IOException {
 		this.adventure = FileManager.cargarArchivo(aventuraPath);
@@ -96,6 +95,7 @@ public class Game {
 		String retorno;
 
 		if (player.getCurrentLocation().isNamed(action.getThing())) {
+			player.setImageName("Fails/laugh");
 			retorno = "Ya te encuentras aqui.";
 			action.setAchieved(false);
 		}
@@ -133,6 +133,7 @@ public class Game {
 	public String processCommand(String command) {
 		player.increaseCommandCounter();
 		String respuesta = "No entiendo lo que me dices";
+		player.setImageName("Fails/translator");
 		this.log.add(userName + " > " + command);
 		Action action = new Action();
 		translateCommand(command, action);
@@ -167,6 +168,8 @@ public class Game {
 	
 	private String makePlayerAttack(Action action) {
 		String retorno;
+		
+		player.setImageName("Fails/confused");
 		
 		if(action.isUnknownThing() && action.isUnknownTarget()) {
 			retorno = "A quien y con que? Debes ser mas claro";
@@ -206,6 +209,7 @@ public class Game {
 	}
 	
 	private String rejectAction() {
+		player.setImageName("Fails/no");
 		return "No puedes hacer eso";
 	}
 
