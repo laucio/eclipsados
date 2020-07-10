@@ -47,6 +47,7 @@ public class Player {
 
 		boolean exitoso = false;
 		String retorno = "No puedes ir hacia alla.";
+		this.setImageName("Fails/goto");
 
 		ArrayList<Connection> connections = currentLocation.getConnections();
 		int i = 0;
@@ -95,11 +96,12 @@ public class Player {
 
 	public String takeItem(Action action, Adventure adventure) {
 		String cadena = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
+		this.setImageName("Fails/confused");
 
 		if (!action.isUnknownThing()) {
 			Item item = adventure.getItem(action.getThing());
 			if (item != null && !item.allowsAction(action.getAction())) {
-				this.setImageName("Items/"+item.getName()+"/"+item.getName());
+				this.setImageName("Fails/no");
 				cadena = "No puedes tomar eso";
 			} else {
 
@@ -143,6 +145,7 @@ public class Player {
 
 	public String talkToNPC(Action action, Adventure adventure) {
 		String retorno = "Nadie te respondera...";
+		this.setImageName("Fails/laugh");
 
 		NPC personaje = adventure.getNPC(action.getTarget());
 
@@ -160,6 +163,7 @@ public class Player {
 
 	public String useItem(Action action, Adventure adventure) {
 		String cadena = "No tienes ese objeto.";
+		this.setImageName("Fails/laugh");
 
 		Item item = adventure.getItem(action.getThing());
 
@@ -178,7 +182,7 @@ public class Player {
 
 			} else {
 				cadena = "No ha servido de nada.";
-				this.setImageName("trigger-fail");
+				this.setImageName("Fails/trigger-fail");
 			}
 		}
 
@@ -190,6 +194,7 @@ public class Player {
 		Item item = adventure.getItem(action.getThing());
 
 		if (item != null && item.allowsAction(action.getAction())) {
+			this.setImageName("Fails/laugh");
 			cadena = "No tienes ese objeto.";
 
 			if (this.hasItem(item)) {
@@ -206,7 +211,7 @@ public class Player {
 
 				} else {
 					cadena = "No ha servido de nada.";
-					this.setImageName("trigger-fail");
+					this.setImageName("Fails/trigger-fail");
 				}
 			}
 
@@ -217,6 +222,7 @@ public class Player {
 
 	public String observeItem(Action action, Adventure adventure) {
 		String cadena = "No entiendo que es lo que quieres mirar";
+		this.setImageName("Fails/confused");
 
 		Item item = adventure.getItem(action.getThing());
 
@@ -241,7 +247,7 @@ public class Player {
 					cadena = "No tiene nada en especial";
 				}
 			} else {
-				
+				this.setImageName("Fails/confused");
 				cadena = "No encuentro eso que quieres mirar";
 			}
 		} else {
@@ -261,6 +267,7 @@ public class Player {
 
 					}
 				} else {
+					this.setImageName("Fails/laugh");
 					cadena = "No hay nada de raro en " + place.getDescription();
 				}
 
@@ -276,9 +283,11 @@ public class Player {
 
 	public String eat(Action action, Adventure adventure) {
 		String cadena = "Para comer algo, primero debes tomarlo";
+		this.setImageName("Fails/think");
 
 		switch (action.getCondition()) {
 		case "unknown":
+			this.setImageName("Fails/confused");
 			cadena = "No entiendo que es lo que quieres comer";
 			break;
 		case "item":
@@ -287,13 +296,16 @@ public class Player {
 				if (item.allowsAction(action.getAction())) {
 					action.setAction("usar");
 					action.setShooteable(action.getThing());
+					this.setImageName("Items/"+action.getThing()+action.getThing());
 					cadena = this.useItem(action, adventure);
 				} else {
+					this.setImageName("Fails/trigger-fail");
 					cadena = "No puedes comer eso";
 				}
 			}
 			break;
 		case "tooManyThings":
+			this.setImageName("Fails/confused");
 			cadena = "Aclarame que quieres comer primero";
 			break;
 		default:
@@ -305,8 +317,10 @@ public class Player {
 
 	public String openSomething(Action action, Adventure adventure) {
 		String cadena = "No ha servido de nada";
+		this.setImageName("Fails/laugh");
 
 		if (action.isUnknownThing()) {
+			this.setImageName("Fails/confused");
 			cadena = "No se que es lo que quieres abrir";
 		} else {
 
@@ -329,6 +343,7 @@ public class Player {
 
 						}
 					} else {
+						this.setImageName("Fails/confused");
 						cadena = "No encuentro eso que quieres abrir";
 					}
 
@@ -344,6 +359,7 @@ public class Player {
 				}
 
 			} else {
+				this.setImageName("Fails/no");
 				cadena = "No puedes hacer eso";
 			}
 		}
@@ -352,9 +368,11 @@ public class Player {
 
 	public String drink(Action action, Adventure adventure) {
 		String cadena = "Para beber algo, primero debes tomarlo";
+		this.setImageName("Fails/think");
 
 		switch (action.getCondition()) {
 		case "unknown":
+			this.setImageName("Fails/confused");
 			cadena = "No entiendo que es lo que quieres beber";
 			break;
 		case "item":
@@ -365,11 +383,13 @@ public class Player {
 					action.setShooteable(action.getThing());
 					cadena = this.useItem(action, adventure);
 				} else {
+					this.setImageName("Fails/no");
 					cadena = "No puedes beber eso";
 				}
 			}
 			break;
 		case "tooManyThings":
+			this.setImageName("Fails/confused");
 			cadena = "Aclarame que quieres beber primero";
 			break;
 		default:
@@ -389,9 +409,11 @@ public class Player {
 
 		switch (action.getCondition()) {
 		case "unknown":
+			this.setImageName("Fails/confused");
 			cadena = "No entiendo que es lo que quieres dejar";
 			break;
 		case "tooManyThings":
+			this.setImageName("Fails/confused");
 			cadena = "Especifica solamente lo que quieres dejar (solo una cosa)";
 			break;
 
@@ -405,10 +427,13 @@ public class Player {
 					removeItemFromInventory(item);
 					cadena = "Ya no tienes " + item;
 					action.setAchieved(true);
+					this.setImageName("Items/"+item.getName()+item.getName());
 				} else {
+					this.setImageName("Fails/no");
 					cadena = "Parece que no puedes deshacerte de eso...";
 				}
 			} else {
+				this.setImageName("Fails/confused");
 				cadena = "No encuentro nada parecido en tu inventario... Deberias revisarlo";
 			}
 			break;
