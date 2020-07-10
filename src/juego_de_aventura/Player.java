@@ -75,6 +75,7 @@ public class Player {
 			} else {
 
 				Obstacle obstacle = adventure.getObstacle(connections.get(i - 1).getObstacles());
+				this.setImageName("Obstacles/"+obstacle.getName());
 				retorno = obstacle.getDescription();
 				exitoso = false;
 			}
