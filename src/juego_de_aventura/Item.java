@@ -114,6 +114,8 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 		action.setAchieved(true);
 
 		if (trigger != null) {
+			int index = this.getTriggerIndex(trigger);
+			player.setImageName("Items/"+this.getName()+"/Triggers/"+index);
 			retorno = trigger.getOn_trigger();
 
 			switch (trigger.getAfter_trigger()) {
