@@ -88,6 +88,7 @@ public class Player {
 	}
 
 	public String lookAround(Adventure adventure) {
+		this.setImageName("Locations/"+currentLocation.getName());
 		return currentLocation.describeItself(adventure);
 	}
 
@@ -97,10 +98,12 @@ public class Player {
 		if (!action.isUnknownThing()) {
 			Item item = adventure.getItem(action.getThing());
 			if (item != null && !item.allowsAction(action.getAction())) {
+				this.setImageName("Items/"+item.getName()+"/"+item.getName());
 				cadena = "No puedes tomar eso";
 			} else {
 
 				if (item != null) {
+					this.setImageName("Items/"+item.getName()+"/"+item.getName());
 					item = adventure.giveItem(currentLocation, action.getThing());
 					this.addToInventory(item);
 					cadena = "Tienes " + item;
@@ -160,6 +163,7 @@ public class Player {
 		Item item = adventure.getItem(action.getThing());
 
 		if (item != null && this.hasItem(item)) {
+			this.setImageName("Items/"+item.getName()+"/"+item.getName());
 
 			if (item.hasEffectsOver(action)) {
 				String shootableName = action.IsSelfEffect() ? action.getThing() : action.getTarget();
