@@ -7,7 +7,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
 
 import com.google.gson.Gson;
 
@@ -66,6 +70,19 @@ public class FileManager {
 		
 	}
 	
+	public static void saveLogTxtGraphical (Game game,String info,String user) throws IOException {
+		String log = "";
+		for(String linea : game.getLog()) {
+			log += (linea + "\n");
+		}
+		log += "\n" + info;
+		JFileChooser f = new JFileChooser();
+		f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		f.showSaveDialog(null);
+		String path = f.getSelectedFile().toString();
+		grabarHistorial(path,log,user);
+	}
+	
 	public static void saveAdventureProgress(Adventure adventure) throws IOException {
 		final Gson gson = new Gson();
 		String jsonAdventure = gson.toJson(adventure);
@@ -99,5 +116,26 @@ public class FileManager {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private static void grabarHistorial(String path, String historial,String user) {
+		BufferedWriter bw = null;
+		path += "\\"+ user + " - " + horaYFechaActual() + ".txt";
+		try {
+			bw = new BufferedWriter(new FileWriter(path));
+			bw.write(historial);
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static String horaYFechaActual() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH;mm");
+		LocalDateTime now = LocalDateTime.now();
+		return dtf.format(now);
 	}
 }

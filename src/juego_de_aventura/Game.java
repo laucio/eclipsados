@@ -36,14 +36,21 @@ public class Game {
 	}
 	public void saveProgress() {
 		try {
-			FileManager.saveGameProgress(this);
-			FileManager.saveLogTxt(this);
+			String info = getGameStatus();
+			//FileManager.saveGameProgress(this);
+			FileManager.saveLogTxtGraphical(this,info,userName);
 		} catch (IOException e) {
 			System.out.println("Error al guardar progreso del juego");
 			e.printStackTrace();
 		}
 	}
 	
+	private String getGameStatus() {
+		String info = "Nombre: "+ userName +"\n";
+		info += "Comandos utilizados: "+ player.getCommandCounter() +"\n";
+		info += "Vida: "+ player.getHitPoints() +"\n";
+		return info;
+	}
 	public void getSavedProgress() {
 		try {
 			Game savedGame = FileManager.getGameProgress();

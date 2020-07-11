@@ -70,13 +70,12 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 			}
 		});
 
-		//panel principal
+
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setLayout(new BorderLayout(1, 1));
 		setContentPane(contentPane);
 
-		//panel de arriba
 		panelSettings = new JPanelBackground();
 		contentPane.add(panelSettings, BorderLayout.NORTH);
 		panelSettings.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
@@ -84,14 +83,14 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 
 
 		textFieldUserName = new JTextField();
-		textFieldUserName.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					textFieldUserName.setText("");
-				}
 
-			}
+		textFieldUserName.addKeyListener(new KeyAdapter() {
+	
+	        @Override
+	        public void keyTyped(KeyEvent e) {
+	            if (textFieldUserName.getText().length() >= 10 ) // limit to 3 characters
+	                e.consume();
+	        }
 		});
 		
 		textFieldUserName.addMouseListener(new MouseListener() {
@@ -131,11 +130,9 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 		textFieldUserName.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldUserName.setColumns(20);
 		panelSettings.add(textFieldUserName);
-		
-		//panel central
+
 		panelAdventures = new JPanelBackground();
 		contentPane.add(panelAdventures, BorderLayout.CENTER);
-		//panelAdventures.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
 		panelAdventures.setBackground("Images/background.jpg");
 		
 		
@@ -149,13 +146,11 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 			public void actionPerformed(ActionEvent e) {
 				if (!aventuras.getSelectedItem().equals("-- Seleccione una aventura --")) {
 					String aventuraElegida = aventuras.getSelectedItem().toString();
-					//hacer algo con el string de la aventura elegida
 				}
 
 			}
 		});
 
-		//panel de abajo
 		panelOptions = new JPanelBackground();
 		contentPane.add(panelOptions, BorderLayout.SOUTH);
 		panelOptions.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
@@ -164,16 +159,35 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 		btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String mensaje = "";
 				int index = aventuras.getSelectedIndex(); 
-				if(index != 0 && !textFieldUserName.getText().equals("Escriba su Nombre de Usuario") && 
-						!textFieldUserName.getText().equals("")) {
-					userInterface.setPlayerWindow(index,normalizar(textFieldUserName.getText()));	
-				}
 				
+				if(index != 0 && !textFieldUserName.getText().equals("Escriba su Nombre de Usuario")  
+						&& !textFieldUserName.getText().equals("") 
+						&& isAlphaNumeric(textFieldUserName.getText())) {
+					userInterface.setPlayerWindow(index,normalizar(textFieldUserName.getText()));	
+				}else {
+					if(textFieldUserName.getText().equals("Escriba su Nombre de Usuario") || 
+							textFieldUserName.getText().equals("")	){
+						mensaje += "Debes ingresar un nombre de usuario\n";
+					}
+					if(!isAlphaNumeric(textFieldUserName.getText())) {
+						mensaje += "El nombre debe ser alfanumerico \nsin espacios (long. max = 10)\n";
+					}
+					if(index == 0) {
+						mensaje += "Debes seleccionar una aventura para poder empezar\n";
+					}
+					JOptionPane.showMessageDialog(null,
+							mensaje);
+				}
+					
+				
+
 			}
 		});
 		
 		btnEntrar.setToolTipText("Click para ingresar a aventura seleccionada");
+		btnEntrar.requestFocus();
 		panelOptions.add(btnEntrar);
 		
 		
@@ -202,7 +216,6 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 
 		});
 
-		//setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
@@ -221,6 +234,10 @@ public class GameWindow extends JFrame implements Runnable, Normalizador{
 	
 	public String normalizar(String cadena) {
 		return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();
+	}
+	
+	public static boolean isAlphaNumeric(String s) {
+		return s != null && s.matches("^[a-zA-Z0-9]*$");
 	}
 
 }
