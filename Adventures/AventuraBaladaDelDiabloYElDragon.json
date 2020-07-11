@@ -708,6 +708,7 @@
     },
     {
       "actions": [
+        "romper",
         "usar",
         "tomar",
         "atacar",

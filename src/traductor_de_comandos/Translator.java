@@ -13,6 +13,7 @@ public class Translator implements CommandTranslator{
 	private CommandTranslator verbToTalk;
 	private CommandTranslator verbToUse;
 	private CommandTranslator verbToOpen;
+	private CommandTranslator verbToBreak;
 	private CommandTranslator verbToDrink;
 	private CommandTranslator verbToEat;
 	private CommandTranslator verbToAttack;
@@ -29,7 +30,8 @@ public class Translator implements CommandTranslator{
 		verbToObserve = new TranslatorVerbObserve(verbToTake);
 		verbToUse = new TranslatorWithVerbUse(verbToObserve);
 		verbToOpen = new TranslatorVerbOpen(verbToUse);
-		verbToDrink = new TranslatorVerbDrink(verbToOpen);
+		verbToBreak = new TranslatorVerbBreak(verbToOpen);
+		verbToDrink = new TranslatorVerbDrink(verbToBreak);
 		verbToEat = new TranslatorVerbEat(verbToDrink);
 		verbToTalk = new TranslatorVerbTalkToNPC(verbToEat);
 		verbToAttack = new TranslatorVerbAttack(verbToTalk);

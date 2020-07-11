@@ -239,6 +239,9 @@ public class Game {
         case "beber":
             cadena = this.makePlayerDrink(action);
             break;
+        case "romper":
+            cadena = this.makePlayerBreakSomething(action);
+            break;
         case "abrir":
             cadena = this.makePlayerOpenSomething(action);
             break;
@@ -276,6 +279,10 @@ public class Game {
 
         return cadena;
     }
+	
+	private String makePlayerBreakSomething(Action action) {
+		return player.breakSomething(action, adventure);
+	}
 	
 	private String makePlayerLeaveItem(Action action) {
 		return player.leaveItem(action, adventure);
