@@ -79,8 +79,13 @@ public class FileManager {
 		JFileChooser f = new JFileChooser();
 		f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		f.showSaveDialog(null);
-		String path = f.getSelectedFile().toString();
-		grabarHistorial(path,log,user);
+		if(f.getSelectedFile() != null) {
+			String path = f.getSelectedFile().toString();
+			grabarHistorial(path,log,user);		
+			game.setSuccessfullySaved(true);
+		}else {
+			game.setSuccessfullySaved(false);
+		}
 	}
 	
 	public static void saveAdventureProgress(Adventure adventure) throws IOException {
