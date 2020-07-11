@@ -408,7 +408,7 @@ public class Player {
 
 	public String leaveItem(Action action, Adventure adventure) {
 		String cadena = "No puedes hacer eso";
-
+		this.setImageName("Fails/no");
 		switch (action.getCondition()) {
 		case "unknown":
 			this.setImageName("Fails/confused");
@@ -429,7 +429,7 @@ public class Player {
 					removeItemFromInventory(item);
 					cadena = "Ya no tienes " + item;
 					action.setAchieved(true);
-					this.setImageName("Items/"+item.getName()+item.getName());
+					this.setImageName("Items/dejar_objeto");
 				} else {
 					this.setImageName("Fails/no");
 					cadena = "Parece que no puedes deshacerte de eso...";
