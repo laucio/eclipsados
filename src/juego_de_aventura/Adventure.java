@@ -200,7 +200,7 @@ public class Adventure {
 		return retorno;
 	}
 
-	public boolean removeItemFromTrigger(Action action, Adventure adventure, Location location) {
+	public boolean removeItemFromLocation(Action action, Adventure adventure, Location location) {
 		String item = action.IsSelfEffect() ? action.getThing() : action.getTarget();
 		boolean eliminado = location.removeFromLocation(item);
 		return eliminado;
