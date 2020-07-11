@@ -100,6 +100,17 @@ public class NPC extends Obstacle implements Shootable, HitPointsController {
 					retorno += "\n" + alterPlayerHitPoints(player, adventure);
 					item = adventure.getItem(action.getThing());
 					player.removeItemFromInventory(item);
+					break;
+				case "remove & remove item":
+					removeObstacle(action.getTarget(), player.getCurrentLocation());
+					item = adventure.getItem(action.getThing());
+					player.removeItemFromInventory(item);
+					break;
+				case "restart & remove item":
+					item = adventure.getItem(action.getThing());
+					player.removeItemFromInventory(item);
+					retorno += "\n" + player.restart(adventure.getLocations().get(0));
+					break;
 				default:
 					break;
 				}

@@ -444,7 +444,7 @@
           "type": "item",
           "thing": "salchicha",
           "on_trigger": "El dragon te rostiza a vos y a la salchicha...",
-          "after_trigger": "alter points"
+          "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
@@ -474,7 +474,7 @@
           "type": "item",
           "thing": "lanza",
           "on_trigger": "El lobo feroz huye despaborido lo has herido en su patita con la lanza...pobrechito...",
-          "after_trigger": "remove"
+          "after_trigger": "remove & remove item"
         },
         {
           "type": "item",
@@ -486,7 +486,7 @@
           "type": "item",
           "thing": "sanguche de atun",
           "on_trigger": "Al parecer al lobo no le gusta el atun... ha decidido comerte... mueres y vuelves al comenzar tu viaje ",
-          "after_trigger": "restart"
+          "after_trigger": "restart & remove item"
         },
         {
           "type": "item",
@@ -553,7 +553,7 @@
           "type": "item",
           "thing": "cerveza",
           "on_trigger": "Gracias por el trago, creo que me ire a mimir... ia stoy arta... te dejo el camino libre",
-          "after_trigger": "remove"
+          "after_trigger": "remove & remove item"
         },
         {
           "type": "item",
@@ -699,7 +699,7 @@
           "type": "item",
           "thing": "salchicha",
           "on_trigger": "Olala!! esto es carne asada... no conocia este placer de los dioses...",
-          "after_trigger": "alter points"
+          "after_trigger": "alter points & remove"
         }
       ],
       "name": "salchicha",
@@ -1020,7 +1020,7 @@
           "type": "item",
           "thing": "vodka",
           "on_trigger": "Bebes la botella, y poco a poco se va nublando tu vista... no sabes cuanto tiempo paso desde que entraste al bar, pero de algun modo lograste volver a tu casa.",
-          "after_trigger": "restart"
+          "after_trigger": "restart & remove"
         }
       ],
       "name": "vodka",
@@ -1117,7 +1117,7 @@
           "type": "item",
           "thing": "llave esmeralda",
           "on_trigger": "La llave encaja perfectamente! El porton se abre con un gran chirrido metalico.",
-          "after_trigger": "remove obstacles"
+          "after_trigger": "remove obstacles & remove"
         }
       ],
       "name": "porton de hierro",

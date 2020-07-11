@@ -115,18 +115,18 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 
 		if (trigger != null) {
 			int index = this.getTriggerIndex(trigger);
-			player.setImageName("Items/"+this.getName()+"/Triggers/"+index);
+			player.setImageName("Items/" + this.getName() + "/Triggers/" + index);
 			retorno = trigger.getOn_trigger();
 
 			switch (trigger.getAfter_trigger()) {
 			case "remove":
-				if (!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
+				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
 					player.removeItemFromInventory(adventure.getItem(action.getThing()));
 				}
 				break;
 			case "remove obstacles":
 				removeObstacle(action.getTarget(), player.getCurrentLocation());
-				adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation());
+				adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation());
 				break;
 			case "restart":
 				retorno += "\n" + player.restart(adventure.getLocations().get(0));
@@ -136,13 +136,24 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 				break;
 			case "alter points & remove":
 				retorno += "\n" + alterPlayerHitPoints(player, adventure);
-				if (!adventure.removeItemFromTrigger(action, adventure, player.getCurrentLocation())) {
+				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
 					player.removeItemFromInventory(adventure.getItem(action.getThing()));
 				}
 				break;
+			case "remove obstacles & remove":
+				removeObstacle(action.getTarget(), player.getCurrentLocation());
+				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+					player.removeItemFromInventory(adventure.getItem(action.getThing()));
+				}
+				break;
+			case "restart & remove":
+				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+					player.removeItemFromInventory(adventure.getItem(action.getThing()));
+				}
+				retorno += "\n" + player.restart(adventure.getLocations().get(0));
+				break;
 			default:
 				break;
-			// case "invalidar":
 			}
 		}
 
@@ -179,7 +190,8 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 		retorno = player.alterHitPoints(this.points);
 		if (retorno.equals("restart")) {
 			player.restart(adventure.getLocations().get(0));
-			retorno = "Has perdido " + Math.abs(this.points) + " puntos de vida.\nSe agotaron todos tus puntos de vida! Vuelves al principio con 50 HP.";
+			retorno = "Has perdido " + Math.abs(this.points)
+					+ " puntos de vida.\nSe agotaron todos tus puntos de vida! Vuelves al principio con 50 HP.";
 		}
 		return retorno;
 	}
