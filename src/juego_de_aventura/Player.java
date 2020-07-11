@@ -441,6 +441,37 @@ public class Player {
 
 		return cadena;
 	}
+	
+	public String breakSomething(Action action, Adventure adventure) {
+		String cadena = "No ha servido de nada.";
+		Item item = adventure.getItem(action.getThing());
+
+		if (item != null && item.allowsAction(action.getAction())) {
+			this.setImageName("Fails/confused");
+			cadena = "No entiendo que quieres romper";
+
+			if (this.isNearItem(item.getName()) || this.hasItem(item)) {
+
+				if (item.hasEffectsOver(action)) {
+					String shootableName = action.getTarget();
+					Shootable shootable = adventure.findShootable(shootableName);
+					
+
+					if (shootable != null) {
+						action.setShooteable(shootableName);
+						cadena = shootable.shootTrigger(action, adventure, this);
+					}
+
+				} else {
+					cadena = "No ha servido de nada.";
+					this.setImageName("Fails/laugh");
+				}
+			}
+
+		}
+
+		return cadena;
+	}
 
 	public String restart(Location location) {
 		this.hitPoints = 50;
@@ -477,5 +508,6 @@ public class Player {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
+
 
 }
