@@ -127,6 +127,7 @@ public class Player {
 	}
 
 	public String lookInventory() {
+		this.setImageName("inventario");
 		String cadena = "En tu inventario hay ";
 
 		if (inventory != null && inventory.size() > 0) {
@@ -192,6 +193,7 @@ public class Player {
 	public String attack(Action action, Adventure adventure) {
 		String cadena = "No ha servido de nada.";
 		Item item = adventure.getItem(action.getThing());
+		this.setImageName("Fails/laugh");
 
 		if (item != null && item.allowsAction(action.getAction())) {
 			this.setImageName("Fails/laugh");
@@ -445,31 +447,38 @@ public class Player {
 	public String breakSomething(Action action, Adventure adventure) {
 		String cadena = "No ha servido de nada.";
 		Item item = adventure.getItem(action.getThing());
-
-		if (item != null && item.allowsAction(action.getAction())) {
+		this.setImageName("Fails/trigger-fail");
+		
+		if(action.isUnknownTarget() && action.isUnknownTarget()) {
 			this.setImageName("Fails/confused");
 			cadena = "No entiendo que quieres romper";
+		}else {
+			if (item != null && item.allowsAction(action.getAction())) {
+				
+				if (this.isNearItem(item.getName()) || this.hasItem(item)) {
 
-			if (this.isNearItem(item.getName()) || this.hasItem(item)) {
+					if (item.hasEffectsOver(action)) {
+						String shootableName = action.getTarget();
+						Shootable shootable = adventure.findShootable(shootableName);
+						
 
-				if (item.hasEffectsOver(action)) {
-					String shootableName = action.getTarget();
-					Shootable shootable = adventure.findShootable(shootableName);
-					
+						if (shootable != null) {
+							this.setImageName("Fails/laugh");
+							action.setShooteable(shootableName);
+							cadena = shootable.shootTrigger(action, adventure, this);
+						}
 
-					if (shootable != null) {
-						action.setShooteable(shootableName);
-						cadena = shootable.shootTrigger(action, adventure, this);
+					} else {
+						cadena = "No ha servido de nada.";
+						this.setImageName("Fails/laugh");
 					}
-
-				} else {
-					cadena = "No ha servido de nada.";
-					this.setImageName("Fails/laugh");
 				}
+
 			}
 
 		}
-
+		
+		
 		return cadena;
 	}
 
