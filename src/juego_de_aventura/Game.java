@@ -18,6 +18,7 @@ public class Game {
 	private ArrayList<String> log;
 	private boolean isEndgame;
 	private String userName;
+	private boolean successfullySaved;
 	
 	public Game() {}
 	public Game(String aventuraPath) throws IOException {
@@ -305,5 +306,11 @@ public class Game {
 
 	public void setImageName(String imageName) {
 		player.setImageName(imageName);
+	}
+	public boolean isSuccessfullySaved() {
+		return successfullySaved;
+	}
+	public void setSuccessfullySaved(boolean successfullySaved) {
+		this.successfullySaved = successfullySaved;
 	}
 }

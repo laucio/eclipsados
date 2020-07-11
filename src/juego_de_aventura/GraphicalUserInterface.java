@@ -192,7 +192,9 @@ public class GraphicalUserInterface {
 		game.saveProgress();
 	}
 	
-
+	public boolean isSaved() {
+		return game.isSuccessfullySaved();
+	}
 
 
 	public String getImageName() {
