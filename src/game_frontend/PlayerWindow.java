@@ -227,7 +227,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador{
 	private void updateWindowInfo(){
 		
 		currentLocationLabel.setText("Ubicacion actual: "+normalizar(guInterface.getCurrentLocation()));
-		pointsLabel.setText("Puntos: "+guInterface.getHitPoints());
+		pointsLabel.setText("Vida: "+guInterface.getHitPoints());
 		commandCounterLabel.setText("Comandos: "+guInterface.getCommandCounter());
 	}
 	
