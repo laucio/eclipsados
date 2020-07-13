@@ -175,6 +175,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		bottomPanel.setBackground("Images/background.jpg");
 		bottomPanel.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
 		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 
 		commandTextField = new JTextField();
 		commandTextField.setBackground(Color.BLACK);
