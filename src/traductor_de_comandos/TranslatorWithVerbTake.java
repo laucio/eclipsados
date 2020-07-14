@@ -7,7 +7,7 @@ import juego_de_aventura.*;
 public class TranslatorWithVerbTake implements CommandTranslator {
 
 	private final static String[] VERBO_TOMAR = { " tomar ", " agarrar ", " levantar ", " guardar ", " toma ",
-			" agarra ", " levanta ", " guarda ", " recoger ", " recoge " };
+			" agarra ", " levanta ", " guarda ", " recoger ", " recoge ", " levanta ", " colecta ", " colectar " };
 
 	private CommandTranslator next = null;
 
@@ -39,16 +39,32 @@ public class TranslatorWithVerbTake implements CommandTranslator {
 					int j = 0;
 					ArrayList<String> currItems = currPlaces.get(i).getItems();
 					while (!encontrado && j < currItems.size()) {
-						encontrado = command.contains(" " + currItems.get(j) + " "); // agrego espacios por si busca
-																						// pala y escribio paladar
+						encontrado = command.contains(" " + currItems.get(j) + " ");
+																						
 						if (encontrado) {
 							action.setCondition("item");
 							action.setThing(currItems.get(j));
 						}
 						j++;
-					} // while(!encontrado && j<currPlaces.get(i).getItems())
+					} 
 					i++;
-				} // end of while
+				} 
+			}
+			
+			if(!encontrado) {
+				Adventure adventure = game.getAdventure();
+				if(adventure.containsNPC(command)!= null) {
+					action.setCondition("npcs");
+					encontrado = true;
+				}
+			}
+			
+			if(!encontrado) {
+				Location currentLocation = player.getCurrentLocation();
+				if(currentLocation.getMentionedPlace(command) != null ) {
+					action.setCondition("place");
+					encontrado = true;
+				}
 			}
 			
 			if(!encontrado) {

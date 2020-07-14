@@ -95,8 +95,8 @@ public class Player {
 	}
 
 	public String takeItem(Action action, Adventure adventure) {
-		String cadena = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
 		this.setImageName("Fails/confused");
+		String cadena = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
 
 		if (!action.isUnknownThing()) {
 			Item item = adventure.getItem(action.getThing());

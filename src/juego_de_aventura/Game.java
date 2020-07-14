@@ -122,8 +122,28 @@ public class Game {
 		return player.lookAround(adventure);
 	}
 	
-	public String makePlayerTakeItem(Action action) {
-		return player.takeItem(action, adventure);
+	public String makePlayerTakeSomething(Action action) {
+		String retorno;
+		
+		switch(action.getCondition()) {
+		case ("npcs"):
+			player.setImageName("Fails/takeNpc");
+			retorno = "Y si mejor dejas a los demas tranquilos y te dedicas a jugar?";
+			break;
+		case ("place"):
+			player.setImageName("Fails/takePlace");
+			retorno = "Y si mejor tomas algo que puedas usar? Piensa un poco";
+			break;
+		case("item"):
+			retorno = player.takeItem(action, adventure);
+			break;
+		default:
+			player.setImageName("Fails/confused");
+			retorno = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";
+			break;
+		}
+		
+	return retorno;
 	}
 
 	public String makePlayerWatchInventory() {
@@ -254,7 +274,7 @@ public class Game {
             cadena = this.makePlayerOpenSomething(action);
             break;
         case "tomar":
-            cadena = this.makePlayerTakeItem(action);
+            cadena = this.makePlayerTakeSomething(action);
             break;
         case "dejar":
             

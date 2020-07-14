@@ -45,7 +45,7 @@ public class TestIntegrales {
 	public void TomarSanguche() {
 		expected = "En tu inventario hay un sanguche de atun.";
 		Action action = new Action("tomar", "sanguche de atun", "item", null, null);
-		game.makePlayerTakeItem(action);
+		game.makePlayerTakeSomething(action);
 		actual = game.makePlayerWatchInventory();
 		assertEquals(expected, actual);
 	}
@@ -56,7 +56,7 @@ public class TestIntegrales {
 	public void ComerSanguche() {
 		expected = "Mmmm rikoooo, ahora tengo mas energia.";
 		Action action = new Action("tomar", "sanguche de atun", "item", null, null);
-		game.makePlayerTakeItem(action);
+		game.makePlayerTakeSomething(action);
 		action = new Action("usar", "sanguche de atun", "item", "self", "self");
 		actual = game.makePlayerUseItem(action);
 		assertEquals(expected, actual);

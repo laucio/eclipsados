@@ -67,7 +67,7 @@ public class TestUnitarios {
 		expected = "En tu inventario hay una barreta.";
 		
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		actuals = game.makePlayerWatchInventory();
 		
 		assertEquals(expected, actuals);
@@ -78,13 +78,13 @@ public class TestUnitarios {
 		expected = "En tu inventario hay una barreta, un espejo y un rociador con cerveza de raiz.";
 		
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("ver inventario",null, null,null, null);
 		actuals = game.makePlayerWatchInventory();
@@ -98,7 +98,7 @@ public class TestUnitarios {
 	public void tomarUnElemento() {
 		action = new Action("tomar","barreta", "item",null, null);
 		expected = "Tienes una barreta";
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		assertEquals(expected, actuals);
 	}
 	
@@ -109,16 +109,16 @@ public class TestUnitarios {
 		expected = "No encuentro ese objeto. Tal vez lo tengas en tu inventario";	
 		//Tomamos la barreta
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Tomamos rociador
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Tomamos espejo
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Miramos alrededor habiendo sacado la barreta	
 		action = new Action("tomar","telefono", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		assertEquals(expected, actuals);
 	}
 	
@@ -137,7 +137,7 @@ public class TestUnitarios {
 		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz y un espejo. Hay un pirata fantasma. Al sur hay una taberna.";	
 		//Tomamos la barreta
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Miramos alrededor habiendo sacado la barreta	
 		actuals = game.makePlayerLookAround();
 		assertEquals(expected, actuals);
@@ -149,13 +149,13 @@ public class TestUnitarios {
 		expected = "Estas en un muelle. Hay un pirata fantasma. Al sur hay una taberna.";	
 		//Tomamos la barreta
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Tomamos rociador
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Tomamos espejo
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Miramos alrededor habiendo sacado la barreta	
 		actuals = game.makePlayerLookAround();
 		assertEquals(expected, actuals);
@@ -174,7 +174,7 @@ public class TestUnitarios {
 		actuals = game.movePlayer(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -192,7 +192,7 @@ public class TestUnitarios {
 		actuals = game.movePlayer(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -207,7 +207,7 @@ public class TestUnitarios {
 	public void eliminarObstaculoDosVeces() {
 		expected = "Eso no ha servido de nada.";	
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);	
+		actuals = game.makePlayerTakeSomething(action);	
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
 		actuals = game.makePlayerUseItem(action);
@@ -233,7 +233,7 @@ public class TestUnitarios {
 		expected = "Estas en una sucia taberna";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -253,7 +253,7 @@ public class TestUnitarios {
 		actuals = game.movePlayer(action);
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -285,7 +285,7 @@ public class TestUnitarios {
 		expected = "Estas en una sucia taberna";	
 		//Eliminar obstaculo
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -326,7 +326,7 @@ public class TestUnitarios {
 		expected = "Nadie te respondera...";	
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Eliminar obstaculo
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -345,7 +345,7 @@ public class TestUnitarios {
 		expected = "Eso no ha servido de nada.";	
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		//Eliminar obstaculo
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -361,7 +361,7 @@ public class TestUnitarios {
 	public void usarRociadorSobrePirata_TengoEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -372,7 +372,7 @@ public class TestUnitarios {
 	public void usarEspejoSobrePirata_TengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","espejo", "item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -384,7 +384,7 @@ public class TestUnitarios {
 	public void usarBarretaSobrePirata_EstaEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta","item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -407,7 +407,7 @@ public class TestUnitarios {
 	public void usarRociadorSobrePirata_EstaEnInventario_SePuedeUsar() {
 		expected = "Me encanta la cerveza de raiz! El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr.";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 
 		action = new Action("usar","rociador con cerveza de raiz","item","pirata fantasma", "npcs");
 		actuals = game.makePlayerUseItem(action);
@@ -421,7 +421,7 @@ public class TestUnitarios {
 	public void usarBarretaSobreEspejo_TengoSoloBarreta_SePuedeUsar() {
 		expected = "El espejo se ha roto";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -436,7 +436,7 @@ public class TestUnitarios {
 		
 		expected = "Estas en un muelle. En el suelo hay: un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur hay una taberna.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta", "item","espejo", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -454,7 +454,7 @@ public class TestUnitarios {
 	public void usarEspejoSobreSelf_LoTengoEnInventario() {
 		expected = "Te ves horrible!";
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","espejo", "item","self", "self");
 		actuals = game.makePlayerUseItem(action);
@@ -476,7 +476,7 @@ public class TestUnitarios {
 	public void usarRociadorSobreSelf() {
 		expected = "Que delicia de cerveza!";
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","rociador con cerveza de raiz", "item","self", "self");
 		actuals = game.makePlayerUseItem(action);
@@ -490,7 +490,7 @@ public class TestUnitarios {
 	public void usarBarretaSobreSelf_LoTengoEnInventario_NoSePuedeUsar() {
 		expected = "No ha servido de nada.";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta", "item","self", "self");
 		actuals = game.makePlayerUseItem(action);
@@ -511,7 +511,7 @@ public class TestUnitarios {
 		
 		expected = "Se ha abollado la lata";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -524,10 +524,10 @@ public class TestUnitarios {
 		
 		expected = "Se ha abollado la lata";
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("tomar","rociador con cerveza de raiz", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta","item","rociador con cerveza de raiz", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -541,10 +541,10 @@ public class TestUnitarios {
 		expected = "No ha servido de nada.";
 		
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -565,7 +565,7 @@ public class TestUnitarios {
 		expected = "No tienes ese objeto.";
 		
 		action = new Action("tomar","espejo", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","barreta","item","espejo", "item");
 		actuals = game.makePlayerUseItem(action);
@@ -577,7 +577,7 @@ public class TestUnitarios {
 		expected = "No tienes ese objeto.";
 		
 		action = new Action("tomar","barreta", "item",null, null);
-		actuals = game.makePlayerTakeItem(action);
+		actuals = game.makePlayerTakeSomething(action);
 		
 		action = new Action("usar","espejo","item","barreta", "item");
 		actuals = game.makePlayerUseItem(action);
