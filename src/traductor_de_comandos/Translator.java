@@ -19,6 +19,7 @@ public class Translator implements CommandTranslator{
 	private CommandTranslator verbToAttack;
 	private CommandTranslator verbToWatchInventory;
 	private CommandTranslator verbToSeeAround;
+	private CommandTranslator translatorRidiculous;
 	private CommandTranslator translatorOthers;
 	
 	public Translator() {
@@ -37,7 +38,8 @@ public class Translator implements CommandTranslator{
 		verbToAttack = new TranslatorVerbAttack(verbToTalk);
 		verbToWatchInventory = new TranslatorVerbWatchInventory(verbToAttack);
 		verbToSeeAround = new TranslatorVerbSeeAround(verbToWatchInventory);
-		translatorOthers = new TranslatorOthers(verbToSeeAround);
+		translatorRidiculous = new TranslatorRidiculous(verbToSeeAround);
+		translatorOthers = new TranslatorOthers(translatorRidiculous);
 	}
 	
 	@Override

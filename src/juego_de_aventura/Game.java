@@ -277,6 +277,9 @@ public class Game {
         case "hablar":
             cadena = this.makePlayerTalkToClosestNPC(action);
             break;
+        case "ridiculous":
+            cadena = this.makeFunOfPlayer();
+            break;
         case "otros":
             cadena = this.rejectAction();
             break;    
@@ -288,6 +291,10 @@ public class Game {
         return cadena;
     }
 	
+	private String makeFunOfPlayer() {
+		player.setImageName("Fails/facepalm");
+		return "Ya dejate de tonterias y juega en serio!";
+	}
 	private String makePlayerBreakSomething(Action action) {
 		return player.breakSomething(action, adventure);
 	}
