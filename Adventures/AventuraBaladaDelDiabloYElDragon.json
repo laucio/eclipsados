@@ -1,11 +1,11 @@
 {
   "settings": {
-    "welcome": "Te encuentras en el living de una casa. Luego de una larga siesta, te levantas con ganas de ir a un bar.",
+    "welcome": "Te encuentras en el living de una casa. Luego de una larga siesta, te levantas con hambre y ganas de beber algo.",
     "character": "Indiana Jones"
   },
   "locations": [
     {
-      "description": "Estas en el living de la casa",
+      "description": "Estas en el living de la casa, con un bello aroma a roble, en la cocina quizas encuentres algo para matar el hambre.",
       "places": [
         {
           "items": [
@@ -45,7 +45,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en la cocina de la casa",
+      "description": "Estas en la cocina de la casa. La misma tiene toques goticos y una marmoleria de muy fina de calidad.",
       "places": [
         {
           "items": [
@@ -75,7 +75,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un mercado abandonado",
+      "description": "Estas en un mercado abandonado. Mucho desorden y poca higiene... Creo que aqui encontraremos cosas que nos podrian servir luego.",
       "places": [
         {
           "items": [
@@ -105,7 +105,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un famoso bar antiguo",
+      "description": "Estas en un famoso bar antiguo. Se oye una musica con estilo tropical y muy alegre... La letra de la misma habla de un bombon asesino.",
       "places": [
         {
           "items": [
@@ -139,7 +139,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un camino silencioso",
+      "description": "Estas en un camino silencioso... Mucha tranquilidad por estos lados, aunque te das cuenta que hay quienes se interponen en tu camino. ",
       "places": [
         {
           "items": [
@@ -187,7 +187,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un campamento siniestro",
+      "description": "Estas en un campamento siniestro... Tu sangre se enfria al sentir una especie de mala vibra... Este lugar no es color de rosas precisamente... Quizas no estes solo aqui.",
       "places": [
         {
           "items": [
@@ -230,7 +230,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en una oscura cueva. Sientes el aroma a metal y carne fundida. Logras oir un sonido amenazante, como si fuera la respiracion de una criatura monstruosa. Luego de que tus ojos se acostumbran a a la poca luz, alcanzas a ver dos enormes ojos observante fijo.",
+      "description": "Estas en una oscura cueva. Sientes el aroma a metal y carne fundida. Logras oir un sonido amenazante, como si fuera la respiracion de una criatura monstruosa. Luego de que tus ojos se acostumbran a la poca luz, alcanzas a ver dos enormes ojos observandote fijo... Oh!!! Un dragon!!!",
       "places": [
         {
           "items": [
@@ -263,7 +263,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un templo",
+      "description": "Estas en un templo. La sensación de paz se apodera de ti por unos instantes... Tal vez encuentres las respuestas a los misterios que tiene esta aventura.",
       "places": [
         {
           "items": [
@@ -303,7 +303,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en una sombria tumba. Los quejidos de las almas perdidas resuenan en el vacio de la noche. Una solemne prescencia se aparece delante tuyo. Parece ser de la realeza, probablemente un principe. Su rostro es muy bello, parece tallado por los angeles.",
+      "description": "Estas en una sombria tumba. Los quejidos de las almas perdidas resuenan en el vacio de la noche. Una solemne presencia se aparece delante tuyo. Parece ser de la realeza, probablemente un principe. Su rostro es muy bello, parece tallado por los angeles.",
       "places": [
         {
           "items": [
@@ -338,11 +338,11 @@
   ],
   "npcs": [
     {
-      "description": "Deberias comer algo... fijate en la cocina.",
+      "description": "Deberias comer algo... Fijate en la cocina.",
       "talks": [
-        "Se que una gran aventura te espera... espero que encuentras esas riquezas que me has contado durante años... adios.",
-        "Hola buen dia, como estais??, he escuchado en el pueblo rumores de que en el templo andan sucediendo cosas muy extrañas",
-        "Hola querido, me entere de algo muy raro... dicen que estos dias en la cueva ubicada a unos kilometros de aqui se escucharon como ruidos que parecen venir de las profundidades de la tierra.. como si una bestia buscara salir o algo parecido"
+        "Se que una gran aventura te espera... Deseo que encuentres esas riquezas que me has contado durante años... Adios!!!",
+        "Hola!! Buen dia. Como estas?? He escuchado en el pueblo rumores de que en el templo andan sucediendo cosas muy extrañas.",
+        "Hola, querido!! Me entere de algo muy raro... Dicen que en estos dias en la cueva ubicada a unos kilometros de aqui se escucharon como ruidos que parecen venir de las profundidades de la tierra... Como si una bestia buscara salir o algo parecido."
       ],
       "name": "mujer",
       "gender": "female",
@@ -351,20 +351,20 @@
     {
       "description": "Aparece un sacerdote en el templo",
       "talks": [
-        "La profecia se ha cumplido, el elegido para derrotar al rey de las tinieblas esta aqui.",
-        "En la boveda quizas puedas encontrar algo que te pueda salvar de por vida... nadie sabe su valor... yo que tu lo usaria bien  ",
-        "Si ir hacia la tumba quieres, deberias llevar una cruz, te sera de mucha utilidad"
+        "La profecia se ha cumplido. El elegido para derrotar al rey de las tinieblas esta aqui.",
+        "En la boveda quizas puedas encontrar algo que te pueda salvar de por vida... Nadie sabe su valor... Yo, en tu lugar, lo usaria bien.  ",
+        "Si ir hacia la tumba quieres, deberias llevar una cruz. Te sera de mucha utilidad."
       ],
       "name": "sacerdote",
       "gender": "male",
       "number": "singular"
     },
     {
-      "description": "Ohh he visto un lindo gatito",
+      "description": "Ohh!!! He visto un lindo gatito!!!",
       "talks": [
-        "Hubiera sido grandioso como el justo emperador de la Tierra.",
+        "Yo habria sido grandioso como el justo emperador de la Tierra.",
         "Yo soy el único que te comprende, pero no significa que me importe.",
-        "Los perros cuidan... Los gatos vigilamos y juzgamos"
+        "Los perros cuidan... Los gatos vigilamos y juzgamos."
       ],
       "name": "gato",
       "gender": "male",
@@ -380,10 +380,10 @@
       ]
     },
     {
-      "description": "El angel caido se hace presente",
+      "description": "El angel caido se hace presente.",
       "talks": [
         "Osas venir a enfrentarme? Ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
-        "Uajjajaj, deberas enfrentarme y sufrir las consecuencias del más allá"
+        "Uajjajaj!!! Deberas enfrentarme y sufrir las consecuencias del más allá."
       ],
       "name": "angel caido",
       "gender": "male",
@@ -393,19 +393,19 @@
         {
           "type": "item",
           "thing": "tesoro",
-          "on_trigger": "Muaajajajaj crees que este artefacto de codicia y avaricia puede contra mi? eres solo un simple mortal...",
+          "on_trigger": "Muaajajajaj!! Crees que este artefacto de codicia y avaricia puede contra mi? Eres solo un simple mortal.",
           "after_trigger": "remove item"
         },
         {
           "type": "item",
           "thing": "espada",
-          "on_trigger": "Con una espada piensas en hacerme daño... eso no surgira efecto en mi... muere maldito insecto descendiente de Adan... ",
+          "on_trigger": "Con una espada piensas en hacerme daño?!! Eso no surtira efecto en mi... Muere maldito insecto descendiente de Adan!! ",
           "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "agua bendita",
-          "on_trigger": "Con el agua bendita solo logras quemarme, nunca podras matarme!!",
+          "on_trigger": "Con el agua bendita solo logras quemarme!! Nunca podras derrotarme!!",
           "after_trigger": "alter points & remove item"
         }
       ]
@@ -413,9 +413,9 @@
     {
       "description": "Un dragon se aparece",
       "talks": [
-        "Te quemare y me preparare un gran asado contigo..solo me falta el fernet y una picada",
-        "Te voy a cocinar al espiedo",
-        "Te abrazare con el hermoso calor del fuego forastero"
+        "Te quemare y me preparare un gran asado contigo... Solo me falta el fernet, una picada y unos temas de Los Palmeras de fondo.",
+        "Te voy a cocinar al espiedo.",
+        "Te abrazare con el hermoso calor del fuego, forastero!!"
       ],
       "name": "dragon",
       "gender": "male",
@@ -425,37 +425,37 @@
         {
           "type": "item",
           "thing": "cuchillo",
-          "on_trigger": "Has lastimado al dragon... pero sigue con vida. Te ataca con su fuego, y te calcina hasta los huesos.",
+          "on_trigger": "Has lastimado al dragon... Pero sigue con vida. Te ataca con su fuego y te calcina hasta los huesos.",
           "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "pico",
-          "on_trigger": "OHHH el dragon se muere... naa mentira con el pico le hiciste un arito que le quedo muy beio. En agradecimiento, te sopla fuego y te incinera.",
+          "on_trigger": "OHHH!! El dragon se muere... Naah, mentira!! Con el pico le hiciste un arito que le quedo muy beio. En agradecimiento, te quema con su fuego y te incinera.",
           "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "lanza",
-          "on_trigger": "Mejor me pego una siesta, estoy cansado de tanta lucha zzzz",
+          "on_trigger": "Mejor me pego alta siestita. Estoy cansado de tanta lucha... Zzzz",
           "after_trigger": "default"
         },
         {
           "type": "item",
           "thing": "salchicha",
-          "on_trigger": "El dragon te rostiza a vos y a la salchicha...",
+          "on_trigger": "El dragon te rostiza a vos y a la salchicha... Por papanatas...",
           "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "sanguche de atun",
-          "on_trigger": "El dragon se come el sanguche y lo disfruta como nunca... pero sigue estorbando en el camino ",
+          "on_trigger": "El dragon se come el sanguche y lo disfruta como nunca... Pero sigue estorbando en el camino. Encima te dejo sin comida, pavote!!! ",
           "after_trigger": "remove item"
         }
       ]
     },
     {
-      "description": "Un feroz lobo hambriento te impide el paso hacia la tumba, defenderte con tus manos seria algo muy inutil",
+      "description": "Un feroz lobo hambriento te impide el paso hacia la tumba, defenderte con tus manos seria algo muy inutil.",
       "talks": [
         "Grrrrrrrrrr..."
       ],
@@ -467,31 +467,31 @@
         {
           "type": "item",
           "thing": "cuchillo",
-          "on_trigger": "Con un feroz movimiento, el lobo te arranca el cuchillo de las manos.",
+          "on_trigger": "Con un feroz movimiento, el lobo te arranca el cuchillo de las manos... Creo que vas a necesitar ayuuuudaaaa!!!",
           "after_trigger": "alter points & remove item"
         },
         {
           "type": "item",
           "thing": "lanza",
-          "on_trigger": "El lobo feroz huye despaborido lo has herido en su patita con la lanza...pobrechito...",
+          "on_trigger": "El lobo feroz huye despaborido. Lo has herido en su patita con la lanza... Pobrechito...",
           "after_trigger": "remove & remove item"
         },
         {
           "type": "item",
           "thing": "salchicha",
-          "on_trigger": "OHHH el lobo ha comido demasiado rapido..la bestia esta lista para el ataque ",
+          "on_trigger": "OHHH!!! El lobo ha comido demasiado rapido... La bestia esta lista para el ataque. Que ahora te ayude Magoya!!",
           "after_trigger": "remove item"
         },
         {
           "type": "item",
           "thing": "sanguche de atun",
-          "on_trigger": "Al parecer al lobo no le gusta el atun... ha decidido comerte... mueres y vuelves al comenzar tu viaje ",
+          "on_trigger": "Al parecer al lobo no le gusta el atun... Ha decidido lastrar parte por parte de tu cuerpo... Mueres y vuelves a comenzar tu viaje. ",
           "after_trigger": "restart & remove item"
         },
         {
           "type": "item",
           "thing": "pico",
-          "on_trigger": "El lobo tiene una agildad tremendaaa!!! no podes acertar ningun golpe jajaja!!!",
+          "on_trigger": "El lobo tiene una agildad tremendaaa!!! No podes acertar ningun golpe!! jajaja!!!",
           "after_trigger": "default"
         }
       ]
@@ -499,9 +499,9 @@
     {
       "description": "Busco a la hermanastra mas fea... por dios eres tu",
       "talks": [
-        "Conoces al principe encantador? Es un papucho.. .su cara parece tallada por los mismos angeles",
-        "Mmm tu otra vez?? maldito cazafortunas",
-        "Aqui he oido varias teorias conspirativas... dragones y demonios... JA!!... es como dice el dicho... pueblo chico infierno grande"
+        "Conoces al principe encantador? Es un papucho... Su cara parece tallada por los mismos angeles.",
+        "Mmm... Tu otra vez?? Maldito cazafortunas.",
+        "Aqui he oido varias teorias conspirativas... Dragones y demonios... JA!!... Es como dice el refran... Pueblo chico, infierno grande."
       ],
       "name": "hermanastra mas fea",
       "gender": "female",
@@ -510,8 +510,8 @@
     {
       "description": "Un horripilante troll espera en la puerta del bar.",
       "talks": [
-        "Pasaras sobre mi cadaver. Vale la pena tanto por un trago?",
-        "Por aqui no pasaras!!!"
+        "Pasaras sobre mi cadaver!!! Vale la pena tanto esfuerzo por un trago?",
+        "Por aqui no pasaras!!! Nadie pasa de esta esquina, porque yo soy parte las divinas. "
       ],
       "name": "troll",
       "gender": "male",
@@ -527,13 +527,13 @@
         {
           "type": "item",
           "thing": "sanguche de atun",
-          "on_trigger": "Noo loco!!!, el chegusan de atun no es mi cosa... a mi dame carne humana... ",
+          "on_trigger": "Noo loco!!! El chegusan de atun no es mi cosa... A mi dame carne humana. ",
           "after_trigger": "default"
         },
         {
           "type": "item",
           "thing": "veneno de cobra",
-          "on_trigger": "JA!!, me das veneno a mi??...esto para mi es como tomar aguita",
+          "on_trigger": "JA!! Me das veneno a mi??... Esto, para mi, es como tomar agua mineral.",
           "after_trigger": "alter points & remove item"
         }
       ]
@@ -541,9 +541,9 @@
     {
       "description": "Una princesa borracha se tambalea delante de la entrada al mercado. Parece que esta de malas, no te dejara pasar.",
       "talks": [
-        "Maldito principe encantador, cuando lo vea rompere su hermoso rostro tallado por los angeles! aah si tan solo tuviera algo para ahogar mis penurias...",
-        "Si tienes algo proveniente de la madre tierra al darmelo ocuparas el lugar de trajano, marco aurelio o vespasiano",
-        "En este mercado yace un objeto capaz de abrir un oscuro secreto encerrado durante miles de años en este pueblo..."
+        "Maldito principe encantador!!! Cuando lo vea, rompere su hermoso rostro tallado por los angeles!! Aah!!! Si tan solo tuviera algo para ahogar mis penurias...",
+        "Si tienes algo proveniente de la Madre Tierra, al darmelo, ocuparas el lugar de Trajano, Marco Aurelio o Vespasiano.",
+        "En este mercado yace un objeto capaz de revelar un oscuro secreto encerrado durante miles de años en estas tierras."
       ],
       "name": "princesa borracha",
       "gender": "female",
@@ -552,13 +552,13 @@
         {
           "type": "item",
           "thing": "cerveza",
-          "on_trigger": "Gracias por el trago, creo que me ire a mimir... ia stoy arta... te dejo el camino libre",
+          "on_trigger": "Gracias por el trago!!! Creo que me ire a mimir... ia stoy arta... Te dejo el camino libre.",
           "after_trigger": "remove & remove item"
         },
         {
           "type": "item",
           "thing": "vodka",
-          "on_trigger": "Puedes beberte tu asqueroso vodka, me parece que lo vas a necesitar...",
+          "on_trigger": "Puedes beberte tu asqueroso vodka!! Me parece que lo vas a necesitar, guapeton!!",
           "after_trigger": "default"
         }
       ]
@@ -567,8 +567,8 @@
       "description": "Se ve en el camino a un maestro sabio",
       "talks": [
         "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
-        "Crees tener la fuerza necesaria para esto?? he vivido miles de vidas y creeme nadie puede derrotar a lucifer",
-        "Cuenta una leyenda que hace años un tal marco aurelio encontro el poder al otorgarle a una princesa un obsequio que solo la naturaleza puede dar"
+        "Crees tener la fuerza necesaria para esto?? He vivido miles de vidas y, creeme, nadie puede derrotar a Lucifer.",
+        "Cuenta una leyenda que hace años un tal Marco Aurelio encontro el poder, al otorgarle a una princesa un obsequio que solo la naturaleza puede dar."
       ],
       "name": "maestro sabio",
       "gender": "male",
@@ -1158,42 +1158,42 @@
       "action": "usar",
       "thing": "espada",
       "shooteable": "dragon",
-      "description": "Felicitaciones has derrotado al dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
+      "description": "Felicitaciones!! Has derrotado al dragon. Ha esparcido su llama sagrada por toda la tierra. Lo has logrado!!!"
     },
     {
       "condition": "item",
       "action": "atacar",
       "thing": "espada",
       "shooteable": "dragon",
-      "description": "Felicitaciones has derrotado al dragon, ha esparcido su llama sagrada por toda la tierra, lo has logrado!!!"
+      "description": "Felicitaciones!! Has derrotado al dragon. Ha esparcido su llama sagrada por toda la tierra. Lo has logrado!!!"
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "cruz",
       "shooteable": "angel caido",
-      "description": "El angel caido se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+      "description": "El angel caido se esparce en cenizas... El caos y el pecado han desaparecido del reino... Hasta los abogados han desaparecido... Se imaginan un mundo sin abogados??"
     },
     {
       "condition": "item",
       "action": "atacar",
       "thing": "cruz",
       "shooteable": "angel caido",
-      "description": "El angel caido se esparce en cenizas...la paz y el pecado han desaparecido del reino... hasta los abogados han desaparecido... se imaginan un mundo sin abogados??... (imagen mental Lionel Hutz) "
+      "description": "El angel caido se esparce en cenizas... El caos y el pecado han desaparecido del reino... Hasta los abogados han desaparecido... Se imaginan un mundo sin abogados??"
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "tesoro",
       "shooteable": "mujer",
-      "description": "Oh mi amor... lo trajiste!!!... nunca nadie hizo esto por mi... eres el mejor de los principes... mi principe encantador. "
+      "description": "Oh, mi amor!! Encontraste el Tesoro!!!... Nunca nadie ha hecho algo asi por mi... Eres el mejor de los principes... Mi principe encantador y sobre todo el mayor de mis tesoros!! "
     },
     {
       "condition": "item",
       "action": "usar",
       "thing": "flor",
       "shooteable": "princesa borracha",
-      "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de mi reino... salve cesar!!!"
+      "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de esta vasta tierra encantada nombrada hace miles de años como Muy Muy Lejano... Salve Cesar!!!"
     }
   ]
 }
