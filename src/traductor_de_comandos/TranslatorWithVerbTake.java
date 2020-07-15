@@ -7,7 +7,9 @@ import juego_de_aventura.*;
 public class TranslatorWithVerbTake implements CommandTranslator {
 
 	private final static String[] VERBO_TOMAR = { " tomar ", " agarrar ", " levantar ", " guardar ", " toma ",
-			" agarra ", " levanta ", " guarda ", " recoger ", " recoge ", " levanta ", " colecta ", " colectar " };
+			" agarra ", " guarda ", " recoger ", " recoge ", " levanta ", " colecta ", " colectar ",
+			" coger ", " coge ", " carga ", " cargar ", " recolectar ", " recolecta ", " capturar ", " captura ",
+			" pillar", " pilla ", " mover ", " move "};
 
 	private CommandTranslator next = null;
 

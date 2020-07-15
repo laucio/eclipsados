@@ -45,7 +45,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en la cocina de la casa. La misma tiene toques goticos y una marmoleria de muy fina de calidad.",
+      "description": "Estas en la cocina de la casa. La misma tiene toques goticos y un marmol de muy fina de calidad.",
       "places": [
         {
           "items": [
@@ -909,7 +909,7 @@
         {
           "type": "item",
           "thing": "cadaver",
-          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... y tiene un extra�o grafo con forma de estrella en pecho!!!",
+          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... y tiene un raro grafo con forma de estrella en pecho!!!",
           "after_trigger": "default"
         }
       ],

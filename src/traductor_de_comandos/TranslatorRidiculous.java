@@ -9,7 +9,8 @@ public class TranslatorRidiculous implements CommandTranslator {
 							" matarme ", " envenenar", " bailar ", " bailarse ",
 							" bailarme ", " cantar", " besar", 
 							" acariciar", " abrazar", " gritar", " lloriquear ",
-							" llorar", " danzar ", " escupir", " silbar ", " sonar " };
+							" llorar", " danzar ", " escupir", " silbar ", " sonar ",
+							" pedir u"};
 	
 	private CommandTranslator next = null;
 

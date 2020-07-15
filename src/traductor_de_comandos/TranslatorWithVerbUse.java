@@ -6,7 +6,8 @@ import juego_de_aventura.*;
 
 public class TranslatorWithVerbUse implements CommandTranslator {
 
-	private final static String[] VERBO_USAR = { " usar ", " usa ", " utilizar ", " utiliza ", " dar ", " darle " };
+	private final static String[] VERBO_USAR = { " usar ", " usa ", " utilizar ", " utiliza ", " dar ", " darle ",
+			" regalar ", " regalarle ", " regalale "," entregar ", " entregarle ", " entregale ", " dale "};
 
 	private CommandTranslator next = null;
 

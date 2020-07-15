@@ -6,7 +6,8 @@ import juego_de_aventura.*;
 
 public class TranslatorVerbEat implements CommandTranslator {
 
-	private final static String[] VERBO_COMER = { " comer ", " masticar ", " tragar ", " alimentarse ", " consumir " };
+	private final static String[] VERBO_COMER = { " comer ", " masticar ", 
+			" tragar ", " alimentarse ", " consumir ", " morfar ", " papear ", " bajonear ", " lastrar " };
 
 	private CommandTranslator next = null;
 

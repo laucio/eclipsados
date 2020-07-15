@@ -10,8 +10,15 @@ public class TranslatorVerbAttack implements CommandTranslator {
 
 	private final static String[] VERBO_ATACAR = { " atacar ", " golpear ", " cortar ", " herir ", " pelear ",
 			" matar ", " abatir ", " derrotar ", " defender ", " aniquilar ",
-			" defenderse ", " despellejar ", " descuartizar ", " destripar ", " arrojar ", " lanzar "};
-
+			" defenderse ", " despellejar ", " descuartizar ", " destripar ", " arrojar ", " lanzar ",
+			" acuchillar ", " degollar ", " apuñalar ", " asesinar ", " desollar ", " boletear ",
+			 " ejecutar ", " liquidar ", " exterminar ", " apalear ", " acabar ", " apalear ",
+			 " ataca ", " golpea ", " corta ", " pelea "," arrojarle ",
+				" mata ", " abati ", " derrota ", " defende ", " aniquila ",
+				 " despelleja ", " descuartiza ", " destripa ", " arroja ", " lanza ",
+				" acuchilla ", " degolla ", " apuñala ", " asesina ", " desolla ", " boletea ",
+				 " ejecuta ", " liquida ", " extermina ", " apalea ", " acaba ", " apalea "};
+       
 	private CommandTranslator next = null;
 
 	public TranslatorVerbAttack(CommandTranslator next) {

@@ -5,7 +5,8 @@ import juego_de_aventura.Game;
 
 public class TranslatorGoOut implements CommandTranslator {
 
-	private final static String[] VERBO_SALIR = { " salir ", " salir de ", " salirse de ", " salirme de ", " sali de ", " sal de "};
+	private final static String[] VERBO_SALIR = { " salir ", " salir de ", " salirse de ", " salirme de ", " sali de ", " sal de ",
+			" ir afuera ", " irse afuera ", " rodear ", " atravesar ", " cruzar "," anda afuera "};
 	
 	private CommandTranslator next = null;
 
