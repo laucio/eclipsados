@@ -340,43 +340,49 @@ public class Player {
 			cadena = "No se que es lo que quieres abrir";
 		} else {
 
-			Item item = adventure.getItem(action.getThing());
+			if(action.isConditionAPlace()) {
+				this.setImageName("Fails/takeItem");
+				cadena = "Ya toma un maldito item!";
+				
+			}else {
+				Item item = adventure.getItem(action.getThing());
 
-			if (item.allowsAction(action.getAction())) {
+				if (item.allowsAction(action.getAction())) {
 
-				switch (action.getEffect_over()) {
-				case "self":
-					if (this.isNearItem(item.getName()) || this.hasItem(item)) {
+					switch (action.getEffect_over()) {
+					case "self":
+						if (this.isNearItem(item.getName()) || this.hasItem(item)) {
 
-						if (item.hasEffectsOver(action)) {
-							String shootableName = action.getThing();
-							Shootable shootable = adventure.findShootable(shootableName);
+							if (item.hasEffectsOver(action)) {
+								String shootableName = action.getThing();
+								Shootable shootable = adventure.findShootable(shootableName);
 
-							if (shootable != null) {
-								action.setShooteable(shootableName);
-								cadena = shootable.shootTrigger(action, adventure, this);
+								if (shootable != null) {
+									action.setShooteable(shootableName);
+									cadena = shootable.shootTrigger(action, adventure, this);
+								}
+
 							}
-
+						} else {
+							this.setImageName("Fails/confused");
+							cadena = "No encuentro eso que quieres abrir";
 						}
-					} else {
-						this.setImageName("Fails/confused");
-						cadena = "No encuentro eso que quieres abrir";
+
+						break;
+
+					case "item":
+						action.setAction("usar");
+						action.setShooteable(action.getTarget());
+						cadena = this.useItem(action, adventure);
+						break;
+					default:
+						break;
 					}
 
-					break;
-
-				case "item":
-					action.setAction("usar");
-					action.setShooteable(action.getTarget());
-					cadena = this.useItem(action, adventure);
-					break;
-				default:
-					break;
+				} else {
+					this.setImageName("Fails/no");
+					cadena = "No puedes hacer eso";
 				}
-
-			} else {
-				this.setImageName("Fails/no");
-				cadena = "No puedes hacer eso";
 			}
 		}
 		return cadena;
@@ -531,6 +537,21 @@ public class Player {
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+	}
+
+	public boolean isNearMentionedPlace(String cadena) {
+		boolean found = false;
+		ArrayList<Place> places = currentLocation.getPlaces();
+		int i=0;
+		
+		while(i<places.size() && !found) {
+			if(cadena.contains(places.get(i).getName())) {
+				found = true;
+			}
+		i++;
+		}
+		
+	return found;
 	}
 
 }

@@ -38,7 +38,14 @@ public class TranslatorVerbOpen implements CommandTranslator {
 				int cant = objs.size();
 				switch(cant) {
 				case 0:
-					action.setCondition("unknown");
+					Player player = game.getPlayer();
+					
+					if( player.isNearMentionedPlace(command)) {
+						action.setCondition("place");
+					}else {
+						action.setCondition("unknown");
+					}
+		
 					break;
 				case 1:
 					action.setCondition("item");

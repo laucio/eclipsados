@@ -7,7 +7,7 @@ public class TranslatorOthers implements CommandTranslator {
 
 	private final static String[] VERBO_OTROS = { " subir", " cerrar", " bajar", " volar",
 							" enterrar", "trepar", " escalar", " cocinar", " quemar",
-							" tirar", " rostizar ", };
+							" rostizar", " saltar", " robar" };
 	
 	private CommandTranslator next = null;
 

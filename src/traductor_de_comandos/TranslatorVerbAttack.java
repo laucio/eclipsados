@@ -13,11 +13,12 @@ public class TranslatorVerbAttack implements CommandTranslator {
 			" defenderse ", " despellejar ", " descuartizar ", " destripar ", " arrojar ", " lanzar ",
 			" acuchillar ", " degollar ", " apuñalar ", " asesinar ", " desollar ", " boletear ",
 			 " ejecutar ", " liquidar ", " exterminar ", " apalear ", " acabar ", " apalear ",
-			 " ataca ", " golpea ", " corta ", " pelea "," arrojarle ",
+			 " ataca ", " golpea ", " corta ", " pelea "," arrojarle ", " pegar ", " pergarle ",
 				" mata ", " abati ", " derrota ", " defende ", " aniquila ",
 				 " despelleja ", " descuartiza ", " destripa ", " arroja ", " lanza ",
 				" acuchilla ", " degolla ", " apuñala ", " asesina ", " desolla ", " boletea ",
-				 " ejecuta ", " liquida ", " extermina ", " apalea ", " acaba ", " apalea "};
+				 " ejecuta ", " liquida ", " extermina ", " apalea ", " acaba ", " apalea ",
+				 " tirar"};
        
 	private CommandTranslator next = null;
 
