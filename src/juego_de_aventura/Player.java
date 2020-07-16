@@ -221,10 +221,25 @@ public class Player {
 
 		return cadena;
 	}
+	
+	public String observeNpc(Action action, Adventure adventure) {
+		String retorno;
+		NPC npc = adventure.getNPC(action.getThing());
+		
+		if(currentLocation.containsNpc(npc.getName())) {
+			this.setImageName("NPCs/"+npc.getName()+"/"+npc.getName());
+			retorno = npc.getDescription();	
+		}else {
+			this.setImageName("Fails/notFoundNPC");
+			retorno = "No encuentro a quien buscas... Se mas claro!";
+		}
+		
+	return retorno;
+	}
 
 	public String observeItem(Action action, Adventure adventure) {
 		String cadena = "No entiendo que es lo que quieres mirar";
-		this.setImageName("Fails/confused");
+		this.setImageName("Fails/clueless");
 
 		Item item = adventure.getItem(action.getThing());
 
@@ -238,7 +253,6 @@ public class Player {
 					Shootable shootable = adventure.findShootable(shootableName);
 
 					if (shootable != null) {
-						
 						this.setImageName("Items/"+item.getName()+"/"+item.getName());
 						cadena = shootable.shootTrigger(action, adventure, this);
 					}
@@ -402,6 +416,7 @@ public class Player {
 	}
 
 	public String leavelocation(Action action) {
+		this.setImageName("Fails/where");
 		return currentLocation.isNamed(action.getThing()) ? "Debes decirme hacia donde quieres ir"
 				: "No puedes irte de un lugar en el que no te encuentras";
 	}
@@ -517,6 +532,5 @@ public class Player {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
-
 
 }

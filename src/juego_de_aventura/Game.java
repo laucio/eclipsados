@@ -216,8 +216,16 @@ public class Game {
 		return retorno;
 	}
 	
-	private String makePlayerObserveAnItem(Action action) {
-		return player.observeItem(action, adventure); 
+	private String makePlayerObserveSomething(Action action) {
+		String retorno;
+		
+		if( action.isConditionNpcs()) {
+			retorno = player.observeNpc(action, adventure);
+		}else {
+			retorno = player.observeItem(action, adventure); 
+		}
+		
+		return retorno;
 	}
 	
 	private String makePlayerEat(Action action) {
@@ -253,7 +261,7 @@ public class Game {
             cadena = this.makePlayerAttack(action);
             break;
         case "observar":
-            cadena = this.makePlayerObserveAnItem(action);
+            cadena = this.makePlayerObserveSomething(action);
             break;
         case "ir":
             cadena = this.movePlayer(action);

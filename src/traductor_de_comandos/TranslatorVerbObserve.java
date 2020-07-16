@@ -40,9 +40,7 @@ public class TranslatorVerbObserve implements CommandTranslator {
 			int cant = objs.size();
 			switch(cant) {
 			case 0:
-				//No hay item en el comando
 				
-				//vemos si quiere mirar un place de la location
 				Player player = game.getPlayer();
 				Location location = player.getCurrentLocation();
 				Place place;
@@ -50,13 +48,17 @@ public class TranslatorVerbObserve implements CommandTranslator {
 					action.setThing(place.getName());
 					action.setCondition("place");
 				}else {
-					action.setThing("unknown");
+					String npcName;
+					if( (npcName = adventure.containsNPC(command) )!= null ) {
+						action.setThing(npcName);
+						action.setCondition("npcs");
+					}else {
+						action.setThing("unknown");
+					}
 				}
 				
 				break;
 			case 1:
-				//observar una cosa
-				//Action("observar","espejo", "item","self", "self");
 				action.setThing(objs.get(0));
 				action.setCondition("item");
 				action.setTarget("self");
