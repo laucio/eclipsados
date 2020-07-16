@@ -297,6 +297,9 @@ public class Game {
         case "hablar":
             cadena = this.makePlayerTalkToClosestNPC(action);
             break;
+        case "senses":
+            cadena = this.getPlayersPerception();
+            break;
         case "ridiculous":
             cadena = this.makeFunOfPlayer();
             break;
@@ -311,10 +314,16 @@ public class Game {
         return cadena;
     }
 	
+	private String getPlayersPerception() {
+		player.setImageName("Fails/clueless");
+		return "No se percibe nada fuera de lo comun... Dedicate a jugar";
+	}
+	
 	private String makeFunOfPlayer() {
 		player.setImageName("Fails/facepalm");
 		return "Ya dejate de tonterias y juega en serio!";
 	}
+	
 	private String makePlayerBreakSomething(Action action) {
 		return player.breakSomething(action, adventure);
 	}
