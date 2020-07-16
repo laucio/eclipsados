@@ -144,4 +144,8 @@ public class Action {
 	public boolean isConditionAPlace() {
 		return condition.equals("place");
 	}
+
+	public boolean isConditionNpcs() {
+		return condition.equals("npcs");
+	}
 }
