@@ -6,7 +6,7 @@ import juego_de_aventura.*;
 
 public class TranslatorVerbLeave implements CommandTranslator {
 
-	private final static String[] VERBO_DEJAR = { " dejar ", " abandonar ", " soltar ", " deshacerse ", " tirar "};
+	private final static String[] VERBO_DEJAR = { " dejar ", " abandonar ", " soltar ", " deshacerse ", " remover"};
 
 	private CommandTranslator next = null;
 
