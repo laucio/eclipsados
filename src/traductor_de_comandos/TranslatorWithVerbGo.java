@@ -6,8 +6,8 @@ import juego_de_aventura.*;
 
 public class TranslatorWithVerbGo implements CommandTranslator {
 
-	private final static String[] VERBO_IR = { " ir ", " ve ", " camina ", " caminar ",
-			" movete ", " moverse ", " correr ", " entrar ", " ingresar "};
+	private final static String[] VERBO_IR = { " ir ", " ve ", " camina ", " caminar ", " desplazarse ", " desplazarme ", " desplazate ",
+			" movete ", " moverse ", " moverme ", " correr ", " corre ", " entrar ", " entra ", " ingresar ", " ingresa "};
 	private final static String[] POSSIBLE_DIRECTIONS = { " noreste ", " noroeste ", " sureste ", " suroeste ",
 			" sudoeste ", " sudeste ", " sur ", " este ", " norte ", " oeste " };
 

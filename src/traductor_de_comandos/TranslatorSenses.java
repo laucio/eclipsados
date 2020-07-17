@@ -7,7 +7,7 @@ public class TranslatorSenses implements CommandTranslator {
 
 	private final static String[] VERBOS_SENTIDOS = { " oir ", " oye ", " huele ", " olfatear ",
 			" olfatea ", " oler ", " ole ",
-			" escuchar ", " escucha "};
+			" escuchar ", " escucha ", " respira"};
 	
 	private CommandTranslator next = null;
 

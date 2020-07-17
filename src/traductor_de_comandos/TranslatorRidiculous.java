@@ -6,11 +6,11 @@ import juego_de_aventura.Game;
 public class TranslatorRidiculous implements CommandTranslator {
 
 	private final static String[] VERBOS_RIDICULOS = { " suicidar", " matarse ",
-							" matarme ", " envenenar", " bailar ", " bailarse ",
-							" bailarme ", " cantar", " besar", 
-							" acariciar", " abrazar", " gritar", " lloriquear ",
-							" llorar", " danzar ", " escupir", " silbar ", " sonar ",
-							" pedir u"};
+							" matarme ", " envenena", " bailar ", " bailarse ", " baila ",
+							" bailarme ", " cantar", " besar", " besa ", 
+							" acariciar", " acaricia ", " abrazar", " abraza ", " gritar", " grita ", " lloriquear ", " lloriquea ",
+							" llorar"," llora ", " danzar ", " escupir", " escupe ", " silbar "," silba ", " sonar ", " suena ", " sona ",
+							" pedir u", " pide u"};
 	
 	private CommandTranslator next = null;
 

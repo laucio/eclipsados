@@ -5,9 +5,9 @@ import juego_de_aventura.Game;
 
 public class TranslatorOthers implements CommandTranslator {
 
-	private final static String[] VERBO_OTROS = { " subir", " cerrar", " bajar", " volar",
-							" enterrar", "trepar", " escalar", " cocinar", " quemar",
-							" rostizar", " saltar", " robar" };
+	private final static String[] VERBO_OTROS = { " subir", " subi ", " sube " ," subite ", " cerrar ", " cerra ", " cierra ", "bajar", " volar", " vola ", " vuela ",
+							" enterrar", " entierra ", " trepar", " trepa ", " escalar", " escala ", " cocinar", " quemar", " quema ",
+							" rostizar", " rostiza ", " saltar", " salta ", " robar", " roba ", "cavar ", " cava ", " incendia"};
 	
 	private CommandTranslator next = null;
 

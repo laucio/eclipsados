@@ -6,9 +6,12 @@ import juego_de_aventura.*;
 
 public class TranslatorVerbTalkToNPC implements CommandTranslator {
 	
-	private final static String[] VERBO_HABLAR = { " hablar ", " conversar ", " dialogar ",
-			" charlar ", " cotorrear ", " platicar ", " chusmear ", " chamuyar ",
-			" seducir " ," pedir ayuda "," pedir permiso ", " insultar ", " maldecir ", " putear "};
+	private final static String[] VERBO_HABLAR = { " hablar ", " habla ",
+			" conversa "," conversar ", " dialogar ", " dialoga ",
+			" charlar "," charla ", " cotorrear ", " cotorrea ", " platicar "," platica ",
+			" chusmear ", " chusmea", " chamuyar ", " chamuya ",
+			" seducir ", " seduce " ," pedir ayuda "," pedir permiso "," pide ayuda ",
+			" pide permiso ", " insulta", " maldecir ", " maldice ", " putear ", " putea "};
 	
 	private CommandTranslator next = null;
 
