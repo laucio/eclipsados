@@ -15,7 +15,7 @@ public class TranslatorVerbAttack implements CommandTranslator {
 			 " ejecutar ", " liquidar ", " exterminar ", " apalear ", " acabar ", " apalear ",
 			 " ataca ", " golpea ", " corta ", " pelea "," arrojarle ", " pegar ", " pergarle ",
 				" mata ", " abati ", " derrota ", " defende ", " aniquila ",
-				 " despelleja ", " descuartiza ", " destripa ", " arroja ", " lanza ",
+				 " despelleja ", " descuartiza ", " destripa ", " arroja ",
 				" acuchilla ", " degolla ", " apuñala ", " asesina ", " desolla ", " boletea ",
 				 " ejecuta ", " liquida ", " extermina ", " apalea ", " acaba ", " apalea ",
 				 " tirar"};
