@@ -8,7 +8,7 @@ public class TranslatorVerbTalkToNPC implements CommandTranslator {
 	
 	private final static String[] VERBO_HABLAR = { " hablar ", " conversar ", " dialogar ",
 			" charlar ", " cotorrear ", " platicar ", " chusmear ", " chamuyar ",
-			" seducir " ," pedir ayuda "," pedir permiso "};
+			" seducir " ," pedir ayuda "," pedir permiso ", " insultar ", " maldecir ", " putear "};
 	
 	private CommandTranslator next = null;
 

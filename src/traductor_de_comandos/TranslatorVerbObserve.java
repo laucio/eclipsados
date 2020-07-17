@@ -7,7 +7,7 @@ import juego_de_aventura.*;
 public class TranslatorVerbObserve implements CommandTranslator {
 
 	private final static String[] VERBO_OBSERVAR = { " observar ", " leer ", " inspeccionar ", " ver ",
-			" mirar ", " chusmear ", " mirarse ", " reflejarse "," analizar "," analiza ",
+			" mirar ", " chusmear ", " mirarse ", " reflejarse "," analizar "," analiza "," verse ",
 			" observarme ", " leerme ", " inspeccionarme ", " verme ", " mirarme ", " chusmearme ", " reflejarme "};
 
 	private CommandTranslator next = null;
