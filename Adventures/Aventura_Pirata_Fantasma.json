@@ -50,10 +50,10 @@
       "name": "pirata fantasma",
       "gender": "male",
       "number": "singular",
-      "description": "No puedes pasar! El pirata fantasma no te dejara pasar",
+      "description": "No puedes pasar! El pirata fantasma no te dejara",
       "talks": [
-        "No hay nada que me digas que me haga cambiar de opinion!",
-        "jajaja madito forastero hagas lo que digas me mantendre firme en mi decision"
+        "No hay nada que digas que me haga cambiar de opinion!",
+        "jajaja Maldito forastero! Hagas lo que hagas, me mantendre firme en mi decision!"
       ],
       "triggers": [
         {
