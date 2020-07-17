@@ -670,7 +670,7 @@
         {
           "type": "item",
           "thing": "escritura",
-          "on_trigger": "Aqui yacen todos los muertos que han intentado a enfrentar al peor de los terrores de la humanidad.",
+          "on_trigger": "Aqui yacen todos los muertos que han intentado enfrentar al peor de los terrores de la humanidad.",
           "after_trigger": "default"
         }
       ],
@@ -699,7 +699,7 @@
         {
           "type": "item",
           "thing": "salchicha",
-          "on_trigger": "Olala!! esto es carne asada... no conocia este placer de los dioses...",
+          "on_trigger": "Olala!! Esto es carne asada... No conocia este placer de los dioses...",
           "after_trigger": "alter points & remove"
         }
       ],
@@ -752,7 +752,7 @@
         {
           "type": "item",
           "thing": "sanguche",
-          "on_trigger": "Mmmmm... delicioso.",
+          "on_trigger": "Mmmmm... Delicioso.",
           "after_trigger": "alter points & remove"
         }
       ],
@@ -783,7 +783,7 @@
         {
           "type": "item",
           "thing": "cuchillo",
-          "on_trigger": "Has raspado la piedra y salen chispass..te pensas que un chuchillo sirve para sacar una piedra?? ... iluso...",
+          "on_trigger": "Has raspado la piedra y salen chispass... Te piensas que un chuchillo realmente podria servir?? ... Iluso...",
           "after_trigger": "default"
         }
       ],
@@ -889,7 +889,7 @@
         {
           "type": "item",
           "thing": "cuadro",
-          "on_trigger": "Si capitan estamos listos!!!",
+          "on_trigger": "Si, capitan!!! Estamos listos!!!",
           "after_trigger": "default"
         }
       ],
@@ -935,7 +935,7 @@
         {
           "type": "item",
           "thing": "cadaver",
-          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... y tiene un raro grafo con forma de estrella en pecho!!!",
+          "on_trigger": "Mirando de cerca el cuerpo, parece que sufrio graves quemaduras... Y tiene un raro grafo con forma de estrella en pecho!!!",
           "after_trigger": "default"
         }
       ],
@@ -958,7 +958,7 @@
         {
           "type": "item",
           "thing": "letrero",
-          "on_trigger": "Ya sea una botella de alcohol, o un ramo de flores, el final es donde parti...",
+          "on_trigger": "Ya sea una botella de alcohol o un ramo de flores, el final es donde parti...",
           "after_trigger": "default"
         }
       ],
