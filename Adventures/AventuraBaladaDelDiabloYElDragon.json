@@ -5,7 +5,7 @@
   },
   "locations": [
     {
-      "description": "Estas en el living de la casa, con un bello aroma a roble, en la cocina quizas encuentres algo para matar el hambre.",
+      "description": "Estas en el living de la casa, con un bello aroma a roble, en la cocina quizas encuentres algo para matar el hambre",
       "places": [
         {
           "items": [
@@ -46,7 +46,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en la cocina de la casa. La misma tiene toques goticos y un marmol de muy fina de calidad.",
+      "description": "Estas en la cocina de la casa. La misma tiene toques goticos y un marmol de muy fina de calidad",
       "places": [
         {
           "items": [
@@ -58,7 +58,7 @@
         },
         {
           "items": [
-            "sanguche de atun"
+            "sanguche"
           ],
           "name": "heladera",
           "gender": "female",
@@ -76,7 +76,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un mercado abandonado. Mucho desorden y poca higiene... Creo que aqui encontraremos cosas que nos podrian servir luego.",
+      "description": "Estas en un mercado abandonado. Mucho desorden y poca higiene... Creo que aqui encontraremos cosas que nos podrian servir luego",
       "places": [
         {
           "items": [
@@ -106,7 +106,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un famoso bar antiguo. Se oye una musica con estilo tropical y muy alegre... La letra de la misma habla de un bombon asesino.",
+      "description": "Estas en un famoso bar antiguo. Se oye una musica con estilo tropical y muy alegre... La letra de la misma habla de un bombon asesino",
       "places": [
         {
           "items": [
@@ -140,7 +140,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un camino silencioso... Mucha tranquilidad por estos lados, aunque te das cuenta que hay quienes se interponen en tu camino. ",
+      "description": "Estas en un camino silencioso... Mucha tranquilidad por estos lados, aunque posiblemente no te dure tanto tiempo",
       "places": [
         {
           "items": [
@@ -188,7 +188,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un campamento siniestro... Tu sangre se enfria al sentir una especie de mala vibra... Este lugar no es color de rosas precisamente... Quizas no estes solo aqui.",
+      "description": "Estas en un campamento siniestro... Tu sangre se enfria al sentir una especie de mala vibra... Este lugar no es color de rosas precisamente... Quizas no estes solo aqui",
       "places": [
         {
           "items": [
@@ -264,7 +264,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en un templo. La sensación de paz se apodera de ti por unos instantes... Tal vez encuentres las respuestas a los misterios que tiene esta aventura.",
+      "description": "Estas en un templo. La sensación de paz se apodera de ti por unos instantes... Tal vez encuentres las respuestas a los misterios que tiene esta aventura",
       "places": [
         {
           "items": [
@@ -304,7 +304,7 @@
       "number": "singular"
     },
     {
-      "description": "Estas en una sombria tumba. Los quejidos de las almas perdidas resuenan en el vacio de la noche. Una solemne presencia se aparece delante tuyo. Parece ser de la realeza, probablemente un principe. Su rostro es muy bello, parece tallado por los angeles.",
+      "description": "Estas en una sombria tumba. Los quejidos de las almas perdidas resuenan en el vacio de la noche. Una solemne presencia se aparece delante tuyo. Parece ser de la realeza, probablemente un principe. Su rostro es muy bello, parece tallado por los angeles",
       "places": [
         {
           "items": [
@@ -339,7 +339,7 @@
   ],
   "npcs": [
     {
-      "description": "Deberias comer algo... Fijate en la cocina.",
+      "description": "Una mujer que parece bastante misteriosa quiere decirle algo. Sera mejor que la escuches.",
       "talks": [
         "Se que una gran aventura te espera... Deseo que encuentres esas riquezas que me has contado durante años... Adios!!!",
         "Hola!! Buen dia. Como estas?? He escuchado en el pueblo rumores de que en el templo andan sucediendo cosas muy extrañas.",
@@ -350,7 +350,7 @@
       "number": "singular"
     },
     {
-      "description": "Aparece un sacerdote en el templo",
+      "description": "El sacerdote tiene grandes secretos que develarte y quizas te sean de mucha utilidad.",
       "talks": [
         "La profecia se ha cumplido. El elegido para derrotar al rey de las tinieblas esta aqui.",
         "En la boveda quizas puedas encontrar algo que te pueda salvar de por vida... Nadie sabe su valor... Yo, en tu lugar, lo usaria bien.  ",
@@ -381,7 +381,7 @@
       ]
     },
     {
-      "description": "El demonio se hace presente.",
+      "description": "El demonio se hace presente. Solo con supresencia sientes un enorme terror y tu sangre se siente helada como un glaciar",
       "talks": [
         "Osas venir a enfrentarme? Ningun mortal en toda la historia ha podido contra mi, Lucifer!! Que te ha parecido mi dragon?",
         "Uajjajaj!!! Deberas enfrentarme y sufrir las consecuencias del más allá."
@@ -412,7 +412,7 @@
       ]
     },
     {
-      "description": "Un dragon se aparece",
+      "description": "Un dragon se aparece, enorme como castillos, caliente como el mismo infierno, temible como cuentan las leyendas.",
       "talks": [
         "Te quemare y me preparare un gran asado contigo... Solo me falta el fernet, una picada y unos temas de Los Palmeras de fondo.",
         "Te voy a cocinar al espiedo.",
@@ -449,7 +449,7 @@
         },
         {
           "type": "item",
-          "thing": "sanguche de atun",
+          "thing": "sanguche",
           "on_trigger": "El dragon se come el sanguche y lo disfruta como nunca... Pero sigue estorbando en el camino. Encima te dejo sin comida, pavote!!! ",
           "after_trigger": "remove item"
         }
@@ -485,7 +485,7 @@
         },
         {
           "type": "item",
-          "thing": "sanguche de atun",
+          "thing": "sanguche",
           "on_trigger": "Al parecer al lobo no le gusta el atun... Ha decidido lastrar parte por parte de tu cuerpo... Mueres y vuelves a comenzar tu viaje. ",
           "after_trigger": "restart & remove item"
         },
@@ -498,7 +498,7 @@
       ]
     },
     {
-      "description": "Busco a la hermanastra mas fea... Por dios eres tu!!!",
+      "description": "Busco a la hermanastra mas fea... Por dios, eres tu!!!",
       "talks": [
         "Conoces al principe encantador? Es un papucho... Su cara parece tallada por los mismos angeles.",
         "Mmm... Tu otra vez?? Maldito cazafortunas.",
@@ -509,7 +509,7 @@
       "number": "singular"
     },
     {
-      "description": "Un horripilante troll espera en la puerta del bar.",
+      "description": "Un horripilante troll espera en la puerta del bar. Puajj!! Parece que rexona lo abandono.",
       "talks": [
         "Pasaras sobre mi cadaver!!! Vale la pena tanto esfuerzo por un trago?",
         "Por aqui no pasaras!!! Nadie pasa de esta esquina, porque yo soy parte las divinas. "
@@ -527,7 +527,7 @@
         },
         {
           "type": "item",
-          "thing": "sanguche de atun",
+          "thing": "sanguche",
           "on_trigger": "Noo loco!!! El chegusan de atun no es mi cosa... A mi dame carne humana. ",
           "after_trigger": "default"
         },
@@ -565,7 +565,7 @@
       ]
     },
     {
-      "description": "Se ve en el camino a un sabio",
+      "description": "Se ve en el camino a un sabio. Su ayuda nos iluminara y nos llevara por el sendero de la esperanza.",
       "talks": [
         "Grandes peligros encontraras, en la cueva o en el templo el fuego predominara, y el terror de los hombres viviras.",
         "Crees tener la fuerza necesaria para esto?? He vivido miles de vidas y, creeme, nadie puede derrotar a Lucifer.",
@@ -751,12 +751,12 @@
       "triggers": [
         {
           "type": "item",
-          "thing": "sanguche de atun",
+          "thing": "sanguche",
           "on_trigger": "Mmmmm... delicioso.",
           "after_trigger": "alter points & remove"
         }
       ],
-      "name": "sanguche de atun",
+      "name": "sanguche",
       "gender": "male",
       "number": "singular"
     },
