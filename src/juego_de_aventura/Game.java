@@ -228,6 +228,26 @@ public class Game {
 		return retorno;
 	}
 	
+	private String makePlayerGiveSomething(Action action) {
+		player.setImageName("Fails/fail-give");
+		String retorno = "A quien y que cosa? Debes ser más claro";
+		
+		if(!action.isUnknownTarget() && !action.isUnknownThing()) {
+			action.setAction("usar");
+			retorno = player.useItem(action, adventure);
+		}else {
+			if(!action.isUnknownTarget()) {
+				retorno = "Que cosa quieres darle?";
+			}else {
+				if(!action.isUnknownThing()) {
+					retorno = "A quien?";
+				}
+			}
+		}
+		
+	return retorno;
+	}
+	
 	private String makePlayerEat(Action action) {
 		return player.eat(action, adventure);
 	}
@@ -280,6 +300,9 @@ public class Game {
             break;
         case "abrir":
             cadena = this.makePlayerOpenSomething(action);
+            break;
+        case "dar":
+            cadena = this.makePlayerGiveSomething(action);
             break;
         case "tomar":
             cadena = this.makePlayerTakeSomething(action);
