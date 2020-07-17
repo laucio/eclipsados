@@ -5,10 +5,12 @@ import juego_de_aventura.Game;
 
 public class TranslatorVerbWatchInventory implements CommandTranslator {
 
-	private final static String[] VERBO_VER_INVENTARIO = { " ver inventario ",
-			" mirar inventario ", " checkear inventario ",
-			" inspeccionar inventario ", " revisar inventario ",
-			" examinar inventario "};
+	private final static String[] VERBO_VER_INVENTARIO = { " ver inventario ", " ver el inventario ",
+			" mirar inventario "," mirar el inventario", " mira el inventario",
+			" checkear inventario ", " checkear el inventario ",
+			" inspeccionar inventario ", " inspeccionar el inventario ",
+			" revisar inventario ", " revisar el inventario ",
+			" examinar inventario ", " examinar el inventario "};
 	
 	private CommandTranslator next = null;
 

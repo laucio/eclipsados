@@ -9,7 +9,7 @@ import juego_de_aventura.Game;
 public class TranslatorVerbBreak implements CommandTranslator {
 
 	private final static String[] VERBO_ROMPER = { " romper ", " rompe ", " destruir ",
-			" destruye ", " puveriza ", " pulverizar " };
+			" destruye ", " puveriza ", " pulverizar ", " picar ", " pica " };
 
 	private CommandTranslator next = null;
 

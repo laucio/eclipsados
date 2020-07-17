@@ -174,8 +174,10 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		bottomPanel.setBorder(new LineBorder(Color.BLUE, 1));
 		bottomPanel.setBackground("Images/background.jpg");
 		bottomPanel.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+		
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
+		showHelp();
 
 		commandTextField = new JTextField();
 		commandTextField.setBackground(Color.BLACK);
@@ -201,7 +203,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 			}
 		});
 
-		commandTextField.setToolTipText("Escriba su mensaje para enviar");
+		commandTextField.setToolTipText("Escribe la accion que quieres que realice tu personaje");
 
 		commandTextField.setColumns(65);
 
@@ -240,14 +242,22 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 
 	public void showHelp() {
 		addTextToTextArea("-- AYUDA --");
-		addTextToTextArea("Para jugar tu personaje puede realizar acciones como:");
+		addTextToTextArea(" Para ganar la partida, debes explorar los escenarios y descubrir que accion te lleva a la victoria");
+		addTextToTextArea(" A tu personaje puedes pedirle realizar acciones como:");
+		addTextToTextArea(" - mirar alrededor");
+		addTextToTextArea(" - mirar inventario");
 		addTextToTextArea(" - ir a un lugar");
+		addTextToTextArea(" - observar algun objeto");
 		addTextToTextArea(" - tomar un objeto");
+		addTextToTextArea(" - dejar un objeto");
+		addTextToTextArea(" - usar algun objeto");
+		addTextToTextArea(" - comer o beber alguna cosa");
 		addTextToTextArea(" - abrir puertas");
 		addTextToTextArea(" - atacar con un objeto a otro personaje");
 		addTextToTextArea(" - dar un objeto a otro personaje");
 		addTextToTextArea(" - hablar con un personaje");
-		addTextToTextArea(" - mirar alrededor y mirar tu inventario");
+		addTextToTextArea(" Recuerda pedirle a tu personaje acciones simples");
+		addTextToTextArea(" Algunas acciones pueden bajar tus puntos de vida y otras pueden aumentarlos, pero nunca superan los 100 puntos");
 		addTextToTextArea("-- FIN DE AYUDA --\n");
 	}
 
