@@ -62,7 +62,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 
 		setTitle("Eclipsados - " + this.adventureName);
 		setResizable(false);
-		setBounds(200, 200, 800, 400);
+		setBounds(200, 200, 1100, 500);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		mainContainer = this.getContentPane();
@@ -88,6 +88,11 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		pointsLabel.setForeground(Color.WHITE);
 		commandCounterLabel.setForeground(Color.WHITE);
 
+		userNameLabel.setFont(new Font("Monospaced", Font.PLAIN, 17));
+		currentLocationLabel.setFont(new Font("Monospaced", Font.PLAIN, 17));
+		pointsLabel.setFont(new Font("Monospaced", Font.PLAIN, 17));
+		commandCounterLabel.setFont(new Font("Monospaced", Font.PLAIN, 17));
+		
 		topPanel.add(userNameLabel, BorderLayout.CENTER);
 		topPanel.add(currentLocationLabel, BorderLayout.CENTER);
 		topPanel.add(pointsLabel, BorderLayout.CENTER);
@@ -161,7 +166,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		scrollPane.setEnabled(false);
 
 		textArea = new JTextArea();
-		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 17));
 		textArea.setEditable(false);
 		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.CYAN);
@@ -180,6 +185,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		showHelp();
 
 		commandTextField = new JTextField();
+		commandTextField.setFont(new Font("Monospaced", Font.PLAIN, 17));
 		commandTextField.setBackground(Color.BLACK);
 		commandTextField.setForeground(Color.CYAN);
 		commandTextField.addKeyListener(new KeyAdapter() {
@@ -231,7 +237,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 
 	private void updateWindowInfo() {
 
-		currentLocationLabel.setText("Ubicacion actual: " + normalizar(guInterface.getCurrentLocation()));
+		currentLocationLabel.setText("Ubicacion: " + normalizar(guInterface.getCurrentLocation()));
 		pointsLabel.setText("Vida: " + guInterface.getHitPoints());
 		commandCounterLabel.setText("Comandos: " + guInterface.getCommandCounter());
 	}
@@ -265,7 +271,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 	public void updateImage() {
 		imageIcon = new ImageIcon("Images/" + adventureName + "/" + guInterface.getImageName() + ".png");
 		Image image = imageIcon.getImage();
-		Image newimg = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH); // scale it the smooth way
+		Image newimg = image.getScaledInstance(175, 175, Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg);
 		imageLabel.setIcon(imageIcon);
 	}

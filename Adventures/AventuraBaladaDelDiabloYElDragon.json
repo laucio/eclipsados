@@ -474,7 +474,7 @@
         {
           "type": "item",
           "thing": "lanza",
-          "on_trigger": "Mejor me pego alta siestita. Estoy cansado de tanta lucha... Zzzz",
+          "on_trigger": "Mejor me pego alta siestita. Estoy cansado de tanta lucha... Zzzz ... Tus movimientos me aburren",
           "after_trigger": "default"
         },
         {
@@ -627,7 +627,8 @@
       "actions": [
         "usar",
         "tomar",
-        "dejar"
+        "dejar",
+        "dar"
       ],
       "effects_over": [
         "npcs"
@@ -688,7 +689,8 @@
       "actions": [
         "usar",
         "tomar",
-        "dejar"
+        "dejar",
+        "dar"
       ],
       "effects_over": [
         "npcs"
@@ -1289,6 +1291,20 @@
     {
       "condition": "item",
       "action": "usar",
+      "thing": "flor",
+      "shooteable": "princesa",
+      "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de esta vasta tierra encantada nombrada hace miles de años como Muy Muy Lejano... Salve Cesar!!!"
+    },
+    {
+      "condition": "item",
+      "action": "dar",
+      "thing": "tesoro",
+      "shooteable": "mujer",
+      "description": "Oh, mi amor!! Encontraste el Tesoro!!!... Nunca nadie ha hecho algo asi por mi... Eres el mejor de los principes... Mi principe encantador y sobre todo el mayor de mis tesoros!! "
+    },
+    {
+      "condition": "item",
+      "action": "dar",
       "thing": "flor",
       "shooteable": "princesa",
       "description": "Con esta flor que me has dado te concedo el honor de ser el emperador de esta vasta tierra encantada nombrada hace miles de años como Muy Muy Lejano... Salve Cesar!!!"
