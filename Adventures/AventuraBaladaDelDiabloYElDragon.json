@@ -47,6 +47,15 @@
     },
     {
       "description": "Estas en la cocina de la casa. La misma tiene toques goticos y un marmol de muy fina de calidad",
+      "connections": [
+        {
+          "direction": "oeste",
+          "location": "living"
+        }
+      ],
+      "name": "cocina",
+      "gender": "female",
+      "number": "singular",
       "places": [
         {
           "items": [
@@ -64,16 +73,7 @@
           "gender": "female",
           "number": "singular"
         }
-      ],
-      "connections": [
-        {
-          "direction": "oeste",
-          "location": "living"
-        }
-      ],
-      "name": "cocina",
-      "gender": "female",
-      "number": "singular"
+      ]
     },
     {
       "description": "Estas en un mercado abandonado. Mucho desorden y poca higiene... Creo que aqui encontraremos cosas que nos podrian servir luego",
@@ -101,7 +101,7 @@
           "location": "camino"
         }
       ],
-      "name": "mercado abandonado",
+      "name": "mercado",
       "gender": "male",
       "number": "singular"
     },
@@ -175,12 +175,12 @@
         },
         {
           "direction": "este",
-          "location": "mercado abandonado",
+          "location": "mercado",
           "obstacles": "princesa"
         },
         {
           "direction": "sur",
-          "location": "campamento siniestro"
+          "location": "campamento"
         }
       ],
       "name": "camino",
@@ -226,7 +226,7 @@
           "obstacles": "piedra"
         }
       ],
-      "name": "campamento siniestro",
+      "name": "campamento",
       "gender": "male",
       "number": "singular"
     },
@@ -256,7 +256,7 @@
       "connections": [
         {
           "direction": "este",
-          "location": "campamento siniestro"
+          "location": "campamento"
         }
       ],
       "name": "cueva",
@@ -276,7 +276,6 @@
         },
         {
           "items": [
-            "cruz",
             "agua bendita"
           ],
           "name": "altar",
@@ -296,7 +295,7 @@
         },
         {
           "direction": "oeste",
-          "location": "campamento siniestro"
+          "location": "campamento"
         }
       ],
       "name": "templo",
@@ -330,10 +329,47 @@
         {
           "direction": "norte",
           "location": "templo"
+        },
+        {
+          "direction": "este",
+          "location": "granero"
         }
       ],
       "name": "tumba",
       "gender": "female",
+      "number": "singular"
+    },
+    {
+      "description": "Estas en un tetrico y maloliente granero. Evidentemente hace mucho que no se lo limpia... El nauseabundo hedor te quema las fosas nasales...",
+      "places": [
+        {
+          "items": [
+            "cruz"
+          ],
+          "name": "pajar",
+          "gender": "male",
+          "number": "singular"
+        },
+        {
+          "items": [
+            "pera"
+          ],
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular"
+        }
+      ],
+      "npcs": [
+        "granjero"
+      ],
+      "connections": [
+        {
+          "direction": "oeste",
+          "location": "tumba"
+        }
+      ],
+      "name": "granero",
+      "gender": "male",
       "number": "singular"
     }
   ],
@@ -574,6 +610,16 @@
       "name": "sabio",
       "gender": "male",
       "number": "singular"
+    },
+    {
+      "description": "Un granjero malhumorado se encuentra frente a ti gritando: Maldito perro estupido!",
+      "talks": [
+        "Aqui tienes un artefacto que te ayudara a finalizar la odisea que estas pasando, mi querido aventurero. ",
+        "Muriel! Aqui hay un citadino intentando vencer al demonio! jajaja "
+      ],
+      "name": "granjero",
+      "gender": "male",
+      "number": "singular"
     }
   ],
   "items": [
@@ -608,7 +654,6 @@
         "self",
         "demonio"
       ],
-      "points": 100,
       "triggers": [
         {
           "type": "item",
@@ -619,7 +664,8 @@
       ],
       "name": "agua bendita",
       "gender": "female",
-      "number": "singular"
+      "number": "singular",
+      "points": 100
     },
     {
       "actions": [
@@ -987,7 +1033,7 @@
         {
           "type": "item",
           "thing": "veneno",
-          "on_trigger": "Le hechas veneno a la bisagra de la puerta, y esta se termina rompiendo... ahora puedes salir!",
+          "on_trigger": "Le echas veneno a la bisagra de la puerta, y esta se termina rompiendo... ahora puedes salir!",
           "after_trigger": "remove obstacles"
         }
       ],
@@ -1173,6 +1219,32 @@
         }
       ],
       "name": "manzana",
+      "gender": "female",
+      "number": "singular"
+    },
+    {
+      "actions": [
+        "usar",
+        "comer",
+        "tomar",
+        "dejar"
+      ],
+      "effects_over": [
+        "self"
+      ],
+      "targets": [
+        "self"
+      ],
+      "points": 15,
+      "triggers": [
+        {
+          "type": "item",
+          "thing": "pera",
+          "on_trigger": "Mmm! Que refrescante y deliciosa pera!! Ahora me siento un poco mejor.",
+          "after_trigger": "alter points & remove"
+        }
+      ],
+      "name": "pera",
       "gender": "female",
       "number": "singular"
     }
