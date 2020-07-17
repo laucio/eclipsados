@@ -189,6 +189,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 					textArea.append(normalizar(guInterface.getUserName()) + ": " + commandTextField.getText() + "\n\n");
 					String output = guInterface.processCommand(commandTextField.getText());
 					textArea.append(">> " + output + "\n\n");
+					textArea.setCaretPosition(textArea.getDocument().getLength());
 					updateWindowInfo();
 					updateImage();
 
