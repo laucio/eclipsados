@@ -46,8 +46,10 @@ public class TranslatorGive implements CommandTranslator {
 			} else {
 				if (npcName != null) {
 					action.setCondition("unknown");
+					action.setEffect_over("");
 				} else {
 					if (item != null) {
+						action.setCondition("");
 						action.setEffect_over("unknown");
 					} else {
 						action.setEffect_over("unknown");

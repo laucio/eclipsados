@@ -70,7 +70,7 @@ public class TranslatorWithVerbUse implements CommandTranslator {
 					action.setEffect_over("self");
 					
 					Item item = adventure.getItem(action.getThing());
-					if(item.couldBeOpened()) {
+					if(item.couldBeOpened() && item.cannotBeTaken()) {
 						action.setAction("abrir");
 					}
 					

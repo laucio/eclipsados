@@ -109,60 +109,62 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 	@Override
 	public String shootTrigger(Action action, Adventure adventure, Player player) {
 		String retorno = "Eso no ha servido de nada.";
+		if (player.getCurrentLocation().hasItem(this.name) || player.hasItem(this) || player.getCurrentLocation().hasObstacle(this.name)) {
+			Trigger trigger = this.findTrigger(action);
+			action.setAchieved(true);
 
-		Trigger trigger = this.findTrigger(action);
-		action.setAchieved(true);
+			if (trigger != null) {
+				int index = this.getTriggerIndex(trigger);
+				player.setImageName("Items/" + this.getName() + "/Triggers/" + index);
+				retorno = trigger.getOn_trigger();
 
-		if (trigger != null) {
-			int index = this.getTriggerIndex(trigger);
-			player.setImageName("Items/" + this.getName() + "/Triggers/" + index);
-			retorno = trigger.getOn_trigger();
-
-			switch (trigger.getAfter_trigger()) {
-			case "remove":
-				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
-					player.removeItemFromInventory(adventure.getItem(action.getThing()));
+				switch (trigger.getAfter_trigger()) {
+				case "remove":
+					if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+						player.removeItemFromInventory(adventure.getItem(action.getThing()));
+					}
+					break;
+				case "remove obstacles":
+					removeObstacle(action.getTarget(), player.getCurrentLocation());
+					adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation());
+					break;
+				case "restart":
+					retorno += "\n" + player.restart(adventure.getLocations().get(0));
+					break;
+				case "alter points":
+					retorno += "\n" + alterPlayerHitPoints(player, adventure);
+					break;
+				case "alter points & remove":
+					retorno += "\n" + alterPlayerHitPoints(player, adventure);
+					if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+						player.removeItemFromInventory(adventure.getItem(action.getThing()));
+					}
+					break;
+				case "remove obstacles & remove":
+					removeObstacle(action.getTarget(), player.getCurrentLocation());
+					if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+						player.removeItemFromInventory(adventure.getItem(action.getThing()));
+					}
+					break;
+				case "restart & remove":
+					if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
+						player.removeItemFromInventory(adventure.getItem(action.getThing()));
+					}
+					retorno += "\n" + player.restart(adventure.getLocations().get(0));
+					break;
+				default:
+					break;
 				}
-				break;
-			case "remove obstacles":
-				removeObstacle(action.getTarget(), player.getCurrentLocation());
-				adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation());
-				break;
-			case "restart":
-				retorno += "\n" + player.restart(adventure.getLocations().get(0));
-				break;
-			case "alter points":
-				retorno += "\n" + alterPlayerHitPoints(player, adventure);
-				break;
-			case "alter points & remove":
-				retorno += "\n" + alterPlayerHitPoints(player, adventure);
-				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
-					player.removeItemFromInventory(adventure.getItem(action.getThing()));
-				}
-				break;
-			case "remove obstacles & remove":
-				removeObstacle(action.getTarget(), player.getCurrentLocation());
-				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
-					player.removeItemFromInventory(adventure.getItem(action.getThing()));
-				}
-				break;
-			case "restart & remove":
-				if (!adventure.removeItemFromLocation(action, adventure, player.getCurrentLocation())) {
-					player.removeItemFromInventory(adventure.getItem(action.getThing()));
-				}
-				retorno += "\n" + player.restart(adventure.getLocations().get(0));
-				break;
-			default:
-				break;
 			}
 		}
-
 		return retorno;
 	}
 
 	@Override
 	public void removeObstacle(String obstacle, Location location) {
-		location.getConnectionFromObstacle(obstacle).setObstacles(null);
+		if (location.getConnectionFromObstacle(obstacle) != null) {
+			location.getConnectionFromObstacle(obstacle).setObstacles(null);
+		}
 
 	}
 
@@ -194,6 +196,10 @@ public class Item extends Obstacle implements Shootable, HitPointsController {//
 					+ " puntos de vida.\nSe agotaron todos tus puntos de vida! Vuelves al principio con 50 HP.";
 		}
 		return retorno;
+	}
+
+	public boolean cannotBeTaken() {
+		return !this.allowsAction("tomar");
 	}
 
 }

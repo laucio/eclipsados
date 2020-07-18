@@ -191,7 +191,7 @@ public class PlayerWindow extends JFrame implements Runnable, Normalizador {
 		commandTextField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (arg0.getKeyCode() == KeyEvent.VK_ENTER && !guInterface.isEndgame()) {
 					textArea.append(normalizar(guInterface.getUserName()) + ": " + commandTextField.getText() + "\n\n");
 					String output = guInterface.processCommand(commandTextField.getText());
 					textArea.append(">> " + output + "\n\n");
